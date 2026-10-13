@@ -36,6 +36,7 @@ Project memory for AI assistants (read by Godot Forge). Keep it short and curren
 - Read README.md for the documentation index, MILESTONE.md for status/backlog,
   docs/ARCHITECTURE.md for ownership/save contracts, docs/DEVELOPMENT.md for the
   safe workflow and docs/VERIFICATION.md for evidence boundaries.
+- For downloadable builds and GitHub publication, follow DEPLOYMENT.md.
 - Latest activity checkpoint: 2026-10-13, eight passing suites / 1,370 steps,
   lint 32 scripts / 12 scenes without errors/warnings; 12 native 1080p captures.
 - Writing/journal/kind notes and pond life/breathing are implemented; journal

@@ -55,7 +55,8 @@ The banner is generated illustration; the image above is an actual Mac gameplay 
 
 To explore the source, open `project.godot` in **Godot 4.7.2**. The project uses
 the Mobile renderer: Metal on Mac, Vulkan or Direct3D 12 on supported Windows PCs.
-See [building the downloads](docs/RELEASES.md) and [project status](MILESTONE.md).
+See [deployment instructions for agents](DEPLOYMENT.md),
+[building the downloads](docs/RELEASES.md), and [project status](MILESTONE.md).
 
 Art, music, recordings and font credits are in
 [the asset credits](assets/village/CREDITS.txt). Third-party license notices are
