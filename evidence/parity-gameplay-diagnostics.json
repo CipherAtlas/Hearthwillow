@@ -1,0 +1,20 @@
+{
+  "diagnostics": {
+    "res://scenes/quiet_places.gd": [],
+    "res://scenes/tower_lookout.gd": [],
+    "res://scenes/village_life.gd": [],
+    "res://scenes/village_activities.gd": [],
+    "res://scenes/player.gd": [],
+    "res://scenes/village_actor.gd": [],
+    "res://scenes/village_menus.gd": [],
+    "res://scenes/village_sound.gd": [],
+    "res://scenes/release_benchmark.gd": [],
+    "res://scenes/village_lighting.gd": [],
+    "res://scenes/village_flock.gd": [],
+    "res://scenes/camera.gd": [],
+    "res://scenes/focus_cottage.gd": [],
+    "res://scenes/interaction_button.gd": [],
+    "res://scenes/village_map.gd": []
+  },
+  "source": "language server"
+}

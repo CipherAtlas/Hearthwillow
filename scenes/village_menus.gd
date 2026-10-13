@@ -61,7 +61,7 @@ func sync_blocking() -> void:
 	rig.controls_blocked = player.controls_blocked
 	world.get_node("HUD/Actions").visible = entered and not map.expanded
 	world.get_node("HUD/Wordmark").visible = entered and not map.expanded
-	world.get_node("HUD/Hints").visible = entered and not map.expanded and not player.activity_locked
+	world.get_node("HUD/Hints").visible = entered and not map.expanded and (not player.activity_locked or world.get_node("TowerLookout").inside)
 	map.visible = entered
 	world.get_node("FocusCottage").refresh()
 	var pointer_activity: bool = world.get_node("FocusCottage").inside or not world.get_node("QuietPlaces").active.is_empty()
@@ -389,7 +389,7 @@ func _process(delta: float) -> void:
 	var selected := weather
 	if selected == 0:
 		var hour: int = Time.get_time_dict_from_system().hour
-		selected = 3 if hour < 6 or hour >= 20 else 2 if hour >= 17 else 1
+		selected = 3 if hour < 5 or hour >= 20 else 2 if hour < 7 or hour >= 18 else 1
 	var target := Vector3(float(selected == 4),float(selected == 2),float(selected == 3))
 	weather_blend = weather_blend.lerp(target,1-exp(-delta*1.2))
 	if weather_blend.distance_squared_to(target) < .000001: weather_blend = target
@@ -409,7 +409,8 @@ func _process(delta: float) -> void:
 	environment.tonemap_exposure = 1.02+weather_blend.y*.06-weather_blend.z*.08
 	var rain := world.get_node("WeatherRain") as GPUParticles3D
 	rain.position = player.position+Vector3(0,8,0)
-	rain.emitting = selected == 4
+	rain.emitting = selected == 4 and not world.get_node("FocusCottage").inside
+	rain.speed_scale = 0.0 if reduced_motion else 1.0
 	update_time -= delta
 	if update_time <= 0:
 		update_time = .5

@@ -82,6 +82,19 @@ key can have a different meaning while seated, mounted or in the cottage.
 
 ## Scope and evidence
 
+Nighttime now restores warm spirit bodies, painted window emission and lantern halos,
+with only the two nearest lamp lights active. Walking and hoof sounds are quieter;
+riding uses the original distinct hoof synthesis and stride/scale cadence. Native
+night/audio and horse checks pass 192 steps; see [Verification](VERIFICATION.md)
+for screenshots, the separate local test build and remaining acceptance limits.
+
+The live destination audit now restores hearth music controls, tea with Luma,
+bird feeding activity, automatic garden entry and the watchtower lookout. Source
+companion staging/formation, reusable crumbs, indoor low-pass and outdoor reduced
+motion are included. The 16-scenario native release FPS baseline is complete and falls short of
+sustained 120 FPS. See [Milestone](../MILESTONE.md) and
+[Verification](VERIFICATION.md) for the measured revision and open boundaries.
+
 The original source is read-only. This port includes **no custom layout editor,
 admin interface, Worker backend or multiplayer**. Outdoor simulation runs on this
 machine; browser saved data and shared live-world state are not imported.

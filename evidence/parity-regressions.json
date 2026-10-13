@@ -1,0 +1,3339 @@
+[
+  {
+    "name": "Night and weather glow parity, nearby lamp budget and quiet contact audio",
+    "passed": true,
+    "duration_s": 32.032,
+    "steps": [
+      {
+        "index": 0,
+        "step": "assert get_viewport().get_texture().get_size()==Vector2(1920,1080)",
+        "ok": true,
+        "detail": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
+      },
+      {
+        "index": 1,
+        "step": "eval get_node('HUD/Menus').set_meta('night_fixture',get_node('HUD/Menus').weather)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 2,
+        "step": "eval get_node('HUD/Menus').set('entered',true)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 3,
+        "step": "eval get_node('HUD/Menus/Starter').hide()",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 4,
+        "step": "eval get_node('HUD/Menus/Guide').hide()",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 5,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 6,
+        "step": "assert get_node('VillageLighting').spirit_materials.size()==10",
+        "ok": true,
+        "detail": "get_node('VillageLighting').spirit_materials.size()==10"
+      },
+      {
+        "index": 7,
+        "step": "assert get_node('VillageLighting/Halos').get_child_count()==41",
+        "ok": true,
+        "detail": "get_node('VillageLighting/Halos').get_child_count()==41"
+      },
+      {
+        "index": 8,
+        "step": "assert get_node('VillageLighting/Lamps').get_child_count()==23",
+        "ok": true,
+        "detail": "get_node('VillageLighting/Lamps').get_child_count()==23"
+      },
+      {
+        "index": 9,
+        "step": "eval get_node('HUD/Menus').set('weather',3)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 10,
+        "step": "wait 6",
+        "ok": true
+      },
+      {
+        "index": 11,
+        "step": "assert get_node('VillageLighting').blend==Vector3(0,0,1)",
+        "ok": true,
+        "detail": "get_node('VillageLighting').blend==Vector3(0,0,1)"
+      },
+      {
+        "index": 12,
+        "step": "assert get_node('VillageLighting').active_lamps.size()==2",
+        "ok": true,
+        "detail": "get_node('VillageLighting').active_lamps.size()==2"
+      },
+      {
+        "index": 13,
+        "step": "assert get_node('VillageLighting/Halos').visible",
+        "ok": true,
+        "detail": "get_node('VillageLighting/Halos').visible"
+      },
+      {
+        "index": 14,
+        "step": "assert abs(get_node('VillageLighting').glass_materials[0].emission_energy_multiplier-3.32)<.001",
+        "ok": true,
+        "detail": "abs(get_node('VillageLighting').glass_materials[0].emission_energy_multiplier-3.32)<.001"
+      },
+      {
+        "index": 15,
+        "step": "assert get_node('VillageLighting').glass_materials[0].emission_texture!=null",
+        "ok": true,
+        "detail": "get_node('VillageLighting').glass_materials[0].emission_texture!=null"
+      },
+      {
+        "index": 16,
+        "step": "assert (abs(get_node('VillageLighting').spirit_materials[0].material.emission_energy_multiplier-.26)<.001 and get_node('",
+        "ok": true,
+        "detail": "(abs(get_node('VillageLighting').spirit_materials[0].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[0].material.emission==Color('ffd58e')) and (abs(get_node('VillageLighting').spirit_materials[1].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[1].material.emission==Color('ffd58e')) and (abs(get_node('VillageLighting').spirit_materials[2].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[2].material.emission==Color('ffd58e')) and (abs(get_node('VillageLighting').spirit_materials[3].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[3].material.emission==Color('ffd58e')) and (abs(get_node('VillageLighting').spirit_materials[4].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[4].material.emission==Color('ffd58e')) and (abs(get_node('VillageLighting').spirit_materials[5].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[5].material.emission==Color('ffd58e')) and (abs(get_node('VillageLighting').spirit_materials[6].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[6].material.emission==Color('ffd58e')) and (abs(get_node('VillageLighting').spirit_materials[7].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[7].material.emission==Color('ffd58e')) and (abs(get_node('VillageLighting').spirit_materials[8].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[8].material.emission==Color('ffd58e')) and (abs(get_node('VillageLighting').spirit_materials[9].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[9].material.emission==Color('ffd58e'))"
+      },
+      {
+        "index": 17,
+        "step": "assert abs(get_node('Bounce').light_energy-.011)<.001",
+        "ok": true,
+        "detail": "abs(get_node('Bounce').light_energy-.011)<.001"
+      },
+      {
+        "index": 18,
+        "step": "eval get_node('Player').set('position',Vector3(91,0.03,-41))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 19,
+        "step": "eval get_node('Player').reset_physics_interpolation()",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 20,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 21,
+        "step": "assert get_node('VillageLighting').active_lamps.has(get_node('VillageLighting/Lamps/town-lamp-11'))",
+        "ok": true,
+        "detail": "Lamp selection follows the visitor across the authored town, not the original template position."
+      },
+      {
+        "index": 22,
+        "step": "assert get_node('VillageLighting').active_lamps[0].visible and get_node('VillageLighting').active_lamps[1].visible",
+        "ok": true,
+        "detail": "get_node('VillageLighting').active_lamps[0].visible and get_node('VillageLighting').active_lamps[1].visible"
+      },
+      {
+        "index": 23,
+        "step": "eval get_node('HUD/Menus').set('weather',2)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 24,
+        "step": "wait 6",
+        "ok": true
+      },
+      {
+        "index": 25,
+        "step": "assert get_node('VillageLighting').blend==Vector3(0,1,0)",
+        "ok": true,
+        "detail": "get_node('VillageLighting').blend==Vector3(0,1,0)"
+      },
+      {
+        "index": 26,
+        "step": "assert abs(get_node('VillageLighting').glass_materials[0].emission_energy_multiplier-1.42)<.001",
+        "ok": true,
+        "detail": "abs(get_node('VillageLighting').glass_materials[0].emission_energy_multiplier-1.42)<.001"
+      },
+      {
+        "index": 27,
+        "step": "assert get_node('VillageLighting/Halos').visible==true",
+        "ok": true,
+        "detail": "get_node('VillageLighting/Halos').visible==true"
+      },
+      {
+        "index": 28,
+        "step": "assert (get_node('VillageLighting').spirit_materials[0].material.albedo_color==get_node('VillageLighting').spirit_materi",
+        "ok": true,
+        "detail": "All original spirit colors and day emission are restored."
+      },
+      {
+        "index": 29,
+        "step": "eval get_node('HUD/Menus').set('weather',4)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 30,
+        "step": "wait 6",
+        "ok": true
+      },
+      {
+        "index": 31,
+        "step": "assert get_node('VillageLighting').blend==Vector3(1,0,0)",
+        "ok": true,
+        "detail": "get_node('VillageLighting').blend==Vector3(1,0,0)"
+      },
+      {
+        "index": 32,
+        "step": "assert abs(get_node('VillageLighting').glass_materials[0].emission_energy_multiplier-0.34)<.001",
+        "ok": true,
+        "detail": "abs(get_node('VillageLighting').glass_materials[0].emission_energy_multiplier-0.34)<.001"
+      },
+      {
+        "index": 33,
+        "step": "assert get_node('VillageLighting/Halos').visible==false",
+        "ok": true,
+        "detail": "get_node('VillageLighting/Halos').visible==false"
+      },
+      {
+        "index": 34,
+        "step": "assert get_node('VillageLighting').active_lamps.is_empty()",
+        "ok": true,
+        "detail": "get_node('VillageLighting').active_lamps.is_empty()"
+      },
+      {
+        "index": 35,
+        "step": "assert (get_node('VillageLighting').spirit_materials[0].material.albedo_color==get_node('VillageLighting').spirit_materi",
+        "ok": true,
+        "detail": "All original spirit colors and day emission are restored."
+      },
+      {
+        "index": 36,
+        "step": "eval get_node('HUD/Menus').set('weather',1)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 37,
+        "step": "wait 6",
+        "ok": true
+      },
+      {
+        "index": 38,
+        "step": "assert get_node('VillageLighting').blend==Vector3(0,0,0)",
+        "ok": true,
+        "detail": "get_node('VillageLighting').blend==Vector3(0,0,0)"
+      },
+      {
+        "index": 39,
+        "step": "assert abs(get_node('VillageLighting').glass_materials[0].emission_energy_multiplier-0.12)<.001",
+        "ok": true,
+        "detail": "abs(get_node('VillageLighting').glass_materials[0].emission_energy_multiplier-0.12)<.001"
+      },
+      {
+        "index": 40,
+        "step": "assert get_node('VillageLighting/Halos').visible==false",
+        "ok": true,
+        "detail": "get_node('VillageLighting/Halos').visible==false"
+      },
+      {
+        "index": 41,
+        "step": "assert get_node('VillageLighting').active_lamps.is_empty()",
+        "ok": true,
+        "detail": "get_node('VillageLighting').active_lamps.is_empty()"
+      },
+      {
+        "index": 42,
+        "step": "assert (get_node('VillageLighting').spirit_materials[0].material.albedo_color==get_node('VillageLighting').spirit_materi",
+        "ok": true,
+        "detail": "All original spirit colors and day emission are restored."
+      },
+      {
+        "index": 43,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 44,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 45,
+        "step": "eval get_node('Player').set('velocity',Vector3(2.6,0,0))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 46,
+        "step": "eval get_node('VillageSound').set('last_contact_time',-1)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 47,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 48,
+        "step": "assert get_node('VillageSound/Footsteps').stream.resource_path.contains('step_grass_') and get_node('VillageSound/Footst",
+        "ok": true,
+        "detail": "get_node('VillageSound/Footsteps').stream.resource_path.contains('step_grass_') and get_node('VillageSound/Footsteps').volume_db < -37"
+      },
+      {
+        "index": 49,
+        "step": "eval get_node('VillageSound').set_meta('last_contact_fixture',get_node('VillageSound').last_step)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 50,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 51,
+        "step": "assert get_node('VillageSound').last_step==get_node('VillageSound').get_meta('last_contact_fixture')",
+        "ok": true,
+        "detail": "Repeated contact callbacks are rate-limited."
+      },
+      {
+        "index": 52,
+        "step": "eval get_node('VillageSound').set('last_contact_time',-1)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 53,
+        "step": "eval get_node('Player').set('velocity',Vector3(0,0,0))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 54,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 55,
+        "step": "assert get_node('VillageSound').last_contact_time==-1",
+        "ok": true,
+        "detail": "Idle movement has no contact sound."
+      },
+      {
+        "index": 56,
+        "step": "eval get_node('Player').set('mount',get_node('Village/Actors/horse-juniper'))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 57,
+        "step": "eval get_node('Player').set('velocity',Vector3(0,0,9))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 58,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 59,
+        "step": "assert get_node('VillageSound/Footsteps').stream.resource_path.contains('hoof_stone_') and get_node('VillageSound/Footst",
+        "ok": true,
+        "detail": "get_node('VillageSound/Footsteps').stream.resource_path.contains('hoof_stone_') and get_node('VillageSound/Footsteps').volume_db < -34"
+      },
+      {
+        "index": 60,
+        "step": "eval get_node('Player').set('mount',null)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 61,
+        "step": "eval get_node('Player').set('velocity',Vector3(0,0,0))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 62,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 63,
+        "step": "assert not get_node('VillageSound/Footsteps').playing",
+        "ok": true,
+        "detail": "not get_node('VillageSound/Footsteps').playing"
+      },
+      {
+        "index": 64,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 65,
+        "step": "eval get_node('HUD/Menus').set('weather',get_node('HUD/Menus').get_meta('night_fixture'))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 66,
+        "step": "assert_no_errors",
+        "ok": true
+      }
+    ],
+    "runtime_errors": []
+  },
+  {
+    "name": "Foraging, pasture feeding and horse riding",
+    "passed": true,
+    "duration_s": 16.684,
+    "steps": [
+      {
+        "index": 0,
+        "step": "assert get_viewport().get_texture().get_size()==Vector2(1920,1080)",
+        "ok": true,
+        "detail": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
+      },
+      {
+        "index": 1,
+        "step": "assert get_tree().root.size.x>=1918 and get_tree().root.size.y>=1079",
+        "ok": true,
+        "detail": "1080p display window; allow the macOS one-pixel window frame, never a 720p override."
+      },
+      {
+        "index": 2,
+        "step": "eval get_node('VillageLife').set_meta('forage_fixture',{'apples':get_node('VillageLife').apples,'crumbs':get_node('Villa",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 3,
+        "step": "eval get_node('VillageLife').set('apples',0)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 4,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 5,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Village/Actors/hedgehog-1",
+          "set": [
+            "action",
+            "chatting"
+          ]
+        }
+      },
+      {
+        "index": 6,
+        "step": "eval get_node('Player').set('position',get_node('Village/Actors/hedgehog-1').position+Vector3(0,0,1.4))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 7,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 8,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Player",
+          "set": [
+            "velocity"
+          ]
+        }
+      },
+      {
+        "index": 9,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 10,
+        "step": "assert get_node('VillageLife').nearest.actor_id == 'hedgehog-1'",
+        "ok": true,
+        "detail": "get_node('VillageLife').nearest.actor_id == 'hedgehog-1'"
+      },
+      {
+        "index": 11,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped bread for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 12,
+        "step": "assert get_node('VillageLife').apples == 1",
+        "ok": true,
+        "detail": "get_node('VillageLife').apples == 1"
+      },
+      {
+        "index": 13,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped bread for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 14,
+        "step": "assert get_node('VillageLife').apples == 1",
+        "ok": true,
+        "detail": "Tree cooldown prevents repeated harvest"
+      },
+      {
+        "index": 15,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped interact for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 16,
+        "step": "assert get_node('Village/Actors/hedgehog-1').action == 'pet'",
+        "ok": true,
+        "detail": "get_node('Village/Actors/hedgehog-1').action == 'pet'"
+      },
+      {
+        "index": 17,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/VillageLife",
+          "set": [
+            "apples"
+          ]
+        }
+      },
+      {
+        "index": 18,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Village/Actors/cow-highland-1",
+          "set": [
+            "action",
+            "chatting"
+          ]
+        }
+      },
+      {
+        "index": 19,
+        "step": "eval get_node('Player').set('position',get_node('Village/Actors/cow-highland-1').position+Vector3(0,0,1.4))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 20,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 21,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Player",
+          "set": [
+            "velocity"
+          ]
+        }
+      },
+      {
+        "index": 22,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 23,
+        "step": "assert get_node('VillageLife').nearest.actor_id == 'cow-highland-1'",
+        "ok": true,
+        "detail": "get_node('VillageLife').nearest.actor_id == 'cow-highland-1'"
+      },
+      {
+        "index": 24,
+        "step": "assert get_node('HUD/Interaction/Generic').visible and get_node('HUD/Interaction/Generic/Actions/Action1/Row/Key/Text').",
+        "ok": true,
+        "detail": "get_node('HUD/Interaction/Generic').visible and get_node('HUD/Interaction/Generic/Actions/Action1/Row/Key/Text').text=='F'"
+      },
+      {
+        "index": 25,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "released all",
+            "mouse at Vector2(300, 400)",
+            "waited 0.15s",
+            "clicked at Vector2(1740, 1024)"
+          ],
+          "steps": 4
+        }
+      },
+      {
+        "index": 26,
+        "step": "assert get_node('Village/Actors/cow-highland-1').action == 'eat'",
+        "ok": true,
+        "detail": "get_node('Village/Actors/cow-highland-1').action == 'eat'"
+      },
+      {
+        "index": 27,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Village/Actors/cow-highland-2",
+          "set": [
+            "action",
+            "chatting"
+          ]
+        }
+      },
+      {
+        "index": 28,
+        "step": "eval get_node('Player').set('position',get_node('Village/Actors/cow-highland-2').position+Vector3(0,0,1.4))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 29,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 30,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Player",
+          "set": [
+            "velocity"
+          ]
+        }
+      },
+      {
+        "index": 31,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 32,
+        "step": "assert get_node('VillageLife').nearest.actor_id == 'cow-highland-2'",
+        "ok": true,
+        "detail": "get_node('VillageLife').nearest.actor_id == 'cow-highland-2'"
+      },
+      {
+        "index": 33,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped talk for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 34,
+        "step": "assert get_node('Village/Actors/cow-highland-2').action == 'eat'",
+        "ok": true,
+        "detail": "get_node('Village/Actors/cow-highland-2').action == 'eat'"
+      },
+      {
+        "index": 35,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Village/Actors/sheep-1",
+          "set": [
+            "action",
+            "chatting"
+          ]
+        }
+      },
+      {
+        "index": 36,
+        "step": "eval get_node('Player').set('position',get_node('Village/Actors/sheep-1').position+Vector3(0,0,1.4))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 37,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 38,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Player",
+          "set": [
+            "velocity"
+          ]
+        }
+      },
+      {
+        "index": 39,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 40,
+        "step": "assert get_node('VillageLife').nearest.actor_id == 'sheep-1'",
+        "ok": true,
+        "detail": "get_node('VillageLife').nearest.actor_id == 'sheep-1'"
+      },
+      {
+        "index": 41,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped talk for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 42,
+        "step": "assert get_node('Village/Actors/sheep-1').action == 'eat'",
+        "ok": true,
+        "detail": "get_node('Village/Actors/sheep-1').action == 'eat'"
+      },
+      {
+        "index": 43,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Village/Actors/sheep-2",
+          "set": [
+            "action",
+            "chatting"
+          ]
+        }
+      },
+      {
+        "index": 44,
+        "step": "eval get_node('Player').set('position',get_node('Village/Actors/sheep-2').position+Vector3(0,0,1.4))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 45,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 46,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Player",
+          "set": [
+            "velocity"
+          ]
+        }
+      },
+      {
+        "index": 47,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 48,
+        "step": "assert get_node('VillageLife').nearest.actor_id == 'sheep-2'",
+        "ok": true,
+        "detail": "get_node('VillageLife').nearest.actor_id == 'sheep-2'"
+      },
+      {
+        "index": 49,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped talk for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 50,
+        "step": "assert get_node('Village/Actors/sheep-2').action == 'eat'",
+        "ok": true,
+        "detail": "get_node('Village/Actors/sheep-2').action == 'eat'"
+      },
+      {
+        "index": 51,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Village/Actors/lamb-1",
+          "set": [
+            "action",
+            "chatting"
+          ]
+        }
+      },
+      {
+        "index": 52,
+        "step": "eval get_node('Player').set('position',get_node('Village/Actors/lamb-1').position+Vector3(0,0,1.4))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 53,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 54,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Player",
+          "set": [
+            "velocity"
+          ]
+        }
+      },
+      {
+        "index": 55,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 56,
+        "step": "assert get_node('VillageLife').nearest.actor_id == 'lamb-1'",
+        "ok": true,
+        "detail": "get_node('VillageLife').nearest.actor_id == 'lamb-1'"
+      },
+      {
+        "index": 57,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped talk for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 58,
+        "step": "assert get_node('Village/Actors/lamb-1').action == 'eat'",
+        "ok": true,
+        "detail": "get_node('Village/Actors/lamb-1').action == 'eat'"
+      },
+      {
+        "index": 59,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Village/Actors/lamb-2",
+          "set": [
+            "action",
+            "chatting"
+          ]
+        }
+      },
+      {
+        "index": 60,
+        "step": "eval get_node('Player').set('position',get_node('Village/Actors/lamb-2').position+Vector3(0,0,1.4))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 61,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 62,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Player",
+          "set": [
+            "velocity"
+          ]
+        }
+      },
+      {
+        "index": 63,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 64,
+        "step": "assert get_node('VillageLife').nearest.actor_id == 'lamb-2'",
+        "ok": true,
+        "detail": "get_node('VillageLife').nearest.actor_id == 'lamb-2'"
+      },
+      {
+        "index": 65,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped talk for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 66,
+        "step": "assert get_node('Village/Actors/lamb-2').action == 'eat'",
+        "ok": true,
+        "detail": "get_node('Village/Actors/lamb-2').action == 'eat'"
+      },
+      {
+        "index": 67,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Village/Actors/hedgehog-1",
+          "set": [
+            "action",
+            "chatting"
+          ]
+        }
+      },
+      {
+        "index": 68,
+        "step": "eval get_node('Player').set('position',get_node('Village/Actors/hedgehog-1').position+Vector3(0,0,1.4))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 69,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 70,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Player",
+          "set": [
+            "velocity"
+          ]
+        }
+      },
+      {
+        "index": 71,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 72,
+        "step": "assert get_node('VillageLife').nearest.actor_id == 'hedgehog-1'",
+        "ok": true,
+        "detail": "get_node('VillageLife').nearest.actor_id == 'hedgehog-1'"
+      },
+      {
+        "index": 73,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped talk for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 74,
+        "step": "assert get_node('Village/Actors/hedgehog-1').action == 'eat'",
+        "ok": true,
+        "detail": "get_node('Village/Actors/hedgehog-1').action == 'eat'"
+      },
+      {
+        "index": 75,
+        "step": "assert get_node('VillageLife').apples == 0",
+        "ok": true,
+        "detail": "get_node('VillageLife').apples == 0"
+      },
+      {
+        "index": 76,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Village/Actors/horse-juniper",
+          "set": [
+            "action",
+            "chatting"
+          ]
+        }
+      },
+      {
+        "index": 77,
+        "step": "eval get_node('Player').set('position',get_node('Village/Actors/horse-juniper').position+Vector3(0,0,1.4))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 78,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 79,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Player",
+          "set": [
+            "velocity"
+          ]
+        }
+      },
+      {
+        "index": 80,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 81,
+        "step": "assert get_node('VillageLife').nearest.actor_id == 'horse-juniper'",
+        "ok": true,
+        "detail": "get_node('VillageLife').nearest.actor_id == 'horse-juniper'"
+      },
+      {
+        "index": 82,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped talk for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 83,
+        "step": "assert get_node('Village/Actors/horse-juniper').action == 'eat'",
+        "ok": true,
+        "detail": "get_node('Village/Actors/horse-juniper').action == 'eat'"
+      },
+      {
+        "index": 84,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Village/Actors/horse-juniper",
+          "set": [
+            "action_age"
+          ]
+        }
+      },
+      {
+        "index": 85,
+        "step": "wait 0.1",
+        "ok": true
+      },
+      {
+        "index": 86,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped interact for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 87,
+        "step": "assert get_node('Player').mount == get_node('Village/Actors/horse-juniper')",
+        "ok": true,
+        "detail": "get_node('Player').mount == get_node('Village/Actors/horse-juniper')"
+      },
+      {
+        "index": 88,
+        "step": "assert get_node('Player').saddle_height > 1",
+        "ok": true,
+        "detail": "get_node('Player').saddle_height > 1"
+      },
+      {
+        "index": 89,
+        "step": "wait 0.2",
+        "ok": true
+      },
+      {
+        "index": 90,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "clicked at Vector2(1740, 1024)"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 91,
+        "step": "assert get_node('Player').mount == null",
+        "ok": true,
+        "detail": "get_node('Player').mount == null"
+      },
+      {
+        "index": 92,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Village/Actors/horse-juniper",
+          "set": [
+            "chatting",
+            "position",
+            "rotation"
+          ]
+        }
+      },
+      {
+        "index": 93,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Village/Actors/horse-juniper",
+          "set": [
+            "action",
+            "chatting"
+          ]
+        }
+      },
+      {
+        "index": 94,
+        "step": "eval get_node('Player').set('position',get_node('Village/Actors/horse-juniper').position+Vector3(0,0,1.4))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 95,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 96,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Player",
+          "set": [
+            "velocity"
+          ]
+        }
+      },
+      {
+        "index": 97,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 98,
+        "step": "assert get_node('VillageLife').nearest.actor_id == 'horse-juniper'",
+        "ok": true,
+        "detail": "get_node('VillageLife').nearest.actor_id == 'horse-juniper'"
+      },
+      {
+        "index": 99,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped interact for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 100,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "move_forward pressed"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 101,
+        "step": "wait 1",
+        "ok": true
+      },
+      {
+        "index": 102,
+        "step": "assert get_node('Player').horse_speed > 4.4",
+        "ok": true,
+        "detail": "get_node('Player').horse_speed > 4.4"
+      },
+      {
+        "index": 103,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "dash pressed"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 104,
+        "step": "wait 0.7",
+        "ok": true
+      },
+      {
+        "index": 105,
+        "step": "assert get_node('Player').horse_speed > 8.8",
+        "ok": true,
+        "detail": "get_node('Player').horse_speed > 8.8"
+      },
+      {
+        "index": 106,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "dash released",
+            "move_forward released"
+          ],
+          "steps": 2
+        }
+      },
+      {
+        "index": 107,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped jump for 0.60s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 108,
+        "step": "assert abs(get_node('Player').horse_speed) < .01",
+        "ok": true,
+        "detail": "abs(get_node('Player').horse_speed) < .01"
+      },
+      {
+        "index": 109,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "move_left pressed"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 110,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 111,
+        "step": "assert abs(get_node('Player').mount.rotation.y) > .3",
+        "ok": true,
+        "detail": "abs(get_node('Player').mount.rotation.y) > .3"
+      },
+      {
+        "index": 112,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "move_left released"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 113,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped toggle_map for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 114,
+        "step": "assert get_node('Player').controls_blocked",
+        "ok": true,
+        "detail": "get_node('Player').controls_blocked"
+      },
+      {
+        "index": 115,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped move_forward for 0.30s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 116,
+        "step": "assert abs(get_node('Player').horse_speed) < .01",
+        "ok": true,
+        "detail": "abs(get_node('Player').horse_speed) < .01"
+      },
+      {
+        "index": 117,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped toggle_map for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 118,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped interact for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 119,
+        "step": "assert get_node('Player').mount == null",
+        "ok": true,
+        "detail": "get_node('Player').mount == null"
+      },
+      {
+        "index": 120,
+        "step": "assert_no_errors",
+        "ok": true
+      },
+      {
+        "index": 121,
+        "step": "eval get_node('VillageLife').set('apples',get_node('VillageLife').get_meta('forage_fixture').apples)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 122,
+        "step": "eval get_node('VillageLife').set('crumbs',get_node('VillageLife').get_meta('forage_fixture').crumbs)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 123,
+        "step": "eval get_node('VillageLife').set('owl_treats',get_node('VillageLife').get_meta('forage_fixture').owl_treats)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 124,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      }
+    ],
+    "runtime_errors": []
+  },
+  {
+    "name": "Live map activities, tea, reusable crumbs, lookout and reduced motion",
+    "passed": true,
+    "duration_s": 28.655,
+    "steps": [
+      {
+        "index": 0,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/HUD/Menus",
+          "set": [
+            "language"
+          ]
+        }
+      },
+      {
+        "index": 1,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 2,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 3,
+        "step": "assert get_viewport().get_texture().get_size()==Vector2(1920,1080)",
+        "ok": true,
+        "detail": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
+      },
+      {
+        "index": 4,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 5,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 6,
+        "step": "assert get_node('FocusCottage').inside",
+        "ok": true,
+        "detail": "get_node('FocusCottage').inside"
+      },
+      {
+        "index": 7,
+        "step": "assert not get_node('HUD/VillageMap').expanded",
+        "ok": true,
+        "detail": "not get_node('HUD/VillageMap').expanded"
+      },
+      {
+        "index": 8,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 9,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 10,
+        "step": "assert get_node('QuietPlaces').active=='music'",
+        "ok": true,
+        "detail": "get_node('QuietPlaces').active=='music'"
+      },
+      {
+        "index": 11,
+        "step": "assert not get_node('HUD/VillageMap').expanded",
+        "ok": true,
+        "detail": "not get_node('HUD/VillageMap').expanded"
+      },
+      {
+        "index": 12,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 13,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 14,
+        "step": "assert get_node('QuietPlaces').active=='breathe'",
+        "ok": true,
+        "detail": "get_node('QuietPlaces').active=='breathe'"
+      },
+      {
+        "index": 15,
+        "step": "assert not get_node('HUD/VillageMap').expanded",
+        "ok": true,
+        "detail": "not get_node('HUD/VillageMap').expanded"
+      },
+      {
+        "index": 16,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 17,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 18,
+        "step": "assert get_node('QuietPlaces').active=='gratitude'",
+        "ok": true,
+        "detail": "get_node('QuietPlaces').active=='gratitude'"
+      },
+      {
+        "index": 19,
+        "step": "assert not get_node('HUD/VillageMap').expanded",
+        "ok": true,
+        "detail": "not get_node('HUD/VillageMap').expanded"
+      },
+      {
+        "index": 20,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 21,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 22,
+        "step": "assert get_node('QuietPlaces').active=='compliment'",
+        "ok": true,
+        "detail": "get_node('QuietPlaces').active=='compliment'"
+      },
+      {
+        "index": 23,
+        "step": "assert not get_node('HUD/VillageMap').expanded",
+        "ok": true,
+        "detail": "not get_node('HUD/VillageMap').expanded"
+      },
+      {
+        "index": 24,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 25,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 26,
+        "step": "assert get_node('QuietPlaces').active=='garden'",
+        "ok": true,
+        "detail": "get_node('QuietPlaces').active=='garden'"
+      },
+      {
+        "index": 27,
+        "step": "assert not get_node('HUD/VillageMap').expanded",
+        "ok": true,
+        "detail": "not get_node('HUD/VillageMap').expanded"
+      },
+      {
+        "index": 28,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 29,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 30,
+        "step": "assert get_node('QuietPlaces').active=='birds'",
+        "ok": true,
+        "detail": "get_node('QuietPlaces').active=='birds'"
+      },
+      {
+        "index": 31,
+        "step": "assert not get_node('HUD/VillageMap').expanded",
+        "ok": true,
+        "detail": "not get_node('HUD/VillageMap').expanded"
+      },
+      {
+        "index": 32,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 33,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 34,
+        "step": "assert get_node('QuietPlaces').active==''",
+        "ok": true,
+        "detail": "get_node('QuietPlaces').active==''"
+      },
+      {
+        "index": 35,
+        "step": "assert not get_node('HUD/VillageMap').expanded",
+        "ok": true,
+        "detail": "not get_node('HUD/VillageMap').expanded"
+      },
+      {
+        "index": 36,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 37,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 38,
+        "step": "assert get_node('QuietPlaces').active==''",
+        "ok": true,
+        "detail": "get_node('QuietPlaces').active==''"
+      },
+      {
+        "index": 39,
+        "step": "assert not get_node('HUD/VillageMap').expanded",
+        "ok": true,
+        "detail": "not get_node('HUD/VillageMap').expanded"
+      },
+      {
+        "index": 40,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 41,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 42,
+        "step": "assert get_node('QuietPlaces').active==''",
+        "ok": true,
+        "detail": "get_node('QuietPlaces').active==''"
+      },
+      {
+        "index": 43,
+        "step": "assert not get_node('HUD/VillageMap').expanded",
+        "ok": true,
+        "detail": "not get_node('HUD/VillageMap').expanded"
+      },
+      {
+        "index": 44,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 45,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 46,
+        "step": "assert get_node('QuietPlaces').active==''",
+        "ok": true,
+        "detail": "get_node('QuietPlaces').active==''"
+      },
+      {
+        "index": 47,
+        "step": "assert not get_node('HUD/VillageMap').expanded",
+        "ok": true,
+        "detail": "not get_node('HUD/VillageMap').expanded"
+      },
+      {
+        "index": 48,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 49,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 50,
+        "step": "assert get_node('QuietPlaces').active==''",
+        "ok": true,
+        "detail": "get_node('QuietPlaces').active==''"
+      },
+      {
+        "index": 51,
+        "step": "assert not get_node('HUD/VillageMap').expanded",
+        "ok": true,
+        "detail": "not get_node('HUD/VillageMap').expanded"
+      },
+      {
+        "index": 52,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 53,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 54,
+        "step": "assert get_node('QuietPlaces').active==''",
+        "ok": true,
+        "detail": "get_node('QuietPlaces').active==''"
+      },
+      {
+        "index": 55,
+        "step": "assert not get_node('HUD/VillageMap').expanded",
+        "ok": true,
+        "detail": "not get_node('HUD/VillageMap').expanded"
+      },
+      {
+        "index": 56,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 57,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 58,
+        "step": "assert get_node('QuietPlaces').active==''",
+        "ok": true,
+        "detail": "get_node('QuietPlaces').active==''"
+      },
+      {
+        "index": 59,
+        "step": "assert not get_node('HUD/VillageMap').expanded",
+        "ok": true,
+        "detail": "not get_node('HUD/VillageMap').expanded"
+      },
+      {
+        "index": 60,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 61,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 62,
+        "step": "assert get_node('QuietPlaces').active==''",
+        "ok": true,
+        "detail": "get_node('QuietPlaces').active==''"
+      },
+      {
+        "index": 63,
+        "step": "assert not get_node('HUD/VillageMap').expanded",
+        "ok": true,
+        "detail": "not get_node('HUD/VillageMap').expanded"
+      },
+      {
+        "index": 64,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 65,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 66,
+        "step": "assert get_node('QuietPlaces').active==''",
+        "ok": true,
+        "detail": "get_node('QuietPlaces').active==''"
+      },
+      {
+        "index": 67,
+        "step": "assert not get_node('HUD/VillageMap').expanded",
+        "ok": true,
+        "detail": "not get_node('HUD/VillageMap').expanded"
+      },
+      {
+        "index": 68,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 69,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 70,
+        "step": "assert get_node('QuietPlaces').active==''",
+        "ok": true,
+        "detail": "get_node('QuietPlaces').active==''"
+      },
+      {
+        "index": 71,
+        "step": "assert not get_node('HUD/VillageMap').expanded",
+        "ok": true,
+        "detail": "not get_node('HUD/VillageMap').expanded"
+      },
+      {
+        "index": 72,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 73,
+        "step": "assert get_node('VillageSound').enabled",
+        "ok": true,
+        "detail": "get_node('VillageSound').enabled"
+      },
+      {
+        "index": 74,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 75,
+        "step": "assert not get_node('VillageSound').enabled",
+        "ok": true,
+        "detail": "not get_node('VillageSound').enabled"
+      },
+      {
+        "index": 76,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 77,
+        "step": "assert get_node('VillageSound').enabled",
+        "ok": true,
+        "detail": "get_node('VillageSound').enabled"
+      },
+      {
+        "index": 78,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 79,
+        "step": "wait 0.2",
+        "ok": true
+      },
+      {
+        "index": 80,
+        "step": "assert get_node('HUD/Menus').current_menu=='Settings' and get_node('HUD/Menus/Settings/Content/Scroll/Pages/Sound').visi",
+        "ok": true,
+        "detail": "get_node('HUD/Menus').current_menu=='Settings' and get_node('HUD/Menus/Settings/Content/Scroll/Pages/Sound').visible"
+      },
+      {
+        "index": 81,
+        "step": "assert get_node('QuietPlaces').active=='music'",
+        "ok": true,
+        "detail": "get_node('QuietPlaces').active=='music'"
+      },
+      {
+        "index": 82,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 83,
+        "step": "wait 0.2",
+        "ok": true
+      },
+      {
+        "index": 84,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 85,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 86,
+        "step": "wait 0.2",
+        "ok": true
+      },
+      {
+        "index": 87,
+        "step": "assert get_node('QuietPlaces').active=='garden'",
+        "ok": true,
+        "detail": "get_node('QuietPlaces').active=='garden'"
+      },
+      {
+        "index": 88,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 89,
+        "step": "wait 0.2",
+        "ok": true
+      },
+      {
+        "index": 90,
+        "step": "assert get_node('VillageActivities/UI/Garden').visible",
+        "ok": true,
+        "detail": "get_node('VillageActivities/UI/Garden').visible"
+      },
+      {
+        "index": 91,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 92,
+        "step": "wait 0.2",
+        "ok": true
+      },
+      {
+        "index": 93,
+        "step": "assert not get_node('VillageActivities/UI/Garden').visible",
+        "ok": true,
+        "detail": "not get_node('VillageActivities/UI/Garden').visible"
+      },
+      {
+        "index": 94,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 95,
+        "step": "wait 0.2",
+        "ok": true
+      },
+      {
+        "index": 96,
+        "step": "assert get_node('VillageActivities/UI/Garden').visible",
+        "ok": true,
+        "detail": "get_node('VillageActivities/UI/Garden').visible"
+      },
+      {
+        "index": 97,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 98,
+        "step": "assert not get_node('VillageActivities').garden_page",
+        "ok": true,
+        "detail": "not get_node('VillageActivities').garden_page"
+      },
+      {
+        "index": 99,
+        "step": "eval get_node('Player').set('position',get_node('QuietPlaces').entry_point('mood'))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 100,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": true
+        }
+      },
+      {
+        "index": 101,
+        "step": "wait 0.2",
+        "ok": true
+      },
+      {
+        "index": 102,
+        "step": "assert get_node('Village/Actors/luma').position.distance_to(Vector3(16.5,.1,-11.5))<.01",
+        "ok": true,
+        "detail": "get_node('Village/Actors/luma').position.distance_to(Vector3(16.5,.1,-11.5))<.01"
+      },
+      {
+        "index": 103,
+        "step": "eval get_node('VillageActivities').inventory.set('mint',1)",
+        "ok": true,
+        "detail": {
+          "value": true
+        }
+      },
+      {
+        "index": 104,
+        "step": "eval get_node('VillageActivities').inventory.set('mintTea',0)",
+        "ok": true,
+        "detail": {
+          "value": true
+        }
+      },
+      {
+        "index": 105,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": true
+        }
+      },
+      {
+        "index": 106,
+        "step": "assert get_node('VillageActivities').inventory.mint==0 and get_node('VillageActivities').inventory.mintTea==1",
+        "ok": true,
+        "detail": "get_node('VillageActivities').inventory.mint==0 and get_node('VillageActivities').inventory.mintTea==1"
+      },
+      {
+        "index": 107,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": true
+        }
+      },
+      {
+        "index": 108,
+        "step": "wait 0.8",
+        "ok": true
+      },
+      {
+        "index": 109,
+        "step": "assert get_node('VillageActivities').inventory.mintTea==0",
+        "ok": true,
+        "detail": "get_node('VillageActivities').inventory.mintTea==0"
+      },
+      {
+        "index": 110,
+        "step": "assert get_node('QuietPlaces/Ritual/TeaCup').position.y>1.3",
+        "ok": true,
+        "detail": "get_node('QuietPlaces/Ritual/TeaCup').position.y>1.3"
+      },
+      {
+        "index": 111,
+        "step": "eval get_node('HUD/Menus').set('language',1)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 112,
+        "step": "wait 0.2",
+        "ok": true
+      },
+      {
+        "index": 113,
+        "step": "screenshot parity-tea-japanese-1080p",
+        "ok": true
+      },
+      {
+        "index": 114,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 115,
+        "step": "eval get_node('HUD/Menus').set('language',0)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 116,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 117,
+        "step": "eval get_node('VillageLife').set('crumbs',1)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 118,
+        "step": "assert get_node('VillageFlock').feed()",
+        "ok": true,
+        "detail": "get_node('VillageFlock').feed()"
+      },
+      {
+        "index": 119,
+        "step": "assert get_node('VillageLife').crumbs==1",
+        "ok": true,
+        "detail": "get_node('VillageLife').crumbs==1"
+      },
+      {
+        "index": 120,
+        "step": "assert not get_node('VillageFlock').feed()",
+        "ok": true,
+        "detail": "not get_node('VillageFlock').feed()"
+      },
+      {
+        "index": 121,
+        "step": "assert not get_node('HUD/Interaction').visible",
+        "ok": true,
+        "detail": "The activity owns bird controls; no duplicate generic panel."
+      },
+      {
+        "index": 122,
+        "step": "screenshot parity-birds-1080p",
+        "ok": true
+      },
+      {
+        "index": 123,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 124,
+        "step": "wait 0.2",
+        "ok": true
+      },
+      {
+        "index": 125,
+        "step": "assert get_node('TowerLookout').enter()",
+        "ok": true,
+        "detail": "get_node('TowerLookout').enter()"
+      },
+      {
+        "index": 126,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped move_forward for 5.00s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 127,
+        "step": "assert Vector2(get_node('TowerLookout').to_local(get_node('Player').position).x,get_node('TowerLookout').to_local(get_no",
+        "ok": true,
+        "detail": "Vector2(get_node('TowerLookout').to_local(get_node('Player').position).x,get_node('TowerLookout').to_local(get_node('Player').position).z).length()<=3.051"
+      },
+      {
+        "index": 128,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped look_right for 1.00s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 129,
+        "step": "assert get_node('TowerLookout').yaw<2.0",
+        "ok": true,
+        "detail": "get_node('TowerLookout').yaw<2.0"
+      },
+      {
+        "index": 130,
+        "step": "screenshot parity-lookout-1080p",
+        "ok": true
+      },
+      {
+        "index": 131,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 132,
+        "step": "assert not get_node('TowerLookout').inside and get_node('Player/SpiritVisual').visible",
+        "ok": true,
+        "detail": "not get_node('TowerLookout').inside and get_node('Player/SpiritVisual').visible"
+      },
+      {
+        "index": 133,
+        "step": "eval get_node('HUD/Menus').set('reduced_motion',true)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 134,
+        "step": "wait 0.2",
+        "ok": true
+      },
+      {
+        "index": 135,
+        "step": "assert get_node('Village/Actors/puppy-mochi').animation_player.speed_scale==0",
+        "ok": true,
+        "detail": "get_node('Village/Actors/puppy-mochi').animation_player.speed_scale==0"
+      },
+      {
+        "index": 136,
+        "step": "assert get_node('VillageLighting').motion_materials[0].get_shader_parameter('motion_amount')==0",
+        "ok": true,
+        "detail": "get_node('VillageLighting').motion_materials[0].get_shader_parameter('motion_amount')==0"
+      },
+      {
+        "index": 137,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 138,
+        "step": "wait 0.2",
+        "ok": true
+      },
+      {
+        "index": 139,
+        "step": "assert abs(get_node('Player/SpiritVisual').position.y-.62)<.001",
+        "ok": true,
+        "detail": "abs(get_node('Player/SpiritVisual').position.y-.62)<.001"
+      },
+      {
+        "index": 140,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 141,
+        "step": "wait 3",
+        "ok": true
+      },
+      {
+        "index": 142,
+        "step": "assert get_node('VillageSound').shelter_filter.cutoff_hz<1100",
+        "ok": true,
+        "detail": "get_node('VillageSound').shelter_filter.cutoff_hz<1100"
+      },
+      {
+        "index": 143,
+        "step": "assert not get_node('WeatherRain').emitting",
+        "ok": true,
+        "detail": "not get_node('WeatherRain').emitting"
+      },
+      {
+        "index": 144,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 145,
+        "step": "wait 0.2",
+        "ok": true
+      },
+      {
+        "index": 146,
+        "step": "eval get_node('HUD/Menus').set('reduced_motion',false)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 147,
+        "step": "assert not get_node('Player').activity_locked",
+        "ok": true,
+        "detail": "not get_node('Player').activity_locked"
+      },
+      {
+        "index": 148,
+        "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(.3,22))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 149,
+        "step": "eval get_node('VillageLife').greeted.set('pip',true)",
+        "ok": true,
+        "detail": {
+          "value": true
+        }
+      },
+      {
+        "index": 150,
+        "step": "eval get_node('Village/Actors/pip').set('following',true)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 151,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Village/Actors/pip",
+          "set": [
+            "chatting",
+            "pause",
+            "position",
+            "rotation"
+          ]
+        }
+      },
+      {
+        "index": 152,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Player/SpiritVisual",
+          "set": [
+            "rotation"
+          ]
+        }
+      },
+      {
+        "index": 153,
+        "step": "wait 0.4",
+        "ok": true
+      },
+      {
+        "index": 154,
+        "step": "assert not get_node('VillageLife').companion_single_file",
+        "ok": true,
+        "detail": "not get_node('VillageLife').companion_single_file"
+      },
+      {
+        "index": 155,
+        "step": "eval get_node('VillageLife').pose_companion_hands()",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 156,
+        "step": "assert get_node('Player').left_fin.position.distance_to(get_node('Player').fin_bases[0].origin)>.001",
+        "ok": true,
+        "detail": "get_node('Player').left_fin.position.distance_to(get_node('Player').fin_bases[0].origin)>.001"
+      },
+      {
+        "index": 157,
+        "step": "eval get_node('Player').set('position',get_node('QuietPlaces').entry_point('music'))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 158,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": true
+        }
+      },
+      {
+        "index": 159,
+        "step": "wait 0.3",
+        "ok": true
+      },
+      {
+        "index": 160,
+        "step": "assert get_node('Village/Actors/pip').position.distance_to(Vector3(-6.8,.4,-16.1))<.01",
+        "ok": true,
+        "detail": "get_node('Village/Actors/pip').position.distance_to(Vector3(-6.8,.4,-16.1))<.01"
+      },
+      {
+        "index": 161,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 162,
+        "step": "eval get_node('Village/Actors/pip').set('following',false)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 163,
+        "step": "assert_no_errors",
+        "ok": true
+      },
+      {
+        "index": 164,
+        "step": "assert_no_errors",
+        "ok": true
+      }
+    ],
+    "runtime_errors": []
+  },
+  {
+    "name": "Local residents, dogs, owls and dove feeding",
+    "passed": true,
+    "duration_s": 12.657,
+    "steps": [
+      {
+        "index": 0,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/HUD/Menus",
+          "set": [
+            "language"
+          ]
+        }
+      },
+      {
+        "index": 1,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 2,
+        "step": "assert get_viewport().get_texture().get_size()==Vector2(1920,1080)",
+        "ok": true,
+        "detail": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
+      },
+      {
+        "index": 3,
+        "step": "assert get_tree().root.size.x>=1918 and get_tree().root.size.y>=1079",
+        "ok": true,
+        "detail": "1080p display window; allow the macOS one-pixel window frame, never a 720p override."
+      },
+      {
+        "index": 4,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 5,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/CameraRig",
+          "set": [
+            "desired_pitch",
+            "desired_yaw",
+            "distance"
+          ]
+        }
+      },
+      {
+        "index": 6,
+        "step": "eval get_node('Village/Actors/pip').set('chatting',30)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 7,
+        "step": "eval get_node('Player').set('position',get_node('Village/Actors/pip').position+Vector3(0,0,1.4))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 8,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 9,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Player",
+          "set": [
+            "velocity"
+          ]
+        }
+      },
+      {
+        "index": 10,
+        "step": "wait 0.35",
+        "ok": true
+      },
+      {
+        "index": 11,
+        "step": "assert get_node('VillageLife').nearest.actor_id == 'pip'",
+        "ok": true,
+        "detail": "get_node('VillageLife').nearest.actor_id == 'pip'"
+      },
+      {
+        "index": 12,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped talk for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 13,
+        "step": "assert get_node('HUD/Speech/Resident0/Content/Line').text.contains('heart-shaped leaf')",
+        "ok": true,
+        "detail": "Pip speaks the original dialogue"
+      },
+      {
+        "index": 14,
+        "step": "wait 0.12",
+        "ok": true
+      },
+      {
+        "index": 15,
+        "step": "assert get_node('HUD/Speech/Resident0').visible",
+        "ok": true,
+        "detail": "Pip actual overhead panel appears"
+      },
+      {
+        "index": 16,
+        "step": "assert abs(get_node('HUD/Speech/Resident0').size.x-290) < .1",
+        "ok": true,
+        "detail": "Published desktop width retained"
+      },
+      {
+        "index": 17,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped companion for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 18,
+        "step": "assert get_node('Village/Actors/pip').following",
+        "ok": true,
+        "detail": "Pip accepts a companion invitation"
+      },
+      {
+        "index": 19,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped move_forward for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 20,
+        "step": "wait 0.8",
+        "ok": true
+      },
+      {
+        "index": 21,
+        "step": "assert get_node('Village/Actors/pip').distance_walked > .2",
+        "ok": true,
+        "detail": "Invited companion walks"
+      },
+      {
+        "index": 22,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped companion for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 23,
+        "step": "assert not get_node('Village/Actors/pip').following",
+        "ok": true,
+        "detail": "Companion can be dismissed"
+      },
+      {
+        "index": 24,
+        "step": "eval get_node('Village/Actors/puppy-mochi').set('chatting',30)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 25,
+        "step": "eval get_node('Player').set('position',get_node('Village/Actors/puppy-mochi').position+Vector3(0,0,1.4))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 26,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 27,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Player",
+          "set": [
+            "velocity"
+          ]
+        }
+      },
+      {
+        "index": 28,
+        "step": "wait 0.35",
+        "ok": true
+      },
+      {
+        "index": 29,
+        "step": "assert get_node('VillageLife').nearest.actor_id == 'puppy-mochi'",
+        "ok": true,
+        "detail": "get_node('VillageLife').nearest.actor_id == 'puppy-mochi'"
+      },
+      {
+        "index": 30,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped interact for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 31,
+        "step": "assert get_node('Village/Actors/puppy-mochi').action == 'pet'",
+        "ok": true,
+        "detail": "Dog responds to petting"
+      },
+      {
+        "index": 32,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped puppy_sit for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 33,
+        "step": "wait 0.15",
+        "ok": true
+      },
+      {
+        "index": 34,
+        "step": "assert get_node('Village/Actors/puppy-mochi').animation_player.current_animation.ends_with('sit')",
+        "ok": true,
+        "detail": "Original dog sit animation plays"
+      },
+      {
+        "index": 35,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped puppy_dance for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 36,
+        "step": "wait 0.15",
+        "ok": true
+      },
+      {
+        "index": 37,
+        "step": "assert get_node('Village/Actors/puppy-mochi').animation_player.current_animation.ends_with('dance')",
+        "ok": true,
+        "detail": "Original dog dance animation plays"
+      },
+      {
+        "index": 38,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped puppy_spin for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 39,
+        "step": "wait 0.15",
+        "ok": true
+      },
+      {
+        "index": 40,
+        "step": "assert get_node('Village/Actors/puppy-mochi').animation_player.current_animation.ends_with('spin')",
+        "ok": true,
+        "detail": "Original dog spin animation plays"
+      },
+      {
+        "index": 41,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped puppy_bow for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 42,
+        "step": "wait 0.15",
+        "ok": true
+      },
+      {
+        "index": 43,
+        "step": "assert get_node('Village/Actors/puppy-mochi').animation_player.current_animation.ends_with('bow')",
+        "ok": true,
+        "detail": "Original dog bow animation plays"
+      },
+      {
+        "index": 44,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped puppy_wave for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 45,
+        "step": "wait 0.15",
+        "ok": true
+      },
+      {
+        "index": 46,
+        "step": "assert get_node('Village/Actors/puppy-mochi').animation_player.current_animation.ends_with('wave')",
+        "ok": true,
+        "detail": "Original dog wave animation plays"
+      },
+      {
+        "index": 47,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped puppy_roll for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 48,
+        "step": "wait 0.15",
+        "ok": true
+      },
+      {
+        "index": 49,
+        "step": "assert get_node('Village/Actors/puppy-mochi').animation_player.current_animation.ends_with('roll')",
+        "ok": true,
+        "detail": "Original dog roll animation plays"
+      },
+      {
+        "index": 50,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped puppy_follow for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 51,
+        "step": "assert get_node('Village/Actors/puppy-mochi').following",
+        "ok": true,
+        "detail": "Dog follows"
+      },
+      {
+        "index": 52,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped puppy_home for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 53,
+        "step": "assert not get_node('Village/Actors/puppy-mochi').following and get_node('Village/Actors/puppy-mochi').waypoint == 0",
+        "ok": true,
+        "detail": "Dog heads back to its home route"
+      },
+      {
+        "index": 54,
+        "step": "eval get_node('Village/Actors/owl-brown-1').set('chatting',30)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 55,
+        "step": "eval get_node('Player').set('position',get_node('Village/Actors/owl-brown-1').position+Vector3(0,0,1.4))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 56,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 57,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Player",
+          "set": [
+            "velocity"
+          ]
+        }
+      },
+      {
+        "index": 58,
+        "step": "wait 0.35",
+        "ok": true
+      },
+      {
+        "index": 59,
+        "step": "assert get_node('VillageLife').nearest.actor_id == 'owl-brown-1'",
+        "ok": true,
+        "detail": "get_node('VillageLife').nearest.actor_id == 'owl-brown-1'"
+      },
+      {
+        "index": 60,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped bread for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 61,
+        "step": "assert get_node('VillageLife').owl_treats == 3",
+        "ok": true,
+        "detail": "Treats remain reachable beside the owls"
+      },
+      {
+        "index": 62,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped talk for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 63,
+        "step": "wait 0.15",
+        "ok": true
+      },
+      {
+        "index": 64,
+        "step": "assert get_node('VillageLife').owl_treats == 2 and get_node('Village/Actors/owl-brown-1').animation_player.current_anima",
+        "ok": true,
+        "detail": "Owl consumes one treat and plays feeding animation"
+      },
+      {
+        "index": 65,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped talk for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 66,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped interact for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 67,
+        "step": "assert get_node('VillageLife').owl_treats == 2 and get_node('Village/Actors/owl-brown-1').action == 'eat'",
+        "ok": true,
+        "detail": "Repeated actions cannot consume extra food or interrupt the meal"
+      },
+      {
+        "index": 68,
+        "step": "eval get_node('Village/Actors/maple').set('chatting',30)",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 69,
+        "step": "eval get_node('Player').set('position',get_node('Village/Actors/maple').position+Vector3(0,0,1.4))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 70,
+        "step": "call",
+        "ok": true,
+        "detail": {
+          "result": null
+        }
+      },
+      {
+        "index": 71,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/Player",
+          "set": [
+            "velocity"
+          ]
+        }
+      },
+      {
+        "index": 72,
+        "step": "wait 0.35",
+        "ok": true
+      },
+      {
+        "index": 73,
+        "step": "assert get_node('VillageLife').nearest.actor_id == 'maple'",
+        "ok": true,
+        "detail": "get_node('VillageLife').nearest.actor_id == 'maple'"
+      },
+      {
+        "index": 74,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped bread for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 75,
+        "step": "assert get_node('VillageLife').crumbs == 1",
+        "ok": true,
+        "detail": "Maple gives crumbs"
+      },
+      {
+        "index": 76,
+        "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(-37,4)))",
+        "ok": true,
+        "detail": {
+          "value": null
+        }
+      },
+      {
+        "index": 77,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/VillageFlock",
+          "set": [
+            "age",
+            "flight"
+          ]
+        }
+      },
+      {
+        "index": 78,
+        "step": "wait 0.35",
+        "ok": true
+      },
+      {
+        "index": 79,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped interact for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 80,
+        "step": "assert get_node('VillageSeating').seated.get('id','')=='bird-clearing-bench'",
+        "ok": true,
+        "detail": "get_node('VillageSeating').seated.get('id','')=='bird-clearing-bench'"
+      },
+      {
+        "index": 81,
+        "step": "input",
+        "ok": true,
+        "detail": {
+          "results": [
+            "tapped talk for 0.05s"
+          ],
+          "steps": 1
+        }
+      },
+      {
+        "index": 82,
+        "step": "wait 0.15",
+        "ok": true
+      },
+      {
+        "index": 83,
+        "step": "assert get_node('VillageLife').crumbs == 1 and get_node('VillageFlock').served and get_node('VillageFlock').status == 'e",
+        "ok": true,
+        "detail": "Flock eats offered crumbs"
+      },
+      {
+        "index": 84,
+        "step": "assert get_node('VillageFlock/Crumbs').visible",
+        "ok": true,
+        "detail": "Serving appears"
+      },
+      {
+        "index": 85,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/VillageFlock",
+          "set": [
+            "meal_age"
+          ]
+        }
+      },
+      {
+        "index": 86,
+        "step": "wait 0.2",
+        "ok": true
+      },
+      {
+        "index": 87,
+        "step": "assert get_node('VillageFlock').status == 'happy'",
+        "ok": true,
+        "detail": "Fed flock becomes happy"
+      },
+      {
+        "index": 88,
+        "step": "set",
+        "ok": true,
+        "detail": {
+          "path": "/root/Hearthwillow/VillageFlock",
+          "set": [
+            "meal_age"
+          ]
+        }
+      },
+      {
+        "index": 89,
+        "step": "wait 0.2",
+        "ok": true
+      },
+      {
+        "index": 90,
+        "step": "assert get_node('VillageFlock').flight and not get_node('VillageFlock').served",
+        "ok": true,
+        "detail": "Flock takes off after its meal"
+      },
+      {
+        "index": 91,
+        "step": "eval get_node('VillageSeating').leave()",
+        "ok": true,
+        "detail": {
+          "value": true
+        }
+      },
+      {
+        "index": 92,
+        "step": "assert_no_errors",
+        "ok": true
+      }
+    ],
+    "runtime_errors": []
+  }
+]

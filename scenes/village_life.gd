@@ -23,6 +23,10 @@ var planned_frame := -1
 var tricks_open := false
 var controls_dog := ""
 var context_slots := 0
+var companion_single_file := false
+var companion_open_time := 0.0
+var companion_trail: PackedVector2Array = []
+var companion_followers: Array[Node] = []
 
 func _ready() -> void:
 	nav_meta = JSON.parse_string(FileAccess.get_file_as_string("res://assets/village/navigation.json"))
@@ -84,6 +88,17 @@ func path_to(from: Vector2, to: Vector2) -> PackedVector2Array:
 	return result
 
 func move_actor(actor: CharacterBody3D, delta: float) -> void:
+	var places: Node = get_parent().get_node("QuietPlaces")
+	if actor.actor_kind=="resident" and places.participant_returns.has(actor.actor_id) and not places.active.is_empty():
+		var participants: Array = places.participant_returns.keys()
+		var slot := 3 if places.active=="mood" and actor.actor_id=="luma" else participants.find(actor.actor_id)
+		var slots: Array = places.companion_stages[places.active]
+		var location: Array = slots[mini(slot,slots.size()-1)]
+		actor.position = places.placed_point(places.active,Vector3(location[0],location[1],location[2]))
+		actor.velocity = Vector3.ZERO
+		var look: Vector3 = places.player.position if places.active=="mood" and actor.actor_id=="luma" else places.base_look
+		actor.rotation.y = atan2(look.x-actor.position.x,look.z-actor.position.z)
+		return
 	var point := Vector2(actor.position.x,actor.position.z)
 	var player_point := Vector2(player.position.x,player.position.z)
 	var target: Vector2 = actor.route[actor.waypoint]
@@ -93,9 +108,18 @@ func move_actor(actor: CharacterBody3D, delta: float) -> void:
 		var followers: Array = actors.get_children().filter(func(other: Node): return other.following)
 		var slot := followers.find(actor)
 		var heading: float = player.visual.rotation.y
+		var resident_slot := companion_followers.find(actor)
 		var offset := Vector2((1 if slot%2 == 0 else -1)*(.8+floori(slot/2.0)*.35),-1.7-floori(slot/2.0)*.6).rotated(-heading)
-		target = player_point+offset
-		moving = moving and point.distance_to(target) > .25
+		target = companion_target(resident_slot) if actor.actor_kind=="resident" and resident_slot>=0 else player_point+offset
+		if actor.actor_kind=="resident" and point.distance_to(player_point)<2.5:
+			var segment := target-point
+			var along := clampf((player_point-point).dot(segment)/maxf(.001,segment.length_squared()),0,1)
+			if (point+segment*along).distance_to(player_point)<.82:
+				var from_angle := atan2(point.x-player_point.x,point.y-player_point.y)
+				var to_angle := atan2(target.x-player_point.x,target.y-player_point.y)
+				var around := from_angle+clampf(wrapf(to_angle-from_angle,-PI,PI),-.45,.45)
+				target = player_point+Vector2(sin(around),cos(around))*1.05
+		moving = moving and point.distance_to(target) > (.08 if actor.actor_kind=="resident" else .25)
 		speed = minf(6,maxf(1.2,Vector2(player.velocity.x,player.velocity.z).length()+point.distance_to(target)))
 	else:
 		moving = moving and actor.route.size() > 1 and point.distance_to(player_point) > 1.2
@@ -125,6 +149,8 @@ func move_actor(actor: CharacterBody3D, delta: float) -> void:
 	if direction.length_squared() > .01 or actor.chatting > 0 or actor.action == "pet":
 		var look: Vector2 = player_point-point if actor.chatting > 0 or actor.action == "pet" else direction
 		actor.rotation.y = lerp_angle(actor.rotation.y,atan2(look.x,look.y),1-exp(-delta*4))
+	elif actor.actor_kind=="resident" and actor.following:
+		actor.rotation.y = lerp_angle(actor.rotation.y,player.visual.rotation.y,1-exp(-delta*8))
 
 func say(speaker: String, text: String, seconds := 6.0) -> void:
 	speech.say(speaker,text,seconds)
@@ -133,9 +159,11 @@ func say(speaker: String, text: String, seconds := 6.0) -> void:
 func _process(delta: float) -> void:
 	context.size = Vector2(320,context.get_combined_minimum_size().y)
 	context.position = get_viewport().get_visible_rect().size-context.size-Vector2(20,22)
-	var pond_activity: bool = get_parent().get_node("QuietPlaces").active=="breathe"
-	speech.visible = not player.controls_blocked and (not player.activity_locked or pond_activity)
-	if player.controls_blocked or get_parent().get_node("VillageSeating").owns_context() or get_parent().get_node("FocusCottage").inside:
+	var quiet_activity: String = get_parent().get_node("QuietPlaces").active
+	speech.visible = not player.controls_blocked and (not player.activity_locked or quiet_activity in ["breathe","mood","birds"])
+	if not quiet_activity.is_empty():
+		context.hide(); return
+	if player.controls_blocked or get_parent().get_node("TowerLookout").inside or get_parent().get_node("VillageSeating").owns_context() or get_parent().get_node("FocusCottage").inside:
 		context.hide()
 		speech.hide()
 		return
@@ -367,7 +395,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif nearest and nearest.actor_kind == "dog":
 		for trick: String in ["sit","dance","spin","bow","wave","roll"]:
 			if event.is_action_pressed("puppy_"+trick):
-				nearest.start_action(trick,4)
+				nearest.start_action(trick,{"sit":7.0,"dance":5.2,"spin":3.2,"bow":3.8,"wave":4.2,"roll":4.6}[trick])
 				say(actor_name(nearest),"Woof~ (Look what I can do~)",3)
 				break
 
@@ -403,3 +431,63 @@ func feed(actor: CharacterBody3D) -> void:
 	actor.start_action("eat",8)
 	say(actor_name(actor),animal_line(actor.actor_kind,true))
 	sound.animal_call(actor.actor_kind,actor.position,true,actor.actor_id)
+
+func _physics_process(delta: float) -> void:
+	companion_followers = actors.get_children().filter(func(actor: Node): return actor.actor_kind=="resident" and actor.following)
+	if companion_followers.is_empty():
+		companion_trail.clear(); companion_single_file = false; return
+	var point := Vector2(player.position.x,player.position.z)
+	if companion_trail.is_empty() or point.distance_to(companion_trail[0])>2:
+		companion_trail = PackedVector2Array([point]); companion_single_file = false
+	elif point.distance_to(companion_trail[0])>.1:
+		companion_trail.insert(0,point)
+		if companion_trail.size()>90: companion_trail.resize(90)
+	var heading: float = player.visual.rotation.y
+	var open := true
+	for side: float in [-1.0,1.0]:
+		for ahead: float in [0.0,.5,1.0]:
+			var start := point+Vector2(sin(heading),cos(heading))*ahead
+			if not line_clear(start,start+Vector2(cos(heading),-sin(heading))*side*1.12): open = false
+	if not open: companion_single_file = true; companion_open_time = 0
+	elif companion_single_file:
+		companion_open_time += delta
+		if companion_open_time>.8: companion_single_file = false
+	pose_companion_hands()
+
+func companion_target(slot: int) -> Vector2:
+	var point := Vector2(player.position.x,player.position.z)
+	var heading: float = player.visual.rotation.y
+	if not companion_single_file:
+		var side := (-1.0 if slot%2==0 else 1.0)*1.05 if slot<4 else 0.0
+		return point+Vector2(cos(heading),-sin(heading))*side-Vector2(sin(heading),cos(heading))*floori(slot/2.0)*1.25
+	var remaining := .85*(slot+1)
+	for trail_point: Vector2 in companion_trail:
+		var gap := point.distance_to(trail_point)
+		if gap>=remaining: return point.move_toward(trail_point,remaining)
+		remaining -= gap; point = trail_point
+	var behind := point-Vector2(sin(heading),cos(heading))*remaining
+	return behind if line_clear(point,behind) else point
+
+func pose_companion_hands() -> void:
+	if player.activity_locked or player.controls_blocked or player.mount or companion_single_file or not player.is_on_floor(): return
+	for slot in mini(2,companion_followers.size()):
+		var actor: Node3D = companion_followers[slot]
+		var side := -1.0 if slot==0 else 1.0
+		var offset: Vector3 = player.visual.to_local(actor.global_position)
+		if absf(offset.x-side*1.05)>.14 or absf(offset.z)>.16 or cos(actor.rotation.y-player.visual.rotation.y)<.94: continue
+		var a: Node3D = player.left_fin if slot==0 else player.right_fin
+		var b: Node3D
+		for fin: Node3D in actor.fin_nodes:
+			if str(fin.get_meta("part","")).begins_with("SpiritFinR" if slot==0 else "SpiritFinL"): b = fin; break
+		if not b: continue
+		var meeting := (a.global_position+b.global_position)*.5+Vector3(0,.025,0)
+		for pair: Array in [[a,side],[b,-side]]:
+			var fin: Node3D = pair[0]
+			var sign_value: float = pair[1]
+			var shoulder := fin.position-Vector3(sign_value*.1,0,0)
+			var end: Vector3 = fin.get_parent().to_local(meeting)
+			var arm := end-shoulder
+			if arm.length()>.39 or arm.length()<.001: continue
+			fin.position = (shoulder+end)*.5
+			fin.scale.x *= arm.length()/.27
+			fin.quaternion = Quaternion(Vector3.RIGHT,arm.normalized()*sign_value)

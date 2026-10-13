@@ -1,4 +1,5 @@
 shader_type spatial;
+uniform float motion_amount = 1.0;
 render_mode cull_disabled;
 uniform bool pond = false;
 uniform vec2 weather = vec2(0.0);
@@ -13,7 +14,7 @@ void fragment() {
     float is_pond=pond?1.0:0.0;
     float bank=mix(abs(UV.x-.5)*2.0,length(UV-.5)*2.0,is_pond);
     vec2 p=mix(vec2(UV.x*6.4,UV.y),world_position.xz,is_pond);
-    p.y-=TIME*mix(.9,.12,is_pond);
+    p.y-=(TIME * motion_amount)*mix(.9,.12,is_pond);
     float shallow=smoothstep(.42,1.0,bank);
     vec3 water_color=mix(vec3(.0212,.2122,.2384),vec3(.2423,.5841,.5089),shallow*.72);
     water_color=mix(water_color,water_color*vec3(.6,.7,.94),weather.y*.55);

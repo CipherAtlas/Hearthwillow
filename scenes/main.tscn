@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://4p6rifccmjkq" path="res://scenes/seating.tscn" id="39_cjqg0"]
 [ext_resource type="PackedScene" uid="uid://odo4srg1toap" path="res://scenes/race.tscn" id="41_vchkt"]
 [ext_resource type="PackedScene" uid="uid://bc4igqebjehxp" path="res://scenes/focus_cottage.tscn" id="43_txyw0"]
+[ext_resource type="PackedScene" uid="uid://biapqktxmv0qc" path="res://scenes/tower_lookout.tscn" id="52_bu4jf"]
 [ext_resource type="Texture2D" uid="uid://cy4vkgii1qvbn" path="res://assets/village/map-art.svg" id="map_art"]
 [ext_resource type="Texture2D" uid="uid://54f420oixq7k" path="res://assets/ui/map/Bird.svg" id="map_Bird"]
 [ext_resource type="Texture2D" uid="uid://1vqqk31yguxk" path="res://assets/ui/map/BookOpen.svg" id="map_BookOpen"]
@@ -1500,6 +1501,7 @@ max_distance = 23.0
 max_polyphony = 6
 
 [node name="VillageLife" type="Node" parent="." unique_id=1186749198]
+process_physics_priority = 10
 script = ExtResource("16")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=902411621]
@@ -4039,6 +4041,8 @@ draw_pass_1 = SubResource("QuadMesh_og1vs")
 [node name="QuietPlaces" parent="." unique_id=795609557 instance=ExtResource("quiet_places")]
 
 [node name="VillageLighting" parent="." unique_id=1763039632 instance=ExtResource("NightLighting")]
+
+[node name="TowerLookout" parent="." unique_id=160009594 instance=ExtResource("52_bu4jf")]
 
 [connection signal="jumped" from="Player" to="VillageSound" method="on_jump"]
 [connection signal="landed" from="Player" to="VillageSound" method="on_land"]

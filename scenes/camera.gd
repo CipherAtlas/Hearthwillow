@@ -73,21 +73,22 @@ func _unhandled_input(event: InputEvent) -> void:
 		desired_pitch = clampf(desired_pitch+event.screen_relative.y*sensitivity,-.55,1.05)
 
 func _process(delta: float) -> void:
+	var reduced: bool = get_parent().get_node("HUD/Menus").reduced_motion
 	if title_screen:
-		title_time += delta
+		title_time = 0.0 if reduced else title_time+delta
 		camera.global_position = Vector3(27+sin(title_time*.055)*4,19+sin(title_time*.07)*.6,42+cos(title_time*.055)*2)
 		camera.look_at(Vector3(-4,2,-13))
 		return
 	camera.rotation = Vector3.ZERO
 	# A playtest or explicit viewpoint reset may change the rig directly.
 	if not is_equal_approx(rotation.y,applied_yaw): desired_yaw = rotation.y
-	rotation.y = lerp_angle(rotation.y,desired_yaw,1-exp(-orbit_speed*delta))
+	rotation.y = lerp_angle(rotation.y,desired_yaw,1.0 if reduced else 1-exp(-orbit_speed*delta))
 	applied_yaw = rotation.y
-	pitch = lerpf(pitch,desired_pitch,1-exp(-orbit_speed*delta))
+	pitch = lerpf(pitch,desired_pitch,1.0 if reduced else 1-exp(-orbit_speed*delta))
 	var target := player.get_global_transform_interpolated().origin+Vector3(0,1.35+(player.saddle_height-.62 if player.mount else 0)+maxf(0,-sin(pitch))*2.4,0)
 	if follow_anchor: target = follow_anchor.get_global_transform_interpolated().origin
-	global_position = global_position.lerp(target,1-exp(-follow_speed*delta))
-	smoothed_distance = lerpf(smoothed_distance,distance,1-exp(-zoom_speed*delta))
+	global_position = global_position.lerp(target,1.0 if reduced else 1-exp(-follow_speed*delta))
+	smoothed_distance = lerpf(smoothed_distance,distance,1.0 if reduced else 1-exp(-zoom_speed*delta))
 	# Keep a useful third-person distance near walls instead of zooming into
 	# the spirit's head. Hold the chosen side until the requested view clears.
 	avoidance_check -= delta

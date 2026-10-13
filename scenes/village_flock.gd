@@ -60,14 +60,13 @@ func flight_position(index: int, seconds: float) -> Vector3:
 	var side := 1 if index%2 else -1
 	var lateral: float = side*row*.65 if pattern == 0 else (index%4-1.5)*1.4 if pattern == 1 else side*2.2
 	var result := curve_point(t)+landings[index]
-	result.x += spread*(lateral+sin(t*PI*4+index*.7)*.45)
+	result.x += spread*(lateral+sin(t*PI*4+index*.7)*.45*(0.0 if world.get_node("HUD/Menus").reduced_motion else 1.0))
 	result.z += spread*(-row*.5 if pattern == 0 else -floori(index/4.0)*1.5 if pattern == 1 else (row-2.5)*.85)
 	result.y += spread*(index%3)*.65
 	return result
 
 func feed() -> bool:
 	if queued or served or life.crumbs == 0: return false
-	life.crumbs -= 1
 	queued = true
 	if not flight: start_meal()
 	life.say("White doves","The crumbs are ready for their next landing." if flight else "Coo coo~ (Thank you~)")
@@ -93,27 +92,32 @@ func _process(delta: float) -> void:
 		life.say("White doves","Coo coo :(" if status == "sad" else "Coo coo~ (Thank you~)",4)
 	previous_status = status
 	var sadness := 1.0 if status == "sad" else 0.0
+	var reduced: bool = world.get_node("HUD/Menus").reduced_motion
+	var motion := 0.0 if reduced else 1.0
 	for i in landings.size():
 		var point := flight_position(i,age) if flight else landings[i]
 		var angles := Vector3.ZERO
 		if flight:
 			var heading := flight_position(i,age+.03)-point
 			angles.y = atan2(heading.x,heading.z)
-			angles.z = -.09*sin(age/30*TAU)
-			angles.x = -.06*heading.y
+			angles.z = -.09*sin(age/30*TAU)*motion
+			angles.x = -.06*heading.y*motion
 		else:
 			angles.y = atan2(CLEARING.x-point.x,CLEARING.y-point.z)
 			angles.x = sadness*.1
 			point.y += absf(sin((meal_age-4)*5+i))*.1 if status == "happy" else sin(elapsed*2+i)*.009-sadness*.025
 			angles.z = sin((meal_age-4)*6+i)*.07 if status == "happy" else 0.0
+		if not flight and reduced:
+			point.y = landings[i].y
+			angles.z = 0.0
 		var root := Transform3D(Basis.from_euler(angles,EULER_ORDER_XYZ).scaled(scales[i]),point)
 		for part: Dictionary in parts:
 			var rotation := Vector3.ZERO
 			if "Head" in part.name:
-				rotation.x = sadness*(.4+sin(elapsed*1.8+i)*.035)+(.27+sin(elapsed*6+i)*.24 if status == "eating" else 0)
-				rotation.z = sadness*sin(elapsed*1.2+i)*.06
+				rotation.x = sadness*(.4+sin(elapsed*1.8+i)*.035*motion)+(.27+sin(elapsed*6+i)*.24 if status == "eating" and not reduced else 0)
+				rotation.z = sadness*sin(elapsed*1.2+i)*.06*motion
 			elif "Wing" in part.name:
-				var flap := sin(elapsed*(10 if flight else 13)+i)*(.65 if flight else .3)
+				var flap := sin(elapsed*(10 if flight else 13)+i)*(.65 if flight else .3)*motion
 				rotation.z = (-1 if "Right" in part.name else 1)*(flap if flight else .65+flap if status == "happy" else 1.12+sadness*.27)
 			var transform: Transform3D = root*part.pivot*Transform3D(Basis.from_euler(rotation,EULER_ORDER_XYZ),Vector3.ZERO)*part.pivot.affine_inverse()*part.base
 			part.node.multimesh.set_instance_transform(i,transform)

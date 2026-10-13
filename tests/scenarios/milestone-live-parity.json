@@ -1,0 +1,830 @@
+{
+  "name": "Live map activities, tea, reusable crumbs, lookout and reduced motion",
+  "scene": "res://scenes/main.tscn",
+  "keep_running": true,
+  "stop_on_failure": false,
+  "steps": [
+    {
+      "set": {
+        "path": "HUD/Menus",
+        "props": {
+          "language": 0
+        }
+      }
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "apply_language",
+        "args": []
+      }
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "enter_game",
+        "args": [
+          false
+        ]
+      }
+    },
+    {
+      "assert": "get_viewport().get_texture().get_size()==Vector2(1920,1080)",
+      "message": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          0
+        ]
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('FocusCottage').inside",
+      "message": "get_node('FocusCottage').inside"
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded",
+      "message": "not get_node('HUD/VillageMap').expanded"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          1
+        ]
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('QuietPlaces').active=='music'",
+      "message": "get_node('QuietPlaces').active=='music'"
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded",
+      "message": "not get_node('HUD/VillageMap').expanded"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          2
+        ]
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('QuietPlaces').active=='breathe'",
+      "message": "get_node('QuietPlaces').active=='breathe'"
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded",
+      "message": "not get_node('HUD/VillageMap').expanded"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          3
+        ]
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('QuietPlaces').active=='gratitude'",
+      "message": "get_node('QuietPlaces').active=='gratitude'"
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded",
+      "message": "not get_node('HUD/VillageMap').expanded"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          4
+        ]
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('QuietPlaces').active=='compliment'",
+      "message": "get_node('QuietPlaces').active=='compliment'"
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded",
+      "message": "not get_node('HUD/VillageMap').expanded"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          5
+        ]
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('QuietPlaces').active=='garden'",
+      "message": "get_node('QuietPlaces').active=='garden'"
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded",
+      "message": "not get_node('HUD/VillageMap').expanded"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          6
+        ]
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('QuietPlaces').active=='birds'",
+      "message": "get_node('QuietPlaces').active=='birds'"
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded",
+      "message": "not get_node('HUD/VillageMap').expanded"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          7
+        ]
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('QuietPlaces').active==''",
+      "message": "get_node('QuietPlaces').active==''"
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded",
+      "message": "not get_node('HUD/VillageMap').expanded"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          8
+        ]
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('QuietPlaces').active==''",
+      "message": "get_node('QuietPlaces').active==''"
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded",
+      "message": "not get_node('HUD/VillageMap').expanded"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          9
+        ]
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('QuietPlaces').active==''",
+      "message": "get_node('QuietPlaces').active==''"
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded",
+      "message": "not get_node('HUD/VillageMap').expanded"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          10
+        ]
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('QuietPlaces').active==''",
+      "message": "get_node('QuietPlaces').active==''"
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded",
+      "message": "not get_node('HUD/VillageMap').expanded"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          11
+        ]
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('QuietPlaces').active==''",
+      "message": "get_node('QuietPlaces').active==''"
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded",
+      "message": "not get_node('HUD/VillageMap').expanded"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          12
+        ]
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('QuietPlaces').active==''",
+      "message": "get_node('QuietPlaces').active==''"
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded",
+      "message": "not get_node('HUD/VillageMap').expanded"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          13
+        ]
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('QuietPlaces').active==''",
+      "message": "get_node('QuietPlaces').active==''"
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded",
+      "message": "not get_node('HUD/VillageMap').expanded"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          14
+        ]
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('QuietPlaces').active==''",
+      "message": "get_node('QuietPlaces').active==''"
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded",
+      "message": "not get_node('HUD/VillageMap').expanded"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          15
+        ]
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('QuietPlaces').active==''",
+      "message": "get_node('QuietPlaces').active==''"
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded",
+      "message": "not get_node('HUD/VillageMap').expanded"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          16
+        ]
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('QuietPlaces').active==''",
+      "message": "get_node('QuietPlaces').active==''"
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded",
+      "message": "not get_node('HUD/VillageMap').expanded"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          1
+        ]
+      }
+    },
+    {
+      "assert": "get_node('VillageSound').enabled",
+      "message": "get_node('VillageSound').enabled"
+    },
+    {
+      "call": {
+        "path": "QuietPlaces",
+        "method": "toggle_music",
+        "args": []
+      }
+    },
+    {
+      "assert": "not get_node('VillageSound').enabled",
+      "message": "not get_node('VillageSound').enabled"
+    },
+    {
+      "call": {
+        "path": "QuietPlaces",
+        "method": "toggle_music",
+        "args": []
+      }
+    },
+    {
+      "assert": "get_node('VillageSound').enabled",
+      "message": "get_node('VillageSound').enabled"
+    },
+    {
+      "call": {
+        "path": "QuietPlaces",
+        "method": "sound_levels",
+        "args": []
+      }
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('HUD/Menus').current_menu=='Settings' and get_node('HUD/Menus/Settings/Content/Scroll/Pages/Sound').visible",
+      "message": "get_node('HUD/Menus').current_menu=='Settings' and get_node('HUD/Menus/Settings/Content/Scroll/Pages/Sound').visible"
+    },
+    {
+      "assert": "get_node('QuietPlaces').active=='music'",
+      "message": "get_node('QuietPlaces').active=='music'"
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "close_menu",
+        "args": []
+      }
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          5
+        ]
+      }
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "open_settings",
+        "args": []
+      }
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('QuietPlaces').active=='garden'",
+      "message": "get_node('QuietPlaces').active=='garden'"
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "close_menu",
+        "args": []
+      }
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageActivities/UI/Garden').visible",
+      "message": "get_node('VillageActivities/UI/Garden').visible"
+    },
+    {
+      "call": {
+        "path": "QuietPlaces",
+        "method": "toggle_controls",
+        "args": []
+      }
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "not get_node('VillageActivities/UI/Garden').visible",
+      "message": "not get_node('VillageActivities/UI/Garden').visible"
+    },
+    {
+      "call": {
+        "path": "QuietPlaces",
+        "method": "toggle_controls",
+        "args": []
+      }
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageActivities/UI/Garden').visible",
+      "message": "get_node('VillageActivities/UI/Garden').visible"
+    },
+    {
+      "call": {
+        "path": "QuietPlaces",
+        "method": "leave",
+        "args": []
+      }
+    },
+    {
+      "assert": "not get_node('VillageActivities').garden_page",
+      "message": "not get_node('VillageActivities').garden_page"
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('QuietPlaces').entry_point('mood'))"
+    },
+    {
+      "call": {
+        "path": "QuietPlaces",
+        "method": "enter",
+        "args": [
+          "mood"
+        ]
+      }
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('Village/Actors/luma').position.distance_to(Vector3(16.5,.1,-11.5))<.01",
+      "message": "get_node('Village/Actors/luma').position.distance_to(Vector3(16.5,.1,-11.5))<.01"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('mint',1)"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('mintTea',0)"
+    },
+    {
+      "call": {
+        "path": "QuietPlaces",
+        "method": "tea_action",
+        "args": [
+          2
+        ]
+      }
+    },
+    {
+      "assert": "get_node('VillageActivities').inventory.mint==0 and get_node('VillageActivities').inventory.mintTea==1",
+      "message": "get_node('VillageActivities').inventory.mint==0 and get_node('VillageActivities').inventory.mintTea==1"
+    },
+    {
+      "call": {
+        "path": "QuietPlaces",
+        "method": "tea_action",
+        "args": [
+          5
+        ]
+      }
+    },
+    {
+      "wait": 0.8
+    },
+    {
+      "assert": "get_node('VillageActivities').inventory.mintTea==0",
+      "message": "get_node('VillageActivities').inventory.mintTea==0"
+    },
+    {
+      "assert": "get_node('QuietPlaces/Ritual/TeaCup').position.y>1.3",
+      "message": "get_node('QuietPlaces/Ritual/TeaCup').position.y>1.3"
+    },
+    {
+      "eval": "get_node('HUD/Menus').set('language',1)"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "screenshot": "parity-tea-japanese-1080p"
+    },
+    {
+      "call": {
+        "path": "QuietPlaces",
+        "method": "leave",
+        "args": []
+      }
+    },
+    {
+      "eval": "get_node('HUD/Menus').set('language',0)"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          6
+        ]
+      }
+    },
+    {
+      "eval": "get_node('VillageLife').set('crumbs',1)"
+    },
+    {
+      "assert": "get_node('VillageFlock').feed()",
+      "message": "get_node('VillageFlock').feed()"
+    },
+    {
+      "assert": "get_node('VillageLife').crumbs==1",
+      "message": "get_node('VillageLife').crumbs==1"
+    },
+    {
+      "assert": "not get_node('VillageFlock').feed()",
+      "message": "not get_node('VillageFlock').feed()"
+    },
+    {
+      "assert": "not get_node('HUD/Interaction').visible",
+      "message": "The activity owns bird controls; no duplicate generic panel."
+    },
+    {
+      "screenshot": "parity-birds-1080p"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          8
+        ]
+      }
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('TowerLookout').enter()",
+      "message": "get_node('TowerLookout').enter()"
+    },
+    {
+      "input": [
+        {
+          "action": "move_forward",
+          "hold": 5
+        }
+      ]
+    },
+    {
+      "assert": "Vector2(get_node('TowerLookout').to_local(get_node('Player').position).x,get_node('TowerLookout').to_local(get_node('Player').position).z).length()<=3.051",
+      "message": "Vector2(get_node('TowerLookout').to_local(get_node('Player').position).x,get_node('TowerLookout').to_local(get_node('Player').position).z).length()<=3.051"
+    },
+    {
+      "input": [
+        {
+          "action": "look_right",
+          "hold": 1
+        }
+      ]
+    },
+    {
+      "assert": "get_node('TowerLookout').yaw<2.0",
+      "message": "get_node('TowerLookout').yaw<2.0"
+    },
+    {
+      "screenshot": "parity-lookout-1080p"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          1
+        ]
+      }
+    },
+    {
+      "assert": "not get_node('TowerLookout').inside and get_node('Player/SpiritVisual').visible",
+      "message": "not get_node('TowerLookout').inside and get_node('Player/SpiritVisual').visible"
+    },
+    {
+      "eval": "get_node('HUD/Menus').set('reduced_motion',true)"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('Village/Actors/puppy-mochi').animation_player.speed_scale==0",
+      "message": "get_node('Village/Actors/puppy-mochi').animation_player.speed_scale==0"
+    },
+    {
+      "assert": "get_node('VillageLighting').motion_materials[0].get_shader_parameter('motion_amount')==0",
+      "message": "get_node('VillageLighting').motion_materials[0].get_shader_parameter('motion_amount')==0"
+    },
+    {
+      "call": {
+        "path": "QuietPlaces",
+        "method": "leave",
+        "args": []
+      }
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "abs(get_node('Player/SpiritVisual').position.y-.62)<.001",
+      "message": "abs(get_node('Player/SpiritVisual').position.y-.62)<.001"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          0
+        ]
+      }
+    },
+    {
+      "wait": 3
+    },
+    {
+      "assert": "get_node('VillageSound').shelter_filter.cutoff_hz<1100",
+      "message": "get_node('VillageSound').shelter_filter.cutoff_hz<1100"
+    },
+    {
+      "assert": "not get_node('WeatherRain').emitting",
+      "message": "not get_node('WeatherRain').emitting"
+    },
+    {
+      "call": {
+        "path": "FocusCottage",
+        "method": "leave",
+        "args": []
+      }
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "eval": "get_node('HUD/Menus').set('reduced_motion',false)"
+    },
+    {
+      "assert": "not get_node('Player').activity_locked",
+      "message": "not get_node('Player').activity_locked"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(.3,22))"
+    },
+    {
+      "eval": "get_node('VillageLife').greeted.set('pip',true)"
+    },
+    {
+      "eval": "get_node('Village/Actors/pip').set('following',true)"
+    },
+    {
+      "set": {
+        "path": "Village/Actors/pip",
+        "props": {
+          "position": [
+            1.35,
+            0.05,
+            22
+          ],
+          "rotation": [
+            0,
+            3.14159265,
+            0
+          ],
+          "pause": 0,
+          "chatting": 0
+        }
+      }
+    },
+    {
+      "set": {
+        "path": "Player/SpiritVisual",
+        "props": {
+          "rotation": [
+            0,
+            3.14159265,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "wait": 0.4
+    },
+    {
+      "assert": "not get_node('VillageLife').companion_single_file"
+    },
+    {
+      "eval": "get_node('VillageLife').pose_companion_hands()"
+    },
+    {
+      "assert": "get_node('Player').left_fin.position.distance_to(get_node('Player').fin_bases[0].origin)>.001"
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('QuietPlaces').entry_point('music'))"
+    },
+    {
+      "call": {
+        "path": "QuietPlaces",
+        "method": "enter",
+        "args": [
+          "music"
+        ]
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('Village/Actors/pip').position.distance_to(Vector3(-6.8,.4,-16.1))<.01"
+    },
+    {
+      "call": {
+        "path": "QuietPlaces",
+        "method": "leave",
+        "args": []
+      }
+    },
+    {
+      "eval": "get_node('Village/Actors/pip').set('following',false)"
+    },
+    {
+      "assert_no_errors": true
+    },
+    {
+      "assert_no_errors": true
+    }
+  ]
+}

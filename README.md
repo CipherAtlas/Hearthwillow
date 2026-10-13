@@ -3,19 +3,19 @@
 ![A painted illustration of Hearthwillow’s cottages, stream and little white spirit](docs/images/hearthwillow-banner.png)
 
 A quiet village to wander through. Meet the residents, spend time with animals,
-grow something, cook a meal, or settle into the writing nook and focus cottage.
+grow something, share tea, listen by the hearth, or climb the watchtower.
+There are quiet places for writing, breathing and focusing, too.
 
 ## Download and play
 
-Get the game from [GitHub Releases](https://github.com/CipherAtlas/Hearthwillow/releases).
-The first preview downloads are being prepared; they will appear there when the release is published.
+Download **0.1.0 preview 1** from [GitHub Releases](https://github.com/CipherAtlas/Hearthwillow/releases/tag/v0.1.0-preview.1).
 Choose a game ZIP below, rather than GitHub’s **Source code** archives. You do not
 need Godot installed.
 
 | Your computer | Download |
 | --- | --- |
-| Mac — Apple Silicon or Intel | `Hearthwillow-macOS-universal.zip` |
-| Windows — Intel or AMD 64-bit | `Hearthwillow-Windows-x64.zip` |
+| Mac — Apple Silicon or Intel | [Download for Mac](https://github.com/CipherAtlas/Hearthwillow/releases/download/v0.1.0-preview.1/Hearthwillow-macOS-universal.zip) |
+| Windows — Intel or AMD 64-bit | [Download for Windows x64](https://github.com/CipherAtlas/Hearthwillow/releases/download/v0.1.0-preview.1/Hearthwillow-Windows-x64.zip) |
 
 **Mac:** unzip, drag `Hearthwillow.app` into Applications, and open it. This preview
 uses free ad-hoc signing and is not notarized by Apple. If macOS blocks it, try

@@ -91,7 +91,6 @@ func growth_duration(id: String, crop: String) -> float:
 func _process(delta: float) -> void:
 	scan_time -= delta
 	save_time -= delta
-	if garden_page and (menus.current_menu != "" or world.get_node("HUD/VillageMap").expanded): close_garden()
 	if player.controls_blocked: world.get_node("VillageSeating").picnic_basket_open = false
 	if scan_time <= 0:
 		scan_time = .1
@@ -293,23 +292,34 @@ func activate(slot: int) -> bool:
 		add_item("mushrooms",1); forage_ready[nearby.id] = now()+30
 	elif nearby.kind == "flowers": start_water(player.position+Vector3(0,0,-1))
 	elif nearby.kind == "basket":
-		garden_page = true
-		$UI/Garden.show()
-		refresh_garden()
+		open_garden()
 	elif nearby.kind == "luma":
-		if slot == 5:
-			if count_item("mintTea")<=0: return false
-			add_item("mintTea",-1)
-		else:
-			if slot<0 or slot>=GIFTS.size(): return false
-			var crop: String = GIFTS[slot]
-			if count_item(CROPS[crop])<=0: return false
-			add_item(CROPS[crop],-1)
-			if crop == "mint": add_item("mintTea",1)
-			life.nearest.chatting = 6
-			life.say(life.actor_name(life.nearest),words(HARVEST_COMPLIMENTS[crop][0],HARVEST_COMPLIMENTS[crop][1]),6)
-		activity_sound.emit("pour" if slot == 5 or slot == 2 else "pluck",player.position)
+		return give_luma(slot)
 	else: return false
+	save_state()
+	last_visuals = ""
+	update_visuals(); refresh_context(); refresh_cooking()
+	return true
+
+func give_luma(slot: int) -> bool:
+	var luma: CharacterBody3D
+	for actor: CharacterBody3D in life.actors.get_children():
+		if actor.actor_id == "luma": luma = actor; break
+	if luma == null: return false
+	var places: Node = world.get_node("QuietPlaces")
+	if places.active != "mood" and (life.nearest != luma or player.position.distance_to(luma.position)>3): return false
+	if slot == 5:
+		if count_item("mintTea")<=0: return false
+		add_item("mintTea",-1)
+	else:
+		if slot<0 or slot>=GIFTS.size(): return false
+		var crop: String = GIFTS[slot]
+		if count_item(CROPS[crop])<=0 or crop=="mint" and count_item("mintTea")>=9999: return false
+		add_item(CROPS[crop],-1)
+		if crop == "mint": add_item("mintTea",1)
+		luma.chatting = 6
+		life.say(life.actor_name(luma),words(HARVEST_COMPLIMENTS[crop][0],HARVEST_COMPLIMENTS[crop][1]),6)
+	activity_sound.emit("pour" if slot == 5 or slot == 2 else "pluck",player.position)
 	save_state()
 	last_visuals = ""
 	update_visuals(); refresh_context(); refresh_cooking()
@@ -368,23 +378,25 @@ func start_water(point: Vector3) -> void:
 func animate_action() -> void:
 	$WateringCan.visible = now()<action_until
 	$WaterDrops.emitting = $WateringCan.visible
-	if $WateringCan.visible: $WateringCan.rotation.z = -.35+sin(now()*3)*.08
+	$WaterDrops.speed_scale = 0.0 if menus.reduced_motion else 1.0
+	if $WateringCan.visible: $WateringCan.rotation.z = -.35 if menus.reduced_motion else -.35+sin(now()*3)*.08
 
 func animate_cooking() -> void:
 	if cooking.is_empty(): return
 	var visual: Node3D = $Kitchens.get_node(NodePath(cooking.kitchen+"/"+cooking.recipe))
 	var elapsed := maxf(0,now()-float(cooking.started))
 	var progress := minf(1,elapsed/4.5)
+	var motion_time := 0.0 if menus.reduced_motion else elapsed
 	var salad: bool = cooking.recipe == "crispSalad"
 	for name_text: String in ["Knife","Spoon","Heat","Liquid","Ingredients","Steam","KitchenFinishedDish"]:
 		var part := visual.find_child(name_text,true,false) as Node3D
 		if not part: continue
 		part.visible = progress<.3 if name_text == "Knife" else progress>=.3 and progress<.82 if name_text == "Spoon" else progress>=.3 and progress<.82 and not salad if name_text in ["Heat","Steam"] else not salad and progress<.82 if name_text == "Liquid" else progress<.82 if name_text == "Ingredients" else progress>=.82
-		if name_text == "Knife": part.position.y = 1.43+absf(sin(elapsed/.065))*.16
-		elif name_text == "Spoon": part.position = Vector3((1.23 if salad else -1.2)+sin(elapsed/.165)*.16,1.61 if salad else 1.82,-.51+cos(elapsed/.165)*.14)
+		if name_text == "Knife": part.position.y = 1.43+absf(sin(motion_time/.065))*.16
+		elif name_text == "Spoon": part.position = Vector3((1.23 if salad else -1.2)+sin(motion_time/.165)*.16,1.61 if salad else 1.82,-.51+cos(motion_time/.165)*.14)
 		elif name_text == "Steam":
 			for puff: Node3D in part.get_children():
-				var age := fmod(elapsed*.8+puff.get_index()/6.0,1)
+				var age := fmod(motion_time*.8+puff.get_index()/6.0,1)
 				puff.position = Vector3(-1.2+sin(puff.get_index()*2.4)*.14,1.8+age*.75,-.55+cos(puff.get_index()*2.4)*.14)
 				puff.scale = Vector3.ONE*(.5+age)
 
@@ -415,8 +427,16 @@ func select_garden(index: int, choice := 0) -> void:
 	if change_bed(str(node.name),choice):
 		save_state(); last_visuals = ""; update_visuals(); refresh_garden()
 
+func open_garden() -> void:
+	if world.get_node("QuietPlaces").active!="garden" and not world.get_node("QuietPlaces").enter("garden"): return
+	garden_page = true
+	$UI/Garden.show()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	refresh_garden()
+
 func close_garden() -> void:
 	garden_page = false
+	if world.get_node("QuietPlaces").active=="garden": world.get_node("QuietPlaces").leave()
 	$UI/Garden.hide()
 
 func garden_extra(index: int) -> void:
@@ -430,8 +450,10 @@ func garden_extra(index: int) -> void:
 	elif index == 2:
 		close_garden()
 		var map: Node = world.get_node("HUD/VillageMap")
-		var luma: Node3D = world.get_node("Village/Actors/luma")
-		map.travel_point(Vector2(luma.position.x,luma.position.z)+Vector2(0,1.4))
+		var places: Node = world.get_node("QuietPlaces")
+		var point: Vector3 = places.entry_point("mood")
+		map.travel_point(Vector2(point.x,point.z))
+		places.enter("mood")
 
 func save_state() -> void:
 	var content := {"version":1,"beds":beds,"inventory":inventory,"apples":life.apples,"cooking":cooking,"dishes":dishes,"forage":forage_ready}

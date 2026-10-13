@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://gjjpn8aeypl7"]
 
+[ext_resource type="PackedScene" uid="uid://jswlwdoufw4x" path="res://assets/quiet/tea-cup.glb" id="4_inb61"]
 [ext_resource type="Theme" uid="uid://c0k8t2apf4b0s" path="res://scenes/quiet_button_theme.tres" id="8_awamr"]
 [ext_resource type="Script" uid="uid://8pkt5clafef" path="res://scenes/quiet_places.gd" id="behavior"]
 [ext_resource type="Script" uid="uid://ysg6i0o1klni" path="res://scenes/interaction_button.gd" id="button"]
@@ -25,6 +26,174 @@ inner_radius = 0.94
 rings = 80
 ring_segments = 6
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_inb61"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.88235295, 0.627451, 0.6509804)
+
+[sub_resource type="SphereMesh" id="SphereMesh_igivu"]
+material = SubResource("StandardMaterial3D_inb61")
+radius = 0.025
+height = 0.05
+radial_segments = 6
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ddrr"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.88235295, 0.627451, 0.6509804)
+
+[sub_resource type="SphereMesh" id="SphereMesh_fg458"]
+material = SubResource("StandardMaterial3D_0ddrr")
+radius = 0.025
+height = 0.05
+radial_segments = 6
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3mgy"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.88235295, 0.627451, 0.6509804)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ocn3c"]
+material = SubResource("StandardMaterial3D_d3mgy")
+radius = 0.025
+height = 0.05
+radial_segments = 6
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gv677"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.88235295, 0.627451, 0.6509804)
+
+[sub_resource type="SphereMesh" id="SphereMesh_y1pnx"]
+material = SubResource("StandardMaterial3D_gv677")
+radius = 0.025
+height = 0.05
+radial_segments = 6
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idoat"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.88235295, 0.627451, 0.6509804)
+
+[sub_resource type="SphereMesh" id="SphereMesh_h43lg"]
+material = SubResource("StandardMaterial3D_idoat")
+radius = 0.025
+height = 0.05
+radial_segments = 6
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdccb"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.88235295, 0.627451, 0.6509804)
+
+[sub_resource type="SphereMesh" id="SphereMesh_2ef32"]
+material = SubResource("StandardMaterial3D_mdccb")
+radius = 0.025
+height = 0.05
+radial_segments = 6
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3n0gk"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.88235295, 0.627451, 0.6509804)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ew77p"]
+material = SubResource("StandardMaterial3D_3n0gk")
+radius = 0.025
+height = 0.05
+radial_segments = 6
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bvcn2"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.88235295, 0.627451, 0.6509804)
+
+[sub_resource type="SphereMesh" id="SphereMesh_w5mom"]
+material = SubResource("StandardMaterial3D_bvcn2")
+radius = 0.025
+height = 0.05
+radial_segments = 6
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3dxqm"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.88235295, 0.627451, 0.6509804)
+
+[sub_resource type="SphereMesh" id="SphereMesh_l4wxr"]
+material = SubResource("StandardMaterial3D_3dxqm")
+radius = 0.025
+height = 0.05
+radial_segments = 6
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8r3s5"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.88235295, 0.627451, 0.6509804)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ubb4t"]
+material = SubResource("StandardMaterial3D_8r3s5")
+radius = 0.025
+height = 0.05
+radial_segments = 6
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ysu3"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.88235295, 0.627451, 0.6509804)
+
+[sub_resource type="SphereMesh" id="SphereMesh_x7p7x"]
+material = SubResource("StandardMaterial3D_7ysu3")
+radius = 0.025
+height = 0.05
+radial_segments = 6
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mchia"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.88235295, 0.627451, 0.6509804)
+
+[sub_resource type="SphereMesh" id="SphereMesh_wbgpq"]
+material = SubResource("StandardMaterial3D_mchia")
+radius = 0.025
+height = 0.05
+radial_segments = 6
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kl5w2"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.88235295, 0.627451, 0.6509804)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jiauw"]
+material = SubResource("StandardMaterial3D_kl5w2")
+radius = 0.025
+height = 0.05
+radial_segments = 6
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vich"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.88235295, 0.627451, 0.6509804)
+
+[sub_resource type="SphereMesh" id="SphereMesh_vmp1s"]
+material = SubResource("StandardMaterial3D_4vich")
+radius = 0.025
+height = 0.05
+radial_segments = 6
+rings = 4
+
 [node name="QuietPlaces" type="Node3D" unique_id=478970946]
 physics_interpolation_mode = 2
 script = ExtResource("behavior")
@@ -38,6 +207,9 @@ fov = 55.0
 
 [node name="Page" parent="Ritual" unique_id=221620771 instance=ExtResource("page")]
 visible = false
+
+[node name="TeaCup" parent="Ritual" unique_id=176186635 instance=ExtResource("4_inb61")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2, 1.28, -9.65)
 
 [node name="Letter" type="Node3D" parent="." unique_id=2060474729]
 visible = false
@@ -769,6 +941,571 @@ theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
 text = "Hide controls"
 vertical_alignment = 1
 
+[node name="Music" type="PanelContainer" parent="UI" unique_id=1312228513]
+visible = false
+custom_minimum_size = Vector2(410, 0)
+offset_left = 1482.0
+offset_top = 220.0
+offset_right = 1892.0
+offset_bottom = 230.0
+theme = ExtResource("forest")
+
+[node name="Content" type="VBoxContainer" parent="UI/Music" unique_id=216827899]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Heading" type="Label" parent="UI/Music/Content" unique_id=2097903231]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("georgia")
+theme_override_font_sizes/font_size = 29
+text = "Music"
+
+[node name="Waves" type="HBoxContainer" parent="UI/Music/Content" unique_id=828462929]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+alignment = 1
+
+[node name="Wave0" type="ColorRect" parent="UI/Music/Content/Waves" unique_id=1668387580]
+custom_minimum_size = Vector2(5, 25)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+color = Color(1, 0.88235295, 0.627451, 1)
+
+[node name="Wave1" type="ColorRect" parent="UI/Music/Content/Waves" unique_id=1686435220]
+custom_minimum_size = Vector2(5, 25)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+color = Color(1, 0.88235295, 0.627451, 1)
+
+[node name="Wave2" type="ColorRect" parent="UI/Music/Content/Waves" unique_id=1250051905]
+custom_minimum_size = Vector2(5, 25)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+color = Color(1, 0.88235295, 0.627451, 1)
+
+[node name="Wave3" type="ColorRect" parent="UI/Music/Content/Waves" unique_id=1818755649]
+custom_minimum_size = Vector2(5, 25)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+color = Color(1, 0.88235295, 0.627451, 1)
+
+[node name="Wave4" type="ColorRect" parent="UI/Music/Content/Waves" unique_id=1642267368]
+custom_minimum_size = Vector2(5, 25)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+color = Color(1, 0.88235295, 0.627451, 1)
+
+[node name="Wave5" type="ColorRect" parent="UI/Music/Content/Waves" unique_id=900773491]
+custom_minimum_size = Vector2(5, 25)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+color = Color(1, 0.88235295, 0.627451, 1)
+
+[node name="Wave6" type="ColorRect" parent="UI/Music/Content/Waves" unique_id=326126141]
+custom_minimum_size = Vector2(5, 25)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+color = Color(1, 0.88235295, 0.627451, 1)
+
+[node name="Toggle" type="Button" parent="UI/Music/Content" unique_id=130033973]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("forest")
+script = ExtResource("button")
+action = "jump"
+
+[node name="Row" type="HBoxContainer" parent="UI/Music/Content/Toggle" unique_id=1206070780]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Music/Content/Toggle/Row" unique_id=1174303741]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Music/Content/Toggle/Row/Key" unique_id=492338157]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Music/Content/Toggle/Row" unique_id=814799370]
+layout_mode = 2
+text = "Play music"
+vertical_alignment = 1
+
+[node name="TrackLabel" type="Label" parent="UI/Music/Content" unique_id=2073652103]
+layout_mode = 2
+text = "Soundtrack"
+
+[node name="Soundtrack" type="OptionButton" parent="UI/Music/Content" unique_id=199708543]
+layout_mode = 2
+
+[node name="Levels" type="Button" parent="UI/Music/Content" unique_id=960672443]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("forest")
+script = ExtResource("button")
+
+[node name="Row" type="HBoxContainer" parent="UI/Music/Content/Levels" unique_id=1263814692]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Music/Content/Levels/Row" unique_id=1674614336]
+visible = false
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Music/Content/Levels/Row/Key" unique_id=1798896735]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Music/Content/Levels/Row" unique_id=74470476]
+layout_mode = 2
+text = "Sound levels"
+vertical_alignment = 1
+
+[node name="Credit" type="Label" parent="UI/Music/Content" unique_id=1601656383]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Recorded music by Holizna."
+
+[node name="Tea" type="PanelContainer" parent="UI" unique_id=648488549]
+visible = false
+custom_minimum_size = Vector2(410, 0)
+offset_left = 1482.0
+offset_top = 220.0
+offset_right = 1892.0
+offset_bottom = 230.0
+theme = ExtResource("paper")
+
+[node name="Content" type="VBoxContainer" parent="UI/Tea" unique_id=1006968708]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Heading" type="Label" parent="UI/Tea/Content" unique_id=744895972]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("georgia")
+theme_override_font_sizes/font_size = 29
+text = "Tea garden"
+
+[node name="Gift0" type="Button" parent="UI/Tea/Content" unique_id=677900145]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("8_awamr")
+script = ExtResource("button")
+action = "activity_1"
+
+[node name="Row" type="HBoxContainer" parent="UI/Tea/Content/Gift0" unique_id=2102315486]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Tea/Content/Gift0/Row" unique_id=1817649915]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Tea/Content/Gift0/Row/Key" unique_id=912603279]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Tea/Content/Gift0/Row" unique_id=402858377]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+text = "Give Luma carrot"
+vertical_alignment = 1
+
+[node name="Gift1" type="Button" parent="UI/Tea/Content" unique_id=847390420]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("8_awamr")
+script = ExtResource("button")
+action = "activity_2"
+
+[node name="Row" type="HBoxContainer" parent="UI/Tea/Content/Gift1" unique_id=2021223322]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Tea/Content/Gift1/Row" unique_id=195685684]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Tea/Content/Gift1/Row/Key" unique_id=680981827]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Tea/Content/Gift1/Row" unique_id=572485711]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+text = "Give Luma radish"
+vertical_alignment = 1
+
+[node name="Gift2" type="Button" parent="UI/Tea/Content" unique_id=1063778337]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("8_awamr")
+script = ExtResource("button")
+action = "activity_3"
+
+[node name="Row" type="HBoxContainer" parent="UI/Tea/Content/Gift2" unique_id=1559479817]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Tea/Content/Gift2/Row" unique_id=1775226372]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Tea/Content/Gift2/Row/Key" unique_id=2105167584]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Tea/Content/Gift2/Row" unique_id=1029903808]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+text = "Give Luma mint"
+vertical_alignment = 1
+
+[node name="Gift3" type="Button" parent="UI/Tea/Content" unique_id=1459293218]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("8_awamr")
+script = ExtResource("button")
+action = "bread"
+
+[node name="Row" type="HBoxContainer" parent="UI/Tea/Content/Gift3" unique_id=242174864]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Tea/Content/Gift3/Row" unique_id=1785505595]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Tea/Content/Gift3/Row/Key" unique_id=815474646]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Tea/Content/Gift3/Row" unique_id=1826148308]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+text = "Give Luma daisy"
+vertical_alignment = 1
+
+[node name="Gift4" type="Button" parent="UI/Tea/Content" unique_id=154492147]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("8_awamr")
+script = ExtResource("button")
+action = "companion"
+
+[node name="Row" type="HBoxContainer" parent="UI/Tea/Content/Gift4" unique_id=999279896]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Tea/Content/Gift4/Row" unique_id=785041074]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Tea/Content/Gift4/Row/Key" unique_id=496485174]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Tea/Content/Gift4/Row" unique_id=1549392259]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+text = "Give Luma sunflower"
+vertical_alignment = 1
+
+[node name="Drink" type="Button" parent="UI/Tea/Content" unique_id=1571133344]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("8_awamr")
+script = ExtResource("button")
+action = "interact"
+
+[node name="Row" type="HBoxContainer" parent="UI/Tea/Content/Drink" unique_id=1617765990]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Tea/Content/Drink/Row" unique_id=201229382]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Tea/Content/Drink/Row/Key" unique_id=1155242105]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Tea/Content/Drink/Row" unique_id=1456016883]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+text = "Drink your special mint tea"
+vertical_alignment = 1
+
+[node name="Garden" type="Button" parent="UI/Tea/Content" unique_id=941829208]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("8_awamr")
+script = ExtResource("button")
+
+[node name="Row" type="HBoxContainer" parent="UI/Tea/Content/Garden" unique_id=2110187485]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Tea/Content/Garden/Row" unique_id=293210311]
+visible = false
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Tea/Content/Garden/Row/Key" unique_id=73771345]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Tea/Content/Garden/Row" unique_id=1268439237]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+text = "Visit the kitchen garden"
+vertical_alignment = 1
+
+[node name="Birds" type="PanelContainer" parent="UI" unique_id=184805098]
+visible = false
+custom_minimum_size = Vector2(410, 0)
+offset_left = 1482.0
+offset_top = 220.0
+offset_right = 1892.0
+offset_bottom = 230.0
+theme = ExtResource("forest")
+
+[node name="Content" type="VBoxContainer" parent="UI/Birds" unique_id=974808301]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Heading" type="Label" parent="UI/Birds/Content" unique_id=454070404]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("georgia")
+theme_override_font_sizes/font_size = 29
+text = "Bird clearing"
+
+[node name="State" type="Label" parent="UI/Birds/Content" unique_id=1902742817]
+layout_mode = 2
+text = "Flying"
+
+[node name="Status" type="Label" parent="UI/Birds/Content" unique_id=65049725]
+layout_mode = 2
+text = "Ask Maple or Wren for crumbs first."
+autowrap_mode = 3
+
+[node name="Feed" type="Button" parent="UI/Birds/Content" unique_id=154020242]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("forest")
+script = ExtResource("button")
+action = "interact"
+
+[node name="Row" type="HBoxContainer" parent="UI/Birds/Content/Feed" unique_id=481471479]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Birds/Content/Feed/Row" unique_id=231263031]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Birds/Content/Feed/Row/Key" unique_id=26483369]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Birds/Content/Feed/Row" unique_id=1019948793]
+layout_mode = 2
+text = "Scatter sourdough crumbs"
+vertical_alignment = 1
+
+[node name="MusicMotes" type="Node3D" parent="." unique_id=2030777010]
+visible = false
+
+[node name="Mote0" type="MeshInstance3D" parent="MusicMotes" unique_id=1763282947]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_igivu")
+
+[node name="Mote1" type="MeshInstance3D" parent="MusicMotes" unique_id=1854912520]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_fg458")
+
+[node name="Mote2" type="MeshInstance3D" parent="MusicMotes" unique_id=1669018037]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ocn3c")
+
+[node name="Mote3" type="MeshInstance3D" parent="MusicMotes" unique_id=701079727]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_y1pnx")
+
+[node name="Mote4" type="MeshInstance3D" parent="MusicMotes" unique_id=1318541056]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_h43lg")
+
+[node name="Mote5" type="MeshInstance3D" parent="MusicMotes" unique_id=754130686]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_2ef32")
+
+[node name="Mote6" type="MeshInstance3D" parent="MusicMotes" unique_id=886836317]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ew77p")
+
+[node name="Mote7" type="MeshInstance3D" parent="MusicMotes" unique_id=2058247666]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_w5mom")
+
+[node name="Mote8" type="MeshInstance3D" parent="MusicMotes" unique_id=2098548684]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_l4wxr")
+
+[node name="Mote9" type="MeshInstance3D" parent="MusicMotes" unique_id=1083054986]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ubb4t")
+
+[node name="Mote10" type="MeshInstance3D" parent="MusicMotes" unique_id=517545199]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_x7p7x")
+
+[node name="Mote11" type="MeshInstance3D" parent="MusicMotes" unique_id=1145717597]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_wbgpq")
+
+[node name="Mote12" type="MeshInstance3D" parent="MusicMotes" unique_id=229475081]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_jiauw")
+
+[node name="Mote13" type="MeshInstance3D" parent="MusicMotes" unique_id=140922529]
+cast_shadow = 0
+mesh = SubResource("SphereMesh_vmp1s")
+
 [connection signal="moment" from="UI/Journal" to="." method="set_moment"]
 [connection signal="text_changed" from="UI/Journal/Content/Write/Note" to="UI/Journal" method="text_changed"]
 [connection signal="pressed" from="UI/Journal/Content/Write/Save" to="UI/Journal" method="save_note"]
@@ -792,3 +1529,14 @@ vertical_alignment = 1
 [connection signal="pressed" from="UI/Enter" to="." method="enter_nearby"]
 [connection signal="pressed" from="UI/Leave" to="." method="leave"]
 [connection signal="pressed" from="UI/Collapse" to="." method="toggle_controls"]
+[connection signal="pressed" from="UI/Music/Content/Toggle" to="." method="toggle_music"]
+[connection signal="item_selected" from="UI/Music/Content/Soundtrack" to="." method="select_soundtrack"]
+[connection signal="pressed" from="UI/Music/Content/Levels" to="." method="sound_levels"]
+[connection signal="pressed" from="UI/Tea/Content/Gift0" to="." method="tea_action" binds= [0]]
+[connection signal="pressed" from="UI/Tea/Content/Gift1" to="." method="tea_action" binds= [1]]
+[connection signal="pressed" from="UI/Tea/Content/Gift2" to="." method="tea_action" binds= [2]]
+[connection signal="pressed" from="UI/Tea/Content/Gift3" to="." method="tea_action" binds= [3]]
+[connection signal="pressed" from="UI/Tea/Content/Gift4" to="." method="tea_action" binds= [4]]
+[connection signal="pressed" from="UI/Tea/Content/Drink" to="." method="tea_action" binds= [5]]
+[connection signal="pressed" from="UI/Tea/Content/Garden" to="." method="visit_garden"]
+[connection signal="pressed" from="UI/Birds/Content/Feed" to="." method="feed_birds"]

@@ -1,0 +1,2 @@
+c5c7c91280c7a2cb17c604b138a378a4cd35c3491264374d92f3cc778e29cf9d  Hearthwillow-macOS-universal.zip
+0d515d3713b12fb1d435fc650414e2df1728756399ac378052058b27ca1a86e6  Hearthwillow-Windows-x64.zip

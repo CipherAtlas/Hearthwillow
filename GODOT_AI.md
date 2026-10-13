@@ -14,6 +14,12 @@ Project memory for AI assistants (read by Godot Forge). Keep it short and curren
 - Style: Original painted scenery, spirit, original recordings, Georgia/Outfit UI.
 
 ## Decisions
+- Night lighting lives in saved village_lighting.tscn plus village_lighting.gd:
+  ten spirit material baselines, painted window emission, 41 lantern halos,
+  23 authored lamp nodes (only two active, selected at 10 Hz), and hearth light.
+- Contact audio: walking gain .25, hoof gain .18, 220 ms minimum interval;
+  source horse stride/scale cadence and distinct hoof recordings. Run
+  milestone-night-audio and milestone-farm-horses after these changes.
 - Source `/Users/sabar/Documents/cosy-v1` is read-only; no Worker, multiplayer, editor or admin.
 - Saved scenes/resources are canonical; static content stays editable in the Godot editor.
 - All visual tests/captures use true 1920×1080. Set view.game max_size=1920 explicitly.
@@ -25,7 +31,8 @@ Project memory for AI assistants (read by Godot Forge). Keep it short and curren
 - Focus deadlines use Unix time and an atomic local config; cat/room are private.
 - Race invitations require talking to Rowan while unmounted; eight ordered gates.
 - WorldSurface owns placement transforms and route-distance rules for collision/contact sound.
-- User deferred the clean sustained FPS benchmark. Do not claim 120+ FPS is met.
+- User resumed sustained release FPS benchmarking on 2026-10-13. Use native
+  1920×1080, representative moving scenarios and frame-time tails; no 120+ claim until measured.
 - Read README.md for the documentation index, MILESTONE.md for status/backlog,
   docs/ARCHITECTURE.md for ownership/save contracts, docs/DEVELOPMENT.md for the
   safe workflow and docs/VERIFICATION.md for evidence boundaries.
@@ -35,9 +42,15 @@ Project memory for AI assistants (read by Godot Forge). Keep it short and curren
   saves/imports/exports preserve multiline notes and duplicate counts.
 - Swings and picnic cushions choose facing from approach, T turns in place; W/S
   pump relative to facing. Keep picnic E eating/F basket available while locked.
-- Reduced motion is saved/exposed for new rituals/pond and existing cat. Full
-  outdoor/weather parity is still incomplete. Japanese uses explicit system fallbacks.
-- Remaining gameplay is the hearth/other place-controls audit. FPS stays deferred.
+- Reduced motion now reaches outdoor actors/shaders/rain, cameras, cottage and
+  cooking/watering; clocks keep running. Japanese uses explicit system fallbacks.
+- Live destination audit visited all 17 places; hearth/tea/birds/garden activity
+  entry and tower lookout are restored. MILESTONE.md records scope and evidence.
+- Completed release baseline: 16 views, 5s warmup +30s measured per view, native
+  1080p Detailed/MSAA 4x. Night walk 70.3 FPS, hearth 72.0, lookout 59.5; 120 FPS
+  fails. Measured snapshot predates final small corrections; see VERIFICATION.md.
+- Live-parity regressions: four suites / 450 steps pass, 15 changed scripts clean;
+  seven native captures are full 1920×1080. Physical listening/visual acceptance open.
 - See evidence/quiet-validation-final.json and docs/VERIFICATION.md for boundaries.
 - Map checkpoint: 17 fixed destination icons plus visitor only; never track NPCs,
   animals or dogs. Terrain is a cached TextureRect, visitor a separate CanvasItem;

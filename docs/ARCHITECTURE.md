@@ -19,15 +19,17 @@ resources directly, without Three.js, the web app, a converter server or Worker.
 | `HUD/Speech` | Head-anchored overlays, visibility and nearby buttons | `village_dialogue.gd` |
 | `VillageFlock` | Native source dove parts, flight/landing/crumbs and meal phases | `village_flock.gd` |
 | `VillageSound` | Native players, mix, spatial ambience, crossfades and cues | `village_sound.gd` |
+| `VillageLighting` → `village_lighting.tscn` | Saved lantern halos/point lights/hearth; cached spirit, glass, coal and water weather updates; two closest lamps at 10 Hz | `village_lighting.gd` |
 | `HUD/Menus` → `menus.tscn` | Starter/guide/settings/inventory, rebinding, language/weather/graphics and blocking | `village_menus.gd` |
 | `HUD/VillageMap` | Cached original landscape, 17 fixed destinations, mini/expanded fit/zoom/pan and travel; visitor on separate CanvasItem | `village_map.gd`, `map_visitor.gd` |
 | `VillageActivities` → `activities.tscn` | Crops/forage/gifts/cooking/dishes, garden UI and saves | `village_activities.gd`, `growth_clock.gd`, `growth_clock_ui.gd` |
 | `VillageSeating` → `seating.tscn` | Seat slots, pointer picking, picnic/bird actions, pendulum swings | `village_seating.gd` |
 | `VillageRace` → `race.tscn` | Invitation/countdown/gates/rival/results/cancel | `village_race.gd` |
 | `FocusCottage` → `focus_cottage.tscn` | Private room/camera/window, timer, desk effects, cat UI | `focus_cottage.gd`, `cottage_cat.gd` |
-| `QuietPlaces` → `quiet_places.tscn` | Writing nook/journal, kind notes, breathing, source camera/poses and entry/exit | `quiet_places.gd`, `village_journal.gd`, `breath_orbit.gd` |
+| `QuietPlaces` → `quiet_places.tscn` | Journal/kind notes/breathing, hearth music, tea, birds/garden staging, source camera/poses and entry/exit | `quiet_places.gd`, `village_journal.gd`, `breath_orbit.gd` |
 | `PondLife` → `pond_life.tscn` | Native swan/duck-family/fish motion; dock feeding panel/input, shared meal/status, hearts/ripples/crumbs and reply anchors | `pond_life.gd` |
-| `ReleaseBenchmark` | Opt-in historical performance harness | `release_benchmark.gd` |
+| `TowerLookout` → `tower_lookout.tscn` | Source platform bounds, first-person walking/look and return to entrance | `tower_lookout.gd` |
+| `ReleaseBenchmark` | Opt-in 16-scenario native release frame-time harness | `release_benchmark.gd` |
 
 The map's saved Paper/Terrain/Landscape/Visitor/Expanded nodes remain editable in
 main.tscn. Terrain clips the landscape; its TextureRect does not regenerate draw
@@ -36,6 +38,23 @@ on view, selection or language changes. Only the visitor's position and heading
 are sampled during play; actor simulation is never queried by the map.
 
 ## Original-source references
+
+VillageMenus passes its eased weather blend to VillageLighting. The latter caches
+materials once, updates only meaningful weather changes, and restores each
+spirit's original day color/emission. Window emission also uses the original
+painted window texture. Lamp lights stay shadow-free, affect outdoor layer 1 and
+activate only the two nearest fixtures; all lantern halos remain visible at night.
+Saved fixture placement comes from extracted glass geometry and authored layout
+transforms, without reconstructing or replacing village.tscn. Water and the lower
+directional fill now follow the same dusk/night transition. Hearth/coal flicker
+continues independently of weather.
+
+Walking and riding share the existing contact player and Effects/Master mix.
+Walking/takeoff/landing gain is 0.25; hoof gain is 0.18. Riding uses sixteen
+source horseAudio.ts cues, and source strides 1.8 / 2.9 / 3.8 multiplied by the
+horse's Z scale. Contacts are limited to one every 0.22 seconds and suppressed
+while idle, in blocking UI or activity poses. Mount/dismount resets accumulated
+contact distance. No new audio dependency or user preference migration is needed.
 
 Paths below are relative to `/Users/sabar/Documents/cosy-v1/features/village/`.
 Read source behavior before adding parity features; scenery is not a state machine.
@@ -194,3 +213,26 @@ can_feed_here check gates distance, mounts, private/locked contexts and UI block
 nearby dock F wins over resident/animal F controls. No-pouch guidance is visible in
 both views. The saved dock panel uses the shared interaction theme/button/keycap,
 updates its content only when state changes and retains gameplay capture.
+
+
+## 2026-10-13 activity and ambience parity
+
+QuietPlaces owns music/tea/bird/garden camera and player locking. VillageActivities
+owns garden state and Luma inventory transactions; garden UI visibility follows
+QuietPlaces collapse/menu state, and both close paths clear ownership before
+calling the other, preventing recursive leave. Map travel releases tower, quiet
+place, seat, race, mount and cottage ownership before entering its destination.
+Resident activity positions come from the original companion stages; entry saves
+positions and leave restores them without losing following flags.
+
+VillageLife owns resident formation/trail and fin contact, running after actor and
+player physics (priority 10). Actors/player restore authored fin transforms every
+physics tick before the temporary contact pose. Dogs retain their separate follow
+slots. Static motes, tea cup, tower controls and camera are saved scene nodes.
+
+Outdoor wind/rain/stream use the saved Outdoor low-pass bus. VillageSound blends
+6500 Hz clear / 3500 Hz rain / 950 Hz cottage with existing shelter gain and moves
+fire sound to the actual saved cottage flame. It excludes outdoor bird calls in
+night/dusk/rain. VillageLighting caches materials with `motion_amount`; the saved
+Reduce motion setting freezes decorative shader time without stopping growth,
+focus, cooking or interaction clocks. Audio-off remains a global silence control.

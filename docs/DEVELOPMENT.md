@@ -155,7 +155,7 @@ check is fine; using it to reconstruct this scene is not.
 Run the smallest meaningful affected checks, resolve new diagnostics and review
 all changed files for scope drift. Restart before final captures; record exact
 1920×1080 evidence, input/fixture boundaries and runtime errors. Never substitute
-an editor FPS point sample or movie capture for the deferred sustained benchmark.
+an editor FPS point sample or movie capture for a sustained release benchmark.
 
 Update MILESTONE status/backlog, relevant architecture/development details and the
 verification evidence index. Keep GODOT_AI concise. Record what actually passed,
@@ -188,3 +188,26 @@ PCK script/asset verification. All nine changed packed GDScripts match the
 verified source hashes. Prior bundle rollback is retained at
 `/tmp/hearthwillow-before-map-capture-2026-10-13.zip`. See Verification for exact
 logs, native screenshots and exporter-shutdown versus game-runtime boundaries.
+
+
+## Native release FPS baseline
+
+Benchmarking was resumed by the user on 2026-10-13. The opt-in harness is disabled
+in ordinary play. Export to a separate local test app; do not replace public
+release artifacts. Stop the editor game and close live-site audit tabs before
+measurement. Keep the native render viewport at 1920×1080.
+
+```sh
+mkdir -p /absolute/path/to/local-test
+godot --headless --path . --export-release "Mac desktop" "/absolute/path/to/local-test/Hearthwillow.app"
+/absolute/path/to/local-test/Hearthwillow.app/Contents/MacOS/Hearthwillow-port -- --benchmark --benchmark-seconds=30 --benchmark-output=/absolute/path/to/fps.json
+```
+
+The harness specifies Detailed/MSAA 4x, shadows, VSync off, normal motion, enabled
+sound and explicit weather per scenario, without saving these preferences.
+Sixteen views each use 5 seconds warmup followed by 30 seconds measurement;
+walking/horse cases issue real input and require more than 5 metres travelled.
+Inspect runtime errors, release/renderer/resolution, movement verification and
+frame-time tails before interpreting averages. Hash the measured runtime files
+and retain export/run logs. Keep normal desktop/background-load and thermal
+limits explicit; this baseline alone does not establish sustained 120+ FPS.

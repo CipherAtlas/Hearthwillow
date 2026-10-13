@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://biapqktxmv0qc"]
+
+[ext_resource type="Script" uid="uid://dkqrry36nlc2l" path="res://scenes/tower_lookout.gd" id="1_hoamp"]
+[ext_resource type="Theme" uid="uid://ckyccrqgdo11q" path="res://scenes/interaction_theme.tres" id="2_qnnw7"]
+[ext_resource type="Script" uid="uid://ysg6i0o1klni" path="res://scenes/interaction_button.gd" id="3_0lty1"]
+[ext_resource type="StyleBox" uid="uid://bow5e54yvrvk2" path="res://scenes/interaction_keycap.tres" id="4_ac0tj"]
+
+[node name="TowerLookout" type="Node3D" unique_id=160009594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -71.5)
+script = ExtResource("1_hoamp")
+
+[node name="Entrance" type="Marker3D" parent="." unique_id=1881771462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5)
+
+[node name="Camera" type="Camera3D" parent="." unique_id=1751684615]
+physics_interpolation_mode = 2
+near = 0.05
+fov = 55.0
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1213112166]
+
+[node name="Controls" type="PanelContainer" parent="UI" unique_id=928616664]
+visible = false
+offset_left = 650.0
+offset_top = 880.0
+offset_right = 1270.0
+offset_bottom = 960.0
+theme = ExtResource("2_qnnw7")
+
+[node name="Content" type="VBoxContainer" parent="UI/Controls" unique_id=1963473879]
+layout_mode = 2
+
+[node name="Heading" type="Label" parent="UI/Controls/Content" unique_id=867096663]
+layout_mode = 2
+text = "Watchtower lookout"
+
+[node name="Help" type="Label" parent="UI/Controls/Content" unique_id=636746953]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="Toggle" type="Button" parent="UI/Controls/Content" unique_id=21721134]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("2_qnnw7")
+script = ExtResource("3_0lty1")
+action = "interact"
+
+[node name="Row" type="HBoxContainer" parent="UI/Controls/Content/Toggle" unique_id=615733175]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Controls/Content/Toggle/Row" unique_id=1137489962]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("4_ac0tj")
+
+[node name="Text" type="Label" parent="UI/Controls/Content/Toggle/Row/Key" unique_id=432543751]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Controls/Content/Toggle/Row" unique_id=1532771035]
+layout_mode = 2
+text = "Go up to the lookout"
+vertical_alignment = 1
+
+[connection signal="pressed" from="UI/Controls/Content/Toggle" to="." method="toggle"]

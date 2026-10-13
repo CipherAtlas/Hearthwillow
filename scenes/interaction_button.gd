@@ -42,7 +42,11 @@ func flash() -> void:
 	if feedback: feedback.kill()
 	modulate = Color(1.16,1.16,1.16)
 	feedback = create_tween()
-	feedback.tween_property(self,"modulate",Color.WHITE,.16)
+	var menus := get_tree().current_scene.get_node_or_null("HUD/Menus")
+	if menus and menus.reduced_motion:
+		feedback.tween_interval(.16)
+		feedback.tween_callback(func(): modulate = Color.WHITE)
+	else: feedback.tween_property(self,"modulate",Color.WHITE,.16)
 
 func begin_hold() -> void:
 	if hold_action and not disabled and not action.is_empty():
@@ -56,6 +60,9 @@ func end_hold() -> void:
 
 func release_hidden() -> void:
 	if not is_visible_in_tree(): end_hold()
+
+func _notification(what: int) -> void:
+	if what==NOTIFICATION_APPLICATION_FOCUS_OUT: end_hold()
 
 func _exit_tree() -> void:
 	end_hold()

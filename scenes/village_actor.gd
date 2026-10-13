@@ -71,18 +71,23 @@ func _physics_process(delta: float) -> void:
 	if action != "idle" and action_age >= action_duration: action = "idle"
 	if not ridden: life.move_actor(self,delta)
 	var speed := Vector2(velocity.x,velocity.z).length()
+	var motion := 0.0 if life.get_parent().get_node("HUD/Menus").reduced_motion else 1.0
 	if actor_kind == "resident":
 		var phase: float = profile.get("phase",0)
-		pose.position.y = sin(elapsed*2.5+phase)*.065
+		var staged: bool = life.get_parent().get_node("QuietPlaces").participant_returns.has(actor_id)
+		pose.position.y = sin(elapsed*2.5+phase)*(.025 if staged else .065)*motion
 		pose.rotation.x = speed*.035
-		pose.rotation.z = sin(elapsed*1.6+phase)*.035
+		pose.rotation.z = sin(elapsed*1.6+phase)*.035*motion
 		for i in fin_nodes.size():
 			fin_nodes[i].transform = fin_bases[i]
-			fin_nodes[i].rotate_object_local(Vector3.BACK,sin((elapsed+phase)*(8 if speed > .1 else 3)+i*PI)*.18)
+			fin_nodes[i].rotate_object_local(Vector3.BACK,sin((elapsed+phase)*(8 if speed > .1 else 3)+i*PI)*.18*motion)
 	elif animation_player:
 		var clip := "canter" if ridden and speed > 6 else "trot" if ridden and speed > 3.2 else "feed" if actor_kind == "owl" and action == "eat" else action if action != "idle" else "walk" if speed > .1 else "idle"
+		if motion==0: clip = "idle"
 		if not clips.has(clip): clip = "pet" if action != "idle" else "idle"
 		if clips.has(clip) and animation_player.current_animation != clips[clip]: animation_player.play(clips[clip],.15)
+		animation_player.speed_scale = motion
+		if motion==0: animation_player.seek(0,true)
 	elif actor_kind == "hedgehog":
-		pose.rotation.z = sin(action_age*2.2)*.065 if action == "pet" else sin(elapsed*2)*.015
+		pose.rotation.z = (sin(action_age*2.2)*.065 if action == "pet" else sin(elapsed*2)*.015)*motion
 

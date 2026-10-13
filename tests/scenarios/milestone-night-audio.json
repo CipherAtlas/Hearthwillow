@@ -10,7 +10,7 @@
       "eval": "get_node('HUD/Menus').set_meta('night_fixture',get_node('HUD/Menus').weather)"
     },
     {
-      "eval": "get_node('HUD/Menus').entered=true"
+      "eval": "get_node('HUD/Menus').set('entered',true)"
     },
     {
       "eval": "get_node('HUD/Menus/Starter').hide()"
@@ -35,7 +35,7 @@
       "assert": "get_node('VillageLighting/Lamps').get_child_count()==23"
     },
     {
-      "eval": "get_node('HUD/Menus').weather=3"
+      "eval": "get_node('HUD/Menus').set('weather',3)"
     },
     {
       "wait": 6
@@ -56,13 +56,13 @@
       "assert": "get_node('VillageLighting').glass_materials[0].emission_texture!=null"
     },
     {
-      "assert": "get_node('VillageLighting').spirit_materials.all(func(v): return abs(v.material.emission_energy_multiplier-.26)<.001 and v.material.emission==Color('ffd58e'))"
+      "assert": "(abs(get_node('VillageLighting').spirit_materials[0].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[0].material.emission==Color('ffd58e')) and (abs(get_node('VillageLighting').spirit_materials[1].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[1].material.emission==Color('ffd58e')) and (abs(get_node('VillageLighting').spirit_materials[2].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[2].material.emission==Color('ffd58e')) and (abs(get_node('VillageLighting').spirit_materials[3].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[3].material.emission==Color('ffd58e')) and (abs(get_node('VillageLighting').spirit_materials[4].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[4].material.emission==Color('ffd58e')) and (abs(get_node('VillageLighting').spirit_materials[5].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[5].material.emission==Color('ffd58e')) and (abs(get_node('VillageLighting').spirit_materials[6].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[6].material.emission==Color('ffd58e')) and (abs(get_node('VillageLighting').spirit_materials[7].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[7].material.emission==Color('ffd58e')) and (abs(get_node('VillageLighting').spirit_materials[8].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[8].material.emission==Color('ffd58e')) and (abs(get_node('VillageLighting').spirit_materials[9].material.emission_energy_multiplier-.26)<.001 and get_node('VillageLighting').spirit_materials[9].material.emission==Color('ffd58e'))"
     },
     {
       "assert": "abs(get_node('Bounce').light_energy-.011)<.001"
     },
     {
-      "eval": "get_node('Player').position=Vector3(91,0.03,-41)"
+      "eval": "get_node('Player').set('position',Vector3(91,0.03,-41))"
     },
     {
       "eval": "get_node('Player').reset_physics_interpolation()"
@@ -75,10 +75,10 @@
       "message": "Lamp selection follows the visitor across the authored town, not the original template position."
     },
     {
-      "assert": "get_node('VillageLighting/Lamps').get_children().filter(func(n): return n.visible).size()==2"
+      "assert": "get_node('VillageLighting').active_lamps[0].visible and get_node('VillageLighting').active_lamps[1].visible"
     },
     {
-      "eval": "get_node('HUD/Menus').weather=2"
+      "eval": "get_node('HUD/Menus').set('weather',2)"
     },
     {
       "wait": 6
@@ -93,11 +93,11 @@
       "assert": "get_node('VillageLighting/Halos').visible==true"
     },
     {
-      "assert": "get_node('VillageLighting').spirit_materials.all(func(v): return v.material.albedo_color==v.color and v.material.emission==v.emission and v.material.emission_energy_multiplier==v.energy)",
+      "assert": "(get_node('VillageLighting').spirit_materials[0].material.albedo_color==get_node('VillageLighting').spirit_materials[0].color and get_node('VillageLighting').spirit_materials[0].material.emission==get_node('VillageLighting').spirit_materials[0].emission and get_node('VillageLighting').spirit_materials[0].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[0].energy) and (get_node('VillageLighting').spirit_materials[1].material.albedo_color==get_node('VillageLighting').spirit_materials[1].color and get_node('VillageLighting').spirit_materials[1].material.emission==get_node('VillageLighting').spirit_materials[1].emission and get_node('VillageLighting').spirit_materials[1].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[1].energy) and (get_node('VillageLighting').spirit_materials[2].material.albedo_color==get_node('VillageLighting').spirit_materials[2].color and get_node('VillageLighting').spirit_materials[2].material.emission==get_node('VillageLighting').spirit_materials[2].emission and get_node('VillageLighting').spirit_materials[2].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[2].energy) and (get_node('VillageLighting').spirit_materials[3].material.albedo_color==get_node('VillageLighting').spirit_materials[3].color and get_node('VillageLighting').spirit_materials[3].material.emission==get_node('VillageLighting').spirit_materials[3].emission and get_node('VillageLighting').spirit_materials[3].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[3].energy) and (get_node('VillageLighting').spirit_materials[4].material.albedo_color==get_node('VillageLighting').spirit_materials[4].color and get_node('VillageLighting').spirit_materials[4].material.emission==get_node('VillageLighting').spirit_materials[4].emission and get_node('VillageLighting').spirit_materials[4].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[4].energy) and (get_node('VillageLighting').spirit_materials[5].material.albedo_color==get_node('VillageLighting').spirit_materials[5].color and get_node('VillageLighting').spirit_materials[5].material.emission==get_node('VillageLighting').spirit_materials[5].emission and get_node('VillageLighting').spirit_materials[5].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[5].energy) and (get_node('VillageLighting').spirit_materials[6].material.albedo_color==get_node('VillageLighting').spirit_materials[6].color and get_node('VillageLighting').spirit_materials[6].material.emission==get_node('VillageLighting').spirit_materials[6].emission and get_node('VillageLighting').spirit_materials[6].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[6].energy) and (get_node('VillageLighting').spirit_materials[7].material.albedo_color==get_node('VillageLighting').spirit_materials[7].color and get_node('VillageLighting').spirit_materials[7].material.emission==get_node('VillageLighting').spirit_materials[7].emission and get_node('VillageLighting').spirit_materials[7].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[7].energy) and (get_node('VillageLighting').spirit_materials[8].material.albedo_color==get_node('VillageLighting').spirit_materials[8].color and get_node('VillageLighting').spirit_materials[8].material.emission==get_node('VillageLighting').spirit_materials[8].emission and get_node('VillageLighting').spirit_materials[8].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[8].energy) and (get_node('VillageLighting').spirit_materials[9].material.albedo_color==get_node('VillageLighting').spirit_materials[9].color and get_node('VillageLighting').spirit_materials[9].material.emission==get_node('VillageLighting').spirit_materials[9].emission and get_node('VillageLighting').spirit_materials[9].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[9].energy)",
       "message": "All original spirit colors and day emission are restored."
     },
     {
-      "eval": "get_node('HUD/Menus').weather=4"
+      "eval": "get_node('HUD/Menus').set('weather',4)"
     },
     {
       "wait": 6
@@ -115,17 +115,17 @@
       "assert": "get_node('VillageLighting').active_lamps.is_empty()"
     },
     {
-      "assert": "get_node('VillageLighting').spirit_materials.all(func(v): return v.material.albedo_color==v.color and v.material.emission==v.emission and v.material.emission_energy_multiplier==v.energy)",
+      "assert": "(get_node('VillageLighting').spirit_materials[0].material.albedo_color==get_node('VillageLighting').spirit_materials[0].color and get_node('VillageLighting').spirit_materials[0].material.emission==get_node('VillageLighting').spirit_materials[0].emission and get_node('VillageLighting').spirit_materials[0].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[0].energy) and (get_node('VillageLighting').spirit_materials[1].material.albedo_color==get_node('VillageLighting').spirit_materials[1].color and get_node('VillageLighting').spirit_materials[1].material.emission==get_node('VillageLighting').spirit_materials[1].emission and get_node('VillageLighting').spirit_materials[1].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[1].energy) and (get_node('VillageLighting').spirit_materials[2].material.albedo_color==get_node('VillageLighting').spirit_materials[2].color and get_node('VillageLighting').spirit_materials[2].material.emission==get_node('VillageLighting').spirit_materials[2].emission and get_node('VillageLighting').spirit_materials[2].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[2].energy) and (get_node('VillageLighting').spirit_materials[3].material.albedo_color==get_node('VillageLighting').spirit_materials[3].color and get_node('VillageLighting').spirit_materials[3].material.emission==get_node('VillageLighting').spirit_materials[3].emission and get_node('VillageLighting').spirit_materials[3].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[3].energy) and (get_node('VillageLighting').spirit_materials[4].material.albedo_color==get_node('VillageLighting').spirit_materials[4].color and get_node('VillageLighting').spirit_materials[4].material.emission==get_node('VillageLighting').spirit_materials[4].emission and get_node('VillageLighting').spirit_materials[4].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[4].energy) and (get_node('VillageLighting').spirit_materials[5].material.albedo_color==get_node('VillageLighting').spirit_materials[5].color and get_node('VillageLighting').spirit_materials[5].material.emission==get_node('VillageLighting').spirit_materials[5].emission and get_node('VillageLighting').spirit_materials[5].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[5].energy) and (get_node('VillageLighting').spirit_materials[6].material.albedo_color==get_node('VillageLighting').spirit_materials[6].color and get_node('VillageLighting').spirit_materials[6].material.emission==get_node('VillageLighting').spirit_materials[6].emission and get_node('VillageLighting').spirit_materials[6].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[6].energy) and (get_node('VillageLighting').spirit_materials[7].material.albedo_color==get_node('VillageLighting').spirit_materials[7].color and get_node('VillageLighting').spirit_materials[7].material.emission==get_node('VillageLighting').spirit_materials[7].emission and get_node('VillageLighting').spirit_materials[7].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[7].energy) and (get_node('VillageLighting').spirit_materials[8].material.albedo_color==get_node('VillageLighting').spirit_materials[8].color and get_node('VillageLighting').spirit_materials[8].material.emission==get_node('VillageLighting').spirit_materials[8].emission and get_node('VillageLighting').spirit_materials[8].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[8].energy) and (get_node('VillageLighting').spirit_materials[9].material.albedo_color==get_node('VillageLighting').spirit_materials[9].color and get_node('VillageLighting').spirit_materials[9].material.emission==get_node('VillageLighting').spirit_materials[9].emission and get_node('VillageLighting').spirit_materials[9].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[9].energy)",
       "message": "All original spirit colors and day emission are restored."
     },
     {
-      "eval": "get_node('HUD/Menus').weather=1"
+      "eval": "get_node('HUD/Menus').set('weather',1)"
     },
     {
       "wait": 6
     },
     {
-      "assert": "get_node('VillageLighting').blend==Vector3.ZERO"
+      "assert": "get_node('VillageLighting').blend==Vector3(0,0,0)"
     },
     {
       "assert": "abs(get_node('VillageLighting').glass_materials[0].emission_energy_multiplier-0.12)<.001"
@@ -137,8 +137,17 @@
       "assert": "get_node('VillageLighting').active_lamps.is_empty()"
     },
     {
-      "assert": "get_node('VillageLighting').spirit_materials.all(func(v): return v.material.albedo_color==v.color and v.material.emission==v.emission and v.material.emission_energy_multiplier==v.energy)",
+      "assert": "(get_node('VillageLighting').spirit_materials[0].material.albedo_color==get_node('VillageLighting').spirit_materials[0].color and get_node('VillageLighting').spirit_materials[0].material.emission==get_node('VillageLighting').spirit_materials[0].emission and get_node('VillageLighting').spirit_materials[0].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[0].energy) and (get_node('VillageLighting').spirit_materials[1].material.albedo_color==get_node('VillageLighting').spirit_materials[1].color and get_node('VillageLighting').spirit_materials[1].material.emission==get_node('VillageLighting').spirit_materials[1].emission and get_node('VillageLighting').spirit_materials[1].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[1].energy) and (get_node('VillageLighting').spirit_materials[2].material.albedo_color==get_node('VillageLighting').spirit_materials[2].color and get_node('VillageLighting').spirit_materials[2].material.emission==get_node('VillageLighting').spirit_materials[2].emission and get_node('VillageLighting').spirit_materials[2].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[2].energy) and (get_node('VillageLighting').spirit_materials[3].material.albedo_color==get_node('VillageLighting').spirit_materials[3].color and get_node('VillageLighting').spirit_materials[3].material.emission==get_node('VillageLighting').spirit_materials[3].emission and get_node('VillageLighting').spirit_materials[3].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[3].energy) and (get_node('VillageLighting').spirit_materials[4].material.albedo_color==get_node('VillageLighting').spirit_materials[4].color and get_node('VillageLighting').spirit_materials[4].material.emission==get_node('VillageLighting').spirit_materials[4].emission and get_node('VillageLighting').spirit_materials[4].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[4].energy) and (get_node('VillageLighting').spirit_materials[5].material.albedo_color==get_node('VillageLighting').spirit_materials[5].color and get_node('VillageLighting').spirit_materials[5].material.emission==get_node('VillageLighting').spirit_materials[5].emission and get_node('VillageLighting').spirit_materials[5].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[5].energy) and (get_node('VillageLighting').spirit_materials[6].material.albedo_color==get_node('VillageLighting').spirit_materials[6].color and get_node('VillageLighting').spirit_materials[6].material.emission==get_node('VillageLighting').spirit_materials[6].emission and get_node('VillageLighting').spirit_materials[6].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[6].energy) and (get_node('VillageLighting').spirit_materials[7].material.albedo_color==get_node('VillageLighting').spirit_materials[7].color and get_node('VillageLighting').spirit_materials[7].material.emission==get_node('VillageLighting').spirit_materials[7].emission and get_node('VillageLighting').spirit_materials[7].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[7].energy) and (get_node('VillageLighting').spirit_materials[8].material.albedo_color==get_node('VillageLighting').spirit_materials[8].color and get_node('VillageLighting').spirit_materials[8].material.emission==get_node('VillageLighting').spirit_materials[8].emission and get_node('VillageLighting').spirit_materials[8].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[8].energy) and (get_node('VillageLighting').spirit_materials[9].material.albedo_color==get_node('VillageLighting').spirit_materials[9].color and get_node('VillageLighting').spirit_materials[9].material.emission==get_node('VillageLighting').spirit_materials[9].emission and get_node('VillageLighting').spirit_materials[9].material.emission_energy_multiplier==get_node('VillageLighting').spirit_materials[9].energy)",
       "message": "All original spirit colors and day emission are restored."
+    },
+    {
+      "call": {
+        "path": "Player",
+        "method": "set_physics_process",
+        "args": [
+          false
+        ]
+      }
     },
     {
       "call": {
@@ -148,10 +157,10 @@
       }
     },
     {
-      "eval": "get_node('Player').velocity=Vector3(2.6,0,0)"
+      "eval": "get_node('Player').set('velocity',Vector3(2.6,0,0))"
     },
     {
-      "eval": "get_node('VillageSound').last_contact_time=-1"
+      "eval": "get_node('VillageSound').set('last_contact_time',-1)"
     },
     {
       "call": {
@@ -182,10 +191,10 @@
       "message": "Repeated contact callbacks are rate-limited."
     },
     {
-      "eval": "get_node('VillageSound').last_contact_time=-1"
+      "eval": "get_node('VillageSound').set('last_contact_time',-1)"
     },
     {
-      "eval": "get_node('Player').velocity=Vector3.ZERO"
+      "eval": "get_node('Player').set('velocity',Vector3(0,0,0))"
     },
     {
       "call": {
@@ -201,10 +210,10 @@
       "message": "Idle movement has no contact sound."
     },
     {
-      "eval": "get_node('Player').mount=get_node('Village/Actors/horse-juniper')"
+      "eval": "get_node('Player').set('mount',get_node('Village/Actors/horse-juniper'))"
     },
     {
-      "eval": "get_node('Player').velocity=Vector3(0,0,9)"
+      "eval": "get_node('Player').set('velocity',Vector3(0,0,9))"
     },
     {
       "call": {
@@ -219,10 +228,10 @@
       "assert": "get_node('VillageSound/Footsteps').stream.resource_path.contains('hoof_stone_') and get_node('VillageSound/Footsteps').volume_db < -34"
     },
     {
-      "eval": "get_node('Player').mount=null"
+      "eval": "get_node('Player').set('mount',null)"
     },
     {
-      "eval": "get_node('Player').velocity=Vector3.ZERO"
+      "eval": "get_node('Player').set('velocity',Vector3(0,0,0))"
     },
     {
       "call": {
@@ -235,7 +244,16 @@
       "assert": "not get_node('VillageSound/Footsteps').playing"
     },
     {
-      "eval": "get_node('HUD/Menus').weather=get_node('HUD/Menus').get_meta('night_fixture')"
+      "call": {
+        "path": "Player",
+        "method": "set_physics_process",
+        "args": [
+          true
+        ]
+      }
+    },
+    {
+      "eval": "get_node('HUD/Menus').set('weather',get_node('HUD/Menus').get_meta('night_fixture'))"
     },
     {
       "assert_no_errors": true

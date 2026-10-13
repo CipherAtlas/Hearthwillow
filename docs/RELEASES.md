@@ -47,8 +47,10 @@ smoke check. Windows gameplay, graphics, audio, saves, and download security
 prompts require testing on a Windows PC. Mac Gatekeeper download acceptance also
 needs testing through an actual browser download on another Mac.
 
-This work does not resume the deferred sustained FPS benchmark. Startup, archive,
-and signature checks are not performance or full playthrough acceptance.
+Startup, archive and signature checks are not performance or full playthrough
+acceptance. The latest separately recorded M4 benchmark and its source-snapshot
+boundary are documented in [verification](VERIFICATION.md); it does not establish
+performance for the exact final preview package.
 
 ## Initial preview preparation — 2026-10-13
 
@@ -57,10 +59,31 @@ extraction and contains arm64/x86_64; its release startup and a 1920×1080 Metal
 starter render pass without runtime errors. Both packs load required scene
 resources and 11 runtime data files; all packed gameplay scripts match the frozen
 source. The Windows executable is PE32+ x86-64. Windows runtime and another-Mac
-browser-download acceptance remain untested. The initial release is a draft.
+browser-download acceptance remain untested. The initial snapshot was saved as
+a draft; the validation below covers its rebuilt replacement assets.
 
 See [the release report](../evidence/release-preparation-20261013.json),
 [source hashes](../evidence/release-source-hashes-20261013.json), and
 [the release starter](../evidence/release-starter-1080p.png). Exporter shutdown
 still reports the previously recorded retained ObjectDB/resources, while the
 release runtime logs are clean. The starter movie frame is not an FPS result.
+
+## Preview 1 final release validation — 2026-10-13
+
+`v0.1.0-preview.1` includes all completed night/audio and destination-parity
+changes, including the final tea contrast, reduced-motion flock and companion
+corrections. Both ZIPs were rebuilt from the same frozen staged source, replacing
+the earlier draft downloads. The [README](../README.md) links directly to each ZIP.
+
+The rebuilt archives pass integrity checks. The extracted universal Mac app has
+a valid ad-hoc signature, starts cleanly, and renders its starter at 1920×1080
+with Metal on Apple M4. Both packs match 52 source/data hashes and load seven
+required resources, including the tea cup, companion stages, lookout and audio
+bus layout. All 101 scene/shader/settings hashes match the staged source.
+
+The four saved gameplay suites pass 450 steps; those results are reused here.
+Windows gameplay and another-Mac download acceptance remain untested. The movie
+capture verifies startup rendering, not performance. See [validation](../evidence/preview1-release-validation.json),
+[source hashes](../evidence/preview1-source-hashes.json),
+[checksums](../evidence/preview1-SHA256SUMS.txt) and
+[starter capture](../evidence/preview1-starter-1080p.png).

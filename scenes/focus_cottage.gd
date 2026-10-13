@@ -139,20 +139,20 @@ func _process(delta: float) -> void:
 					$Chime.play()
 		refresh()
 	if not inside: return
-	var time := Time.get_ticks_msec()/1000.0
+	var time := 0.0 if menus.reduced_motion else Time.get_ticks_msec()/1000.0
 	for index in steam.size():
 		var phase := fposmod(time*.42+index/3.0,1.0)
 		steam[index].position.x = (index-1)*.055+sin(time*1.3+index*2.2)*.015
 		steam[index].position.y = .265+phase*.18
 		steam[index].scale = Vector3(1+phase*.28,.72+phase*.42,1+phase*.28)
-		steam[index].get_active_material(0).albedo_color.a = .6*sin(PI*phase)
-	applied_orbit = applied_orbit.lerp(orbit,1-exp(-12*delta))
+		steam[index].get_active_material(0).albedo_color.a = .3 if menus.reduced_motion else .6*sin(PI*phase)
+	applied_orbit = applied_orbit.lerp(orbit,1.0 if menus.reduced_motion else 1-exp(-12*delta))
 	var look := Vector3(-.15,1.2,-1.65)
 	var offset := Vector3(.45,1.7,5.1).rotated(Vector3.UP,applied_orbit.x)
 	offset.y += applied_orbit.y*2.5
 	var destination := look+offset
 	destination = destination.clamp(Vector3(-3.5,.6,-3.45),Vector3(3.5,3.9,3.5))
-	camera.position = camera.position.lerp(destination,1-exp(-7*delta))
+	camera.position = camera.position.lerp(destination,1.0 if menus.reduced_motion else 1-exp(-7*delta))
 	camera.look_at(global_position+look)
 	window_due -= delta
 	if window_due<=0:
@@ -164,7 +164,7 @@ func _process(delta: float) -> void:
 	$Desk/Hourglass/Top.scale.y = maxf(.03,1-progress)
 	$Desk/Hourglass/Bottom.scale.y = maxf(.03,progress)
 	$Desk/Hourglass/Stream.visible = running
-	$Desk/Quill.rotation.z = sin(Time.get_ticks_msec()/1000.0*3)*.065 if running and not menus.auto_low else 0.0
+	$Desk/Quill.rotation.z = sin(time*3)*.065 if running and not menus.reduced_motion and not menus.auto_low else 0.0
 	next_save -= delta
 	if running and next_save<=0: next_save = 5; save_session()
 

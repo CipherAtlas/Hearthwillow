@@ -9,6 +9,8 @@ extends Node3D
 var spirit_materials: Array[Dictionary] = []
 var glass_materials: Array[StandardMaterial3D] = []
 var water_materials: Array[ShaderMaterial] = []
+var motion_materials: Array[ShaderMaterial] = []
+var reduced_cached := -1
 var coal_materials: Array[StandardMaterial3D] = []
 var blend := Vector3(-1, -1, -1)
 var lamp_countdown := 0.0
@@ -17,7 +19,7 @@ var active_lamps: Array[OmniLight3D] = []
 func _ready() -> void:
 	var seen := {}
 	# Cache imported and merged materials once; weather never walks the scenery tree.
-	for root: Node in [world.get_node("Village"), player]:
+	for root: Node in [world.get_node("Village"), player, world.get_node("VillageActivities"), world.get_node("FocusCottage")]:
 		for node: Node in root.find_children("*", "GeometryInstance3D", true, false):
 			var mesh: Mesh = node.multimesh.mesh if node is MultiMeshInstance3D else node.mesh if node is MeshInstance3D else null
 			if not mesh: continue
@@ -34,8 +36,9 @@ func _ready() -> void:
 						glass_materials.append(material)
 					elif material.resource_name == "Village material 42":
 						coal_materials.append(material)
-				elif material is ShaderMaterial and material.shader.resource_path == "res://assets/shaders/water.gdshader":
-					water_materials.append(material)
+				elif material is ShaderMaterial:
+					if material.shader.code.contains("uniform float motion_amount"): motion_materials.append(material)
+					if material.shader.resource_path == "res://assets/shaders/water.gdshader": water_materials.append(material)
 
 func set_weather(value: Vector3) -> void:
 	if blend.distance_squared_to(value) < .000001: return
@@ -68,10 +71,17 @@ func _process(delta: float) -> void:
 	if lamp_countdown <= 0:
 		lamp_countdown = lamp_update_interval
 		update_lamps()
-	var time := Time.get_ticks_msec() / 1000.0
+	var reduced: bool = world.get_node("HUD/Menus").reduced_motion
+	set_motion(reduced)
+	var time := 0.0 if reduced else Time.get_ticks_msec() / 1000.0
 	$HearthLight.light_energy = (8.5 + sin(time * 5.7) * .6 + sin(time * 11.3) * .3) * .25
 	for material: StandardMaterial3D in coal_materials:
 		material.emission_energy_multiplier = .45 + maxf(0, blend.z) * .9 + sin(time * 2.1) * .1
+
+func set_motion(reduced: bool) -> void:
+	if reduced_cached==int(reduced): return
+	reduced_cached = int(reduced)
+	for material: ShaderMaterial in motion_materials: material.set_shader_parameter("motion_amount",0.0 if reduced else 1.0)
 
 func update_lamps() -> void:
 	for light: OmniLight3D in active_lamps: light.visible = false

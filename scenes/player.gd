@@ -31,8 +31,10 @@ var coyote_time := 0.0
 var elapsed := 0.0
 var step_distance := 0.0
 var grounded_last_frame := false
+var fin_bases: Array[Transform3D] = []
 
 func _ready() -> void:
+	fin_bases = [left_fin.transform,right_fin.transform]
 	position = surface.recovery_spot(Vector2(.3,20))
 	visual.rotation.y = PI
 
@@ -48,6 +50,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	elapsed += delta
+	left_fin.transform = fin_bases[0]; right_fin.transform = fin_bases[1]
 	if activity_locked: return
 	if mount:
 		move_horse(delta)
@@ -86,11 +89,13 @@ func _physics_process(delta: float) -> void:
 	gait = "air" if not is_on_floor() else "idle" if horizontal_speed < .1 else "dash" if speed == dash_speed else "glide" if gliding else "walk"
 	if direction.length_squared() > .01:
 		visual.rotation.y = lerp_angle(visual.rotation.y,atan2(direction.x,direction.z),1-exp(-turning_speed*delta))
-	visual.position.y = .62+sin(elapsed*2.8)*.065
-	visual.rotation.x = lerpf(visual.rotation.x,horizontal_speed*.022,1-exp(-8*delta))
-	visual.rotation.z = sin(elapsed*1.7)*.035
-	left_fin.rotation.z = sin(elapsed*(8 if horizontal_speed > .1 else 3))*.18
-	right_fin.rotation.z = sin(elapsed*(8 if horizontal_speed > .1 else 3)+PI)*.18
+	var reduced: bool = get_parent().get_node("HUD/Menus").reduced_motion
+	var motion := 0.0 if reduced else 1.0
+	visual.position.y = .62+sin(elapsed*2.8)*.065*motion
+	visual.rotation.x = lerpf(visual.rotation.x,horizontal_speed*.022*motion,1-exp(-8*delta))
+	visual.rotation.z = sin(elapsed*1.7)*.035*motion
+	left_fin.rotation.z = sin(elapsed*(8 if horizontal_speed > .1 else 3))*.18*motion
+	right_fin.rotation.z = sin(elapsed*(8 if horizontal_speed > .1 else 3)+PI)*.18*motion
 	if is_on_floor():
 		step_distance += Vector2(position.x-before.x,position.z-before.z).length()
 		if step_distance >= .9:
@@ -166,8 +171,9 @@ func move_horse(delta: float) -> void:
 	visual.rotation.x = -.05-absf(horse_speed)*.008
 	visual.rotation.z = 0
 	visual.position.y = saddle_height
-	left_fin.rotation.z = sin(elapsed*3)*.08
-	right_fin.rotation.z = sin(elapsed*3+PI)*.08
+	var motion := 0.0 if get_parent().get_node("HUD/Menus").reduced_motion else 1.0
+	left_fin.rotation.z = sin(elapsed*3)*.08*motion
+	right_fin.rotation.z = sin(elapsed*3+PI)*.08*motion
 	gait = "canter" if absf(horse_speed)>6 else "trot" if absf(horse_speed)>3.2 else "ride"
 	step_distance += point.distance_to(Vector2(position.x,position.z))
 	var stride := 1.8 if absf(horse_speed) < 3.2 else 2.9 if absf(horse_speed) < 5.7 else 3.8

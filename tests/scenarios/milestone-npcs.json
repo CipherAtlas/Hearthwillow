@@ -4,6 +4,21 @@
   "keep_running": true,
   "steps": [
     {
+      "set": {
+        "path": "HUD/Menus",
+        "props": {
+          "language": 0
+        }
+      }
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "apply_language",
+        "args": []
+      }
+    },
+    {
       "assert": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
     },
     {
@@ -434,7 +449,7 @@
       "wait": 0.15
     },
     {
-      "assert": "get_node('VillageLife').crumbs == 0 and get_node('VillageFlock').served and get_node('VillageFlock').status == 'eating'",
+      "assert": "get_node('VillageLife').crumbs == 1 and get_node('VillageFlock').served and get_node('VillageFlock').status == 'eating'",
       "message": "Flock eats offered crumbs"
     },
     {

@@ -1,9 +1,10 @@
 shader_type spatial;
+uniform float motion_amount = 1.0;
 render_mode unshaded, cull_disabled, depth_draw_never;
 uniform vec2 scale;
 varying float vAge;
 
-        void vertex(){float age=fract(VERTEX.x+TIME*.085);vAge=age;
+        void vertex(){float age=fract(VERTEX.x+(TIME * motion_amount)*.085);vAge=age;
           vec3 p=vec3(VERTEX.y*scale.x*.6+sin(age*6.0+VERTEX.x*19.0)*age*scale.x*.3,
             -scale.y*.25+age*scale.y*2.9,VERTEX.z*scale.x*.4);
           vec4 mv=MODELVIEW_MATRIX*vec4(p,1.0);POSITION=PROJECTION_MATRIX*mv;

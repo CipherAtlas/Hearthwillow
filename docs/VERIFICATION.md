@@ -3,8 +3,59 @@
 [Documentation index](../README.md) · [Status/backlog](../MILESTONE.md)
 
 Updated **2026-10-13** with native gameplay and 1920×1080 visual checks. FPS
-benchmarking remains deferred. Steps include fixtures, input, waits and assertions,
+benchmarking was resumed by the user on 2026-10-13; new results follow below. Steps include fixtures, input, waits and assertions,
 not independent assertions. Prior 2026-10-12 evidence remains retained below.
+
+## 2026-10-13 night lighting and quiet movement audio
+
+Compared the actual live night scene in the browser and read the source
+world.ts, villageVisitors.ts, VillageEngine.ts, water.ts, horseAudio.ts and
+horseModel.ts. Daytime extraction had omitted inactive lights and lantern halos;
+native runtime also lacked the original glass/spirit weather updates. Restored
+saved fixtures and runtime behavior without rerunning the scenery converter.
+
+- `milestone-night-audio`: 67 steps pass, no runtime errors. Native viewport,
+  night/dusk/rain/day transitions, all ten spirit baselines restored, painted
+  window emission, halo visibility, two-lamp budget and town lamp selection;
+  quiet surface/hoof clips, callback limit, idle silence and sound-off stop.
+  Direct audio assertions freeze player physics temporarily to keep the stimulus
+  stable between remote calls; the horse suite separately checks real movement.
+- `milestone-farm-horses`: 125 steps pass, no runtime errors, including native
+  mount/riding/trot/canter/braking/dismount and existing animal/forage controls.
+- Changed-script language-server diagnostics: all four clean. Whole-project lint
+  reports eight errors exclusively in `build/templates/forge-upstream.gd`, a
+  downloaded reference file from concurrent release preparation; game scripts
+  and saved scenes compile. This is not a clean whole-project lint claim.
+- Menu suite: initial guide assertion depends on saved skip-guide preference;
+  with a runtime guide fixture it then stops at a Settings pointer/focus assertion.
+  No runtime error; no passing menu-regression claim. Preferences used by this
+  attempt were copied/restored afterward.
+
+Evidence: [scenario results](../evidence/night-audio-validation.json),
+[fixture provenance](../evidence/night-fixture-provenance.json),
+[native night entrance](../evidence/night-fixed-spawn-1080p.png) and
+[native village night overview](../evidence/night-fixed-village-1080p.png).
+Both images are exactly 1920×1080 from the restarted native Mobile renderer.
+The prior night image is retained separately; its camera differs, so it is not a
+pixel-difference baseline. Numeric audio checks do not establish physical listening
+acceptance. At that earlier checkpoint, the broader place-controls/weather audit
+and sustained FPS benchmark were still pending; the completed audit/run follows
+below. Public release packages are managed
+by the separate release chat; this checkpoint does not update or publish them.
+
+Local test app: `build/night-audio/Hearthwillow.app`. Export exits 0 with the
+previously observed exporter shutdown resource warning; deep/strict ad-hoc
+signature verification and standalone headless startup pass. All six changed
+packed code/scene/shader hashes match the current source; the pack contains all
+41 halos, 23 lamp nodes and the hoof cues. A render of the exported pack in the
+matching installed engine is [1920×1080](../evidence/night-audio-package-1080p.png)
+and asserts two active lamps. The actual app's starter was visually checked
+through native UI; its release template ignores the external --script capture
+helper, so the 1080p pack capture is not an app-executable capture. Logs are
+`night-audio-mac-export.log`, `night-audio-mac-startup.log`,
+`night-audio-packed-render-host.log` and `night-audio-pack-audit-host.log` under
+evidence. Signature/startup checks use the actual app executable. This app lives apart
+from the concurrently prepared public downloads; no release files are replaced.
 
 ## 2026-10-13 duck feeding at the dock
 
@@ -235,8 +286,8 @@ is unsigned/unnotarized and has no public distribution acceptance.
 
 ## Historical performance evidence — not final acceptance
 
-The user deferred the next clean benchmark. Do not run it during unrelated
-verification. Existing eight-second samples per view (three-second warmup) are
+The user resumed sustained release benchmarking on 2026-10-13. The historical
+eight-second samples per view (three-second warmup) below are
 short prior diagnostics, do not represent the latest release comprehensively,
 and were not collected under an accepted clean sustained-test condition.
 
@@ -269,3 +320,98 @@ headless run, movie mode or reduced render resolution to claim 120+ FPS.
    against sustained 120+ FPS, preserving the required look and pixel budget.
 6. Complete the later browser renderer/export/audio/input/persistence milestone
    and actual browser checks. No web/native mobile acceptance exists yet.
+
+
+## 2026-10-13 live destination parity and sustained release measurement
+
+[Live evidence](../evidence/live-destination-audit.json) records all 17 destination
+visits. The audit distinguishes automatic activities from ground arrivals with
+nearby controls. Source comparison covers activity/companion stages, low-pass and
+rain mixing, weather time boundaries, reusable feeding pouch and reduced motion.
+It does not establish exhaustive visual equivalence or multiplayer parity.
+
+[Native regressions](../evidence/parity-regressions.json) pass four suites:
+165-step live parity, 67-step night/audio, 125-step farm/horse and 93-step NPC
+(450 steps total, no runtime errors). The NPC fixture explicitly sets English
+and checks the source reusable crumb pouch. [Gameplay diagnostics](../evidence/parity-gameplay-diagnostics.json)
+are clean for all 15 changed scripts. Whole-project Forge lint still reports ten
+errors exclusively in ignored build snapshots/reference scripts.
+
+The measured export completes with exit 0; known headless exporter shutdown
+resource warnings are retained in [export log](../evidence/parity-current-export.log).
+The native benchmark exits 0 without runtime errors.
+
+The [initial baseline](../evidence/parity-baseline-fps.json) measures five outdoor
+views for 30 seconds each. It averages 84.1–142.0 FPS, p99 10.4–16.5 ms and fails
+sustained 120 FPS. Its saved preferences were not fully recorded, so comparisons
+with the following deterministic Detailed/weather run are descriptive only.
+
+The new opt-in `release_benchmark.gd` waits for world readiness, specifies graphics,
+weather, sound and normal motion without saving preferences, warms each scene for
+5 seconds and measures 30 seconds. It covers 16 views including actual walking
+and horse input, rain/clear/night, hearth/tea/garden/birds/lookout/cottage. Reports
+contain averaged frame/engine-process/physics/draw-call values, p95/p99/worst frame times and
+actual travelled metres. Exported app: `build/parity-current/Hearthwillow.app`.
+The editor game and live audit tab are closed during measurement; the editor and
+normal desktop remain open. No movie capture or lowered-resolution viewport is
+used. This is a sustained scenario baseline, not a long-session thermal or 120 FPS
+acceptance test. The run completed; results follow.
+
+
+[Full release report](../evidence/parity-current-fps.json), Apple M4 / Mobile,
+Detailed graphics, MSAA 4x, sun shadows, sound on, normal motion, VSync off:
+
+| Scenario | Average FPS | p95 ms | p99 ms | Worst ms |
+| --- | ---: | ---: | ---: | ---: |
+| entrance day | 129.6 | 10.04 | 13.01 | 17.78 |
+| village night | 125.9 | 13.43 | 17.41 | 72.80 |
+| western bridge day | 106.2 | 13.55 | 16.70 | 26.37 |
+| pond day | 88.7 | 15.48 | 17.39 | 23.10 |
+| pond rain | 84.8 | 16.24 | 17.98 | 21.47 |
+| hill picnic day | 90.1 | 17.50 | 19.33 | 45.50 |
+| walking village day | 85.7 | 15.66 | 18.13 | 21.77 |
+| walking village night | 70.3 | 17.94 | 21.41 | 55.92 |
+| horse canter day | 118.2 | 13.36 | 16.71 | 45.83 |
+| horse canter night | 104.8 | 14.47 | 16.34 | 21.82 |
+| hearth night | 72.0 | 17.49 | 19.50 | 23.57 |
+| tea day | 76.1 | 16.39 | 17.78 | 20.18 |
+| garden day | 82.7 | 15.21 | 16.79 | 19.65 |
+| birds day | 94.0 | 14.19 | 15.89 | 19.61 |
+| lookout night | 59.5 | 19.96 | 22.35 | 25.98 |
+| cottage rain | 173.6 | 12.40 | 16.66 | 1007.40 |
+
+All four movement cases travelled more than five metres (walking 88.3 m, horse
+59.5–59.6 m). Input alternates forward/backward every five seconds; horse forward
+segments hold canter and reverse segments remain part of the measured case.
+Travel totals include warmup. Every p99 exceeds the 8.33 ms budget for 120 FPS;
+these results do not meet sustained 120 FPS. The cottage's 1007.4 ms outlier needs
+separate investigation. `TIME_PROCESS` is an inclusive engine monitor, including
+rendering/waits; it does not isolate script CPU work or prove a CPU/GPU bottleneck.
+
+[Source hashes](../evidence/parity-current-source-hashes.json) identify the measured
+snapshot. The final tea-button contrast, flock reduced-motion pose and companion
+stopping/avoidance corrections were made afterward. Their current-source checks
+pass, but these FPS numbers do not describe a bit-identical final build. The
+measured app remains at `build/parity-current/Hearthwillow.app`; the final local
+export is `build/parity-final/Hearthwillow.app`. Neither replaces public releases.
+
+Full native viewport captures are all verified 1920×1080:
+[hearth](../evidence/parity-hearth-1080p.png),
+[tea English](../evidence/parity-tea-1080p.png),
+[tea Japanese](../evidence/parity-tea-japanese-1080p.png),
+[garden](../evidence/parity-garden-1080p.png),
+[birds](../evidence/parity-birds-1080p.png),
+[lookout](../evidence/parity-lookout-1080p.png), and
+[companion formation](../evidence/parity-companion-1080p.png).
+These establish the captured native layouts, not exhaustive live visual parity
+or physical-device listening acceptance. Pre-test user saves are restored after
+verification, with post-test state retained separately in the temporary backup.
+
+
+Final local export [log](../evidence/parity-final-export.log) exits 0 with the same
+headless exporter shutdown resource warnings. Its actual executable's headless
+startup [log](../evidence/parity-final-startup.log) exits 0 without errors/warnings;
+this confirms startup, not release visual acceptance. [Final source hashes](../evidence/parity-final-source-hashes.json)
+record the current gameplay snapshot. [Save restoration](../evidence/parity-save-restoration.json)
+records hash-verified restoration of every pre-test file and the separate post-test
+backup. No public package, Git history or source village files were changed.

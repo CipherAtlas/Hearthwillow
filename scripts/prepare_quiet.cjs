@@ -20,10 +20,16 @@ global.FileReader = class {
   const exporter = new GLTFExporter();
   const note = moduleBox.exports.makeKindNote(); note.flap.name = 'Flap'; note.sheet.name = 'Sheet';
   const activity = new moduleBox.exports.VillageActivities([]);
-  for (const [name, object] of [['kind-note', note.root], ['writing-quill', activity.quill], ['saved-page', activity.page]]) {
+  const placesOnly = process.argv.includes('--places');
+  activity.mintLeaves.name = 'MintLeaves';
+  activity.cup.children.find(mesh => mesh.material === activity.teaLiquid).name = 'Liquid';
+  activity.steam.forEach((mesh, index) => mesh.name = 'Steam'+index);
+  const exports = placesOnly ? [['tea-cup', activity.cup]] : [['kind-note', note.root], ['writing-quill', activity.quill], ['saved-page', activity.page]];
+  for (const [name, object] of exports) {
     object.removeFromParent(); object.position.set(0,0,0); object.visible = true;
     fs.writeFileSync('assets/quiet/'+name+'.glb', Buffer.from(await exporter.parseAsync(object, {binary:true, onlyVisible:false})));
   }
+  if (placesOnly) { console.log('Saved original tea cup only.'); return; }
   const activities = fs.readFileSync(path.join(source,'features/village/Activities.tsx'),'utf8');
   const phrases = activities.match(/const phrases = (\[[\s\S]*?\]);/)[1];
   const phrasesJa = activities.match(/const phrasesJa = (\[[\s\S]*?\]);/)[1];

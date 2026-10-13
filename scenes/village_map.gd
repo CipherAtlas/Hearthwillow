@@ -104,7 +104,7 @@ func refresh_layout() -> void:
 	landscape.position = map_point(Vector2(bounds.x, bounds.z))-terrain.position
 	landscape.size = Vector2(bounds.width, bounds.height)*zoom
 	marker_layout_dirty = true
-	if expanded: update_markers()
+	if expanded and size.x>48 and size.y>224: update_markers()
 	queue_redraw()
 	visitor.queue_redraw()
 
@@ -239,10 +239,13 @@ func travel(index: int) -> void:
 	world.get_node("QuietPlaces").leave()
 	travel_point(Vector2(target[0],target[1]))
 	if item.id == "focus": world.get_node("FocusCottage").enter()
-	elif item.id in ["gratitude","compliment","breathe"]: world.get_node("QuietPlaces").enter(item.id)
+	elif item.id in ["gratitude","compliment","breathe","music","birds"]: world.get_node("QuietPlaces").enter(item.id)
+	elif item.id == "garden": world.get_node("VillageActivities").open_garden()
 
 func travel_point(point: Vector2) -> void:
 	world.get_node("QuietPlaces").leave()
+	world.get_node("TowerLookout").leave()
+	world.get_node("VillageActivities").close_garden()
 	var arrival: Vector3 = surface.recovery_spot(point)
 	if not surface.can_enter(Vector2(arrival.x,arrival.z)): return
 	world.get_node("VillageRace").cancel()
@@ -262,6 +265,7 @@ func travel_point(point: Vector2) -> void:
 func update_markers() -> void:
 	marker_layout_dirty = false
 	label_boxes.clear()
+	if size.x<=48 or size.y<=224: marker_layout_dirty = true; return
 	var area := content_rect().grow(-8)
 	for index in landmarks.size():
 		var point := map_point(Vector2(landmarks[index].point[0], landmarks[index].point[1]))

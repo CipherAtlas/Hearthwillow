@@ -26,6 +26,11 @@ var elapsed := 0.0
 var entered_at := 0.0
 var moment_at := -100.0
 var moment := ""
+var companion_stages: Dictionary = {}
+var participant_returns: Dictionary = {}
+var tea_ready := false
+var tea_steam: Array[MeshInstance3D] = []
+var tea_liquid: StandardMaterial3D
 var pattern := 0
 var breathing := false
 var breath_elapsed := 0.0
@@ -36,6 +41,10 @@ var collapsed := false
 const TIMES := [[4.0,4.0,6.0,0.0],[4.0,4.0,4.0,4.0],[4.0,7.0,8.0,0.0]]
 @export var kind_save_path := "user://kind-note.cfg"
 const STAGES := {
+	"garden":{"actor":Vector3(24.6,.05,-5.4),"yaw":PI,"camera":Vector3(30.5,5.8,1.5),"look":Vector3(24.7,.6,-7)},
+	"music":{"actor":Vector3(-5.8,.4,-16.1),"yaw":PI,"camera":Vector3(-.9,2.8,-15.5),"look":Vector3(-5.8,1,-18.1)},
+	"mood":{"actor":Vector3(13.9,.4,-10),"yaw":PI/2,"camera":Vector3(11.6,2.6,-12.2),"look":Vector3(15.9,1.2,-10)},
+	"birds":{"actor":Vector3(-37,.4,6.5),"yaw":PI,"camera":Vector3(-31,4.5,11),"look":Vector3(-37,.7,4)},
 	"gratitude":{"actor":Vector3(-18.2,.05,6.6),"yaw":-PI/2,"camera":Vector3(-16.5,2.8,7.7),"look":Vector3(-19.1,1.2,6.5)},
 	"compliment":{"actor":Vector3(3.05,.05,.35),"yaw":PI,"camera":Vector3(5.2,2.4,-3.2),"look":Vector3(3,1.25,-.4)},
 	"breathe":{"actor":Vector3(-23,.24,-5.5),"yaw":PI,"camera":Vector3(-18.5,3.7,-2),"look":Vector3(-26,.5,-9)}
@@ -45,8 +54,15 @@ func words(en: String, ja: String) -> String:
 	return menus.tr_pair(en,ja)
 
 func _ready() -> void:
+	companion_stages = JSON.parse_string(FileAccess.get_file_as_string("res://assets/quiet/companion-stages.json"))
 	notes = JSON.parse_string(FileAccess.get_file_as_string("res://assets/quiet/kind-notes.json"))
 	load_kind_note()
+	for mesh: Node in $Ritual/TeaCup.find_children("Steam*","MeshInstance3D",true,false):
+		tea_steam.append(mesh)
+		mesh.material_override = mesh.get_active_material(0).duplicate()
+	tea_liquid = $Ritual/TeaCup.find_child("Liquid",true,false).get_active_material(0).duplicate()
+	$Ritual/TeaCup.find_child("Liquid",true,false).material_override = tea_liquid
+	for label: String in ["Follow the scenery","Village paths","Pond & tea garden","Quiet cottage","By the hearth"]: $UI/Music/Content/Soundtrack.add_item(label)
 	$Ritual/Quill.position = Vector3(-19.2,1.03,6.09)
 	$Ritual/Quill.rotation.y = PI/2
 	$Ritual/Page.position = Vector3(-19.25,1.02,6.35)
@@ -65,16 +81,20 @@ func load_kind_note() -> bool:
 			$UI/Kind/Content/Status.text = words("Saved note could not be read. Stored data was not changed.","保存済みのメモを読み込めませんでした。データは変更していません。")
 	return not note_read_failed
 
+func placement(id: String) -> Dictionary:
+	var asset: String = {"breathe":"dock","compliment":"postbox","music":"hearth","mood":"tea-terrace","birds":"bird-clearing-terrace","garden":"kitchen-garden"}.get(id,"")
+	for item: Dictionary in surface.placements.get(asset,[]):
+		if id!="mood" or item.id=="tea-terrace": return item
+	return {}
+
 func placed_point(id: String, original: Vector3) -> Vector3:
-	var asset := "dock" if id=="breathe" else "postbox" if id=="compliment" else ""
-	var origin := Vector3(-21.65,0,-5.5) if id=="breathe" else Vector3(3,0,-1)
-	if asset.is_empty(): return original
-	var items: Array = surface.placements.get(asset,[])
-	if items.is_empty(): return original
-	return surface.item_transform(items[0])*(original-origin)
+	var origins := {"breathe":Vector3(-21.65,0,-5.5),"compliment":Vector3(3,0,-1),"music":Vector3(-5.8,0,-19),"mood":Vector3(15.5,0,-10.4),"birds":Vector3(-37,0,4),"garden":Vector3(24,0,-6)}
+	var item := placement(id)
+	return original if item.is_empty() else surface.item_transform(item)*(original-origins[id])
 
 func entry_point(id: String) -> Vector3:
-	return placed_point(id,Vector3(-19.5,0,8) if id=="gratitude" else Vector3(2.8,0,0) if id=="compliment" else Vector3(-23.2,.24,-5.5))
+	var entries := {"gratitude":Vector3(-19.5,0,8),"compliment":Vector3(2.8,0,0),"breathe":Vector3(-23.2,.24,-5.5),"music":Vector3(-3,0,-16),"mood":Vector3(14.7,0,-10),"birds":Vector3(-33.5,0,4),"garden":Vector3(24.6,0,-2.7)}
+	return placed_point(id,entries[id])
 
 func scan() -> void:
 	nearby = ""
@@ -90,14 +110,15 @@ func enter(id: String) -> bool:
 	if player.position.distance_to(entry_point(id))>4: return false
 	return_position = player.position; return_view = Vector3(rig.desired_yaw,rig.desired_pitch,rig.distance)
 	saved_visual = player.visual.transform; saved_left = player.left_fin.transform; saved_right = player.right_fin.transform
+	participant_returns.clear()
+	for actor: CharacterBody3D in world.get_node("Village/Actors").get_children():
+		if actor.actor_kind=="resident" and (actor.following or id=="mood" and actor.actor_id=="luma"): participant_returns[actor.actor_id] = actor.position
 	active = id; entered_at = elapsed; orbit = Vector2.ZERO; collapsed = false; breathing = false; breath_elapsed = 0; breath_amount = 0
 	player.activity_locked = true; player.velocity = Vector3.ZERO; player.jump_buffer = 0; player.gliding = false
 	player.position = placed_point(id,STAGES[id].actor)
 	player.visual.rotation = Vector3(0,STAGES[id].yaw,0)
-	if id!="gratitude":
-		var asset := "dock" if id=="breathe" else "postbox"
-		var items: Array = surface.placements.get(asset,[])
-		if not items.is_empty(): player.visual.rotation.y += deg_to_rad(items[0].rotation[1])
+	var item := placement(id)
+	if not item.is_empty(): player.visual.rotation.y += deg_to_rad(item.rotation[1])
 	player.reset_physics_interpolation()
 	var camera_point: Vector3 = STAGES[id].camera
 	var look_point: Vector3 = STAGES[id].look
@@ -108,25 +129,42 @@ func enter(id: String) -> bool:
 	$Camera.position = base_camera; $Camera.look_at(base_look); $Camera.make_current()
 	$Letter.visible = id=="compliment"
 	$Rings.visible = id=="breathe"
+	$MusicMotes.visible = id=="music"
+	if id=="garden":
+		world.get_node("VillageActivities").garden_page = true
+		world.get_node("VillageActivities").refresh_garden()
+	if id=="music" and not world.get_node("VillageSound").enabled: world.get_node("VillageSound").toggle_sound()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	menus.sync_blocking()
 	if id=="gratitude":
 		journal.view = "write"; journal.selected = -1; journal.removing = false
 		journal.refresh(); journal.editor.call_deferred("grab_focus")
 	elif id=="compliment": $UI/Kind/Content/Another.call_deferred("grab_focus")
-	else: $UI/Breathe/Content/Toggle.call_deferred("grab_focus")
+	elif id=="breathe": $UI/Breathe/Content/Toggle.call_deferred("grab_focus")
+	elif id=="music": $UI/Music/Content/Toggle.call_deferred("grab_focus")
+	elif id=="birds": $UI/Birds/Content/Feed.call_deferred("grab_focus")
+	elif id=="garden": world.get_node("VillageActivities/UI/Garden/Content/Close").call_deferred("grab_focus")
+	else: $UI/Tea/Content/Garden.call_deferred("grab_focus")
 	refresh()
 	return true
 
 func leave() -> void:
 	if active.is_empty(): return
+	for actor: CharacterBody3D in world.get_node("Village/Actors").get_children():
+		if participant_returns.has(actor.actor_id):
+			actor.position = participant_returns[actor.actor_id]
+			actor.path.clear(); actor.replan = 0; actor.velocity = Vector3.ZERO
+			actor.reset_physics_interpolation()
+	participant_returns.clear()
+	var was_garden := active=="garden"
 	active = ""; breathing = false; collapsed = false
+	if was_garden: world.get_node("VillageActivities").close_garden()
 	journal.get_node("Import").hide(); journal.get_node("Export").hide()
 	player.activity_locked = false; player.position = return_position; player.velocity = Vector3.ZERO
 	player.visual.transform = saved_visual; player.left_fin.transform = saved_left; player.right_fin.transform = saved_right
 	player.reset_physics_interpolation()
 	rig.desired_yaw = return_view.x; rig.desired_pitch = return_view.y; rig.distance = return_view.z
-	rig.camera.make_current(); $Letter.hide(); $Rings.hide(); $Ritual/Page.hide()
+	rig.camera.make_current(); $Letter.hide(); $Rings.hide(); $Ritual/Page.hide(); $MusicMotes.hide()
 	menus.sync_blocking(); refresh()
 
 func another_note() -> void:
@@ -160,6 +198,37 @@ func set_pattern(index: int) -> void:
 func feed_pond() -> bool:
 	return pond.feed()
 
+func toggle_music() -> void:
+	if active!="music": return
+	world.get_node("VillageSound").toggle_sound()
+	refresh()
+
+func select_soundtrack(index: int) -> void:
+	menus.set_soundtrack(index)
+	world.get_node("VillageSound").update_soundtrack()
+	refresh()
+
+func sound_levels() -> void:
+	menus.open_sound()
+
+func tea_action(slot: int) -> bool:
+	if active!="mood" or player.controls_blocked: return false
+	var activities: Node = world.get_node("VillageActivities")
+	if not activities.give_luma(slot): return false
+	tea_ready = tea_ready or slot==2 or slot==5
+	if slot==5: set_moment("tea")
+	refresh()
+	return true
+
+func visit_garden() -> void:
+	world.get_node("HUD/VillageMap").travel(5)
+
+func feed_birds() -> bool:
+	if active!="birds" or player.controls_blocked: return false
+	var fed: bool = world.get_node("VillageFlock").feed()
+	refresh()
+	return fed
+
 func toggle_controls() -> void:
 	collapsed = not collapsed; refresh()
 
@@ -175,7 +244,10 @@ func refresh() -> void:
 	if not is_node_ready(): return
 	var available: bool = not menus.is_open() and not world.get_node("HUD/VillageMap").expanded
 	$UI/Enter.visible = not nearby.is_empty() and available and active.is_empty()
-	if not nearby.is_empty(): button_label("UI/Enter",words("Open your journal","日記を開く") if nearby=="gratitude" else words("Read a kind note","メモを読む") if nearby=="compliment" else words("Sit by the pond","池のそばに座る"),"interact")
+	if not nearby.is_empty():
+		var prompts := {"gratitude":words("Open your journal","日記を開く"),"compliment":words("Read a kind note","メモを読む"),"breathe":words("Sit by the pond","池のそばに座る"),"music":words("Sit by the fire","火のそばに座る"),"mood":words("Sit with Luma","ルマと座る"),"birds":words("Scatter sourdough crumbs","パンくずをまく"),"garden":words("Open kitchen garden","菜園を見る")}
+		button_label("UI/Enter",prompts[nearby],"interact")
+	refresh_places(available)
 	journal.visible = active=="gratitude" and available and not collapsed
 	$UI/Kind.visible = active=="compliment" and available and not collapsed
 	$UI/Breathe.visible = active=="breathe" and available and not collapsed
@@ -204,6 +276,7 @@ func refresh() -> void:
 
 func _process(delta: float) -> void:
 	elapsed += delta; scan(); refresh()
+	animate_cup()
 	if active.is_empty(): return
 	if breathing: breath_elapsed += delta
 	var cycle: float = fmod(breath_elapsed,14.0 if pattern==0 else 16.0 if pattern==1 else 19.0)
@@ -244,7 +317,15 @@ func animate_ritual() -> void:
 	player.visual.position.y = .62+sin(t*1.7)*.025+(.12*breath_amount if active=="breathe" and breathing and not reduced else 0)
 	player.visual.scale = saved_visual.basis.get_scale()*(1+.065*breath_amount if active=="breathe" and breathing and not reduced else 1.0)
 	player.visual.rotation.x = -.06 if active=="compliment" else .07 if writing else 0.0
-	player.visual.rotation.z = 0
+	player.visual.rotation.z = sin(t*1.8)*.045 if active=="music" and world.get_node("VillageSound").enabled and not reduced else 0
+	if active=="music":
+		var playing: bool = world.get_node("VillageSound").enabled
+		for i in 14:
+			var mote: Node3D = $MusicMotes.get_child(i)
+			var angle := i*2.4+t*(.16 if playing else .035)
+			var radius := 1+(i%4)*.28
+			mote.position = placed_point("music",Vector3(-5.8+cos(angle)*radius,.5+(i%5)*.29+sin(t*.8+i)*.08,-18+sin(angle)*radius))
+			mote.scale = Vector3.ONE*(1.0 if playing else .45)
 	if active=="compliment":
 		var opening := 1.0 if reduced else smoothstep(0,1.1,elapsed-entered_at)
 		var keep := sin(minf(1,age/1.2)*PI) if moment=="keep" and not reduced else 0.0
@@ -286,6 +367,14 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_activity"): toggle_controls()
 	elif active=="compliment" and event.is_action_pressed("interact"): another_note(); $UI/Kind/Content/Another.flash()
 	elif active=="compliment" and event.is_action_pressed("keep_note"): keep_kind_note(); $UI/Kind/Content/Keep.flash()
+	elif active=="music" and event.is_action_pressed("jump"): toggle_music()
+	elif active=="birds" and event.is_action_pressed("talk"): feed_birds(); $UI/Birds/Content/Feed.flash()
+	elif active=="mood" and event.is_action_pressed("interact"): tea_action(5)
+	elif active=="mood" and event.is_action_pressed("activity_1"): tea_action(0)
+	elif active=="mood" and event.is_action_pressed("activity_2"): tea_action(1)
+	elif active=="mood" and event.is_action_pressed("activity_3"): tea_action(2)
+	elif active=="mood" and event.is_action_pressed("bread"): tea_action(3)
+	elif active=="mood" and event.is_action_pressed("companion"): tea_action(4)
 	elif active=="breathe" and event.is_action_pressed("jump"): toggle_breathing()
 	elif active=="breathe" and event.is_action_pressed("unstuck"): reset_breathing(); $UI/Breathe/Content/Reset.flash()
 	elif active=="breathe" and event.is_action_pressed("talk"): feed_pond(); $UI/Breathe/Content/Feed.flash()
@@ -305,3 +394,53 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if not nearby.is_empty() and event.is_action_pressed("interact"):
 		enter(nearby); get_viewport().set_input_as_handled()
+
+func refresh_places(available: bool) -> void:
+	if active=="garden": world.get_node("VillageActivities/UI/Garden").visible = available and not collapsed
+	$UI/Music.visible = active=="music" and available and not collapsed
+	$UI/Tea.visible = active=="mood" and available and not collapsed
+	$UI/Birds.visible = active=="birds" and available and not collapsed
+	if active=="music":
+		var playing: bool = world.get_node("VillageSound").enabled
+		$UI/Music/Content/Heading.text = words("Music","音楽")
+		button_label("UI/Music/Content/Toggle",words("Pause music","音楽を止める") if playing else words("Play music","音楽を流す"),"jump")
+		button_label("UI/Music/Content/Levels",words("Sound levels","音のバランス"),"")
+		var tracks := [words("Follow the scenery","景色に合わせる"),words("Village paths","村の小道"),words("Pond & tea garden","池と茶園"),words("Quiet cottage","静かなコテージ"),words("By the hearth","焚き火のそば")]
+		for i in 5: $UI/Music/Content/Soundtrack.set_item_text(i,tracks[i])
+		$UI/Music/Content/Soundtrack.select(menus.soundtrack)
+		$UI/Music/Content/TrackLabel.text = words("Soundtrack","音楽")
+		$UI/Music/Content/Credit.text = words("Recorded music by Holizna.","Holizna 作曲の録音音楽。")
+		for i in 7: $UI/Music/Content/Waves.get_child(i).custom_minimum_size.y = 12.0 if menus.reduced_motion or not playing else 16+sin(elapsed*4-i*.76)*12
+	elif active=="mood":
+		var activities: Node = world.get_node("VillageActivities")
+		$UI/Tea/Content/Heading.text = words("Tea garden","茶園")
+		var actions := ["activity_1","activity_2","activity_3","bread","companion"]
+		for i in 5:
+			var crop: String = activities.GIFTS[i]
+			get_node("UI/Tea/Content/Gift%d"%i).visible = activities.count_item(activities.CROPS[crop])>0
+			button_label("UI/Tea/Content/Gift%d"%i,words("Give Luma ","ルマに渡す：")+activities.crop_name(crop),actions[i])
+		$UI/Tea/Content/Drink.visible = activities.count_item("mintTea")>0
+		button_label("UI/Tea/Content/Drink",words("Drink your special mint tea","特別なミントティーを飲む"),"interact")
+		button_label("UI/Tea/Content/Garden",words("Visit the kitchen garden","菜園に行く"),"")
+		$UI/Tea/Content/Garden.visible = activities.harvest_count()==0
+	elif active=="birds":
+		var flock: Node = world.get_node("VillageFlock")
+		$UI/Birds/Content/Heading.text = words("Bird clearing","小鳥の広場")
+		var states := {"flying":words("Flying","飛行中"),"waiting":words("Ready to feed","餌をあげられます"),"crumbs":words("Crumbs scattered","パンくずを撒きました"),"eating":words("Eating","食事中"),"happy":words("Fed","食事済み"),"sad":words("Waiting","待機中")}
+		$UI/Birds/Content/State.text = states[flock.status]
+		$UI/Birds/Content/Status.text = words("Ask Maple or Wren for crumbs first.","メープルかレンにパンくずをもらってね。") if world.get_node("VillageLife").crumbs==0 else ""
+		button_label("UI/Birds/Content/Feed",words("Scatter sourdough crumbs","サワードウのパンくずを撒く"),"talk")
+		$UI/Birds/Content/Feed.set_enabled(world.get_node("VillageLife").crumbs>0 and not flock.queued and not flock.served)
+
+func animate_cup() -> void:
+	var t := 0.0 if menus.reduced_motion else elapsed
+	var age := elapsed-moment_at
+	var sip := sin(minf(1,age/3.2)*PI) if active=="mood" and moment=="tea" and age<3.2 and not menus.reduced_motion else 0.0
+	$Ritual/TeaCup.position = placed_point("mood",Vector3(lerpf(15.2,14.4,sip),1.28+sip*.18,lerpf(-9.65,-10,sip)))
+	$Ritual/TeaCup.rotation.z = sip*.22
+	$Ritual/TeaCup.find_child("MintLeaves",true,false).visible = tea_ready or world.get_node("VillageActivities").count_item("mintTea")>0
+	tea_liquid.albedo_color = Color("a6b850") if tea_ready else Color("966027")
+	for i in tea_steam.size():
+		tea_steam[i].scale.y = .8+sin(t*.8+i)*.17
+		tea_steam[i].rotation.y = t*.24+i
+		tea_steam[i].material_override.albedo_color.a = .16 if menus.reduced_motion else .12+sin(t*1.3+i)*.05

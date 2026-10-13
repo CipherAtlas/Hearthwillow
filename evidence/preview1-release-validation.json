@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-13",
+  "tag": "v0.1.0-preview.1",
+  "repository": "https://github.com/CipherAtlas/Hearthwillow",
+  "assets": {
+    "Hearthwillow-macOS-universal.zip": {
+      "bytes": 151263020,
+      "sha256": "c5c7c91280c7a2cb17c604b138a378a4cd35c3491264374d92f3cc778e29cf9d"
+    },
+    "Hearthwillow-Windows-x64.zip": {
+      "bytes": 128652393,
+      "sha256": "0d515d3713b12fb1d435fc650414e2df1728756399ac378052058b27ca1a86e6"
+    },
+    "SHA256SUMS.txt": {
+      "bytes": 194,
+      "sha256": "16331a3643226266643bc05b5e03b802170603764f6037896a1a977619a373b3"
+    }
+  },
+  "source_hashes": "preview1-source-hashes.json",
+  "source_settings_scene_shader_hash_count": 101,
+  "package_checks": {
+    "both_zip_integrity": true,
+    "player_instructions_and_notices": true,
+    "mac_signature_after_extraction": "codesign --verify --deep --strict passes; Signature=adhoc",
+    "mac_architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "windows_binary": "PE32+ x86-64",
+    "pack_source_data_hash_checks_per_platform": 52,
+    "pack_resources_loaded_per_platform": 7,
+    "mac_headless_startup": true,
+    "mac_native_starter": "1920x1080; Metal 4.0 Forward Mobile Apple M4; 120 movie frames; not an FPS benchmark",
+    "existing_non_log_cache_user_files_unchanged": true
+  },
+  "reused_evidence": {
+    "regressions": "parity-regressions.json",
+    "passed_suites": 4,
+    "passed_steps": 450,
+    "gameplay_diagnostics": "parity-gameplay-diagnostics.json"
+  },
+  "limitations": [
+    "Windows runtime untested",
+    "Browser-download Gatekeeper acceptance on another Mac untested",
+    "Final package not benchmarked; earlier 120 FPS target not met in all scenarios",
+    "Exporter exit reports known retained ObjectDB/resources; packaged runtime logs are clean"
+  ]
+}

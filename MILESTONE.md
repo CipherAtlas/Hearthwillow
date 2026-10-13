@@ -1,12 +1,29 @@
 # Port status and remaining work
 
 Audited **2026-10-13** against current files and recorded evidence. Latest
-activity implementation/tests: **2026-10-13**. Performance remains deferred.
+activity implementation/tests: **2026-10-13**. The requested 16-scenario release
+benchmark is complete; sustained 120 FPS is not met.
+
+Latest live-parity checkpoint: all 17 live destinations audited, four affected
+native suites / 450 steps pass, 15 gameplay scripts clean, seven full 1080p
+captures. Hearth/tea/birds/garden, lookout, companion staging, weather audio and
+reduced motion changes are verified. Full results and remaining acceptance work
+are recorded in the final section below.
+
+Night/audio checkpoint: source-shaped window and lantern emission, 41 saved
+lantern halos, ten glowing spirit materials, two nearest outdoor lamp lights,
+hearth illumination and water/bounce weather treatment are restored. Walking
+contacts use 25% gain; riding uses distinct original hoof synthesis at 18% gain,
+source stride/scale cadence and a 220 ms audio limit. Night/day/dusk/rain and
+horse suites pass 192 steps; four changed scripts have clean diagnostics and two
+new captures are native 1920×1080. Full-project lint is blocked by a downloaded
+reference script under build/templates; the menu pointer fixture also failed.
+See Verification. Broader base-game parity and physical listening remain open.
 
 Latest map/capture checkpoint: two passing native scenarios / 281 steps, lint
 33 scripts / 12 scenes clean, three 1080p captures. Both map modes recorded zero
 idle draw callbacks while actors continued moving. This is map update evidence;
-the sustained FPS benchmark remains deferred. See docs/VERIFICATION.md.
+this earlier checkpoint did not measure sustained FPS. See docs/VERIFICATION.md.
 
 Dock feeding now has its own nearby F/button path with no-pouch guidance, shared
 cooldown and retained pouch. Three affected suites pass / 257 steps, including
@@ -19,7 +36,7 @@ docs/VERIFICATION.md for evidence and rollback.
 
 Public GitHub repository and Mac/Windows preview downloads are authorized. Mac
 uses free ad-hoc signing without notarization; Windows targets x86_64 unsigned.
-Packaging does not add multiplayer or resume the deferred FPS benchmark. See
+Packaging does not add multiplayer. The user has now separately resumed FPS benchmarking. See
 [release preparation](docs/RELEASES.md) for artifacts and verification boundaries.
 
 ## Required outcome
@@ -31,7 +48,7 @@ Worker or multiplayer. The ordinary Godot editor remains the authoring tool.
 
 Active quality requirements: fluid camera, working NPCs and activities, polished
 lighting/wind/sound, a better map and sustained 120+ FPS at 1080p. All visual tests
-must use **1920×1080**. The next FPS benchmark is explicitly deferred by the user.
+must use **1920×1080**. The user resumed the release FPS benchmark on 2026-10-13.
 
 ## Implemented systems
 
@@ -52,7 +69,7 @@ is distinct from exhaustive source parity and final user acceptance.
 | Action UI/dialogue | Top-right menus/map, bottom-left movement hints, bottom-right action cards, cream overhead dialogue | `village_dialogue.gd`, `interaction_button.gd`, shared themes | Source look is the target; pixel equivalence is not established |
 | Audio | Original recordings, spatial ambience, crossfades/contact/action cues, six mix channels and soundtrack choice | `village_sound.gd`, `assets/audio/` | Physical listening and exact indoor filtering acceptance remain open |
 | Crops/garden | Seven beds, fifteen farm rows, plant/water/grow/harvest, original world/overview clocks, local saves | `village_activities.gd`, `growth_clock*.gd` | No browser/shared save migration |
-| Gifts | Luma gifts, original crop replies, mint tea and basket integration | `village_activities.gd` | Dedicated place UI is a separate parity item |
+| Gifts | Luma gifts, source replies, staged tea seating, mint/sip/cup/steam and basket travel | `village_activities.gd`, `quiet_places.gd` | Local inventory replaces shared harvest authority |
 | Kitchen/picnic | Four recipes, ingredients, timers, packing, dishes/portions and bite cooldown | `activities.tscn`, `village_activities.gd` | New flow is F basket / E seated eating; older fixtures differ |
 | Seats | Seven locations / 17 slots, five picnic cushions, facing/height, pointer seat choice, bird feeding, safe exits | `seating.tscn`, `village_seating.gd` | Local occupancy only |
 | Swings | Two pairs, pendulum motion, level seats, W/S pump, both facing directions, approach-side selection, T turn, Space brake and stable camera | `seating.tscn`, `village_seating.gd` | Final motion/sound acceptance remains open |
@@ -105,13 +122,13 @@ part of this local-only port.
 
 ## Remaining parity and quality checks
 
-- [ ] Audit every base-game destination/activity against source in both languages.
+- [x] Visit all 17 live map destinations and verify their native entry behavior (English).
+- [ ] Complete the full Japanese destination/menu wrapping and keyboard-focus audit; new tea/music/bird/lookout labels are implemented.
 - [ ] Review language popup, Japanese wrapping, focus navigation, long rebound
   keys, disabled controls and all menu/activity transitions at 1080p, including
   held-button release after application focus loss in every context.
-- [ ] Complete reduced-motion parity. Experience now exposes a saved Reduce motion setting;
-  new rituals/pond effects and the existing cat honor it. Comprehensive support
-  across outdoor actors, weather and all feedback is not delivered.
+- [x] Extend Reduce motion to outdoor spirit bob/fins, animal animation, wind/water/flame shaders, rain, camera easing, cooking/watering and cottage effects.
+- [ ] Final subjective reduced-motion review of every animal/activity effect remains open.
 - [ ] Review dialogue content, anchoring/fade/occlusion and animal cards in motion,
   including screen-edge cases; exact visual equality remains unaccepted.
 - [ ] Walk the full map: joins, banks, bridges, dock, hills, planting clearances,
@@ -121,15 +138,15 @@ part of this local-only port.
 - [ ] Review camera transitions across walking/horse/seat/swing/map/cottage,
   collision recovery and graphics modes.
 - [ ] Listen to recordings, mix/crossfade/actions and completion on actual output
-  hardware. Cottage shelter gain exists; source indoor low-pass parity is open.
+  hardware. Cottage shelter gain and the original indoor/weather low-pass are implemented.
 - [ ] Compare lighting, water, wind/shadows and room motion in every weather mode.
 - [ ] Verify all activities in the standalone Mac release, beyond the starter.
 
 ## Deferred platform and acceptance work
 
-**Performance — user deferred.** The target is sustained 120+ FPS at 1920×1080 in
+**Performance — active, resumed 2026-10-13.** The target is sustained 120+ FPS at 1920×1080 in
 representative moving release scenes. Earlier short probes are below target and
-are historical diagnostics. The opt-in harness needs longer/broader scenarios;
+are historical diagnostics. The opt-in harness now has 16 day/night/rain, moving and activity scenarios;
 no current performance acceptance is claimed. See [Verification](docs/VERIFICATION.md).
 
 **Browser — later milestone.** Choose a compatible renderer/export path, audit
@@ -173,5 +190,96 @@ are staged fixture content. Source project remains read-only; no Git writes or
 deployment. FPS benchmarking was not run.
 
 Resume with hearth/other place-control parity, then the existing remaining
-quality checklist. Keep the benchmark deferred. Read [Verification](docs/VERIFICATION.md)
+quality checklist. Benchmark the release at native 1080p. Read [Verification](docs/VERIFICATION.md)
 for exact evidence and package boundaries; saved scenes remain canonical.
+
+## Live parity audit and release benchmark — 2026-10-13
+
+The live hearth and bird destinations enter locked activities immediately; native
+map travel previously omitted both. Source `Activities.tsx`, `activityScene.ts`,
+`sharedActors.ts` and `audio.ts` also identify missing tea seating/cup moment,
+hearth music/motes, indoor low-pass and rain gain, and outdoor reduced motion.
+Current scope is local base-game behavior; external radio and shared-world
+authority remain excluded. Current user saves were backed up to
+`/tmp/hearthwillow-parity-20261013/userdata` before verification.
+
+A five-view release probe and the broader moving/weather/activity benchmark
+have completed. The first probe is exploratory; the deterministic run below
+records renderer, graphics, resolution and movement verification.
+
+Place implementation checkpoint (native behavior verified): saved native hearth
+playback/soundtrack/mix access and 14 original-position motes; tea panel, original
+extracted cup, mint/sip/steam moment and existing inventory/replies; bird panel
+with flock state/disabled feeding; map activity entry for hearth/birds/garden.
+Outdoor ambience has an authored low-pass bus and source 950/3500/6500 Hz
+transitions, rain +.55 gain, weather-sensitive birds and cottage fire source.
+Reduced-motion now reaches spirits/fins, scenery shaders, hearth and cottage
+rituals; input buttons release held actions on application focus loss.
+
+First valid release baseline: Mobile/M4, 1920×1080, VSync off, five orbiting-camera
+views ×30 seconds +3 second warmup. Averages 84.1–142.0 FPS; p99 10.4–16.5 ms.
+This does not meet sustained 120 FPS and does not yet cover walking/horse/weather/
+activities. Raw report: `evidence/parity-baseline-fps.json`. Benchmark startup
+now waits for world readiness; old early-start harness crashed on launch.
+
+
+All 17 destinations were visited on https://cosy.sabarg.com/. The retained
+accessibility snapshots are `evidence/live-destination-audit.json`; this audit
+used ordinary travel/enter/leave controls and did not harvest shared crops or
+send chat. Source inspection supplies the private/local behavior contracts.
+
+| Live destination(s) | Verified native behavior |
+| --- | --- |
+| Focus cottage | Private timer/cat/room, enter/leave; sheltered outdoor sound and local fire anchor |
+| Village hearth | Automatic music activity, pause/play, five soundtracks, sound settings, 14 motes |
+| Willow pond | Automatic breathing activity, patterns and existing reusable-pouch pond feeding |
+| Writing nook / Little postbox | Existing journal/kind-note activities and map transitions preserved |
+| Kitchen garden | Automatic activity camera/lock, beds/tabs/basket, collapse and menu-safe return |
+| Bird clearing | Automatic activity, flock phase, queued/served refusal and reusable crumb pouch |
+| Meadow swings | Ground arrival; existing approach/seat/pump/facing behavior retained |
+| Watch tower | Ground arrival, E ascent, bounded platform walking/look controls and safe descent |
+| Willow circuit | Ground arrival; existing Rowan invitation/race retained |
+| Owl grove / Garden kitchen / Picnic hill | Existing nearby feeding/cooking/basket controls retained |
+| Carrot / Radish / Mint farms / Grazing field | Existing harvesting, animal/riding and forage controls retained |
+
+Tea is reached by the garden basket/nearby terrace rather than a separate map
+icon. Its camera/pose/entry and Luma staging were checked against the original
+`ACTIVITY_STAGES`/`COMPANION_STAGES`; gifts and mint consumption were verified
+locally. Followers now use the source side-by-side formation, single file through
+narrow passages and the original fin-to-fin meeting pose. Dog tricks use original
+7/5.2/3.2/3.8/4.2/4.6 second durations. Holding a dog in source is an interaction
+reservation, not an exposed carry mechanic; no invented carry action was added.
+
+Four native regression suites pass: live parity 165 steps, night/audio 67,
+farm/horse 125 and NPCs 93 (450 total). The NPC fixture now explicitly chooses
+English and follows the source reusable-pouch contract. All 15 changed gameplay
+scripts have clean language-server diagnostics. Full Forge lint also scans
+ignored build snapshots/reference scripts and reports 10 errors there; those
+are outside the gameplay diagnostic scope.
+
+The standalone Mobile/M4 release run completed: 16 scenarios, each 5-second
+warmup plus 30 seconds measured, native 1920×1080, VSync off, Detailed/MSAA 4x,
+normal motion and sound enabled. All four walking/horse cases verified actual
+travel. Night walking averages 70.3 FPS, hearth 72.0 and lookout 59.5; every
+scenario's p99 exceeds the 8.33 ms budget for 120 FPS. Cottage rain also records
+a 1007.4 ms frame stall despite its 173.6 FPS average. Its cause is unresolved.
+See `evidence/parity-current-fps.json` and the full table in docs/VERIFICATION.md.
+
+`evidence/parity-current-source-hashes.json` identifies the measured snapshot in
+`build/parity-current/Hearthwillow.app`. The final tea-button contrast,
+reduced-motion flock poses and companion stopping/avoidance corrections followed
+that run; current-source regressions and 1080p captures cover those corrections,
+but the FPS report is not a measurement of that exact final source. A separate
+local export is `build/parity-final/Hearthwillow.app`. That implementation pass did not replace or publish the public release. Physical listening, final visual acceptance, additional
+camera-edge/language cases and sustained thermal testing remain open.
+
+
+## GitHub preview 1 packaging — 2026-10-13
+
+Both Mac universal and Windows x64 downloads now include the complete finished
+night/audio and destination-parity source, including the final follow-up fixes.
+The README contains direct download links for `v0.1.0-preview.1`. Both frozen-source
+exports pass archive/pack checks; the extracted Mac app passes ad-hoc signature,
+headless startup and native 1920×1080 Metal starter checks. The saved four-suite,
+450-step gameplay evidence is retained. Windows runtime and another-Mac download
+acceptance remain open; see docs/RELEASES.md for the exact package evidence.
