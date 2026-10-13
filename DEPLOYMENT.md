@@ -1,10 +1,70 @@
 # Deploying Hearthwillow
 
 This guide is for agents preparing and publishing the downloadable Godot game at
-[CipherAtlas/Hearthwillow](https://github.com/CipherAtlas/Hearthwillow). Deployment
-currently means a **manual GitHub Release** with a Mac universal ZIP, a Windows
-x64 ZIP, and checksums. There is no release CI workflow. This process does not
-deploy `cosy.sabarg.com`, Cloudflare services, or a browser build.
+[CipherAtlas/Hearthwillow](https://github.com/CipherAtlas/Hearthwillow). The
+[Build and release workflow](.github/workflows/release.yml) builds Mac universal
+and Windows x64 downloads on GitHub Actions. It does not deploy the browser game,
+Cloudflare services, or `cosy.sabarg.com`.
+
+## Automatic builds and releases
+
+- A push to **main** builds and verifies both ZIPs, then checks native Windows
+  headless startup. It does not publish a release.
+- A push of a **version tag** does the same checks, then publishes a GitHub Release
+  only if every required job passes. A suffix such as `-preview.2` makes it a
+  prerelease; a tag such as `v0.1.1` makes it a normal release.
+- **Run workflow** in Actions builds the selected ref for diagnosis; manual
+  dispatch does not publish, even when the selected ref is a tag.
+
+After committing the authorized changes, push main and an unused version tag:
+
+```sh
+git push origin main
+git tag v0.1.0-preview.2 # Example only: choose the next unused version.
+git push origin v0.1.0-preview.2
+```
+
+Pushing a version tag authorizes that workflow's publication. Do not push one as
+an incidental test without publication authorization. The workflow is already
+configured; it needs no Apple certificate, custom PAT, or additional repository
+secret. Only the publish job gets `contents: write` through `GITHUB_TOKEN`.
+
+The macOS 15 runner installs Godot 4.7.2 and selected official export templates,
+verifying pinned SHA-256 downloads. Actions are pinned to commit SHAs. Both ZIPs
+come from one immutable checkout. `package_release.py --tag ...` derives numeric
+Mac/Windows version metadata from the tag and restores the source presets afterward;
+`build-info.json` and `source-hashes.json` record the effective build inputs.
+
+`verify_release.py` checks ZIP integrity/checksums, notices, the extracted Mac
+signature and architectures, Windows PE headers, both isolated game packs and Mac
+headless startup. A Windows 2022 job extracts the same ZIP and checks native
+headless startup. These jobs do not establish visual, audio, gameplay or FPS
+acceptance. Run relevant gameplay scenarios before tagging; CI does not run the
+Forge editor scenarios.
+
+The publish job renders `docs/RELEASE-TEMPLATE.md` with the current tag/commit,
+uploads an unpublished draft, checks its remote asset hashes, and publishes it.
+Published releases are immutable: a rerun will not replace their assets. A failed
+upload can be retried while the draft still targets the same commit. After successful
+publication the bot updates the README's direct links on main, retaining a newer
+version if another tag finished first. Pull that README commit before the next
+local push. Keep release-specific feature notes in the template accurate; historical
+`docs/RELEASE-NOTES.md` describes the original manual preview.
+
+Watch [Actions](https://github.com/CipherAtlas/Hearthwillow/actions). A main build's
+`release-downloads` artifact lasts **one day**; logs/manifests last seven days.
+Tagged release downloads remain on GitHub Releases. Standard hosted runners are
+[free for this public repository](https://docs.github.com/en/actions/reference/runners/github-hosted-runners);
+artifact retention is deliberately short and account storage limits still apply.
+
+If a job fails, inspect its logs/evidence artifacts, fix the cause, and rerun a
+failed unpublished tag's workflow without moving the tag. Use a new tag when the
+source needs changes. If publication succeeded but updating README failed, repair
+its links separately; do not replace the public assets to repair documentation.
+For release tooling or engine changes, validate an ordinary main/dispatch build
+before creating the next release tag. The manual fallback below remains available.
+
+## Manual fallback
 
 ## Before starting
 
@@ -67,8 +127,9 @@ internal project name `Hearthwillow-port`; changing the latter changes the defau
 user-data directory. Ad-hoc signing is free and does **not** bypass Gatekeeper.
 Keep accurate Mac installation instructions and Windows unsigned-app warnings.
 
-Before the source commit, update version metadata in both presets when the app
-version changes. Update the README release/tag links and
+For manual packaging, use `scripts/package_release.py --tag <version-tag>` to
+set the platform version metadata, or update both presets when building without
+that option. Update the README release/tag links and
 [release notes](docs/RELEASE-NOTES.md) for the chosen preview. Preview suffixes
 belong in the Git tag/title; the current platform version fields are numeric.
 Keep third-party notices, player instructions and all required runtime JSON/bin
@@ -98,7 +159,7 @@ release_source="$(mktemp -d "$release_repo_root/build/release-XXXXXX")"
 git archive "$release_commit" | tar -x -C "$release_source"
 godot --headless --editor --path "$release_source" --import \
   > "$release_source/import.log" 2>&1
-python3 "$release_source/scripts/package_release.py"
+python3 "$release_source/scripts/package_release.py" --tag "$release_tag"
 release_output="$release_source/build/releases"
 ```
 
@@ -148,35 +209,19 @@ Expect `Signature=adhoc`, Mac arm64/x86_64 slices and a Windows PE32+ x86-64
 executable. Keep the `.pck` beside the Windows executable and package every
 needed DLL. macOS tests of that pack do not establish Windows runtime support.
 
-Audit **both extracted packs** with the Godot editor executable. Create an audit
-helper under the ignored `build/` directory; old local helpers are not guaranteed
-to exist in a fresh clone. Its checks should fail with a nonzero exit code and:
-
-- Load `main.tscn`, `menus.tscn`, `quiet_places.tscn`, `pond_life.tscn`,
-  `tower_lookout.tscn`, `assets/quiet/tea-cup.glb` and `default_bus_layout.tres`.
-- Check required FileAccess data: `assets/quiet/kind-notes.json`,
-  `assets/quiet/companion-stages.json`, `assets/rest/rest-data.json`, village
-  `world-data.json`, `map-destinations.json`, `navigation.json`, `navigation.bin`,
-  `floor-heights.bin` and all four `bridge-floor-0.bin` through `bridge-floor-3.bin`.
-- Compare packed `.gd`/`.gdshader` hashes to `source-hashes.json` and runtime data
-  hashes to the frozen source. Update the list when gameplay adds dependencies.
-- Verify packed credits/notices and exclusion of development documents/images.
-- Verify the Outdoor audio bus routes to Master at 0 dB with its enabled 6500 Hz
-  low-pass; mute, solo and bypass are off in the authored default layout.
-
-Run from an **isolated empty project directory**, otherwise resources may fall
-back to checkout files and make the audit misleading. Substitute the absolute
-path of the helper you created:
+Run the checked-in verifier from the same frozen source directory:
 
 ```sh
-mkdir -p "$release_checks/isolated"
-godot --headless --path "$release_checks/isolated" \
-  --main-pack "$release_app/Contents/Resources/Hearthwillow-port.pck" \
-  --script /absolute/path/to/audit-pack.gd --quit-after 3
-godot --headless --path "$release_checks/isolated" \
-  --main-pack "$release_checks/windows/Hearthwillow.pck" \
-  --script /absolute/path/to/audit-pack.gd --quit-after 3
+python3 "$release_source/scripts/verify_release.py"
 ```
+
+It generates an audit helper, checks both extracted packs from an isolated empty
+project directory, and compares gameplay script/shader/data hashes. Keeping the
+helper outside the project prevents checkout files from masking missing resources.
+Update its DATA/RESOURCES lists when adding dependencies. Its report is
+`build/releases/verification.json`, with pack and Mac startup logs alongside it.
+The Windows Actions job adds native headless startup; manual Mac verification
+alone cannot establish Windows runtime support.
 
 Back up existing user data before testing behavior that can write saves. On this
 Mac it is under `~/Library/Application Support/Godot/app_userdata/Hearthwillow-port`.

@@ -24,7 +24,7 @@ opening it once, then go to **System Settings → Privacy & Security → Open An
 
 **Windows:** extract the entire ZIP into a folder and open `Hearthwillow.exe`.
 Keep the accompanying files together. The Windows preview is unsigned and has
-not yet been tested on a Windows PC. SmartScreen may warn; where Windows permits
+not yet had Windows gameplay testing. SmartScreen may warn; where Windows permits
 it, **More info → Run anyway** opens the app. Smart App Control or a managed PC
 may block unsigned apps.
 

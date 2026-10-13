@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Export and package the Mac and Windows previews using existing Godot templates."""
+import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import zipfile
@@ -32,7 +35,7 @@ def add_notices(folder):
         shutil.copy2(ROOT / source, notices / filename)
 
 
-def main():
+def package():
     godot = shutil.which("godot")
     if not godot:
         raise SystemExit("Godot 4.7.2 must be on PATH, with Mac and Windows x64 export templates installed.")
@@ -95,6 +98,43 @@ def main():
         checksums.append(f"{digest}  {path.name}\n")
         print(f"Packaged {path.name}: {path.stat().st_size:,} bytes")
     (OUTPUT / "SHA256SUMS.txt").write_text("".join(checksums), encoding="utf-8")
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--tag", help="Release tag, e.g. v0.1.0-preview.2; sets platform version metadata.")
+    args = parser.parse_args()
+    version = None
+    if args.tag:
+        match = re.fullmatch(r"v((?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*))(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?", args.tag)
+        if not match:
+            parser.error("Use vMAJOR.MINOR.PATCH, optionally followed by a prerelease suffix.")
+        version = match[1]
+    presets = ROOT / "export_presets.cfg"
+    original = presets.read_text()
+    if version:
+        keys = set()
+        def replace_version(match):
+            key = match[1]
+            keys.add(key)
+            value = version + ".0" if key in ("file_version", "product_version") else version
+            return f'application/{key}="{value}"'
+        configured = re.sub(r"^application/(short_version|version|file_version|product_version)=.*$",
+                            replace_version, original, flags=re.MULTILINE)
+        if keys != {"short_version", "version", "file_version", "product_version"}:
+            raise SystemExit("Both platform version fields must exist in export_presets.cfg.")
+        presets.write_text(configured)
+    try:
+        package()
+        (OUTPUT / "build-info.json").write_text(json.dumps({
+            "release_tag": args.tag,
+            "app_version": version or re.search(r'^application/short_version="([^"]+)"', original, re.MULTILINE)[1],
+            "source_commit": os.environ.get("SOURCE_COMMIT") or os.environ.get("GITHUB_SHA"),
+            "godot_version": "4.7.2-stable",
+        }, indent=2)+"\n")
+    finally:
+        if version:
+            presets.write_text(original)
 
 
 if __name__ == "__main__":

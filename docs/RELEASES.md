@@ -1,10 +1,15 @@
 # Download builds
 
+GitHub Actions now builds both downloads on main pushes and publishes verified
+version-tag builds. Follow [DEPLOYMENT.md](../DEPLOYMENT.md) for the automated
+workflow and manual fallback. The commands below describe local packaging.
+
 Build with **Godot 4.7.2 stable** on macOS. Install the matching official export
 templates for macOS and Windows x86_64; no paid signing certificate is required.
 
 ```sh
-python3 scripts/package_release.py
+python3 scripts/package_release.py --tag v0.1.0-preview.2
+python3 scripts/verify_release.py
 ```
 
 The script exports both presets, verifies the Mac signature, includes third-party
@@ -29,7 +34,8 @@ by Git and exports. The authored native meshes/scenes are included; this extract
 file is only needed when deliberately rebuilding the village from its source.
 
 Use the ZIPs as release assets, rather than adding binaries to Git. The initial
-release is an early preview; prepare its notes from [release notes](RELEASE-NOTES.md).
+release was an early preview; automated release notes come from
+[the release template](RELEASE-TEMPLATE.md).
 Publish only after explicitly choosing to publish. GitHub's automatic source ZIPs
 are for developers and are not playable downloads.
 
