@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/village/texture_3.png" id="1_w4jyk"]
+
+[resource]
+resource_name = "Village material 43"
+albedo_color = Color(0.38431373, 0.2509804, 0.1882353, 1)
+albedo_texture = ExtResource("1_w4jyk")
+uv1_scale = Vector3(1, -1, 1)
+uv1_offset = Vector3(0, 1, 0)

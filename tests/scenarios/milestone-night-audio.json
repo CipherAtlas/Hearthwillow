@@ -1,0 +1,244 @@
+{
+  "name": "Night and weather glow parity, nearby lamp budget and quiet contact audio",
+  "scene": "res://scenes/main.tscn",
+  "keep_running": true,
+  "steps": [
+    {
+      "assert": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
+    },
+    {
+      "eval": "get_node('HUD/Menus').set_meta('night_fixture',get_node('HUD/Menus').weather)"
+    },
+    {
+      "eval": "get_node('HUD/Menus').entered=true"
+    },
+    {
+      "eval": "get_node('HUD/Menus/Starter').hide()"
+    },
+    {
+      "eval": "get_node('HUD/Menus/Guide').hide()"
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "sync_blocking",
+        "args": []
+      }
+    },
+    {
+      "assert": "get_node('VillageLighting').spirit_materials.size()==10"
+    },
+    {
+      "assert": "get_node('VillageLighting/Halos').get_child_count()==41"
+    },
+    {
+      "assert": "get_node('VillageLighting/Lamps').get_child_count()==23"
+    },
+    {
+      "eval": "get_node('HUD/Menus').weather=3"
+    },
+    {
+      "wait": 6
+    },
+    {
+      "assert": "get_node('VillageLighting').blend==Vector3(0,0,1)"
+    },
+    {
+      "assert": "get_node('VillageLighting').active_lamps.size()==2"
+    },
+    {
+      "assert": "get_node('VillageLighting/Halos').visible"
+    },
+    {
+      "assert": "abs(get_node('VillageLighting').glass_materials[0].emission_energy_multiplier-3.32)<.001"
+    },
+    {
+      "assert": "get_node('VillageLighting').glass_materials[0].emission_texture!=null"
+    },
+    {
+      "assert": "get_node('VillageLighting').spirit_materials.all(func(v): return abs(v.material.emission_energy_multiplier-.26)<.001 and v.material.emission==Color('ffd58e'))"
+    },
+    {
+      "assert": "abs(get_node('Bounce').light_energy-.011)<.001"
+    },
+    {
+      "eval": "get_node('Player').position=Vector3(91,0.03,-41)"
+    },
+    {
+      "eval": "get_node('Player').reset_physics_interpolation()"
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('VillageLighting').active_lamps.has(get_node('VillageLighting/Lamps/town-lamp-11'))",
+      "message": "Lamp selection follows the visitor across the authored town, not the original template position."
+    },
+    {
+      "assert": "get_node('VillageLighting/Lamps').get_children().filter(func(n): return n.visible).size()==2"
+    },
+    {
+      "eval": "get_node('HUD/Menus').weather=2"
+    },
+    {
+      "wait": 6
+    },
+    {
+      "assert": "get_node('VillageLighting').blend==Vector3(0,1,0)"
+    },
+    {
+      "assert": "abs(get_node('VillageLighting').glass_materials[0].emission_energy_multiplier-1.42)<.001"
+    },
+    {
+      "assert": "get_node('VillageLighting/Halos').visible==true"
+    },
+    {
+      "assert": "get_node('VillageLighting').spirit_materials.all(func(v): return v.material.albedo_color==v.color and v.material.emission==v.emission and v.material.emission_energy_multiplier==v.energy)",
+      "message": "All original spirit colors and day emission are restored."
+    },
+    {
+      "eval": "get_node('HUD/Menus').weather=4"
+    },
+    {
+      "wait": 6
+    },
+    {
+      "assert": "get_node('VillageLighting').blend==Vector3(1,0,0)"
+    },
+    {
+      "assert": "abs(get_node('VillageLighting').glass_materials[0].emission_energy_multiplier-0.34)<.001"
+    },
+    {
+      "assert": "get_node('VillageLighting/Halos').visible==false"
+    },
+    {
+      "assert": "get_node('VillageLighting').active_lamps.is_empty()"
+    },
+    {
+      "assert": "get_node('VillageLighting').spirit_materials.all(func(v): return v.material.albedo_color==v.color and v.material.emission==v.emission and v.material.emission_energy_multiplier==v.energy)",
+      "message": "All original spirit colors and day emission are restored."
+    },
+    {
+      "eval": "get_node('HUD/Menus').weather=1"
+    },
+    {
+      "wait": 6
+    },
+    {
+      "assert": "get_node('VillageLighting').blend==Vector3.ZERO"
+    },
+    {
+      "assert": "abs(get_node('VillageLighting').glass_materials[0].emission_energy_multiplier-0.12)<.001"
+    },
+    {
+      "assert": "get_node('VillageLighting/Halos').visible==false"
+    },
+    {
+      "assert": "get_node('VillageLighting').active_lamps.is_empty()"
+    },
+    {
+      "assert": "get_node('VillageLighting').spirit_materials.all(func(v): return v.material.albedo_color==v.color and v.material.emission==v.emission and v.material.emission_energy_multiplier==v.energy)",
+      "message": "All original spirit colors and day emission are restored."
+    },
+    {
+      "call": {
+        "path": "VillageSound",
+        "method": "toggle_sound",
+        "args": []
+      }
+    },
+    {
+      "eval": "get_node('Player').velocity=Vector3(2.6,0,0)"
+    },
+    {
+      "eval": "get_node('VillageSound').last_contact_time=-1"
+    },
+    {
+      "call": {
+        "path": "VillageSound",
+        "method": "on_step",
+        "args": [
+          "grass"
+        ]
+      }
+    },
+    {
+      "assert": "get_node('VillageSound/Footsteps').stream.resource_path.contains('step_grass_') and get_node('VillageSound/Footsteps').volume_db < -37"
+    },
+    {
+      "eval": "get_node('VillageSound').set_meta('last_contact_fixture',get_node('VillageSound').last_step)"
+    },
+    {
+      "call": {
+        "path": "VillageSound",
+        "method": "on_step",
+        "args": [
+          "stone"
+        ]
+      }
+    },
+    {
+      "assert": "get_node('VillageSound').last_step==get_node('VillageSound').get_meta('last_contact_fixture')",
+      "message": "Repeated contact callbacks are rate-limited."
+    },
+    {
+      "eval": "get_node('VillageSound').last_contact_time=-1"
+    },
+    {
+      "eval": "get_node('Player').velocity=Vector3.ZERO"
+    },
+    {
+      "call": {
+        "path": "VillageSound",
+        "method": "on_step",
+        "args": [
+          "stone"
+        ]
+      }
+    },
+    {
+      "assert": "get_node('VillageSound').last_contact_time==-1",
+      "message": "Idle movement has no contact sound."
+    },
+    {
+      "eval": "get_node('Player').mount=get_node('Village/Actors/horse-juniper')"
+    },
+    {
+      "eval": "get_node('Player').velocity=Vector3(0,0,9)"
+    },
+    {
+      "call": {
+        "path": "VillageSound",
+        "method": "on_step",
+        "args": [
+          "stone"
+        ]
+      }
+    },
+    {
+      "assert": "get_node('VillageSound/Footsteps').stream.resource_path.contains('hoof_stone_') and get_node('VillageSound/Footsteps').volume_db < -34"
+    },
+    {
+      "eval": "get_node('Player').mount=null"
+    },
+    {
+      "eval": "get_node('Player').velocity=Vector3.ZERO"
+    },
+    {
+      "call": {
+        "path": "VillageSound",
+        "method": "toggle_sound",
+        "args": []
+      }
+    },
+    {
+      "assert": "not get_node('VillageSound/Footsteps').playing"
+    },
+    {
+      "eval": "get_node('HUD/Menus').weather=get_node('HUD/Menus').get_meta('night_fixture')"
+    },
+    {
+      "assert_no_errors": true
+    }
+  ]
+}

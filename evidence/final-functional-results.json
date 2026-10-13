@@ -1,0 +1,51 @@
+{
+  "viewport": [
+    1920,
+    1080
+  ],
+  "scenarios": [
+    {
+      "scenario": "milestone-animal-controls-final",
+      "passed": true,
+      "steps": 44,
+      "runtime_errors": []
+    },
+    {
+      "scenario": "milestone-farm-horses-final",
+      "passed": true,
+      "steps": 125,
+      "runtime_errors": []
+    },
+    {
+      "scenario": "milestone-garden-kitchen-final",
+      "passed": true,
+      "steps": 266,
+      "runtime_errors": []
+    },
+    {
+      "scenario": "milestone-gifts-final",
+      "passed": true,
+      "steps": 46,
+      "runtime_errors": []
+    },
+    {
+      "scenario": "milestone-growth-clocks-final",
+      "passed": true,
+      "steps": 66,
+      "runtime_errors": []
+    },
+    {
+      "scenario": "milestone-menus-final",
+      "passed": true,
+      "steps": 92,
+      "runtime_errors": []
+    },
+    {
+      "scenario": "milestone-npcs-final",
+      "passed": true,
+      "steps": 88,
+      "runtime_errors": []
+    }
+  ],
+  "fps_benchmark": "deferred by user; 120+ FPS not established"
+}

@@ -1,0 +1,14 @@
+[gd_resource type="Sky" format=3 uid="uid://d3h4e1f27u5yx"]
+
+[ext_resource type="Shader" uid="uid://cs4m406v1vj65" path="res://assets/shaders/village_sky.gdshader" id="1_lvld2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s0u3n"]
+shader = ExtResource("1_lvld2")
+shader_parameter/rain = 0.0
+shader_parameter/dusk = 0.0
+shader_parameter/night = 0.0
+shader_parameter/sunDirection = Vector3(0.53294, 0.426352, -0.73088914)
+
+[resource]
+sky_material = SubResource("ShaderMaterial_s0u3n")
+process_mode = 3

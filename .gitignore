@@ -1,0 +1,13 @@
+.godot/
+/android/
+*.translation
+export_presets.cfg.bak
+
+build/
+evidence/motion/
+.DS_Store
+*.zip
+*.tpz
+__pycache__/
+*.pyc
+assets/village/geometry.bin

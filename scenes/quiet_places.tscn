@@ -1,0 +1,794 @@
+[gd_scene format=3 uid="uid://gjjpn8aeypl7"]
+
+[ext_resource type="Theme" uid="uid://c0k8t2apf4b0s" path="res://scenes/quiet_button_theme.tres" id="8_awamr"]
+[ext_resource type="Script" uid="uid://8pkt5clafef" path="res://scenes/quiet_places.gd" id="behavior"]
+[ext_resource type="Script" uid="uid://ysg6i0o1klni" path="res://scenes/interaction_button.gd" id="button"]
+[ext_resource type="Theme" uid="uid://ckyccrqgdo11q" path="res://scenes/interaction_theme.tres" id="forest"]
+[ext_resource type="SystemFont" uid="uid://cqchiyb3agy3t" path="res://assets/fonts/Georgia.tres" id="georgia"]
+[ext_resource type="Script" uid="uid://0na3oth83ise" path="res://scenes/village_journal.gd" id="journal"]
+[ext_resource type="StyleBox" uid="uid://bow5e54yvrvk2" path="res://scenes/interaction_keycap.tres" id="key"]
+[ext_resource type="PackedScene" uid="uid://2f68oolwvfc" path="res://assets/quiet/kind-note.glb" id="kind"]
+[ext_resource type="Script" uid="uid://dtnsjdonrsv22" path="res://scenes/breath_orbit.gd" id="orbit"]
+[ext_resource type="PackedScene" uid="uid://b6w3xcc5qstsd" path="res://assets/quiet/saved-page.glb" id="page"]
+[ext_resource type="Theme" uid="uid://bflxvmjfrrirv" path="res://scenes/journal_theme.tres" id="paper"]
+[ext_resource type="PackedScene" uid="uid://b77np5sbftgmk" path="res://assets/quiet/writing-quill.glb" id="quill"]
+
+[sub_resource type="StandardMaterial3D" id="RingMaterial"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.65, 0.92, 0.84, 0.22)
+
+[sub_resource type="TorusMesh" id="Ring"]
+material = SubResource("RingMaterial")
+inner_radius = 0.94
+rings = 80
+ring_segments = 6
+
+[node name="QuietPlaces" type="Node3D" unique_id=478970946]
+physics_interpolation_mode = 2
+script = ExtResource("behavior")
+
+[node name="Camera" type="Camera3D" parent="." unique_id=128942020]
+fov = 55.0
+
+[node name="Ritual" type="Node3D" parent="." unique_id=720866506]
+
+[node name="Quill" parent="Ritual" unique_id=1580737050 instance=ExtResource("quill")]
+
+[node name="Page" parent="Ritual" unique_id=221620771 instance=ExtResource("page")]
+visible = false
+
+[node name="Letter" type="Node3D" parent="." unique_id=2060474729]
+visible = false
+
+[node name="Model" parent="Letter" unique_id=1992094371 instance=ExtResource("kind")]
+
+[node name="Rings" type="Node3D" parent="." unique_id=454221782]
+visible = false
+
+[node name="Ring0" type="MeshInstance3D" parent="Rings" unique_id=516508680]
+transform = Transform3D(1, 0, 0, 0, 0.05, 0, 0, 0, 1, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("Ring")
+
+[node name="Ring1" type="MeshInstance3D" parent="Rings" unique_id=113746269]
+transform = Transform3D(1, 0, 0, 0, 0.05, 0, 0, 0, 1, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("Ring")
+
+[node name="Ring2" type="MeshInstance3D" parent="Rings" unique_id=887258940]
+transform = Transform3D(1, 0, 0, 0, 0.05, 0, 0, 0, 1, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("Ring")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=127734791]
+layer = 4
+
+[node name="Journal" type="PanelContainer" parent="UI" unique_id=1119931596]
+visible = false
+custom_minimum_size = Vector2(400, 0)
+offset_left = 1492.0
+offset_top = 220.0
+offset_right = 1892.0
+offset_bottom = 230.0
+theme = ExtResource("paper")
+script = ExtResource("journal")
+
+[node name="Content" type="VBoxContainer" parent="UI/Journal" unique_id=1672477043]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Heading" type="Label" parent="UI/Journal/Content" unique_id=1413769560]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("georgia")
+theme_override_font_sizes/font_size = 29
+text = "Journal"
+
+[node name="Write" type="VBoxContainer" parent="UI/Journal/Content" unique_id=1983202958]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="NoteLabel" type="Label" parent="UI/Journal/Content/Write" unique_id=1208356922]
+layout_mode = 2
+text = "Note"
+
+[node name="Note" type="TextEdit" parent="UI/Journal/Content/Write" unique_id=1744838551]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("georgia")
+theme_override_font_sizes/font_size = 17
+wrap_mode = 1
+
+[node name="Save" type="Button" parent="UI/Journal/Content/Write" unique_id=1911929160]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("8_awamr")
+script = ExtResource("button")
+
+[node name="Row" type="HBoxContainer" parent="UI/Journal/Content/Write/Save" unique_id=1121538802]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Journal/Content/Write/Save/Row" unique_id=1772139266]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Journal/Content/Write/Save/Row/Key" unique_id=444931330]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+text = "⌘/Ctrl ↵"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Journal/Content/Write/Save/Row" unique_id=2048513460]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2784314, 0.3764706, 0.32156864, 1)
+text = "Keep this thought"
+vertical_alignment = 1
+
+[node name="History" type="Button" parent="UI/Journal/Content/Write" unique_id=2011392260]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("8_awamr")
+text = "Past notes"
+script = ExtResource("button")
+
+[node name="Library" type="VBoxContainer" parent="UI/Journal/Content" unique_id=2066817994]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Back" type="Button" parent="UI/Journal/Content/Library" unique_id=1251330684]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("8_awamr")
+text = "Back to writing"
+script = ExtResource("button")
+
+[node name="Empty" type="Label" parent="UI/Journal/Content/Library" unique_id=422779185]
+layout_mode = 2
+text = "No saved notes."
+
+[node name="List" type="ScrollContainer" parent="UI/Journal/Content/Library" unique_id=988499154]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Rows" type="VBoxContainer" parent="UI/Journal/Content/Library/List" unique_id=1815656441]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Read" type="ScrollContainer" parent="UI/Journal/Content/Library" unique_id=157216703]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Text" type="Label" parent="UI/Journal/Content/Library/Read" unique_id=925438949]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("georgia")
+theme_override_font_sizes/font_size = 17
+autowrap_mode = 3
+
+[node name="Remove" type="Button" parent="UI/Journal/Content/Library" unique_id=689873781]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("8_awamr")
+text = "Remove this note"
+script = ExtResource("button")
+
+[node name="Confirm" type="VBoxContainer" parent="UI/Journal/Content/Library" unique_id=1184923638]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Prompt" type="Label" parent="UI/Journal/Content/Library/Confirm" unique_id=1800038875]
+layout_mode = 2
+text = "Delete this note?"
+
+[node name="Delete" type="Button" parent="UI/Journal/Content/Library/Confirm" unique_id=1077583939]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("8_awamr")
+text = "Delete"
+script = ExtResource("button")
+
+[node name="Keep" type="Button" parent="UI/Journal/Content/Library/Confirm" unique_id=575451424]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("8_awamr")
+text = "Keep"
+script = ExtResource("button")
+
+[node name="Backup" type="VBoxContainer" parent="UI/Journal/Content/Library" unique_id=2076215165]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Export" type="Button" parent="UI/Journal/Content/Library/Backup" unique_id=40111160]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("8_awamr")
+text = "Download notes"
+script = ExtResource("button")
+
+[node name="Import" type="Button" parent="UI/Journal/Content/Library/Backup" unique_id=1453830113]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("8_awamr")
+text = "Restore notes"
+script = ExtResource("button")
+
+[node name="Status" type="Label" parent="UI/Journal/Content" unique_id=1781754815]
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="Import" type="FileDialog" parent="UI/Journal" unique_id=752482280]
+title = "Open a File"
+size = Vector2i(800, 600)
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.txt ; Hearthwillow notes")
+use_native_dialog = true
+
+[node name="Export" type="FileDialog" parent="UI/Journal" unique_id=288938307]
+title = "Download notes"
+size = Vector2i(800, 600)
+access = 2
+filters = PackedStringArray("*.txt ; Hearthwillow notes")
+use_native_dialog = true
+
+[node name="Kind" type="PanelContainer" parent="UI" unique_id=1617170634]
+visible = false
+custom_minimum_size = Vector2(360, 0)
+offset_left = 1532.0
+offset_top = 220.0
+offset_right = 1892.0
+offset_bottom = 230.0
+theme = ExtResource("paper")
+
+[node name="Content" type="VBoxContainer" parent="UI/Kind" unique_id=175581790]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Heading" type="Label" parent="UI/Kind/Content" unique_id=47222222]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("georgia")
+theme_override_font_sizes/font_size = 29
+text = "Your note"
+
+[node name="Note" type="Label" parent="UI/Kind/Content" unique_id=2049424829]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("georgia")
+theme_override_font_sizes/font_size = 26
+autowrap_mode = 3
+
+[node name="Another" type="Button" parent="UI/Kind/Content" unique_id=747702454]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("8_awamr")
+script = ExtResource("button")
+action = "interact"
+
+[node name="Row" type="HBoxContainer" parent="UI/Kind/Content/Another" unique_id=1002734726]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Kind/Content/Another/Row" unique_id=368636161]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Kind/Content/Another/Row/Key" unique_id=1803718272]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Kind/Content/Another/Row" unique_id=655206796]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+text = "Another note"
+vertical_alignment = 1
+
+[node name="Keep" type="Button" parent="UI/Kind/Content" unique_id=1430742157]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("8_awamr")
+script = ExtResource("button")
+action = "activity_8"
+
+[node name="Row" type="HBoxContainer" parent="UI/Kind/Content/Keep" unique_id=591802368]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Kind/Content/Keep/Row" unique_id=82988481]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Kind/Content/Keep/Row/Key" unique_id=989179475]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Kind/Content/Keep/Row" unique_id=2004538203]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+text = "Keep"
+vertical_alignment = 1
+
+[node name="Status" type="Label" parent="UI/Kind/Content" unique_id=1536944867]
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="Breathe" type="PanelContainer" parent="UI" unique_id=618803629]
+visible = false
+custom_minimum_size = Vector2(340, 0)
+offset_left = 1552.0
+offset_top = 220.0
+offset_right = 1892.0
+offset_bottom = 230.0
+theme = ExtResource("forest")
+
+[node name="Content" type="VBoxContainer" parent="UI/Breathe" unique_id=1855884757]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Heading" type="Label" parent="UI/Breathe/Content" unique_id=1365734213]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Breathe"
+
+[node name="Feed" type="Button" parent="UI/Breathe/Content" unique_id=1882783690]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("forest")
+script = ExtResource("button")
+action = "talk"
+
+[node name="Row" type="HBoxContainer" parent="UI/Breathe/Content/Feed" unique_id=1566293123]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Breathe/Content/Feed/Row" unique_id=952632082]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Breathe/Content/Feed/Row/Key" unique_id=1106312589]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Breathe/Content/Feed/Row" unique_id=1973538203]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+text = "Feed the ducks"
+vertical_alignment = 1
+
+[node name="Orbit" type="Control" parent="UI/Breathe/Content" unique_id=2035173299]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("orbit")
+
+[node name="Phase" type="Label" parent="UI/Breathe/Content/Orbit" unique_id=1953181369]
+layout_mode = 0
+offset_top = 42.0
+offset_right = 310.0
+offset_bottom = 68.0
+text = "Ready"
+horizontal_alignment = 1
+
+[node name="Count" type="Label" parent="UI/Breathe/Content/Orbit" unique_id=1971535139]
+layout_mode = 0
+offset_top = 66.0
+offset_right = 310.0
+offset_bottom = 126.0
+theme_override_fonts/font = ExtResource("georgia")
+theme_override_font_sizes/font_size = 46
+text = "~"
+horizontal_alignment = 1
+
+[node name="Toggle" type="Button" parent="UI/Breathe/Content" unique_id=2077529356]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("forest")
+script = ExtResource("button")
+action = "jump"
+
+[node name="Row" type="HBoxContainer" parent="UI/Breathe/Content/Toggle" unique_id=271314487]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Breathe/Content/Toggle/Row" unique_id=1754374147]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Breathe/Content/Toggle/Row/Key" unique_id=1421248040]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Breathe/Content/Toggle/Row" unique_id=2034595856]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+text = "Begin"
+vertical_alignment = 1
+
+[node name="Reset" type="Button" parent="UI/Breathe/Content" unique_id=392341748]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("forest")
+script = ExtResource("button")
+action = "unstuck"
+
+[node name="Row" type="HBoxContainer" parent="UI/Breathe/Content/Reset" unique_id=1033888611]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Breathe/Content/Reset/Row" unique_id=1039711719]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Breathe/Content/Reset/Row/Key" unique_id=996126444]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Breathe/Content/Reset/Row" unique_id=526573488]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+text = "Reset"
+vertical_alignment = 1
+
+[node name="Pattern0" type="Button" parent="UI/Breathe/Content" unique_id=1601371266]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("forest")
+toggle_mode = true
+script = ExtResource("button")
+action = "activity_1"
+
+[node name="Row" type="HBoxContainer" parent="UI/Breathe/Content/Pattern0" unique_id=1674793007]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Breathe/Content/Pattern0/Row" unique_id=685851421]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Breathe/Content/Pattern0/Row/Key" unique_id=1745930255]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Breathe/Content/Pattern0/Row" unique_id=1816272548]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+text = "Calm · 4–4–6"
+vertical_alignment = 1
+
+[node name="Pattern1" type="Button" parent="UI/Breathe/Content" unique_id=2053909975]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("forest")
+toggle_mode = true
+script = ExtResource("button")
+action = "activity_2"
+
+[node name="Row" type="HBoxContainer" parent="UI/Breathe/Content/Pattern1" unique_id=2112116925]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Breathe/Content/Pattern1/Row" unique_id=1598994900]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Breathe/Content/Pattern1/Row/Key" unique_id=1566713467]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Breathe/Content/Pattern1/Row" unique_id=580685423]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+text = "Box · 4–4–4–4"
+vertical_alignment = 1
+
+[node name="Pattern2" type="Button" parent="UI/Breathe/Content" unique_id=1180142883]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme = ExtResource("forest")
+toggle_mode = true
+script = ExtResource("button")
+action = "activity_3"
+
+[node name="Row" type="HBoxContainer" parent="UI/Breathe/Content/Pattern2" unique_id=37326815]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Breathe/Content/Pattern2/Row" unique_id=294438433]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Breathe/Content/Pattern2/Row/Key" unique_id=1872226836]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Breathe/Content/Pattern2/Row" unique_id=2040942491]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+text = "Slow · 4–7–8"
+vertical_alignment = 1
+
+[node name="Status" type="Label" parent="UI/Breathe/Content" unique_id=433586172]
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="Enter" type="Button" parent="UI" unique_id=928464713]
+visible = false
+custom_minimum_size = Vector2(0, 44)
+offset_left = 1520.0
+offset_top = 940.0
+offset_right = 1892.0
+offset_bottom = 984.0
+theme = ExtResource("8_awamr")
+script = ExtResource("button")
+action = "interact"
+
+[node name="Row" type="HBoxContainer" parent="UI/Enter" unique_id=1325182861]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Enter/Row" unique_id=291305715]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Enter/Row/Key" unique_id=2119119129]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Enter/Row" unique_id=1871038482]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+text = "Open your journal"
+vertical_alignment = 1
+
+[node name="Leave" type="Button" parent="UI" unique_id=1898019495]
+visible = false
+custom_minimum_size = Vector2(0, 44)
+offset_left = 1520.0
+offset_top = 974.0
+offset_right = 1892.0
+offset_bottom = 1018.0
+theme = ExtResource("8_awamr")
+script = ExtResource("button")
+action = "release_mouse"
+
+[node name="Row" type="HBoxContainer" parent="UI/Leave" unique_id=1182136923]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Leave/Row" unique_id=179317921]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Leave/Row/Key" unique_id=300562356]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Leave/Row" unique_id=2082738798]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+text = "Leave"
+vertical_alignment = 1
+
+[node name="Collapse" type="Button" parent="UI" unique_id=286360568]
+visible = false
+custom_minimum_size = Vector2(0, 44)
+offset_left = 1520.0
+offset_top = 918.0
+offset_right = 1892.0
+offset_bottom = 962.0
+theme = ExtResource("8_awamr")
+script = ExtResource("button")
+action = "toggle_activity"
+
+[node name="Row" type="HBoxContainer" parent="UI/Collapse" unique_id=1044256887]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="UI/Collapse/Row" unique_id=142398546]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("key")
+
+[node name="Text" type="Label" parent="UI/Collapse/Row/Key" unique_id=2015995375]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="UI/Collapse/Row" unique_id=1761512777]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.82, 1)
+text = "Hide controls"
+vertical_alignment = 1
+
+[connection signal="moment" from="UI/Journal" to="." method="set_moment"]
+[connection signal="text_changed" from="UI/Journal/Content/Write/Note" to="UI/Journal" method="text_changed"]
+[connection signal="pressed" from="UI/Journal/Content/Write/Save" to="UI/Journal" method="save_note"]
+[connection signal="pressed" from="UI/Journal/Content/Write/History" to="UI/Journal" method="show_list"]
+[connection signal="pressed" from="UI/Journal/Content/Library/Back" to="UI/Journal" method="back"]
+[connection signal="pressed" from="UI/Journal/Content/Library/Remove" to="UI/Journal" method="ask_remove"]
+[connection signal="pressed" from="UI/Journal/Content/Library/Confirm/Delete" to="UI/Journal" method="delete_note"]
+[connection signal="pressed" from="UI/Journal/Content/Library/Confirm/Keep" to="UI/Journal" method="keep_note"]
+[connection signal="pressed" from="UI/Journal/Content/Library/Backup/Export" to="UI/Journal" method="choose_export"]
+[connection signal="pressed" from="UI/Journal/Content/Library/Backup/Import" to="UI/Journal" method="choose_import"]
+[connection signal="file_selected" from="UI/Journal/Import" to="UI/Journal" method="import_file"]
+[connection signal="file_selected" from="UI/Journal/Export" to="UI/Journal" method="export_file"]
+[connection signal="pressed" from="UI/Kind/Content/Another" to="." method="another_note"]
+[connection signal="pressed" from="UI/Kind/Content/Keep" to="." method="keep_kind_note"]
+[connection signal="pressed" from="UI/Breathe/Content/Feed" to="." method="feed_pond"]
+[connection signal="pressed" from="UI/Breathe/Content/Toggle" to="." method="toggle_breathing"]
+[connection signal="pressed" from="UI/Breathe/Content/Reset" to="." method="reset_breathing"]
+[connection signal="pressed" from="UI/Breathe/Content/Pattern0" to="." method="set_pattern" binds= [0]]
+[connection signal="pressed" from="UI/Breathe/Content/Pattern1" to="." method="set_pattern" binds= [1]]
+[connection signal="pressed" from="UI/Breathe/Content/Pattern2" to="." method="set_pattern" binds= [2]]
+[connection signal="pressed" from="UI/Enter" to="." method="enter_nearby"]
+[connection signal="pressed" from="UI/Leave" to="." method="leave"]
+[connection signal="pressed" from="UI/Collapse" to="." method="toggle_controls"]

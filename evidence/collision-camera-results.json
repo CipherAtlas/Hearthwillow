@@ -1,0 +1,261 @@
+{
+ "name": "Scenery collisions, water boundaries and camera",
+ "passed": true,
+ "duration_s": 10.258,
+ "steps": [
+  {
+   "index": 0,
+   "step": "wait 0.4",
+   "ok": true
+  },
+  {
+   "index": 1,
+   "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(5.8,11)))",
+   "ok": true,
+   "detail": {
+    "value": null
+   }
+  },
+  {
+   "index": 2,
+   "step": "eval get_node('CameraRig').set('rotation',Vector3(0,0,0))",
+   "ok": true,
+   "detail": {
+    "value": null
+   }
+  },
+  {
+   "index": 3,
+   "step": "wait 0.3",
+   "ok": true
+  },
+  {
+   "index": 4,
+   "step": "input",
+   "ok": true,
+   "detail": {
+    "results": [
+     "tapped move_right for 1.30s"
+    ],
+    "steps": 1
+   }
+  },
+  {
+   "index": 5,
+   "step": "assert get_node('Player').position.x > 6.8 and get_node('Player').position.x < 7.05",
+   "ok": true,
+   "detail": "Native cottage collision stops the spirit at the wall, including its radius"
+  },
+  {
+   "index": 6,
+   "step": "assert get_node('Player').is_on_floor()",
+   "ok": true,
+   "detail": "Collision preserves contact with the ground"
+  },
+  {
+   "index": 7,
+   "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(5.8,11)))",
+   "ok": true,
+   "detail": {
+    "value": null
+   }
+  },
+  {
+   "index": 8,
+   "step": "eval get_node('CameraRig').set('rotation',Vector3(0,1.5707963,0))",
+   "ok": true,
+   "detail": {
+    "value": null
+   }
+  },
+  {
+   "index": 9,
+   "step": "wait 0.4",
+   "ok": true
+  },
+  {
+   "index": 10,
+   "step": "assert get_node('CameraRig/Pitch/SpringArm3D').get_hit_length() < 2.0",
+   "ok": true,
+   "detail": "Camera arm retracts before entering the cottage"
+  },
+  {
+   "index": 11,
+   "step": "input",
+   "ok": true,
+   "detail": {
+    "results": [
+     "clicked at Vector2(680, 380)"
+    ],
+    "steps": 1
+   }
+  },
+  {
+   "index": 12,
+   "step": "assert get_node('CameraRig').distance > 4.1",
+   "ok": true,
+   "detail": "Mouse wheel changes camera distance"
+  },
+  {
+   "index": 13,
+   "step": "input",
+   "ok": true,
+   "detail": {
+    "results": [
+     "clicked at Vector2(680, 380)"
+    ],
+    "steps": 1
+   }
+  },
+  {
+   "index": 14,
+   "step": "input",
+   "ok": true,
+   "detail": {
+    "results": [
+     "key Escape"
+    ],
+    "steps": 1
+   }
+  },
+  {
+   "index": 15,
+   "step": "assert not get_node('WorldSurface').can_enter(Vector2(-10.533896,18))",
+   "ok": true,
+   "detail": "Original river is blocked away from bridges"
+  },
+  {
+   "index": 16,
+   "step": "assert not get_node('WorldSurface').can_enter(Vector2(54.531793,24.152861))",
+   "ok": true,
+   "detail": "Moved town brook uses its current curved course"
+  },
+  {
+   "index": 17,
+   "step": "assert not get_node('WorldSurface').can_enter(Vector2(-54,-40))",
+   "ok": true,
+   "detail": "Waterfall stream uses its current placement"
+  },
+  {
+   "index": 18,
+   "step": "assert get_node('WorldSurface').data.buildings.size()==15",
+   "ok": true,
+   "detail": "Map has original transformed cottage and tower footprints"
+  },
+  {
+   "index": 19,
+   "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(.3,20)))",
+   "ok": true,
+   "detail": {
+    "value": null
+   }
+  },
+  {
+   "index": 20,
+   "step": "eval get_node('CameraRig').set('rotation',Vector3(0,0,0))",
+   "ok": true,
+   "detail": {
+    "value": null
+   }
+  },
+  {
+   "index": 21,
+   "step": "input",
+   "ok": true,
+   "detail": {
+    "results": [
+     "tapped glide for 0.05s",
+     "tapped move_forward for 1.00s"
+    ],
+    "steps": 2
+   }
+  },
+  {
+   "index": 22,
+   "step": "assert get_node('Player').gliding and get_node('Player').position.z < 16.5",
+   "ok": true,
+   "detail": "G selects the original 4.5 m/s glide"
+  },
+  {
+   "index": 23,
+   "step": "input",
+   "ok": true,
+   "detail": {
+    "results": [
+     "tapped glide for 0.05s",
+     "clicked at Vector2(1271.5, 725)"
+    ],
+    "steps": 2
+   }
+  },
+  {
+   "index": 24,
+   "step": "assert get_node('HUD/VillageMap').expanded",
+   "ok": true,
+   "detail": "Map button and keyboard control are equivalent"
+  },
+  {
+   "index": 25,
+   "step": "screenshot village-map",
+   "ok": true
+  },
+  {
+   "index": 26,
+   "step": "input",
+   "ok": true,
+   "detail": {
+    "results": [
+     "key Escape",
+     "clicked at Vector2(1116.5, 725)"
+    ],
+    "steps": 2
+   }
+  },
+  {
+   "index": 27,
+   "step": "assert get_node('VillageSound/Music').playing",
+   "ok": true,
+   "detail": "Sound button starts original recorded music"
+  },
+  {
+   "index": 28,
+   "step": "wait 0.5",
+   "ok": true
+  },
+  {
+   "index": 29,
+   "step": "assert get_node('VillageSound/Music').get_playback_position() > .25",
+   "ok": true,
+   "detail": "Audio time advances during actual playback"
+  },
+  {
+   "index": 30,
+   "step": "input",
+   "ok": true,
+   "detail": {
+    "results": [
+     "clicked at Vector2(1116.5, 725)"
+    ],
+    "steps": 1
+   }
+  },
+  {
+   "index": 31,
+   "step": "assert_no_errors",
+   "ok": true
+  }
+ ],
+ "runtime_errors": [],
+ "screenshots": [
+  {
+   "image": "attached #1",
+   "coord_scale": 1.7075,
+   "height": 449,
+   "original_height": 718,
+   "original_width": 1278,
+   "viewport_size": "Vector2(1366, 768)",
+   "width": 800,
+   "label": "village-map"
+  }
+ ]
+}

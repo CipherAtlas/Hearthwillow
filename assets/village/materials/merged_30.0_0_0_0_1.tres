@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "Village material 30"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9529412, 0.8156863, 0.59999996, 1)
+roughness = 0.7

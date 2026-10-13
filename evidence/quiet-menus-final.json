@@ -1,0 +1,694 @@
+{
+  "name": "Starter, live-site HUD, menus, sound and map travel",
+  "passed": true,
+  "duration_s": 19.514,
+  "steps": [
+    {
+      "index": 0,
+      "step": "wait 0.3",
+      "ok": true
+    },
+    {
+      "index": 1,
+      "step": "assert get_tree().root.size.x>=1918 and get_tree().root.size.y>=1079",
+      "ok": true,
+      "detail": "1080p display window; allow the macOS one-pixel window frame, never a 720p override."
+    },
+    {
+      "index": 2,
+      "step": "assert get_viewport().get_texture().get_size() == Vector2(1920,1080)",
+      "ok": true,
+      "detail": "get_viewport().get_texture().get_size() == Vector2(1920,1080)"
+    },
+    {
+      "index": 3,
+      "step": "assert get_node('HUD/Menus/Starter').visible and get_node('Player').controls_blocked and get_node('CameraRig').title_scr",
+      "ok": true,
+      "detail": "get_node('HUD/Menus/Starter').visible and get_node('Player').controls_blocked and get_node('CameraRig').title_screen"
+    },
+    {
+      "index": 4,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 5,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_forward for 0.30s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 6,
+      "step": "assert abs(get_node('Player').position.z-20)<.05",
+      "ok": true,
+      "detail": "abs(get_node('Player').position.z-20)<.05"
+    },
+    {
+      "index": 7,
+      "step": "eval get_tree().root.grab_focus()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 8,
+      "step": "eval get_node('HUD/Menus/Starter/Content/Menu/Enter').warp_mouse(get_node('HUD/Menus/Starter/Content/Menu/Enter').size/2",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 9,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 10,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "released all",
+          "clicked at Vector2(304.4, 513)"
+        ],
+        "steps": 2
+      }
+    },
+    {
+      "index": 11,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 12,
+      "step": "assert get_node('HUD/Menus').entered and get_node('HUD/Menus/Guide').visible",
+      "ok": true,
+      "detail": "get_node('HUD/Menus').entered and get_node('HUD/Menus/Guide').visible"
+    },
+    {
+      "index": 13,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 14,
+      "step": "assert not get_node('Player').controls_blocked",
+      "ok": true,
+      "detail": "not get_node('Player').controls_blocked"
+    },
+    {
+      "index": 15,
+      "step": "assert get_node('HUD/Hints').position==Vector2(36,1024) and get_node('HUD/VillageMap').size==Vector2(190,150)",
+      "ok": true,
+      "detail": "get_node('HUD/Hints').position==Vector2(36,1024) and get_node('HUD/VillageMap').size==Vector2(190,150)"
+    },
+    {
+      "index": 16,
+      "step": "eval get_tree().root.grab_focus()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 17,
+      "step": "eval get_node('HUD/Actions/Buttons/Settings').warp_mouse(get_node('HUD/Actions/Buttons/Settings').size/2)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 18,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 19,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1844, 50)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 20,
+      "step": "assert get_node('HUD/Menus/Settings').visible and get_node('Player').controls_blocked",
+      "ok": true,
+      "detail": "get_node('HUD/Menus/Settings').visible and get_node('Player').controls_blocked"
+    },
+    {
+      "index": 21,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 22,
+      "step": "eval get_tree().root.grab_focus()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 23,
+      "step": "eval get_node('HUD/Menus/Settings/Content/Scroll/Pages/Sound/Toggle').warp_mouse(get_node('HUD/Menus/Settings/Content/Sc",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 24,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 25,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1690, 244)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 26,
+      "step": "assert get_node('VillageSound').enabled and get_node('VillageSound/Music').playing",
+      "ok": true,
+      "detail": "get_node('VillageSound').enabled and get_node('VillageSound/Music').playing"
+    },
+    {
+      "index": 27,
+      "step": "set",
+      "ok": true,
+      "detail": {
+        "path": "/root/Hearthwillow/HUD/Menus/Settings/Content/Scroll/Pages/Sound/MasterRow/Slider",
+        "set": [
+          "value"
+        ]
+      }
+    },
+    {
+      "index": 28,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 29,
+      "step": "assert get_node('VillageSound').master_level==0 and get_node('VillageSound/Music').volume_db <= -80 and get_node('Villag",
+      "ok": true,
+      "detail": "get_node('VillageSound').master_level==0 and get_node('VillageSound/Music').volume_db <= -80 and get_node('VillageSound/Rain').volume_db<=-80"
+    },
+    {
+      "index": 30,
+      "step": "set",
+      "ok": true,
+      "detail": {
+        "path": "/root/Hearthwillow/HUD/Menus/Settings/Content/Scroll/Pages/Sound/MasterRow/Slider",
+        "set": [
+          "value"
+        ]
+      }
+    },
+    {
+      "index": 31,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 32,
+      "step": "wait 1.2",
+      "ok": true
+    },
+    {
+      "index": 33,
+      "step": "assert get_node('VillageSound').current_track==2 and get_node('VillageSound/MusicNext').playing",
+      "ok": true,
+      "detail": "get_node('VillageSound').current_track==2 and get_node('VillageSound/MusicNext').playing"
+    },
+    {
+      "index": 34,
+      "step": "wait 2.2",
+      "ok": true
+    },
+    {
+      "index": 35,
+      "step": "assert not get_node('VillageSound/MusicNext').playing",
+      "ok": true,
+      "detail": "not get_node('VillageSound/MusicNext').playing"
+    },
+    {
+      "index": 36,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 37,
+      "step": "wait 1.2",
+      "ok": true
+    },
+    {
+      "index": 38,
+      "step": "eval get_tree().root.grab_focus()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 39,
+      "step": "eval get_node('HUD/Menus/Settings/Content/Scroll/Pages/Sound/Toggle').warp_mouse(get_node('HUD/Menus/Settings/Content/Sc",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 40,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 41,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1690, 244)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 42,
+      "step": "assert not get_node('VillageSound/Music').playing and not get_node('VillageSound/MusicNext').playing",
+      "ok": true,
+      "detail": "not get_node('VillageSound/Music').playing and not get_node('VillageSound/MusicNext').playing"
+    },
+    {
+      "index": 43,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 44,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 45,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 46,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Y"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 47,
+      "step": "assert get_node('HUD/Menus').bindings.talk==89",
+      "ok": true,
+      "detail": "get_node('HUD/Menus').bindings.talk==89"
+    },
+    {
+      "index": 48,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 49,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Y"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 50,
+      "step": "assert get_node('HUD/Menus').conflict=='talk'",
+      "ok": true,
+      "detail": "get_node('HUD/Menus').conflict=='talk'"
+    },
+    {
+      "index": 51,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Y"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 52,
+      "step": "assert get_node('HUD/Menus').bindings.move_forward==89 and get_node('HUD/Menus').bindings.talk==87 and get_node('HUD/Hin",
+      "ok": true,
+      "detail": "get_node('HUD/Menus').bindings.move_forward==89 and get_node('HUD/Menus').bindings.talk==87 and get_node('HUD/Hints/Row/Move/move_forward/Text').text=='Y'"
+    },
+    {
+      "index": 53,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 54,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 55,
+      "step": "assert abs(get_node('CameraRig').sensitivity-.00165)<.000001",
+      "ok": true,
+      "detail": "abs(get_node('CameraRig').sensitivity-.00165)<.000001"
+    },
+    {
+      "index": 56,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 57,
+      "step": "assert not get_node('Sun').shadow_enabled and get_viewport().msaa_3d==0",
+      "ok": true,
+      "detail": "not get_node('Sun').shadow_enabled and get_viewport().msaa_3d==0"
+    },
+    {
+      "index": 58,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 59,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 60,
+      "step": "wait 3",
+      "ok": true
+    },
+    {
+      "index": 61,
+      "step": "assert get_node('WeatherRain').emitting",
+      "ok": true,
+      "detail": "get_node('WeatherRain').emitting"
+    },
+    {
+      "index": 62,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 63,
+      "step": "wait 3",
+      "ok": true
+    },
+    {
+      "index": 64,
+      "step": "assert not get_node('WeatherRain').emitting and get_node('Sun').light_energy < .1",
+      "ok": true,
+      "detail": "not get_node('WeatherRain').emitting and get_node('Sun').light_energy < .1"
+    },
+    {
+      "index": 65,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 66,
+      "step": "assert get_node('HUD/Hints/Row/Move/Caption').text=='移動'",
+      "ok": true,
+      "detail": "get_node('HUD/Hints/Row/Move/Caption').text=='移動'"
+    },
+    {
+      "index": 67,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 68,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 69,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 70,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 71,
+      "step": "eval get_tree().root.grab_focus()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 72,
+      "step": "eval get_node('HUD/Actions/Buttons/Inventory').warp_mouse(get_node('HUD/Actions/Buttons/Inventory').size/2)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 73,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 74,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1756, 50)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 75,
+      "step": "assert get_node('HUD/Menus/Inventory').visible and get_node('HUD/Menus/Inventory/Content/Text').text.contains('Apples')",
+      "ok": true,
+      "detail": "get_node('HUD/Menus/Inventory').visible and get_node('HUD/Menus/Inventory/Content/Text').text.contains('Apples')"
+    },
+    {
+      "index": 76,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 77,
+      "step": "eval get_tree().root.grab_focus()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 78,
+      "step": "eval get_node('HUD/VillageMap').warp_mouse(get_node('HUD/VillageMap').size/2)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 79,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 80,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1613, 103)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 81,
+      "step": "assert get_node('HUD/VillageMap').expanded and get_node('HUD/VillageMap').size==Vector2(1920,1080) and not get_node('HUD",
+      "ok": true,
+      "detail": "get_node('HUD/VillageMap').expanded and get_node('HUD/VillageMap').size==Vector2(1920,1080) and not get_node('HUD/Hints').visible"
+    },
+    {
+      "index": 82,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_right for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 83,
+      "step": "assert get_node('HUD/VillageMap').selected_index != 0",
+      "ok": true,
+      "detail": "get_node('HUD/VillageMap').selected_index != 0"
+    },
+    {
+      "index": 84,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 85,
+      "step": "eval get_tree().root.grab_focus()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 86,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Footer/Row/Go').warp_mouse(get_node('HUD/VillageMap/Expanded/Footer/Row/Go').size",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 87,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 88,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(258, 1021)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 89,
+      "step": "assert not get_node('HUD/VillageMap').expanded and not get_node('Player').controls_blocked",
+      "ok": true,
+      "detail": "not get_node('HUD/VillageMap').expanded and not get_node('Player').controls_blocked"
+    },
+    {
+      "index": 90,
+      "step": "assert get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))",
+      "ok": true,
+      "detail": "get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "index": 91,
+      "step": "assert_no_errors",
+      "ok": true
+    }
+  ],
+  "runtime_errors": [],
+  "screenshots": []
+}

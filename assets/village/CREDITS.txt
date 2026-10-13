@@ -1,0 +1,161 @@
+Cosy Village — art and music credits
+
+Poly Haven materials, tree and sky: CC0 (https://polyhaven.com/license)
+https://polyhaven.com/a/medieval_wood
+https://polyhaven.com/a/roof_slates_02
+https://polyhaven.com/a/plastered_stone_wall
+https://polyhaven.com/a/medieval_blocks_03
+https://polyhaven.com/a/forest_ground_04
+https://polyhaven.com/a/tree_small_02
+https://polyhaven.com/a/kloppenheim_06_puresky
+Sky by Greg Zaal and Jarod Guest. Tree simplified for browser rendering.
+
+Salamander Grand Piano: Alexander Holm, CC BY 3.0
+https://creativecommons.org/licenses/by/3.0/
+Samples distributed by https://github.com/Tonejs/audio/tree/master/salamander
+Locally served MP3 samples; original generative arrangements with pitch shifting,
+filtering and reverb. Original sample README: audio/Salamander-LICENSE.txt
+
+Village architecture, terrain, traveller and music arrangements: authored for Cosy.
+Cobblestone texture: generated for this project using OpenAI ImageGen.
+Arkenfall is a design reference; no Arkenfall assets were copied.
+
+Representative-slice additions (2026-09-25):
+Qwantani Sunset (Pure Sky), Greg Zaal (photography), Jarod Guest (processing).
+CC0, https://polyhaven.com/a/qwantani_sunset_puresky
+Original 1K HDR, locally served as textures/sunset.hdr.
+Skinned traveller, woven textures, eight animation clips and willow geometry are
+original scripted project artwork. Editable traveller source: assets/village/traveller.blend.
+Footsteps, percussion, bass, birds and other new foley are original Web Audio synthesis.
+
+2026-09-25 additions: original procedural cloud sky, stone arch bridge, ambient resident routes and bird geometry. Distant birch cards are rendered at runtime from the licensed birch model above; they add no third-party source asset.
+
+2026-09-26 additions: original white smiling spirit, modeled in isolated Blender 5.2.1.
+Editable source: assets/village/spirit.blend; generator: scripts/village/create_spirit.py.
+Three PBR materials, no texture images or third-party character sources.
+Genshin Impact and Arkenfall inform art direction; no assets from either game are used.
+New palette, path shoulders, cottage details and spirit motion are original project work.
+
+2026-09-26 fantasy village pass: original swept-roof cottage kit, painted CanvasTexture
+surfaces, rounded tree geometry, vertex-painted mountain layers and suspended gardens.
+Sources: features/village/architecture.ts, paintedTextures.ts, fantasyTrees.ts, world.ts.
+Pastel blob residents reuse the original spirit mesh; accessories and animation are
+original runtime geometry/transforms in life.ts. Older traveller/birch models and
+photographic surfaces remain archived but are not loaded by the current village.
+
+Recorded soundtrack and nature audio (2026-09-26)
+------------------------------------------------
+Quiet Village 1, 2, 3 and 4 — Holizna / HoliznaCC0.
+Source: https://opengameart.org/content/quiet-village-collection
+CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/
+Full compositions retained; normalized and transcoded for local streaming.
+
+Stream Sounds (stream1) — kurt.
+Source: https://opengameart.org/content/stream-sounds
+Creative Commons Attribution 3.0: https://creativecommons.org/licenses/by/3.0/
+Excerpt, mono downmix, normalization and MP3 transcode; overlapping loop boundaries.
+
+Fireplace Sound loop — PagDev.
+Source: https://opengameart.org/content/fireplace-sound-loop
+Rain (loopable), sample 1 — Ylmir.
+Source: https://opengameart.org/content/rain-loopable
+Both CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/
+Excerpts, mono downmix, normalization and MP3 transcodes; overlapping loop boundaries.
+
+Detailed file provenance, duration and SHA-256: audio/recordings.json.
+The village no longer schedules procedural musical notes or loads the Salamander
+piano samples. Those earlier assets and credits are retained as historical sources.
+
+Garden and pond kit (2026-09-27) — original project artwork.
+17 models authored in Blender: flowers, sunflower, mint, vegetables, reeds,
+lily, swan, duck, duckling, fish, watering can, basket, bread pouch and teapot.
+Mint v2 adds original serrated green leaves and veins; bed signs and countdowns are authored in the runtime.
+Editable source: assets/village/garden-pond.blend. Runtime: models/garden-pond.glb.
+Named pivots are animated by the village runtime; no third-party models or textures.
+Planting, watering, picking, pouring, bread crumbs, splashes and duck calls are
+original procedural Web Audio effects. Existing recorded soundtrack credits above apply.
+
+White dove and bird clearing (2026-09-27) — original project artwork.
+Dove authored in Blender 5.2.1 LTS: assets/village/dove.blend;
+runtime models/dove.glb; generator scripts/village/create_dove.py.
+White plumage, scalloped wings, rosy cheeks and tiny peach feet use vertex colors.
+Wren uses the original spirit with original flower/scarf/pouch accessories.
+No third-party models or textures. The two-note coo is an original Web Audio effect.
+
+Village puppies (2026-09-29) — original Cosy project artwork.
+Mochi, Kiko, Biscuit and Cloud modeled in Blender 5.2.1 LTS.
+Editable source: assets/village/puppies.blend; generator: scripts/village/create_puppies.py.
+Runtime model: models/puppies.glb. No third-party character models or textures.
+
+Puppy bark recordings — Brandon Morris (submitted by HaelDB).
+Source: https://opengameart.org/content/dog-barking-mono
+CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/
+Four short cuts were trimmed, filtered, pitched and normalized for individual dogs.
+The original recording is archived at assets/village/audio/dog-barking-source.wav;
+file hashes and modifications are in docs/village/puppy-sound-manifest.json.
+
+Animal one-shot recordings (2026-10-04)
+
+animals/cow.mp3 — Secretlondon
+Source: https://opengameart.org/content/farm-animals
+License for this adapted clip: https://creativecommons.org/licenses/by-sa/3.0/
+Changes: Mono excerpt, 70 Hz high-pass / 4200 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/sheep.mp3 — Secretlondon
+Source: https://opengameart.org/content/farm-animals
+License for this adapted clip: https://creativecommons.org/licenses/by-sa/3.0/
+Changes: Mono excerpt, 100 Hz high-pass / 4500 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/lamb.mp3 — Secretlondon
+Source: https://opengameart.org/content/farm-animals
+License for this adapted clip: https://creativecommons.org/licenses/by-sa/3.0/
+Changes: Mono excerpt, 130 Hz high-pass / 4500 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/duck.mp3 — Secretlondon
+Source: https://opengameart.org/content/farm-animals
+License for this adapted clip: https://creativecommons.org/licenses/by-sa/3.0/
+Changes: Mono excerpt, 130 Hz high-pass / 4500 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/horse.mp3 — Joseph Sardin
+Source: https://bigsoundbank.com/horse-neighing-4-s1541.html
+License for this adapted clip: https://creativecommons.org/publicdomain/zero/1.0/
+Changes: Mono excerpt, 110 Hz high-pass / 5000 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/owl.mp3 — Breviceps
+Source: https://freesound.org/people/Breviceps/sounds/465697/
+License for this adapted clip: https://creativecommons.org/publicdomain/zero/1.0/
+Changes: Mono excerpt, 240 Hz high-pass / 1800 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/hedgehog.mp3 — soundmary
+Source: https://freesound.org/people/soundmary/sounds/194938/
+License for this adapted clip: https://creativecommons.org/licenses/by/4.0/
+Changes: Mono excerpt, 250 Hz high-pass / 4000 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/swan.mp3 — omnisounddesign
+Source: https://freesound.org/people/omnisounddesign/sounds/336174/
+License for this adapted clip: https://creativecommons.org/licenses/by/4.0/
+Changes: Mono excerpt, 220 Hz high-pass / 4500 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/duckling.mp3 — LantC
+Source: https://freesound.org/people/LantC/sounds/678061/
+License for this adapted clip: https://creativecommons.org/publicdomain/zero/1.0/
+Changes: Mono excerpt, 550 Hz high-pass / 6000 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/dove.mp3 — Alva Majo / 5ro4
+Source: https://freesound.org/people/5ro4/sounds/795719/
+License for this adapted clip: https://creativecommons.org/publicdomain/zero/1.0/
+Changes: Mono excerpt, 160 Hz high-pass / 2400 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/cat.mp3 — IgnasD
+Source: https://opengameart.org/content/meow
+License for this adapted clip: https://creativecommons.org/publicdomain/zero/1.0/
+Changes: Mono excerpt, 130 Hz high-pass / 4500 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/purr.mp3 — esperri
+Source: https://freesound.org/people/esperri/sounds/118959/
+License for this adapted clip: https://creativecommons.org/publicdomain/zero/1.0/
+Changes: Mono excerpt, 40 Hz high-pass / 1500 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+Godot interface assets
+Outfit by the Outfit Project Authors, SIL Open Font License 1.1 (assets/fonts/Outfit-OFL.txt).
+Phosphor icons by Phosphor Icons, MIT license (assets/ui/Phosphor-LICENSE.txt).

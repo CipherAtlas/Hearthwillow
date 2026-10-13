@@ -1,0 +1,192 @@
+{
+  "name": "Original Luma gift keys, exact compliments, tea and basket",
+  "scene": "res://scenes/main.tscn",
+  "keep_running": true,
+  "stop_on_failure": false,
+  "steps": [
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "enter_game",
+        "args": [
+          false
+        ]
+      }
+    },
+    {
+      "assert": "get_tree().root.size.x>=1918 and get_tree().root.size.y>=1079",
+      "message": "1080p display window; allow the macOS one-pixel window frame, never a 720p override."
+    },
+    {
+      "assert": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
+    },
+    {
+      "eval": "get_node('VillageActivities').set_meta('gift_fixture',{'inventory':get_node('VillageActivities').inventory.duplicate(true),'process':get_node('Village/Actors/luma').process_mode})"
+    },
+    {
+      "eval": "get_node('Village/Actors/luma').set(\"process_mode\",4)"
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(get_node('Village/Actors/luma').position.x,get_node('Village/Actors/luma').position.z)+Vector2(0,1.4)))"
+    },
+    {
+      "eval": "get_node('Player').set('velocity',Vector3(0,0,0))"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('carrots',1)"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('radishes',1)"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('mint',1)"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('daisies',1)"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('sunflowers',1)"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('mintTea',0)"
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('VillageActivities').nearby.kind=='luma'"
+    },
+    {
+      "input": [
+        {
+          "action": "activity_1",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('carrots')==0"
+    },
+    {
+      "assert": "get_node('HUD/Speech').messages['luma'].text.contains('lovely little carrot')"
+    },
+    {
+      "input": [
+        {
+          "action": "activity_2",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('radishes')==0"
+    },
+    {
+      "assert": "get_node('HUD/Speech').messages['luma'].text.contains('rosy little radish')"
+    },
+    {
+      "input": [
+        {
+          "action": "activity_3",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('mint')==0"
+    },
+    {
+      "assert": "get_node('HUD/Speech').messages['luma'].text.contains('special mint tea')"
+    },
+    {
+      "input": [
+        {
+          "action": "bread",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('daisies')==0"
+    },
+    {
+      "assert": "get_node('HUD/Speech').messages['luma'].text.contains('lovely little piece')"
+    },
+    {
+      "input": [
+        {
+          "action": "companion",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('sunflowers')==0"
+    },
+    {
+      "assert": "get_node('HUD/Speech').messages['luma'].text.contains('sunshine from your garden')"
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('mintTea')==1"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('mintTea')==0"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('gardenSoup',1)"
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "open_inventory"
+      }
+    },
+    {
+      "assert": "get_node('HUD/Menus/Inventory/Content/Text').text.contains('Garden soup')"
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "close_menu"
+      }
+    },
+    {
+      "eval": "get_node('VillageActivities').set('inventory',get_node('VillageActivities').get_meta('gift_fixture').inventory)"
+    },
+    {
+      "eval": "get_node('Village/Actors/luma').set('process_mode',get_node('VillageActivities').get_meta('gift_fixture').process)"
+    },
+    {
+      "call": {
+        "path": "VillageActivities",
+        "method": "save_state"
+      }
+    }
+  ]
+}

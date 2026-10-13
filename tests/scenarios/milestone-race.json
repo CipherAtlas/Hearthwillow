@@ -1,0 +1,269 @@
+{
+  "name": "Rowan conversation, native riding, eight ordered race gates, win and cancellation",
+  "scene": "res://scenes/main.tscn",
+  "keep_running": true,
+  "steps": [
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
+    },
+    {
+      "eval": "get_node('HUD/Menus').enter_game(false)"
+    },
+    {
+      "assert": "not get_node('VillageRace').invite()"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(get_node('Village/Actors/rowan').position.x,get_node('Village/Actors/rowan').position.z)+Vector2(0,2))"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "input": [
+        {
+          "action": "talk",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('Village/Actors/rowan').chatting>0 and get_node('VillageRace').can_invite()"
+    },
+    {
+      "input": [
+        {
+          "action": "companion",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('VillageRace').phase=='countdown' and get_node('Player').race_countdown and get_node('Player').mount!=null and not get_node('Village/Actors/rowan').visible"
+    },
+    {
+      "eval": "set_meta('race_start',get_node('Player').position)"
+    },
+    {
+      "input": [
+        {
+          "action": "move_forward",
+          "hold": 1
+        }
+      ]
+    },
+    {
+      "assert": "get_node('Player').position.distance_to(get_meta('race_start'))<.1",
+      "message": "Countdown holds horse movement."
+    },
+    {
+      "wait": 2.2
+    },
+    {
+      "assert": "get_node('VillageRace').phase=='racing' and not get_node('Player').race_countdown"
+    },
+    {
+      "input": [
+        {
+          "action": "move_forward",
+          "hold": 1.5
+        }
+      ]
+    },
+    {
+      "assert": "get_node('Player').position.distance_to(get_meta('race_start'))>2",
+      "message": "Native horse input moves through track, beyond fixture tests."
+    },
+    {
+      "assert": "get_node('VillageRace').next_checkpoint==1"
+    },
+    {
+      "eval": "get_node('VillageRace').set('previous',get_node('VillageRace').point(3))"
+    },
+    {
+      "eval": "get_node('Player').set('position',Vector3(get_node('VillageRace').point(3).x,0,get_node('VillageRace').point(3).y))"
+    },
+    {
+      "wait": 0.08
+    },
+    {
+      "eval": "get_node('Player').set_physics_process(false)"
+    },
+    {
+      "assert": "get_node('VillageRace').next_checkpoint==1",
+      "message": "Wrong-order gate does not advance."
+    },
+    {
+      "eval": "get_node('VillageRace').set('go_at',get_node('VillageRace').now()-20)"
+    },
+    {
+      "eval": "get_node('VillageRace').set('previous',get_node('VillageRace').point(1)-Vector2(.1,0))"
+    },
+    {
+      "eval": "get_node('Player').set('position',Vector3(get_node('VillageRace').point(1).x,get_node('WorldSurface').floor_at(get_node('VillageRace').point(1)),get_node('VillageRace').point(1).y))"
+    },
+    {
+      "wait": 0.18
+    },
+    {
+      "assert": "get_node('VillageRace').next_checkpoint==2"
+    },
+    {
+      "eval": "get_node('VillageRace').set('previous',get_node('VillageRace').point(2)-Vector2(.1,0))"
+    },
+    {
+      "eval": "get_node('Player').set('position',Vector3(get_node('VillageRace').point(2).x,get_node('WorldSurface').floor_at(get_node('VillageRace').point(2)),get_node('VillageRace').point(2).y))"
+    },
+    {
+      "wait": 0.18
+    },
+    {
+      "assert": "get_node('VillageRace').next_checkpoint==3"
+    },
+    {
+      "eval": "get_node('VillageRace').set('previous',get_node('VillageRace').point(3)-Vector2(.1,0))"
+    },
+    {
+      "eval": "get_node('Player').set('position',Vector3(get_node('VillageRace').point(3).x,get_node('WorldSurface').floor_at(get_node('VillageRace').point(3)),get_node('VillageRace').point(3).y))"
+    },
+    {
+      "wait": 0.18
+    },
+    {
+      "assert": "get_node('VillageRace').next_checkpoint==4"
+    },
+    {
+      "eval": "get_node('VillageRace').set('previous',get_node('VillageRace').point(4)-Vector2(.1,0))"
+    },
+    {
+      "eval": "get_node('Player').set('position',Vector3(get_node('VillageRace').point(4).x,get_node('WorldSurface').floor_at(get_node('VillageRace').point(4)),get_node('VillageRace').point(4).y))"
+    },
+    {
+      "wait": 0.18
+    },
+    {
+      "assert": "get_node('VillageRace').next_checkpoint==5"
+    },
+    {
+      "eval": "get_node('VillageRace').set('previous',get_node('VillageRace').point(5)-Vector2(.1,0))"
+    },
+    {
+      "eval": "get_node('Player').set('position',Vector3(get_node('VillageRace').point(5).x,get_node('WorldSurface').floor_at(get_node('VillageRace').point(5)),get_node('VillageRace').point(5).y))"
+    },
+    {
+      "wait": 0.18
+    },
+    {
+      "assert": "get_node('VillageRace').next_checkpoint==6"
+    },
+    {
+      "eval": "get_node('VillageRace').set('previous',get_node('VillageRace').point(6)-Vector2(.1,0))"
+    },
+    {
+      "eval": "get_node('Player').set('position',Vector3(get_node('VillageRace').point(6).x,get_node('WorldSurface').floor_at(get_node('VillageRace').point(6)),get_node('VillageRace').point(6).y))"
+    },
+    {
+      "wait": 0.18
+    },
+    {
+      "assert": "get_node('VillageRace').next_checkpoint==7"
+    },
+    {
+      "eval": "get_node('VillageRace').set('previous',get_node('VillageRace').point(7)-Vector2(.1,0))"
+    },
+    {
+      "eval": "get_node('Player').set('position',Vector3(get_node('VillageRace').point(7).x,get_node('WorldSurface').floor_at(get_node('VillageRace').point(7)),get_node('VillageRace').point(7).y))"
+    },
+    {
+      "wait": 0.18
+    },
+    {
+      "assert": "get_node('VillageRace').next_checkpoint==8"
+    },
+    {
+      "eval": "get_node('VillageRace').set('previous',get_node('VillageRace').point(8)-Vector2(.1,0))"
+    },
+    {
+      "eval": "get_node('Player').set('position',Vector3(get_node('VillageRace').point(8).x,get_node('WorldSurface').floor_at(get_node('VillageRace').point(8)),get_node('VillageRace').point(8).y))"
+    },
+    {
+      "wait": 0.18
+    },
+    {
+      "assert": "get_node('VillageRace').next_checkpoint==9"
+    },
+    {
+      "assert": "get_node('VillageRace').phase=='finished' and get_node('VillageRace').result=='visitor' and get_node('Player').mount!=null"
+    },
+    {
+      "eval": "get_node('Player').set_physics_process(true)"
+    },
+    {
+      "eval": "get_node('VillageRace').set('go_at',get_node('VillageRace').now()-35)"
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "get_node('Village/Actors/rowan').visible and not get_node('VillageRace').get_node('Rival').visible"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(get_node('Village/Actors/rowan').position.x,get_node('Village/Actors/rowan').position.z)+Vector2(0,2))"
+    },
+    {
+      "set": {
+        "path": "Village/Actors/rowan",
+        "props": {
+          "chatting": 10
+        }
+      }
+    },
+    {
+      "assert": "get_node('VillageRace').invite()"
+    },
+    {
+      "input": [
+        {
+          "action": "talk",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('VillageRace').phase=='cancelled' and not get_node('Player').race_countdown and get_node('Village/Actors/rowan').visible and get_node('Player').mount!=null"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(get_node('Village/Actors/rowan').position.x,get_node('Village/Actors/rowan').position.z)+Vector2(0,2))"
+    },
+    {
+      "set": {
+        "path": "Village/Actors/rowan",
+        "props": {
+          "chatting": 10
+        }
+      }
+    },
+    {
+      "assert": "get_node('VillageRace').invite()"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "get_node('VillageRace').phase=='cancelled' and get_node('Player').mount==null and get_node('Village/Actors/rowan').visible"
+    },
+    {
+      "assert_no_errors": true
+    }
+  ]
+}

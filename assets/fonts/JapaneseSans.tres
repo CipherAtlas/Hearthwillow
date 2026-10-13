@@ -1,0 +1,4 @@
+[gd_resource type="SystemFont" format=3 uid="uid://d13xjah345h40"]
+
+[resource]
+font_names = PackedStringArray("Hiragino Sans", "Noto Sans CJK JP", "Yu Gothic")

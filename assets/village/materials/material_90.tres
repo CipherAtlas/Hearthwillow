@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "Village material 90"
+albedo_color = Color(0.58823526, 0.37647057, 0.15294117, 1)
+roughness = 0.22

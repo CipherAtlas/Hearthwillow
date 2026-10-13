@@ -1,0 +1,132 @@
+{
+  "name": "First milestone exploration",
+  "scene": "res://scenes/main.tscn",
+  "keep_running": true,
+  "stop_on_failure": true,
+  "steps": [
+    {
+      "assert": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
+    },
+    {
+      "assert": "get_tree().root.size.x>=1918 and get_tree().root.size.y>=1079",
+      "message": "1080p display window; allow the macOS one-pixel window frame, never a 720p override."
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "enter_game",
+        "args": [
+          false
+        ]
+      }
+    },
+    {
+      "wait": 1
+    },
+    {
+      "assert": "get_node('Player').is_on_floor()",
+      "message": "Spirit settles on native terrain"
+    },
+    {
+      "assert": "get_node('WorldSurface').clear_at(Vector2(.3,20))",
+      "message": "Original entrance is unobstructed"
+    },
+    {
+      "input": [
+        {
+          "action": "move_forward",
+          "hold": 1
+        }
+      ]
+    },
+    {
+      "assert": "get_node('Player').position.z < 18.0 and get_node('Player').position.z > 16.7",
+      "message": "W walks at the original 2.6 m/s"
+    },
+    {
+      "input": [
+        {
+          "action": "jump",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.25
+    },
+    {
+      "assert": "not get_node('Player').is_on_floor() and get_node('Player').position.y > .45",
+      "message": "Space jumps clear of the ground"
+    },
+    {
+      "wait": 1
+    },
+    {
+      "assert": "get_node('Player').is_on_floor()",
+      "message": "Jump lands on native terrain"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_map",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('HUD/VillageMap').expanded and get_node('Player').controls_blocked",
+      "message": "Map opens and blocks gameplay controls"
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded and not get_node('Player').controls_blocked",
+      "message": "Escape closes the map"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_sound",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "toggle_audio"
+      }
+    },
+    {
+      "assert": "get_node('VillageSound/Music').playing and get_node('VillageSound/Stream').playing and get_node('VillageSound/Fire').playing and get_node('VillageSound/Wind').playing",
+      "message": "Recorded music and ambient streams start"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_sound",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "toggle_audio"
+      }
+    },
+    {
+      "assert": "not get_node('VillageSound/Music').playing",
+      "message": "Sound toggle stops playback"
+    },
+    {
+      "assert_no_errors": true
+    }
+  ]
+}

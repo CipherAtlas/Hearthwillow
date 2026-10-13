@@ -1,0 +1,11 @@
+Loading the unchanged production village…
+{
+  "meshes": 1139,
+  "geometries": 501,
+  "instances": 166982,
+  "materials": 188,
+  "textures": 28,
+  "colliders": 3123,
+  "bytes": 74471584,
+  "skipped": 0
+}

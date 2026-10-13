@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/village/texture_3.png" id="1_gbq8m"]
+
+[resource]
+resource_name = "Village oak"
+albedo_color = Color(0.84313726, 0.6745098, 0.4627451, 1)
+albedo_texture = ExtResource("1_gbq8m")
+roughness = 0.95
+uv1_scale = Vector3(1, -1, 1)
+uv1_offset = Vector3(0, 1, 0)

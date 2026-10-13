@@ -1,0 +1,1523 @@
+{
+  "name": "Destination-only map: native icons, fit/zoom/pan, bilingual labels, keyboard and all 17 travel routes",
+  "passed": true,
+  "duration_s": 17.496,
+  "steps": [
+    {
+      "index": 0,
+      "step": "wait 0.3",
+      "ok": true
+    },
+    {
+      "index": 1,
+      "step": "assert get_viewport().get_texture().get_size()==Vector2(1920,1080)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 2,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 3,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 4,
+      "step": "assert get_meta(\"mouse_mode\")==2",
+      "ok": true,
+      "detail": "Entering gameplay captures mouse without a click"
+    },
+    {
+      "index": 5,
+      "step": "eval get_tree().root.grab_focus()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 6,
+      "step": "eval set_meta('map_original_language',get_node('HUD/Menus').language)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 7,
+      "step": "set",
+      "ok": true,
+      "detail": {
+        "path": "/root/Hearthwillow/HUD/Menus",
+        "set": [
+          "language"
+        ]
+      }
+    },
+    {
+      "index": 8,
+      "step": "wait 0.3",
+      "ok": true
+    },
+    {
+      "index": 9,
+      "step": "assert get_node('HUD/VillageMap').size==Vector2(190,150)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 10,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped release_mouse for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 11,
+      "step": "eval get_node('HUD/VillageMap').warp_mouse(get_node('HUD/VillageMap').size/2)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 12,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 13,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1613, 103)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 14,
+      "step": "assert get_node('HUD/VillageMap').expanded and get_node('Player').controls_blocked",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 15,
+      "step": "wait 0.2",
+      "ok": true
+    },
+    {
+      "index": 16,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Markers/Marker0').visible and get_node('HUD/VillageMap/Expanded/Markers/Marker0",
+      "ok": true,
+      "detail": "Destination 0 is visible and has an icon"
+    },
+    {
+      "index": 17,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Markers/Marker1').visible and get_node('HUD/VillageMap/Expanded/Markers/Marker1",
+      "ok": true,
+      "detail": "Destination 1 is visible and has an icon"
+    },
+    {
+      "index": 18,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Markers/Marker2').visible and get_node('HUD/VillageMap/Expanded/Markers/Marker2",
+      "ok": true,
+      "detail": "Destination 2 is visible and has an icon"
+    },
+    {
+      "index": 19,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Markers/Marker3').visible and get_node('HUD/VillageMap/Expanded/Markers/Marker3",
+      "ok": true,
+      "detail": "Destination 3 is visible and has an icon"
+    },
+    {
+      "index": 20,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Markers/Marker4').visible and get_node('HUD/VillageMap/Expanded/Markers/Marker4",
+      "ok": true,
+      "detail": "Destination 4 is visible and has an icon"
+    },
+    {
+      "index": 21,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Markers/Marker5').visible and get_node('HUD/VillageMap/Expanded/Markers/Marker5",
+      "ok": true,
+      "detail": "Destination 5 is visible and has an icon"
+    },
+    {
+      "index": 22,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Markers/Marker6').visible and get_node('HUD/VillageMap/Expanded/Markers/Marker6",
+      "ok": true,
+      "detail": "Destination 6 is visible and has an icon"
+    },
+    {
+      "index": 23,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Markers/Marker7').visible and get_node('HUD/VillageMap/Expanded/Markers/Marker7",
+      "ok": true,
+      "detail": "Destination 7 is visible and has an icon"
+    },
+    {
+      "index": 24,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Markers/Marker8').visible and get_node('HUD/VillageMap/Expanded/Markers/Marker8",
+      "ok": true,
+      "detail": "Destination 8 is visible and has an icon"
+    },
+    {
+      "index": 25,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Markers/Marker9').visible and get_node('HUD/VillageMap/Expanded/Markers/Marker9",
+      "ok": true,
+      "detail": "Destination 9 is visible and has an icon"
+    },
+    {
+      "index": 26,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Markers/Marker10').visible and get_node('HUD/VillageMap/Expanded/Markers/Marker",
+      "ok": true,
+      "detail": "Destination 10 is visible and has an icon"
+    },
+    {
+      "index": 27,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Markers/Marker11').visible and get_node('HUD/VillageMap/Expanded/Markers/Marker",
+      "ok": true,
+      "detail": "Destination 11 is visible and has an icon"
+    },
+    {
+      "index": 28,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Markers/Marker12').visible and get_node('HUD/VillageMap/Expanded/Markers/Marker",
+      "ok": true,
+      "detail": "Destination 12 is visible and has an icon"
+    },
+    {
+      "index": 29,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Markers/Marker13').visible and get_node('HUD/VillageMap/Expanded/Markers/Marker",
+      "ok": true,
+      "detail": "Destination 13 is visible and has an icon"
+    },
+    {
+      "index": 30,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Markers/Marker14').visible and get_node('HUD/VillageMap/Expanded/Markers/Marker",
+      "ok": true,
+      "detail": "Destination 14 is visible and has an icon"
+    },
+    {
+      "index": 31,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Markers/Marker15').visible and get_node('HUD/VillageMap/Expanded/Markers/Marker",
+      "ok": true,
+      "detail": "Destination 15 is visible and has an icon"
+    },
+    {
+      "index": 32,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Markers/Marker16').visible and get_node('HUD/VillageMap/Expanded/Markers/Marker",
+      "ok": true,
+      "detail": "Destination 16 is visible and has an icon"
+    },
+    {
+      "index": 33,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Help/Text').text.contains('Drag') and not get_node('HUD/VillageMap/Expanded/Hel",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 34,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_right for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 35,
+      "step": "assert get_node('HUD/VillageMap').selected_index != 0",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 36,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Zoom/In').warp_mouse(get_node('HUD/VillageMap/Expanded/Zoom/In').size/2)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 37,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 38,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1552, 40)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 39,
+      "step": "assert get_node('HUD/VillageMap').zoom_factor > 1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 40,
+      "step": "eval set_meta('map_center_before',get_node('HUD/VillageMap').center)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 41,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "dragged Vector2(610, 350) -> Vector2(880, 520)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 42,
+      "step": "assert get_node('HUD/VillageMap').center.distance_to(get_meta('map_center_before'))>1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 43,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Zoom/Reset').warp_mouse(get_node('HUD/VillageMap/Expanded/Zoom/Reset').size/2)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 44,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 45,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1645, 40)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 46,
+      "step": "assert get_node('HUD/VillageMap').zoom_factor == 1 and get_node('HUD/VillageMap/Expanded/Zoom/Out').disabled",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 47,
+      "step": "eval get_node('HUD/VillageMap').warp_mouse(Vector2(500,200))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 48,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(500, 200)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 49,
+      "step": "assert get_node('HUD/VillageMap').zoom_factor > 1",
+      "ok": true,
+      "detail": "get_node('HUD/VillageMap').zoom_factor > 1"
+    },
+    {
+      "index": 50,
+      "step": "eval get_node('HUD/VillageMap').change_zoom(8,Vector2(960,540))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 51,
+      "step": "assert get_node('HUD/VillageMap').zoom_factor == 4 and get_node('HUD/VillageMap/Expanded/Zoom/In').disabled",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 52,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 53,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Markers/Marker11').visible",
+      "ok": true,
+      "detail": "Keyboard/programmatic selection brings an offscreen destination into view"
+    },
+    {
+      "index": 54,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Zoom/Reset').warp_mouse(get_node('HUD/VillageMap/Expanded/Zoom/Reset').size/2)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 55,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 56,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1645, 40)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 57,
+      "step": "set",
+      "ok": true,
+      "detail": {
+        "path": "/root/Hearthwillow/HUD/Menus",
+        "set": [
+          "language"
+        ]
+      }
+    },
+    {
+      "index": 58,
+      "step": "wait 0.2",
+      "ok": true
+    },
+    {
+      "index": 59,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Footer/Row/Selected').text == '畑のキッチン'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 60,
+      "step": "assert get_node('HUD/VillageMap/Expanded/Title').get_theme_font('font').has_char(12540)",
+      "ok": true,
+      "detail": "Japanese title supports the long vowel glyph"
+    },
+    {
+      "index": 61,
+      "step": "eval get_viewport().get_texture().get_image().save_png('res://evidence/map-rework-japanese-1080p.png')",
+      "ok": true,
+      "detail": {
+        "value": 0
+      }
+    },
+    {
+      "index": 62,
+      "step": "set",
+      "ok": true,
+      "detail": {
+        "path": "/root/Hearthwillow/HUD/Menus",
+        "set": [
+          "language"
+        ]
+      }
+    },
+    {
+      "index": 63,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 64,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Close').warp_mouse(get_node('HUD/VillageMap/Expanded/Close').size/2)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 65,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 66,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1813, 40)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 67,
+      "step": "assert not get_node('HUD/VillageMap').expanded and not get_node('Player').controls_blocked",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 68,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 69,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 70,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Footer/Row/Go').warp_mouse(get_node('HUD/VillageMap/Expanded/Footer/Row/Go').size",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 71,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 72,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(260.5, 1021)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 73,
+      "step": "assert not get_node('HUD/VillageMap').expanded",
+      "ok": true,
+      "detail": "Destination 0 travel closes the map"
+    },
+    {
+      "index": 74,
+      "step": "assert get_node('FocusCottage').inside",
+      "ok": true,
+      "detail": "Destination 0 arrival is valid"
+    },
+    {
+      "index": 75,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 76,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 77,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Footer/Row/Go').warp_mouse(get_node('HUD/VillageMap/Expanded/Footer/Row/Go').size",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 78,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 79,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(263.5, 1021)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 80,
+      "step": "assert not get_node('HUD/VillageMap').expanded",
+      "ok": true,
+      "detail": "Destination 1 travel closes the map"
+    },
+    {
+      "index": 81,
+      "step": "assert get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))",
+      "ok": true,
+      "detail": "Destination 1 arrival is valid"
+    },
+    {
+      "index": 82,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 83,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 84,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Footer/Row/Go').warp_mouse(get_node('HUD/VillageMap/Expanded/Footer/Row/Go').size",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 85,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 86,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(251.5, 1021)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 87,
+      "step": "assert not get_node('HUD/VillageMap').expanded",
+      "ok": true,
+      "detail": "Destination 2 travel closes the map"
+    },
+    {
+      "index": 88,
+      "step": "assert get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))",
+      "ok": true,
+      "detail": "Destination 2 arrival is valid"
+    },
+    {
+      "index": 89,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 90,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 91,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Footer/Row/Go').warp_mouse(get_node('HUD/VillageMap/Expanded/Footer/Row/Go').size",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 92,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 93,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(256.5, 1021)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 94,
+      "step": "assert not get_node('HUD/VillageMap').expanded",
+      "ok": true,
+      "detail": "Destination 3 travel closes the map"
+    },
+    {
+      "index": 95,
+      "step": "assert get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))",
+      "ok": true,
+      "detail": "Destination 3 arrival is valid"
+    },
+    {
+      "index": 96,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 97,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 98,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Footer/Row/Go').warp_mouse(get_node('HUD/VillageMap/Expanded/Footer/Row/Go').size",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 99,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 100,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(261.5, 1021)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 101,
+      "step": "assert not get_node('HUD/VillageMap').expanded",
+      "ok": true,
+      "detail": "Destination 4 travel closes the map"
+    },
+    {
+      "index": 102,
+      "step": "assert get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))",
+      "ok": true,
+      "detail": "Destination 4 arrival is valid"
+    },
+    {
+      "index": 103,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 104,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 105,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Footer/Row/Go').warp_mouse(get_node('HUD/VillageMap/Expanded/Footer/Row/Go').size",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 106,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 107,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(276.5, 1021)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 108,
+      "step": "assert not get_node('HUD/VillageMap').expanded",
+      "ok": true,
+      "detail": "Destination 5 travel closes the map"
+    },
+    {
+      "index": 109,
+      "step": "assert get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))",
+      "ok": true,
+      "detail": "Destination 5 arrival is valid"
+    },
+    {
+      "index": 110,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 111,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 112,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Footer/Row/Go').warp_mouse(get_node('HUD/VillageMap/Expanded/Footer/Row/Go').size",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 113,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 114,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(252.5, 1021)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 115,
+      "step": "assert not get_node('HUD/VillageMap').expanded",
+      "ok": true,
+      "detail": "Destination 6 travel closes the map"
+    },
+    {
+      "index": 116,
+      "step": "assert get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))",
+      "ok": true,
+      "detail": "Destination 6 arrival is valid"
+    },
+    {
+      "index": 117,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 118,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 119,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Footer/Row/Go').warp_mouse(get_node('HUD/VillageMap/Expanded/Footer/Row/Go').size",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 120,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 121,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(285.5, 1021)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 122,
+      "step": "assert not get_node('HUD/VillageMap').expanded",
+      "ok": true,
+      "detail": "Destination 7 travel closes the map"
+    },
+    {
+      "index": 123,
+      "step": "assert get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))",
+      "ok": true,
+      "detail": "Destination 7 arrival is valid"
+    },
+    {
+      "index": 124,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 125,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 126,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Footer/Row/Go').warp_mouse(get_node('HUD/VillageMap/Expanded/Footer/Row/Go').size",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 127,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 128,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(250.5, 1021)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 129,
+      "step": "assert not get_node('HUD/VillageMap').expanded",
+      "ok": true,
+      "detail": "Destination 8 travel closes the map"
+    },
+    {
+      "index": 130,
+      "step": "assert get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))",
+      "ok": true,
+      "detail": "Destination 8 arrival is valid"
+    },
+    {
+      "index": 131,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 132,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 133,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Footer/Row/Go').warp_mouse(get_node('HUD/VillageMap/Expanded/Footer/Row/Go').size",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 134,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 135,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(263.5, 1021)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 136,
+      "step": "assert not get_node('HUD/VillageMap').expanded",
+      "ok": true,
+      "detail": "Destination 9 travel closes the map"
+    },
+    {
+      "index": 137,
+      "step": "assert get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))",
+      "ok": true,
+      "detail": "Destination 9 arrival is valid"
+    },
+    {
+      "index": 138,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 139,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 140,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Footer/Row/Go').warp_mouse(get_node('HUD/VillageMap/Expanded/Footer/Row/Go').size",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 141,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 142,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(224.5, 1021)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 143,
+      "step": "assert not get_node('HUD/VillageMap').expanded",
+      "ok": true,
+      "detail": "Destination 10 travel closes the map"
+    },
+    {
+      "index": 144,
+      "step": "assert get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))",
+      "ok": true,
+      "detail": "Destination 10 arrival is valid"
+    },
+    {
+      "index": 145,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 146,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 147,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Footer/Row/Go').warp_mouse(get_node('HUD/VillageMap/Expanded/Footer/Row/Go').size",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 148,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 149,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(278.5, 1021)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 150,
+      "step": "assert not get_node('HUD/VillageMap').expanded",
+      "ok": true,
+      "detail": "Destination 11 travel closes the map"
+    },
+    {
+      "index": 151,
+      "step": "assert get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))",
+      "ok": true,
+      "detail": "Destination 11 arrival is valid"
+    },
+    {
+      "index": 152,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 153,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 154,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Footer/Row/Go').warp_mouse(get_node('HUD/VillageMap/Expanded/Footer/Row/Go').size",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 155,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 156,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(222.5, 1021)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 157,
+      "step": "assert not get_node('HUD/VillageMap').expanded",
+      "ok": true,
+      "detail": "Destination 12 travel closes the map"
+    },
+    {
+      "index": 158,
+      "step": "assert get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))",
+      "ok": true,
+      "detail": "Destination 12 arrival is valid"
+    },
+    {
+      "index": 159,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 160,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 161,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Footer/Row/Go').warp_mouse(get_node('HUD/VillageMap/Expanded/Footer/Row/Go').size",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 162,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 163,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(241.5, 1021)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 164,
+      "step": "assert not get_node('HUD/VillageMap').expanded",
+      "ok": true,
+      "detail": "Destination 13 travel closes the map"
+    },
+    {
+      "index": 165,
+      "step": "assert get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))",
+      "ok": true,
+      "detail": "Destination 13 arrival is valid"
+    },
+    {
+      "index": 166,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 167,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 168,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Footer/Row/Go').warp_mouse(get_node('HUD/VillageMap/Expanded/Footer/Row/Go').size",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 169,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 170,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(246.5, 1021)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 171,
+      "step": "assert not get_node('HUD/VillageMap').expanded",
+      "ok": true,
+      "detail": "Destination 14 travel closes the map"
+    },
+    {
+      "index": 172,
+      "step": "assert get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))",
+      "ok": true,
+      "detail": "Destination 14 arrival is valid"
+    },
+    {
+      "index": 173,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 174,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 175,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Footer/Row/Go').warp_mouse(get_node('HUD/VillageMap/Expanded/Footer/Row/Go').size",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 176,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 177,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(225.5, 1021)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 178,
+      "step": "assert not get_node('HUD/VillageMap').expanded",
+      "ok": true,
+      "detail": "Destination 15 travel closes the map"
+    },
+    {
+      "index": 179,
+      "step": "assert get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))",
+      "ok": true,
+      "detail": "Destination 15 arrival is valid"
+    },
+    {
+      "index": 180,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 181,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 182,
+      "step": "eval get_node('HUD/VillageMap/Expanded/Footer/Row/Go').warp_mouse(get_node('HUD/VillageMap/Expanded/Footer/Row/Go').size",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 183,
+      "step": "wait 0.07",
+      "ok": true
+    },
+    {
+      "index": 184,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(252.5, 1021)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 185,
+      "step": "assert not get_node('HUD/VillageMap').expanded",
+      "ok": true,
+      "detail": "Destination 16 travel closes the map"
+    },
+    {
+      "index": 186,
+      "step": "assert get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))",
+      "ok": true,
+      "detail": "Destination 16 arrival is valid"
+    },
+    {
+      "index": 187,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 188,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 189,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(.3,20))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 190,
+      "step": "eval get_node('HUD/Menus').set('language',get_meta('map_original_language'))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 191,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 192,
+      "step": "wait 0.2",
+      "ok": true
+    },
+    {
+      "index": 193,
+      "step": "eval get_viewport().get_texture().get_image().save_png('res://evidence/map-rework-1080p.png')",
+      "ok": true,
+      "detail": {
+        "value": 0
+      }
+    },
+    {
+      "index": 194,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped release_mouse for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 195,
+      "step": "assert not get_node('HUD/VillageMap').expanded",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 196,
+      "step": "wait 0.2",
+      "ok": true
+    },
+    {
+      "index": 197,
+      "step": "eval get_viewport().get_texture().get_image().save_png('res://evidence/map-rework-mini-1080p.png')",
+      "ok": true,
+      "detail": {
+        "value": 0
+      }
+    },
+    {
+      "index": 198,
+      "step": "assert_no_errors",
+      "ok": true
+    }
+  ],
+  "runtime_errors": [],
+  "screenshots": []
+}

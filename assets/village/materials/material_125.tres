@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "Village material 125"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.47058827, 0.5176471, 0.48235294, 1)

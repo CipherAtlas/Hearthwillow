@@ -1,0 +1,11 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward Mobile - Using Device #0: Apple - Apple M4 (Apple9)
+
+Movie Maker mode enabled, recording movie in 1920×1080 @ 30 FPS...
+--------------------------------------------------------------------------------
+Done recording movie at path: /tmp/hearthwillow-quiet-render/frame.png
+20 frames at 30 FPS (movie length: 00:00:00:20), recorded in 00:00:09 (11% of real-time speed).
+CPU render time: 0.02 seconds (average: 1.15 ms/frame)
+GPU render time: 0.00 seconds (average: 0.00 ms/frame)
+Encoding time: 6.52 seconds (average: 326.22 ms/frame)
+--------------------------------------------------------------------------------

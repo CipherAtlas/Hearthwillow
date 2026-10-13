@@ -1,0 +1,640 @@
+{
+  "name": "Writing nook, journal and kind notes at 1080p",
+  "scene": "main",
+  "keep_running": true,
+  "steps": [
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "enter_game",
+        "args": [
+          false
+        ]
+      }
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").journal.set(\"save_path\",\"user://quiet-test-journal.json\")"
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").journal.set(\"entries\",[])"
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").journal.set(\"read_failed\",false)"
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").set(\"kind_save_path\",\"user://quiet-test-kind.cfg\")"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          3
+        ]
+      }
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node(\"QuietPlaces/UI/Journal/Content/Heading\").get_theme_font(\"font\").has_char(\"記\".unicode_at(0))"
+    },
+    {
+      "assert": "get_node(\"QuietPlaces/UI/Journal/Content/Write/Save/Row/Text\").get_theme_font(\"font\").has_char(\"残\".unicode_at(0))"
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").active==\"gratitude\"",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"Player\").activity_locked",
+      "message": ""
+    },
+    {
+      "assert": "get_viewport().get_visible_rect().size==Vector2(1920,1080)",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "text": "Writing with m i o w a s d r e f g k u, and 日本語。\nA second line.\n\nLast line."
+        }
+      ]
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.editor.text.contains(\"m i o w a s d r e f g k u,\")",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"HUD/Menus\").current_menu==\"\"",
+      "message": ""
+    },
+    {
+      "assert": "not get_node(\"HUD/VillageMap\").expanded",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"Player\").position.distance_to(Vector3(-18.2,.05,6.6))<.01",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "key": "Ctrl+Enter"
+        }
+      ]
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.entries.size()==1",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.editor.text.is_empty()",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.entries[0].text.contains(\"日本語\")",
+      "message": ""
+    },
+    {
+      "call": {
+        "path": "QuietPlaces/UI/Journal",
+        "method": "load_notes",
+        "args": []
+      }
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.entries.size()==1",
+      "message": ""
+    },
+    {
+      "call": {
+        "path": "QuietPlaces/UI/Journal",
+        "method": "show_list",
+        "args": []
+      }
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.view==\"list\"",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.get_node(\"Content/Library/List/Rows\").get_child_count()==1",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "click_node": "QuietPlaces/UI/Journal/Content/Library/List/Rows/NoteRow"
+        }
+      ]
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.view==\"note\"",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.get_node(\"Content/Library/Read/Text\").text.contains(\"A second line.\")",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "click_node": "QuietPlaces/UI/Journal/Content/Library/Remove"
+        }
+      ]
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.removing",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.entries.size()==1",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "click_node": "QuietPlaces/UI/Journal/Content/Library/Confirm/Keep"
+        }
+      ]
+    },
+    {
+      "assert": "not get_node(\"QuietPlaces\").journal.removing",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.entries.size()==1",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").set_meta(\"backup\",get_node(\"QuietPlaces\").journal.backup_text())"
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.import_text(get_node(\"QuietPlaces\").get_meta(\"backup\"))",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.entries.size()==1",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").set_meta(\"duplicate\",get_node(\"QuietPlaces\").get_meta(\"backup\")+\"\\n\"+str(get_node(\"QuietPlaces\").journal.backup_text()).trim_prefix(get_node(\"QuietPlaces\").journal.HEADING))"
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.import_text(get_node(\"QuietPlaces\").get_meta(\"duplicate\"))",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.entries.size()==2",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.import_text(get_node(\"QuietPlaces\").get_meta(\"duplicate\"))",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.entries.size()==2",
+      "message": ""
+    },
+    {
+      "assert": "not get_node(\"QuietPlaces\").journal.import_text(\"not a backup\")",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.entries.size()==2",
+      "message": ""
+    },
+    {
+      "assert": "not get_node(\"QuietPlaces\").journal.import_text(\"Hearthwillow notes\\n==================\\n\\n[2026-02-31T00:00:00.000Z]\\n  invalid date\\n\")",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.entries.size()==2",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.export_file(\"user://quiet-test-backup.txt\")",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.import_file(\"user://quiet-test-backup.txt\")",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.entries.size()==2",
+      "message": ""
+    },
+    {
+      "call": {
+        "path": "QuietPlaces/UI/Journal",
+        "method": "read_note",
+        "args": [
+          0
+        ]
+      }
+    },
+    {
+      "call": {
+        "path": "QuietPlaces/UI/Journal",
+        "method": "ask_remove",
+        "args": []
+      }
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.delete_note()",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.entries.size()==1",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.load_notes()",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.entries.size()==1",
+      "message": ""
+    },
+    {
+      "call": {
+        "path": "QuietPlaces/UI/Journal",
+        "method": "back",
+        "args": []
+      }
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").journal.editor.set(\"text\",\"Preserve this draft after failure\")"
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").journal.set(\"save_path\",\"user://missing-quiet-test-directory/notes.json\")"
+    },
+    {
+      "assert": "not get_node(\"QuietPlaces\").journal.save_note()",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.editor.text==\"Preserve this draft after failure\"",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.entries.size()==1",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").journal.set(\"save_path\",\"user://quiet-test-journal.json\")"
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").journal.set(\"read_failed\",true)"
+    },
+    {
+      "assert": "not get_node(\"QuietPlaces\").journal.save_note()",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.entries.size()==1",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").journal.set(\"read_failed\",false)"
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").journal.editor.set(\"text\",\"\")"
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").journal.set(\"save_path\",\"res://tests/fixtures/journal-corrupt.json\")"
+    },
+    {
+      "assert": "not get_node(\"QuietPlaces\").journal.load_notes()"
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.read_failed"
+    },
+    {
+      "assert": "not get_node(\"QuietPlaces\").journal.save_note()"
+    },
+    {
+      "assert": "not get_node(\"QuietPlaces\").journal.import_text(get_node(\"QuietPlaces\").get_meta(\"backup\"))"
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").journal.set(\"save_path\",\"user://quiet-test-journal.json\")"
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.load_notes()"
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.import_text(\"Hearthwillow notes\\n==================\\n\\n[2026-10-13T00:00:00.000Z]\\n  Note number 0\\n  Two lines.\\n\\n[2026-10-13T00:00:01.000Z]\\n  Note number 1\\n  Two lines.\\n\\n[2026-10-13T00:00:02.000Z]\\n  Note number 2\\n  Two lines.\\n\\n[2026-10-13T00:00:03.000Z]\\n  Note number 3\\n  Two lines.\\n\\n[2026-10-13T00:00:04.000Z]\\n  Note number 4\\n  Two lines.\\n\\n[2026-10-13T00:00:05.000Z]\\n  Note number 5\\n  Two lines.\\n\\n[2026-10-13T00:00:06.000Z]\\n  Note number 6\\n  Two lines.\\n\\n[2026-10-13T00:00:07.000Z]\\n  Note number 7\\n  Two lines.\\n\\n[2026-10-13T00:00:08.000Z]\\n  Note number 8\\n  Two lines.\\n\\n[2026-10-13T00:00:09.000Z]\\n  Note number 9\\n  Two lines.\\n\\n[2026-10-13T00:00:10.000Z]\\n  Note number 10\\n  Two lines.\\n\\n[2026-10-13T00:00:11.000Z]\\n  Note number 11\\n  Two lines.\\n\\n[2026-10-13T00:00:12.000Z]\\n  Note number 12\\n  Two lines.\\n\\n[2026-10-13T00:00:13.000Z]\\n  Note number 13\\n  Two lines.\\n\\n[2026-10-13T00:00:14.000Z]\\n  Note number 14\\n  Two lines.\\n\\n[2026-10-13T00:00:15.000Z]\\n  Note number 15\\n  Two lines.\\n\\n[2026-10-13T00:00:16.000Z]\\n  Note number 16\\n  Two lines.\\n\\n[2026-10-13T00:00:17.000Z]\\n  Note number 17\\n  Two lines.\\n\\n[2026-10-13T00:00:18.000Z]\\n  Note number 18\\n  Two lines.\\n\\n[2026-10-13T00:00:19.000Z]\\n  Note number 19\\n  Two lines.\\n\\n[2026-10-13T00:00:20.000Z]\\n  Note number 20\\n  Two lines.\\n\\n[2026-10-13T00:00:21.000Z]\\n  Note number 21\\n  Two lines.\\n\\n[2026-10-13T00:00:22.000Z]\\n  Note number 22\\n  Two lines.\\n\\n[2026-10-13T00:00:23.000Z]\\n  Note number 23\\n  Two lines.\\n\\n[2026-10-13T00:00:24.000Z]\\n  Note number 24\\n  Two lines.\\n\\n[2026-10-13T00:00:25.000Z]\\n  Note number 25\\n  Two lines.\\n\\n[2026-10-13T00:00:26.000Z]\\n  Note number 26\\n  Two lines.\\n\\n[2026-10-13T00:00:27.000Z]\\n  Note number 27\\n  Two lines.\\n\\n[2026-10-13T00:00:28.000Z]\\n  Note number 28\\n  Two lines.\\n\\n[2026-10-13T00:00:29.000Z]\\n  Note number 29\\n  Two lines.\\n\")"
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").journal.get_node(\"Content/Library/List\").set(\"scroll_vertical\",200)"
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "call": {
+        "path": "QuietPlaces/UI/Journal",
+        "method": "read_note",
+        "args": [
+          5
+        ]
+      }
+    },
+    {
+      "call": {
+        "path": "QuietPlaces/UI/Journal",
+        "method": "back",
+        "args": []
+      }
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.get_node(\"Content/Library/List\").scroll_vertical>=190"
+    },
+    {
+      "call": {
+        "path": "QuietPlaces/UI/Journal",
+        "method": "back",
+        "args": []
+      }
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").journal.editor.set(\"text\",\"長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n\")"
+    },
+    {
+      "call": {
+        "path": "QuietPlaces/UI/Journal",
+        "method": "text_changed",
+        "args": []
+      }
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.editor.text.length()==10000"
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.save_note()"
+    },
+    {
+      "call": {
+        "path": "QuietPlaces/UI/Journal",
+        "method": "read_note",
+        "args": [
+          0
+        ]
+      }
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.get_node(\"Content/Library/Read/Text\").size.y>280"
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.get_node(\"Content/Library/Remove\").get_global_rect().end.y<950"
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.get_global_rect().end.x<=1920"
+    },
+    {
+      "call": {
+        "path": "QuietPlaces/UI/Journal",
+        "method": "show_list",
+        "args": []
+      }
+    },
+    {
+      "call": {
+        "path": "QuietPlaces/UI/Journal",
+        "method": "choose_export",
+        "args": []
+      }
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.get_node(\"Export\").visible",
+      "message": ""
+    },
+    {
+      "call": {
+        "path": "QuietPlaces/UI/Journal/Export",
+        "method": "hide",
+        "args": []
+      }
+    },
+    {
+      "call": {
+        "path": "QuietPlaces/UI/Journal",
+        "method": "choose_import",
+        "args": []
+      }
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.get_node(\"Import\").visible",
+      "message": ""
+    },
+    {
+      "call": {
+        "path": "QuietPlaces/UI/Journal/Import",
+        "method": "hide",
+        "args": []
+      }
+    },
+    {
+      "input": [
+        {
+          "key": "Escape"
+        }
+      ]
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").active==\"\"",
+      "message": ""
+    },
+    {
+      "assert": "not get_node(\"Player\").activity_locked",
+      "message": ""
+    },
+    {
+      "assert": "get_viewport().get_camera_3d()==get_node(\"CameraRig\").camera",
+      "message": ""
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          4
+        ]
+      }
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").active==\"compliment\"",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").set_meta(\"old_index\",get_node(\"QuietPlaces\").note_index)"
+    },
+    {
+      "input": [
+        {
+          "action": "interact"
+        }
+      ]
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").note_index==(get_node(\"QuietPlaces\").get_meta(\"old_index\")+1)%8",
+      "message": ""
+    },
+    {
+      "assert": "not get_node(\"QuietPlaces\").note_saved",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "key": "K"
+        }
+      ]
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").note_saved",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").load_kind_note()",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").note_saved",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"HUD/Menus\").set(\"language\",1)"
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").get_node(\"UI/Kind/Content/Note\").text.contains(get_node(\"QuietPlaces\").notes.ja[get_node(\"QuietPlaces\").note_index])",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "click_node": "QuietPlaces/UI/Kind/Content/Another"
+        }
+      ]
+    },
+    {
+      "assert": "not get_node(\"QuietPlaces\").note_saved",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "click_node": "QuietPlaces/UI/Kind/Content/Keep"
+        }
+      ]
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").note_saved",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_activity"
+        }
+      ]
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").collapsed",
+      "message": ""
+    },
+    {
+      "assert": "not get_node(\"QuietPlaces\").get_node(\"UI/Kind\").visible",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_activity"
+        }
+      ]
+    },
+    {
+      "assert": "not get_node(\"QuietPlaces\").collapsed",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").set(\"kind_save_path\",\"user://missing-quiet-test-directory/kind.cfg\")"
+    },
+    {
+      "assert": "not get_node(\"QuietPlaces\").keep_kind_note()",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").set(\"kind_save_path\",\"user://quiet-test-kind.cfg\")"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          3
+        ]
+      }
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").active==\"gratitude\"",
+      "message": ""
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").journal.get_node(\"Content/Heading\").text==\"日記\"",
+      "message": ""
+    },
+    {
+      "call": {
+        "path": "QuietPlaces",
+        "method": "leave",
+        "args": []
+      }
+    },
+    {
+      "eval": "get_node(\"HUD/Menus\").set(\"language\",0)"
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").journal.set(\"save_path\",\"user://journal-notes.json\")"
+    },
+    {
+      "call": {
+        "path": "QuietPlaces/UI/Journal",
+        "method": "load_notes",
+        "args": []
+      }
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").set(\"kind_save_path\",\"user://kind-note.cfg\")"
+    },
+    {
+      "assert_no_errors": true
+    }
+  ]
+}

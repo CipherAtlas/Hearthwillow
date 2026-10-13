@@ -1,0 +1,482 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scenes/village_lighting.gd" id="1"]
+
+[sub_resource type="Gradient" id="HaloGradient"]
+offsets = PackedFloat32Array(0, 0.0625, 0.296875, 1)
+colors = PackedColorArray(1, 0.933333, 0.72549, 0.85, 1, 0.933333, 0.72549, 0.85, 1, 0.8, 0.454902, 0.32, 1, 0.717647, 0.360784, 0)
+
+[sub_resource type="GradientTexture2D" id="HaloTexture"]
+gradient = SubResource("HaloGradient")
+width = 64
+height = 64
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="HaloMaterial"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = false
+albedo_color = Color(1, 0.831373, 0.607843, 0)
+albedo_texture = SubResource("HaloTexture")
+billboard_mode = 1
+disable_receive_shadows = true
+
+[sub_resource type="QuadMesh" id="HaloQuad"]
+material = SubResource("HaloMaterial")
+size = Vector2(1.7, 1.7)
+
+[node name="VillageLighting" type="Node3D"]
+script = ExtResource("1")
+active_lamp_limit = 2
+lamp_update_interval = 0.1
+
+[node name="Halos" type="Node3D" parent="."]
+visible = false
+
+[node name="LanternHalo01" type="MeshInstance3D" parent="Halos"]
+position = Vector3(6.940000, 1.870000, 11.950000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo02" type="MeshInstance3D" parent="Halos"]
+position = Vector3(28.010000, 1.870000, 4.050000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo03" type="MeshInstance3D" parent="Halos"]
+position = Vector3(31.599999, 2.820000, 15.000000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo04" type="MeshInstance3D" parent="Halos"]
+position = Vector3(16.000000, 2.790000, 2.120000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo05" type="MeshInstance3D" parent="Halos"]
+position = Vector3(6.990000, 1.870000, -3.050000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo06" type="MeshInstance3D" parent="Halos"]
+position = Vector3(2.178733, 1.870000, -25.922370)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo07" type="MeshInstance3D" parent="Halos"]
+position = Vector3(28.360000, 1.870000, -25.950000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo08" type="MeshInstance3D" parent="Halos"]
+position = Vector3(16.410289, 1.870000, -14.629025)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo09" type="MeshInstance3D" parent="Halos"]
+position = Vector3(13.000000, 2.620000, -13.000000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo10" type="MeshInstance3D" parent="Halos"]
+position = Vector3(18.000000, 2.620000, -13.000000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo11" type="MeshInstance3D" parent="Halos"]
+position = Vector3(17.000000, 0.590000, -2.300000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo12" type="MeshInstance3D" parent="Halos"]
+position = Vector3(31.200000, 0.590000, -16.000000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo13" type="MeshInstance3D" parent="Halos"]
+position = Vector3(28.010000, 1.870000, -42.950001)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo14" type="MeshInstance3D" parent="Halos"]
+position = Vector3(2.950000, 1.870000, -49.139999)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo15" type="MeshInstance3D" parent="Halos"]
+position = Vector3(31.400001, 2.820000, -33.200001)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo16" type="MeshInstance3D" parent="Halos"]
+position = Vector3(28.599999, 2.820000, -58.500000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo17" type="MeshInstance3D" parent="Halos"]
+position = Vector3(-19.890000, 1.870000, 7.050000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo18" type="MeshInstance3D" parent="Halos"]
+position = Vector3(-30.967171, 1.870000, 28.108540)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo19" type="MeshInstance3D" parent="Halos"]
+position = Vector3(-2.500000, 2.820000, 20.000000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo20" type="MeshInstance3D" parent="Halos"]
+position = Vector3(-2.500000, 2.820000, 0.000000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo21" type="MeshInstance3D" parent="Halos"]
+position = Vector3(-3.880000, 2.790000, 8.500000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo22" type="MeshInstance3D" parent="Halos"]
+position = Vector3(-31.000000, 2.790000, 8.380000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo23" type="MeshInstance3D" parent="Halos"]
+position = Vector3(38.639999, 1.870000, -46.049999)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo24" type="MeshInstance3D" parent="Halos"]
+position = Vector3(38.639999, 1.870000, 15.950000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo25" type="MeshInstance3D" parent="Halos"]
+position = Vector3(-40.600000, 2.820000, 7.000000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo26" type="MeshInstance3D" parent="Halos"]
+position = Vector3(-33.000000, 0.590000, 1.000000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo27" type="MeshInstance3D" parent="Halos"]
+position = Vector3(39.040001, 1.870000, -16.050000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo28" type="MeshInstance3D" parent="Halos"]
+position = Vector3(36.400000, 2.820000, -9.000000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo29" type="MeshInstance3D" parent="Halos"]
+position = Vector3(37.100000, 0.590000, -2.300000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo30" type="MeshInstance3D" parent="Halos"]
+position = Vector3(28.950000, 1.870000, 37.959999)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo31" type="MeshInstance3D" parent="Halos"]
+position = Vector3(-8.300000, 0.520000, -21.200000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo32" type="MeshInstance3D" parent="Halos"]
+position = Vector3(-24.599999, 0.570000, -5.700000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo33" type="MeshInstance3D" parent="Halos"]
+position = Vector3(-2.500000, 2.820000, 0.000000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo34" type="MeshInstance3D" parent="Halos"]
+position = Vector3(-4.200000, 2.820000, -27.000000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo35" type="MeshInstance3D" parent="Halos"]
+position = Vector3(43.400000, 2.820000, 44.500000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo36" type="MeshInstance3D" parent="Halos"]
+position = Vector3(68.599998, 2.820000, 45.000000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo37" type="MeshInstance3D" parent="Halos"]
+position = Vector3(112.000000, 2.820000, 33.400000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo38" type="MeshInstance3D" parent="Halos"]
+position = Vector3(-55.400000, 2.820000, -30.000000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo39" type="MeshInstance3D" parent="Halos"]
+position = Vector3(-50.000000, 0.590000, -16.000000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo40" type="MeshInstance3D" parent="Halos"]
+position = Vector3(65.599998, 2.820000, -49.000000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="LanternHalo41" type="MeshInstance3D" parent="Halos"]
+position = Vector3(91.599998, 2.820000, -41.000000)
+cast_shadow = 0
+mesh = SubResource("HaloQuad")
+
+[node name="Lamps" type="Node3D" parent="."]
+
+[node name="cottage-1" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(6.600000, 2.000000, 11.950000)
+light_color = Color(1.000000, 0.819608, 0.607843, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 8.0
+omni_attenuation = 2.0
+metadata/night_intensity = 5.2
+
+[node name="lamp-20" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(-2.500000, 2.950000, 20.000000)
+light_color = Color(1.000000, 0.815686, 0.603922, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 10.0
+omni_attenuation = 2.0
+metadata/night_intensity = 5.2
+
+[node name="lamp-0" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(-2.500000, 2.950000, 0.000000)
+light_color = Color(1.000000, 0.815686, 0.603922, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 10.0
+omni_attenuation = 2.0
+metadata/night_intensity = 5.2
+
+[node name="lamp--27" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(-4.200000, 2.950000, -27.000000)
+light_color = Color(1.000000, 0.815686, 0.603922, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 10.0
+omni_attenuation = 2.0
+metadata/night_intensity = 5.2
+
+[node name="lamp-moon-bridge" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(-3.880000, 2.900000, 8.500000)
+light_color = Color(1.000000, 0.788235, 0.505882, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 10.0
+omni_attenuation = 2.0
+metadata/night_intensity = 5.2
+
+[node name="lamp-moon-garden" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(16.000000, 2.900000, 2.120000)
+light_color = Color(1.000000, 0.788235, 0.505882, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 10.0
+omni_attenuation = 2.0
+metadata/night_intensity = 5.2
+
+[node name="lamp-moon-birds" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(-31.000000, 2.900000, 8.380000)
+light_color = Color(1.000000, 0.788235, 0.505882, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 10.0
+omni_attenuation = 2.0
+metadata/night_intensity = 5.2
+
+[node name="edge-lantern-garden-1" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(17.000000, 0.820000, -2.300000)
+light_color = Color(1.000000, 0.823529, 0.576471, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 6.0
+omni_attenuation = 2.0
+metadata/night_intensity = 3.4
+
+[node name="edge-lantern-garden-2" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(31.200000, 0.820000, -16.000000)
+light_color = Color(1.000000, 0.823529, 0.576471, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 6.0
+omni_attenuation = 2.0
+metadata/night_intensity = 3.4
+
+[node name="edge-lantern-garden-3" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(37.100000, 0.820000, -2.300000)
+light_color = Color(1.000000, 0.823529, 0.576471, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 6.0
+omni_attenuation = 2.0
+metadata/night_intensity = 3.4
+
+[node name="edge-lantern-pond-1" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(-33.000000, 0.820000, 1.000000)
+light_color = Color(1.000000, 0.823529, 0.576471, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 6.0
+omni_attenuation = 2.0
+metadata/night_intensity = 3.4
+
+[node name="edge-lantern-pond-2" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(-50.000000, 0.820000, -16.000000)
+light_color = Color(1.000000, 0.823529, 0.576471, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 6.0
+omni_attenuation = 2.0
+metadata/night_intensity = 3.4
+
+[node name="town-lamp-1" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(31.400000, 2.950000, -33.200000)
+light_color = Color(1.000000, 0.815686, 0.603922, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 10.0
+omni_attenuation = 2.0
+metadata/night_intensity = 5.2
+
+[node name="town-lamp-2" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(36.400000, 2.950000, -9.000000)
+light_color = Color(1.000000, 0.815686, 0.603922, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 10.0
+omni_attenuation = 2.0
+metadata/night_intensity = 5.2
+
+[node name="town-lamp-3" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(31.600000, 2.950000, 15.000000)
+light_color = Color(1.000000, 0.815686, 0.603922, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 10.0
+omni_attenuation = 2.0
+metadata/night_intensity = 5.2
+
+[node name="town-lamp-4" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(43.400000, 2.950000, 44.500000)
+light_color = Color(1.000000, 0.815686, 0.603922, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 10.0
+omni_attenuation = 2.0
+metadata/night_intensity = 5.2
+
+[node name="town-lamp-5" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(68.600000, 2.950000, 45.000000)
+light_color = Color(1.000000, 0.815686, 0.603922, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 10.0
+omni_attenuation = 2.0
+metadata/night_intensity = 5.2
+
+[node name="town-lamp-6" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(112.000000, 2.950000, 33.400000)
+light_color = Color(1.000000, 0.815686, 0.603922, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 10.0
+omni_attenuation = 2.0
+metadata/night_intensity = 5.2
+
+[node name="town-lamp-7" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(-55.400000, 2.950000, -30.000000)
+light_color = Color(1.000000, 0.815686, 0.603922, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 10.0
+omni_attenuation = 2.0
+metadata/night_intensity = 5.2
+
+[node name="town-lamp-8" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(-40.600000, 2.950000, 7.000000)
+light_color = Color(1.000000, 0.815686, 0.603922, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 10.0
+omni_attenuation = 2.0
+metadata/night_intensity = 5.2
+
+[node name="town-lamp-9" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(28.600000, 2.950000, -58.500000)
+light_color = Color(1.000000, 0.815686, 0.603922, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 10.0
+omni_attenuation = 2.0
+metadata/night_intensity = 5.2
+
+[node name="town-lamp-10" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(65.600000, 2.950000, -49.000000)
+light_color = Color(1.000000, 0.815686, 0.603922, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 10.0
+omni_attenuation = 2.0
+metadata/night_intensity = 5.2
+
+[node name="town-lamp-11" type="OmniLight3D" parent="Lamps"]
+visible = false
+position = Vector3(91.600000, 2.950000, -41.000000)
+light_color = Color(1.000000, 0.815686, 0.603922, 1)
+light_energy = 0.0
+light_cull_mask = 1
+omni_range = 10.0
+omni_attenuation = 2.0
+metadata/night_intensity = 5.2
+
+[node name="HearthLight" type="OmniLight3D" parent="."]
+position = Vector3(-5.8, 1, -19)
+light_color = Color(1, 0.678431, 0.329412, 1)
+light_energy = 2.25
+light_cull_mask = 1
+omni_range = 12.0
+omni_attenuation = 2.0

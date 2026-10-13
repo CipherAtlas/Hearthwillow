@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/surface.gdshader" id="1_rwpow"]
+[ext_resource type="Texture2D" path="res://assets/village/texture_0.png" id="2_pmi4x"]
+[ext_resource type="Texture2D" path="res://assets/village/texture_2.png" id="3_plk8y"]
+
+[resource]
+resource_name = "Village material 27"
+render_priority = 0
+shader = ExtResource("1_rwpow")
+shader_parameter/tint = Color(0.9529412, 0.8980392, 0.7411765, 1)
+shader_parameter/surface_texture = ExtResource("3_plk8y")
+shader_parameter/shoulder_texture = ExtResource("2_pmi4x")
+shader_parameter/has_texture = true
+shader_parameter/vertex_colors = false
+shader_parameter/foot_shade = false
+shader_parameter/surface_mode = 0
+shader_parameter/uv_scale = Vector2(1, -1)
+shader_parameter/uv_offset = Vector2(0, 1)
+shader_parameter/surface_roughness = 0.94

@@ -1,0 +1,2840 @@
+{
+  "name": "Both directions on all swings and picnic cushions at 1080p",
+  "passed": true,
+  "duration_s": 31.758,
+  "steps": [
+    {
+      "index": 0,
+      "step": "eval get_node('HUD/Menus').enter_game(false)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 1,
+      "step": "assert get_viewport().get_visible_rect().size==Vector2(1920,1080)",
+      "ok": true,
+      "detail": "get_viewport().get_visible_rect().size==Vector2(1920,1080)"
+    },
+    {
+      "index": 2,
+      "step": "eval set_meta('approach',get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings').find_child('Pivot0',true,fa",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 3,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(get_meta('approach').x,get_meta('approach').z))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 4,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 5,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.10s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 6,
+      "step": "assert get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings') and get_no",
+      "ok": true,
+      "detail": "get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings') and get_node('VillageSeating').swing_index==0"
+    },
+    {
+      "index": 7,
+      "step": "assert get_node('VillageSeating').facing_sign==-1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==-1"
+    },
+    {
+      "index": 8,
+      "step": "assert get_node('VillageSeating').panel.get_node('Content/TurnAround').visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').panel.get_node('Content/TurnAround').visible"
+    },
+    {
+      "index": 9,
+      "step": "eval get_node('VillageSeating').angles.set('sunrise-meadow-swings0',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 10,
+      "step": "eval get_node('VillageSeating').speeds.set('sunrise-meadow-swings0',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 11,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_forward for 0.35s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 12,
+      "step": "assert get_node('VillageSeating').speeds['sunrise-meadow-swings0']*get_node('VillageSeating').facing_sign>0.05",
+      "ok": true,
+      "detail": "get_node('VillageSeating').speeds['sunrise-meadow-swings0']*get_node('VillageSeating').facing_sign>0.05"
+    },
+    {
+      "index": 13,
+      "step": "eval set_meta('old_yaw',get_node('VillageSeating').facing_yaw)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 14,
+      "step": "eval set_meta('old_angle',get_node('VillageSeating').angles['sunrise-meadow-swings0'])",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 15,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1740, 1024)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 16,
+      "step": "assert get_node('VillageSeating').facing_sign==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==1"
+    },
+    {
+      "index": 17,
+      "step": "assert abs(angle_difference(get_node('VillageSeating').facing_yaw,get_meta('old_yaw')))>3.13",
+      "ok": true,
+      "detail": "abs(angle_difference(get_node('VillageSeating').facing_yaw,get_meta('old_yaw')))>3.13"
+    },
+    {
+      "index": 18,
+      "step": "assert get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings') and get_no",
+      "ok": true,
+      "detail": "get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings') and get_node('VillageSeating').swing_index==0"
+    },
+    {
+      "index": 19,
+      "step": "assert get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings').get_node",
+      "ok": true,
+      "detail": "get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings').get_node('ViewAnchor')"
+    },
+    {
+      "index": 20,
+      "step": "eval get_node('VillageSeating').angles.set('sunrise-meadow-swings0',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 21,
+      "step": "eval get_node('VillageSeating').speeds.set('sunrise-meadow-swings0',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 22,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_forward for 0.35s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 23,
+      "step": "assert get_node('VillageSeating').speeds['sunrise-meadow-swings0']*get_node('VillageSeating').facing_sign>0.05",
+      "ok": true,
+      "detail": "get_node('VillageSeating').speeds['sunrise-meadow-swings0']*get_node('VillageSeating').facing_sign>0.05"
+    },
+    {
+      "index": 24,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 25,
+      "step": "assert not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked",
+      "ok": true,
+      "detail": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked"
+    },
+    {
+      "index": 26,
+      "step": "eval set_meta('approach',get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings').find_child('Pivot0',true,fa",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 27,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(get_meta('approach').x,get_meta('approach').z))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 28,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 29,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.10s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 30,
+      "step": "assert get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings') and get_no",
+      "ok": true,
+      "detail": "get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings') and get_node('VillageSeating').swing_index==0"
+    },
+    {
+      "index": 31,
+      "step": "assert get_node('VillageSeating').facing_sign==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==1"
+    },
+    {
+      "index": 32,
+      "step": "assert get_node('VillageSeating').panel.get_node('Content/TurnAround').visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').panel.get_node('Content/TurnAround').visible"
+    },
+    {
+      "index": 33,
+      "step": "eval get_node('VillageSeating').angles.set('sunrise-meadow-swings0',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 34,
+      "step": "eval get_node('VillageSeating').speeds.set('sunrise-meadow-swings0',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 35,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_forward for 0.35s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 36,
+      "step": "assert get_node('VillageSeating').speeds['sunrise-meadow-swings0']*get_node('VillageSeating').facing_sign>0.05",
+      "ok": true,
+      "detail": "get_node('VillageSeating').speeds['sunrise-meadow-swings0']*get_node('VillageSeating').facing_sign>0.05"
+    },
+    {
+      "index": 37,
+      "step": "eval set_meta('old_yaw',get_node('VillageSeating').facing_yaw)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 38,
+      "step": "eval set_meta('old_angle',get_node('VillageSeating').angles['sunrise-meadow-swings0'])",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 39,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key T"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 40,
+      "step": "assert get_node('VillageSeating').facing_sign==-1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==-1"
+    },
+    {
+      "index": 41,
+      "step": "assert abs(angle_difference(get_node('VillageSeating').facing_yaw,get_meta('old_yaw')))>3.13",
+      "ok": true,
+      "detail": "abs(angle_difference(get_node('VillageSeating').facing_yaw,get_meta('old_yaw')))>3.13"
+    },
+    {
+      "index": 42,
+      "step": "assert get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings') and get_no",
+      "ok": true,
+      "detail": "get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings') and get_node('VillageSeating').swing_index==0"
+    },
+    {
+      "index": 43,
+      "step": "assert get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings').get_node",
+      "ok": true,
+      "detail": "get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings').get_node('ViewAnchor')"
+    },
+    {
+      "index": 44,
+      "step": "eval get_node('VillageSeating').angles.set('sunrise-meadow-swings0',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 45,
+      "step": "eval get_node('VillageSeating').speeds.set('sunrise-meadow-swings0',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 46,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_forward for 0.35s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 47,
+      "step": "assert get_node('VillageSeating').speeds['sunrise-meadow-swings0']*get_node('VillageSeating').facing_sign>0.05",
+      "ok": true,
+      "detail": "get_node('VillageSeating').speeds['sunrise-meadow-swings0']*get_node('VillageSeating').facing_sign>0.05"
+    },
+    {
+      "index": 48,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 49,
+      "step": "assert not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked",
+      "ok": true,
+      "detail": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked"
+    },
+    {
+      "index": 50,
+      "step": "eval set_meta('approach',get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings').find_child('Pivot1',true,fa",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 51,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(get_meta('approach').x,get_meta('approach').z))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 52,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 53,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.10s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 54,
+      "step": "assert get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings') and get_no",
+      "ok": true,
+      "detail": "get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings') and get_node('VillageSeating').swing_index==1"
+    },
+    {
+      "index": 55,
+      "step": "assert get_node('VillageSeating').facing_sign==-1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==-1"
+    },
+    {
+      "index": 56,
+      "step": "assert get_node('VillageSeating').panel.get_node('Content/TurnAround').visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').panel.get_node('Content/TurnAround').visible"
+    },
+    {
+      "index": 57,
+      "step": "eval get_node('VillageSeating').angles.set('sunrise-meadow-swings1',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 58,
+      "step": "eval get_node('VillageSeating').speeds.set('sunrise-meadow-swings1',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 59,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_forward for 0.35s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 60,
+      "step": "assert get_node('VillageSeating').speeds['sunrise-meadow-swings1']*get_node('VillageSeating').facing_sign>0.05",
+      "ok": true,
+      "detail": "get_node('VillageSeating').speeds['sunrise-meadow-swings1']*get_node('VillageSeating').facing_sign>0.05"
+    },
+    {
+      "index": 61,
+      "step": "eval set_meta('old_yaw',get_node('VillageSeating').facing_yaw)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 62,
+      "step": "eval set_meta('old_angle',get_node('VillageSeating').angles['sunrise-meadow-swings1'])",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 63,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key T"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 64,
+      "step": "assert get_node('VillageSeating').facing_sign==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==1"
+    },
+    {
+      "index": 65,
+      "step": "assert abs(angle_difference(get_node('VillageSeating').facing_yaw,get_meta('old_yaw')))>3.13",
+      "ok": true,
+      "detail": "abs(angle_difference(get_node('VillageSeating').facing_yaw,get_meta('old_yaw')))>3.13"
+    },
+    {
+      "index": 66,
+      "step": "assert get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings') and get_no",
+      "ok": true,
+      "detail": "get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings') and get_node('VillageSeating').swing_index==1"
+    },
+    {
+      "index": 67,
+      "step": "assert get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings').get_node",
+      "ok": true,
+      "detail": "get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings').get_node('ViewAnchor')"
+    },
+    {
+      "index": 68,
+      "step": "eval get_node('VillageSeating').angles.set('sunrise-meadow-swings1',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 69,
+      "step": "eval get_node('VillageSeating').speeds.set('sunrise-meadow-swings1',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 70,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_forward for 0.35s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 71,
+      "step": "assert get_node('VillageSeating').speeds['sunrise-meadow-swings1']*get_node('VillageSeating').facing_sign>0.05",
+      "ok": true,
+      "detail": "get_node('VillageSeating').speeds['sunrise-meadow-swings1']*get_node('VillageSeating').facing_sign>0.05"
+    },
+    {
+      "index": 72,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 73,
+      "step": "assert not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked",
+      "ok": true,
+      "detail": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked"
+    },
+    {
+      "index": 74,
+      "step": "eval set_meta('approach',get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings').find_child('Pivot1',true,fa",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 75,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(get_meta('approach').x,get_meta('approach').z))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 76,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 77,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.10s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 78,
+      "step": "assert get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings') and get_no",
+      "ok": true,
+      "detail": "get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings') and get_node('VillageSeating').swing_index==1"
+    },
+    {
+      "index": 79,
+      "step": "assert get_node('VillageSeating').facing_sign==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==1"
+    },
+    {
+      "index": 80,
+      "step": "assert get_node('VillageSeating').panel.get_node('Content/TurnAround').visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').panel.get_node('Content/TurnAround').visible"
+    },
+    {
+      "index": 81,
+      "step": "eval get_node('VillageSeating').angles.set('sunrise-meadow-swings1',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 82,
+      "step": "eval get_node('VillageSeating').speeds.set('sunrise-meadow-swings1',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 83,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_forward for 0.35s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 84,
+      "step": "assert get_node('VillageSeating').speeds['sunrise-meadow-swings1']*get_node('VillageSeating').facing_sign>0.05",
+      "ok": true,
+      "detail": "get_node('VillageSeating').speeds['sunrise-meadow-swings1']*get_node('VillageSeating').facing_sign>0.05"
+    },
+    {
+      "index": 85,
+      "step": "eval set_meta('old_yaw',get_node('VillageSeating').facing_yaw)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 86,
+      "step": "eval set_meta('old_angle',get_node('VillageSeating').angles['sunrise-meadow-swings1'])",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 87,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key T"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 88,
+      "step": "assert get_node('VillageSeating').facing_sign==-1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==-1"
+    },
+    {
+      "index": 89,
+      "step": "assert abs(angle_difference(get_node('VillageSeating').facing_yaw,get_meta('old_yaw')))>3.13",
+      "ok": true,
+      "detail": "abs(angle_difference(get_node('VillageSeating').facing_yaw,get_meta('old_yaw')))>3.13"
+    },
+    {
+      "index": 90,
+      "step": "assert get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings') and get_no",
+      "ok": true,
+      "detail": "get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings') and get_node('VillageSeating').swing_index==1"
+    },
+    {
+      "index": 91,
+      "step": "assert get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings').get_node",
+      "ok": true,
+      "detail": "get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings').get_node('ViewAnchor')"
+    },
+    {
+      "index": 92,
+      "step": "eval get_node('VillageSeating').angles.set('sunrise-meadow-swings1',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 93,
+      "step": "eval get_node('VillageSeating').speeds.set('sunrise-meadow-swings1',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 94,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_forward for 0.35s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 95,
+      "step": "assert get_node('VillageSeating').speeds['sunrise-meadow-swings1']*get_node('VillageSeating').facing_sign>0.05",
+      "ok": true,
+      "detail": "get_node('VillageSeating').speeds['sunrise-meadow-swings1']*get_node('VillageSeating').facing_sign>0.05"
+    },
+    {
+      "index": 96,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 97,
+      "step": "assert not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked",
+      "ok": true,
+      "detail": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked"
+    },
+    {
+      "index": 98,
+      "step": "eval set_meta('approach',get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2').find_child('Pivot0',true,",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 99,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(get_meta('approach').x,get_meta('approach').z))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 100,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 101,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.10s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 102,
+      "step": "assert get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2') and get_",
+      "ok": true,
+      "detail": "get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2') and get_node('VillageSeating').swing_index==0"
+    },
+    {
+      "index": 103,
+      "step": "assert get_node('VillageSeating').facing_sign==-1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==-1"
+    },
+    {
+      "index": 104,
+      "step": "assert get_node('VillageSeating').panel.get_node('Content/TurnAround').visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').panel.get_node('Content/TurnAround').visible"
+    },
+    {
+      "index": 105,
+      "step": "eval get_node('VillageSeating').angles.set('pasture-meadow-swings-20',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 106,
+      "step": "eval get_node('VillageSeating').speeds.set('pasture-meadow-swings-20',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 107,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_forward for 0.35s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 108,
+      "step": "assert get_node('VillageSeating').speeds['pasture-meadow-swings-20']*get_node('VillageSeating').facing_sign>0.05",
+      "ok": true,
+      "detail": "get_node('VillageSeating').speeds['pasture-meadow-swings-20']*get_node('VillageSeating').facing_sign>0.05"
+    },
+    {
+      "index": 109,
+      "step": "eval set_meta('old_yaw',get_node('VillageSeating').facing_yaw)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 110,
+      "step": "eval set_meta('old_angle',get_node('VillageSeating').angles['pasture-meadow-swings-20'])",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 111,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key T"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 112,
+      "step": "assert get_node('VillageSeating').facing_sign==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==1"
+    },
+    {
+      "index": 113,
+      "step": "assert abs(angle_difference(get_node('VillageSeating').facing_yaw,get_meta('old_yaw')))>3.13",
+      "ok": true,
+      "detail": "abs(angle_difference(get_node('VillageSeating').facing_yaw,get_meta('old_yaw')))>3.13"
+    },
+    {
+      "index": 114,
+      "step": "assert get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2') and get_",
+      "ok": true,
+      "detail": "get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2') and get_node('VillageSeating').swing_index==0"
+    },
+    {
+      "index": 115,
+      "step": "assert get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2').get_no",
+      "ok": true,
+      "detail": "get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2').get_node('ViewAnchor')"
+    },
+    {
+      "index": 116,
+      "step": "eval get_node('VillageSeating').angles.set('pasture-meadow-swings-20',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 117,
+      "step": "eval get_node('VillageSeating').speeds.set('pasture-meadow-swings-20',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 118,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_forward for 0.35s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 119,
+      "step": "assert get_node('VillageSeating').speeds['pasture-meadow-swings-20']*get_node('VillageSeating').facing_sign>0.05",
+      "ok": true,
+      "detail": "get_node('VillageSeating').speeds['pasture-meadow-swings-20']*get_node('VillageSeating').facing_sign>0.05"
+    },
+    {
+      "index": 120,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 121,
+      "step": "assert not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked",
+      "ok": true,
+      "detail": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked"
+    },
+    {
+      "index": 122,
+      "step": "eval set_meta('approach',get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2').find_child('Pivot0',true,",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 123,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(get_meta('approach').x,get_meta('approach').z))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 124,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 125,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.10s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 126,
+      "step": "assert get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2') and get_",
+      "ok": true,
+      "detail": "get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2') and get_node('VillageSeating').swing_index==0"
+    },
+    {
+      "index": 127,
+      "step": "assert get_node('VillageSeating').facing_sign==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==1"
+    },
+    {
+      "index": 128,
+      "step": "assert get_node('VillageSeating').panel.get_node('Content/TurnAround').visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').panel.get_node('Content/TurnAround').visible"
+    },
+    {
+      "index": 129,
+      "step": "eval get_node('VillageSeating').angles.set('pasture-meadow-swings-20',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 130,
+      "step": "eval get_node('VillageSeating').speeds.set('pasture-meadow-swings-20',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 131,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_forward for 0.35s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 132,
+      "step": "assert get_node('VillageSeating').speeds['pasture-meadow-swings-20']*get_node('VillageSeating').facing_sign>0.05",
+      "ok": true,
+      "detail": "get_node('VillageSeating').speeds['pasture-meadow-swings-20']*get_node('VillageSeating').facing_sign>0.05"
+    },
+    {
+      "index": 133,
+      "step": "eval set_meta('old_yaw',get_node('VillageSeating').facing_yaw)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 134,
+      "step": "eval set_meta('old_angle',get_node('VillageSeating').angles['pasture-meadow-swings-20'])",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 135,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key T"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 136,
+      "step": "assert get_node('VillageSeating').facing_sign==-1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==-1"
+    },
+    {
+      "index": 137,
+      "step": "assert abs(angle_difference(get_node('VillageSeating').facing_yaw,get_meta('old_yaw')))>3.13",
+      "ok": true,
+      "detail": "abs(angle_difference(get_node('VillageSeating').facing_yaw,get_meta('old_yaw')))>3.13"
+    },
+    {
+      "index": 138,
+      "step": "assert get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2') and get_",
+      "ok": true,
+      "detail": "get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2') and get_node('VillageSeating').swing_index==0"
+    },
+    {
+      "index": 139,
+      "step": "assert get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2').get_no",
+      "ok": true,
+      "detail": "get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2').get_node('ViewAnchor')"
+    },
+    {
+      "index": 140,
+      "step": "eval get_node('VillageSeating').angles.set('pasture-meadow-swings-20',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 141,
+      "step": "eval get_node('VillageSeating').speeds.set('pasture-meadow-swings-20',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 142,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_forward for 0.35s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 143,
+      "step": "assert get_node('VillageSeating').speeds['pasture-meadow-swings-20']*get_node('VillageSeating').facing_sign>0.05",
+      "ok": true,
+      "detail": "get_node('VillageSeating').speeds['pasture-meadow-swings-20']*get_node('VillageSeating').facing_sign>0.05"
+    },
+    {
+      "index": 144,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 145,
+      "step": "assert not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked",
+      "ok": true,
+      "detail": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked"
+    },
+    {
+      "index": 146,
+      "step": "eval set_meta('approach',get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2').find_child('Pivot1',true,",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 147,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(get_meta('approach').x,get_meta('approach').z))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 148,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 149,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.10s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 150,
+      "step": "assert get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2') and get_",
+      "ok": true,
+      "detail": "get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2') and get_node('VillageSeating').swing_index==1"
+    },
+    {
+      "index": 151,
+      "step": "assert get_node('VillageSeating').facing_sign==-1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==-1"
+    },
+    {
+      "index": 152,
+      "step": "assert get_node('VillageSeating').panel.get_node('Content/TurnAround').visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').panel.get_node('Content/TurnAround').visible"
+    },
+    {
+      "index": 153,
+      "step": "eval get_node('VillageSeating').angles.set('pasture-meadow-swings-21',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 154,
+      "step": "eval get_node('VillageSeating').speeds.set('pasture-meadow-swings-21',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 155,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_forward for 0.35s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 156,
+      "step": "assert get_node('VillageSeating').speeds['pasture-meadow-swings-21']*get_node('VillageSeating').facing_sign>0.05",
+      "ok": true,
+      "detail": "get_node('VillageSeating').speeds['pasture-meadow-swings-21']*get_node('VillageSeating').facing_sign>0.05"
+    },
+    {
+      "index": 157,
+      "step": "eval set_meta('old_yaw',get_node('VillageSeating').facing_yaw)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 158,
+      "step": "eval set_meta('old_angle',get_node('VillageSeating').angles['pasture-meadow-swings-21'])",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 159,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key T"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 160,
+      "step": "assert get_node('VillageSeating').facing_sign==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==1"
+    },
+    {
+      "index": 161,
+      "step": "assert abs(angle_difference(get_node('VillageSeating').facing_yaw,get_meta('old_yaw')))>3.13",
+      "ok": true,
+      "detail": "abs(angle_difference(get_node('VillageSeating').facing_yaw,get_meta('old_yaw')))>3.13"
+    },
+    {
+      "index": 162,
+      "step": "assert get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2') and get_",
+      "ok": true,
+      "detail": "get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2') and get_node('VillageSeating').swing_index==1"
+    },
+    {
+      "index": 163,
+      "step": "assert get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2').get_no",
+      "ok": true,
+      "detail": "get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2').get_node('ViewAnchor')"
+    },
+    {
+      "index": 164,
+      "step": "eval get_node('VillageSeating').angles.set('pasture-meadow-swings-21',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 165,
+      "step": "eval get_node('VillageSeating').speeds.set('pasture-meadow-swings-21',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 166,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_forward for 0.35s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 167,
+      "step": "assert get_node('VillageSeating').speeds['pasture-meadow-swings-21']*get_node('VillageSeating').facing_sign>0.05",
+      "ok": true,
+      "detail": "get_node('VillageSeating').speeds['pasture-meadow-swings-21']*get_node('VillageSeating').facing_sign>0.05"
+    },
+    {
+      "index": 168,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 169,
+      "step": "assert not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked",
+      "ok": true,
+      "detail": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked"
+    },
+    {
+      "index": 170,
+      "step": "eval set_meta('approach',get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2').find_child('Pivot1',true,",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 171,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(get_meta('approach').x,get_meta('approach').z))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 172,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 173,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.10s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 174,
+      "step": "assert get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2') and get_",
+      "ok": true,
+      "detail": "get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2') and get_node('VillageSeating').swing_index==1"
+    },
+    {
+      "index": 175,
+      "step": "assert get_node('VillageSeating').facing_sign==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==1"
+    },
+    {
+      "index": 176,
+      "step": "assert get_node('VillageSeating').panel.get_node('Content/TurnAround').visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').panel.get_node('Content/TurnAround').visible"
+    },
+    {
+      "index": 177,
+      "step": "eval get_node('VillageSeating').angles.set('pasture-meadow-swings-21',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 178,
+      "step": "eval get_node('VillageSeating').speeds.set('pasture-meadow-swings-21',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 179,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_forward for 0.35s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 180,
+      "step": "assert get_node('VillageSeating').speeds['pasture-meadow-swings-21']*get_node('VillageSeating').facing_sign>0.05",
+      "ok": true,
+      "detail": "get_node('VillageSeating').speeds['pasture-meadow-swings-21']*get_node('VillageSeating').facing_sign>0.05"
+    },
+    {
+      "index": 181,
+      "step": "eval set_meta('old_yaw',get_node('VillageSeating').facing_yaw)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 182,
+      "step": "eval set_meta('old_angle',get_node('VillageSeating').angles['pasture-meadow-swings-21'])",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 183,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key T"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 184,
+      "step": "assert get_node('VillageSeating').facing_sign==-1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==-1"
+    },
+    {
+      "index": 185,
+      "step": "assert abs(angle_difference(get_node('VillageSeating').facing_yaw,get_meta('old_yaw')))>3.13",
+      "ok": true,
+      "detail": "abs(angle_difference(get_node('VillageSeating').facing_yaw,get_meta('old_yaw')))>3.13"
+    },
+    {
+      "index": 186,
+      "step": "assert get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2') and get_",
+      "ok": true,
+      "detail": "get_node('VillageSeating').riding==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2') and get_node('VillageSeating').swing_index==1"
+    },
+    {
+      "index": 187,
+      "step": "assert get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2').get_no",
+      "ok": true,
+      "detail": "get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2').get_node('ViewAnchor')"
+    },
+    {
+      "index": 188,
+      "step": "eval get_node('VillageSeating').angles.set('pasture-meadow-swings-21',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 189,
+      "step": "eval get_node('VillageSeating').speeds.set('pasture-meadow-swings-21',0.0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 190,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_forward for 0.35s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 191,
+      "step": "assert get_node('VillageSeating').speeds['pasture-meadow-swings-21']*get_node('VillageSeating').facing_sign>0.05",
+      "ok": true,
+      "detail": "get_node('VillageSeating').speeds['pasture-meadow-swings-21']*get_node('VillageSeating').facing_sign>0.05"
+    },
+    {
+      "index": 192,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 193,
+      "step": "assert not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked",
+      "ok": true,
+      "detail": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked"
+    },
+    {
+      "index": 194,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(-98.38341614318816,-22.015397600571667))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 195,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 196,
+      "step": "assert get_node('VillageSeating').sit('picnic-hill-mat',0)",
+      "ok": true,
+      "detail": "get_node('VillageSeating').sit('picnic-hill-mat',0)"
+    },
+    {
+      "index": 197,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 198,
+      "step": "assert get_node('VillageSeating').facing_sign==-1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==-1"
+    },
+    {
+      "index": 199,
+      "step": "eval set_meta('old_position',get_node('Player').position)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 200,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key T"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 201,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 202,
+      "step": "assert get_node('VillageSeating').facing_sign==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==1"
+    },
+    {
+      "index": 203,
+      "step": "assert get_node('Player').position.distance_to(get_meta('old_position'))<.01",
+      "ok": true,
+      "detail": "get_node('Player').position.distance_to(get_meta('old_position'))<.01"
+    },
+    {
+      "index": 204,
+      "step": "assert get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==0",
+      "ok": true,
+      "detail": "get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==0"
+    },
+    {
+      "index": 205,
+      "step": "assert get_node('VillageSeating').panel.get_node('Content/TurnAround').visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').panel.get_node('Content/TurnAround').visible"
+    },
+    {
+      "index": 206,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key F"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 207,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 208,
+      "step": "assert get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible"
+    },
+    {
+      "index": 209,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 210,
+      "step": "assert get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open",
+      "ok": true,
+      "detail": "get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open"
+    },
+    {
+      "index": 211,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 212,
+      "step": "assert not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked",
+      "ok": true,
+      "detail": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked"
+    },
+    {
+      "index": 213,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(-95.99254886776797,-21.80622381797729))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 214,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 215,
+      "step": "assert get_node('VillageSeating').sit('picnic-hill-mat',0)",
+      "ok": true,
+      "detail": "get_node('VillageSeating').sit('picnic-hill-mat',0)"
+    },
+    {
+      "index": 216,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 217,
+      "step": "assert get_node('VillageSeating').facing_sign==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==1"
+    },
+    {
+      "index": 218,
+      "step": "eval set_meta('old_position',get_node('Player').position)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 219,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key T"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 220,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 221,
+      "step": "assert get_node('VillageSeating').facing_sign==-1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==-1"
+    },
+    {
+      "index": 222,
+      "step": "assert get_node('Player').position.distance_to(get_meta('old_position'))<.01",
+      "ok": true,
+      "detail": "get_node('Player').position.distance_to(get_meta('old_position'))<.01"
+    },
+    {
+      "index": 223,
+      "step": "assert get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==0",
+      "ok": true,
+      "detail": "get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==0"
+    },
+    {
+      "index": 224,
+      "step": "assert get_node('VillageSeating').panel.get_node('Content/TurnAround').visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').panel.get_node('Content/TurnAround').visible"
+    },
+    {
+      "index": 225,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key F"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 226,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 227,
+      "step": "assert get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible"
+    },
+    {
+      "index": 228,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 229,
+      "step": "assert get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open",
+      "ok": true,
+      "detail": "get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open"
+    },
+    {
+      "index": 230,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 231,
+      "step": "assert not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked",
+      "ok": true,
+      "detail": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked"
+    },
+    {
+      "index": 232,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(-98.46185631166105,-21.1188223722891))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 233,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 234,
+      "step": "assert get_node('VillageSeating').sit('picnic-hill-mat',1)",
+      "ok": true,
+      "detail": "get_node('VillageSeating').sit('picnic-hill-mat',1)"
+    },
+    {
+      "index": 235,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 236,
+      "step": "assert get_node('VillageSeating').facing_sign==-1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==-1"
+    },
+    {
+      "index": 237,
+      "step": "eval set_meta('old_position',get_node('Player').position)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 238,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key T"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 239,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 240,
+      "step": "assert get_node('VillageSeating').facing_sign==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==1"
+    },
+    {
+      "index": 241,
+      "step": "assert get_node('Player').position.distance_to(get_meta('old_position'))<.01",
+      "ok": true,
+      "detail": "get_node('Player').position.distance_to(get_meta('old_position'))<.01"
+    },
+    {
+      "index": 242,
+      "step": "assert get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==1"
+    },
+    {
+      "index": 243,
+      "step": "assert get_node('VillageSeating').panel.get_node('Content/TurnAround').visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').panel.get_node('Content/TurnAround').visible"
+    },
+    {
+      "index": 244,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key F"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 245,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 246,
+      "step": "assert get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible"
+    },
+    {
+      "index": 247,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 248,
+      "step": "assert get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open",
+      "ok": true,
+      "detail": "get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open"
+    },
+    {
+      "index": 249,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 250,
+      "step": "assert not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked",
+      "ok": true,
+      "detail": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked"
+    },
+    {
+      "index": 251,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(-96.07098903624086,-20.909648589694722))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 252,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 253,
+      "step": "assert get_node('VillageSeating').sit('picnic-hill-mat',1)",
+      "ok": true,
+      "detail": "get_node('VillageSeating').sit('picnic-hill-mat',1)"
+    },
+    {
+      "index": 254,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 255,
+      "step": "assert get_node('VillageSeating').facing_sign==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==1"
+    },
+    {
+      "index": 256,
+      "step": "eval set_meta('old_position',get_node('Player').position)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 257,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key T"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 258,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 259,
+      "step": "assert get_node('VillageSeating').facing_sign==-1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==-1"
+    },
+    {
+      "index": 260,
+      "step": "assert get_node('Player').position.distance_to(get_meta('old_position'))<.01",
+      "ok": true,
+      "detail": "get_node('Player').position.distance_to(get_meta('old_position'))<.01"
+    },
+    {
+      "index": 261,
+      "step": "assert get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==1"
+    },
+    {
+      "index": 262,
+      "step": "assert get_node('VillageSeating').panel.get_node('Content/TurnAround').visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').panel.get_node('Content/TurnAround').visible"
+    },
+    {
+      "index": 263,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key F"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 264,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 265,
+      "step": "assert get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible"
+    },
+    {
+      "index": 266,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 267,
+      "step": "assert get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open",
+      "ok": true,
+      "detail": "get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open"
+    },
+    {
+      "index": 268,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 269,
+      "step": "assert not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked",
+      "ok": true,
+      "detail": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked"
+    },
+    {
+      "index": 270,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(-98.54029648013395,-20.222247144006527))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 271,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 272,
+      "step": "assert get_node('VillageSeating').sit('picnic-hill-mat',2)",
+      "ok": true,
+      "detail": "get_node('VillageSeating').sit('picnic-hill-mat',2)"
+    },
+    {
+      "index": 273,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 274,
+      "step": "assert get_node('VillageSeating').facing_sign==-1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==-1"
+    },
+    {
+      "index": 275,
+      "step": "eval set_meta('old_position',get_node('Player').position)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 276,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key T"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 277,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 278,
+      "step": "assert get_node('VillageSeating').facing_sign==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==1"
+    },
+    {
+      "index": 279,
+      "step": "assert get_node('Player').position.distance_to(get_meta('old_position'))<.01",
+      "ok": true,
+      "detail": "get_node('Player').position.distance_to(get_meta('old_position'))<.01"
+    },
+    {
+      "index": 280,
+      "step": "assert get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==2",
+      "ok": true,
+      "detail": "get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==2"
+    },
+    {
+      "index": 281,
+      "step": "assert get_node('VillageSeating').panel.get_node('Content/TurnAround').visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').panel.get_node('Content/TurnAround').visible"
+    },
+    {
+      "index": 282,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key F"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 283,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 284,
+      "step": "assert get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible"
+    },
+    {
+      "index": 285,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 286,
+      "step": "assert get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open",
+      "ok": true,
+      "detail": "get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open"
+    },
+    {
+      "index": 287,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 288,
+      "step": "assert not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked",
+      "ok": true,
+      "detail": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked"
+    },
+    {
+      "index": 289,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(-96.14942920471375,-20.01307336141215))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 290,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 291,
+      "step": "assert get_node('VillageSeating').sit('picnic-hill-mat',2)",
+      "ok": true,
+      "detail": "get_node('VillageSeating').sit('picnic-hill-mat',2)"
+    },
+    {
+      "index": 292,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 293,
+      "step": "assert get_node('VillageSeating').facing_sign==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==1"
+    },
+    {
+      "index": 294,
+      "step": "eval set_meta('old_position',get_node('Player').position)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 295,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key T"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 296,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 297,
+      "step": "assert get_node('VillageSeating').facing_sign==-1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==-1"
+    },
+    {
+      "index": 298,
+      "step": "assert get_node('Player').position.distance_to(get_meta('old_position'))<.01",
+      "ok": true,
+      "detail": "get_node('Player').position.distance_to(get_meta('old_position'))<.01"
+    },
+    {
+      "index": 299,
+      "step": "assert get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==2",
+      "ok": true,
+      "detail": "get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==2"
+    },
+    {
+      "index": 300,
+      "step": "assert get_node('VillageSeating').panel.get_node('Content/TurnAround').visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').panel.get_node('Content/TurnAround').visible"
+    },
+    {
+      "index": 301,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key F"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 302,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 303,
+      "step": "assert get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible"
+    },
+    {
+      "index": 304,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 305,
+      "step": "assert get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open",
+      "ok": true,
+      "detail": "get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open"
+    },
+    {
+      "index": 306,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 307,
+      "step": "assert not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked",
+      "ok": true,
+      "detail": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked"
+    },
+    {
+      "index": 308,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(-98.61873664860684,-19.325671915723955))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 309,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 310,
+      "step": "assert get_node('VillageSeating').sit('picnic-hill-mat',3)",
+      "ok": true,
+      "detail": "get_node('VillageSeating').sit('picnic-hill-mat',3)"
+    },
+    {
+      "index": 311,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 312,
+      "step": "assert get_node('VillageSeating').facing_sign==-1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==-1"
+    },
+    {
+      "index": 313,
+      "step": "eval set_meta('old_position',get_node('Player').position)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 314,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key T"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 315,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 316,
+      "step": "assert get_node('VillageSeating').facing_sign==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==1"
+    },
+    {
+      "index": 317,
+      "step": "assert get_node('Player').position.distance_to(get_meta('old_position'))<.01",
+      "ok": true,
+      "detail": "get_node('Player').position.distance_to(get_meta('old_position'))<.01"
+    },
+    {
+      "index": 318,
+      "step": "assert get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==3",
+      "ok": true,
+      "detail": "get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==3"
+    },
+    {
+      "index": 319,
+      "step": "assert get_node('VillageSeating').panel.get_node('Content/TurnAround').visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').panel.get_node('Content/TurnAround').visible"
+    },
+    {
+      "index": 320,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key F"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 321,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 322,
+      "step": "assert get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible"
+    },
+    {
+      "index": 323,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 324,
+      "step": "assert get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open",
+      "ok": true,
+      "detail": "get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open"
+    },
+    {
+      "index": 325,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 326,
+      "step": "assert not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked",
+      "ok": true,
+      "detail": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked"
+    },
+    {
+      "index": 327,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(-96.22786937318665,-19.11649813312958))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 328,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 329,
+      "step": "assert get_node('VillageSeating').sit('picnic-hill-mat',3)",
+      "ok": true,
+      "detail": "get_node('VillageSeating').sit('picnic-hill-mat',3)"
+    },
+    {
+      "index": 330,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 331,
+      "step": "assert get_node('VillageSeating').facing_sign==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==1"
+    },
+    {
+      "index": 332,
+      "step": "eval set_meta('old_position',get_node('Player').position)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 333,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key T"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 334,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 335,
+      "step": "assert get_node('VillageSeating').facing_sign==-1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==-1"
+    },
+    {
+      "index": 336,
+      "step": "assert get_node('Player').position.distance_to(get_meta('old_position'))<.01",
+      "ok": true,
+      "detail": "get_node('Player').position.distance_to(get_meta('old_position'))<.01"
+    },
+    {
+      "index": 337,
+      "step": "assert get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==3",
+      "ok": true,
+      "detail": "get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==3"
+    },
+    {
+      "index": 338,
+      "step": "assert get_node('VillageSeating').panel.get_node('Content/TurnAround').visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').panel.get_node('Content/TurnAround').visible"
+    },
+    {
+      "index": 339,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key F"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 340,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 341,
+      "step": "assert get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible"
+    },
+    {
+      "index": 342,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 343,
+      "step": "assert get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open",
+      "ok": true,
+      "detail": "get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open"
+    },
+    {
+      "index": 344,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 345,
+      "step": "assert not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked",
+      "ok": true,
+      "detail": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked"
+    },
+    {
+      "index": 346,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(-98.69717681707974,-18.429096687441387))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 347,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 348,
+      "step": "assert get_node('VillageSeating').sit('picnic-hill-mat',4)",
+      "ok": true,
+      "detail": "get_node('VillageSeating').sit('picnic-hill-mat',4)"
+    },
+    {
+      "index": 349,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 350,
+      "step": "assert get_node('VillageSeating').facing_sign==-1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==-1"
+    },
+    {
+      "index": 351,
+      "step": "eval set_meta('old_position',get_node('Player').position)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 352,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key T"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 353,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 354,
+      "step": "assert get_node('VillageSeating').facing_sign==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==1"
+    },
+    {
+      "index": 355,
+      "step": "assert get_node('Player').position.distance_to(get_meta('old_position'))<.01",
+      "ok": true,
+      "detail": "get_node('Player').position.distance_to(get_meta('old_position'))<.01"
+    },
+    {
+      "index": 356,
+      "step": "assert get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==4",
+      "ok": true,
+      "detail": "get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==4"
+    },
+    {
+      "index": 357,
+      "step": "assert get_node('VillageSeating').panel.get_node('Content/TurnAround').visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').panel.get_node('Content/TurnAround').visible"
+    },
+    {
+      "index": 358,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key F"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 359,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 360,
+      "step": "assert get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible"
+    },
+    {
+      "index": 361,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 362,
+      "step": "assert get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open",
+      "ok": true,
+      "detail": "get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open"
+    },
+    {
+      "index": 363,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 364,
+      "step": "assert not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked",
+      "ok": true,
+      "detail": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked"
+    },
+    {
+      "index": 365,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(-96.30630954165954,-18.21992290484701))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 366,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 367,
+      "step": "assert get_node('VillageSeating').sit('picnic-hill-mat',4)",
+      "ok": true,
+      "detail": "get_node('VillageSeating').sit('picnic-hill-mat',4)"
+    },
+    {
+      "index": 368,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 369,
+      "step": "assert get_node('VillageSeating').facing_sign==1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==1"
+    },
+    {
+      "index": 370,
+      "step": "eval set_meta('old_position',get_node('Player').position)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 371,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key T"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 372,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 373,
+      "step": "assert get_node('VillageSeating').facing_sign==-1",
+      "ok": true,
+      "detail": "get_node('VillageSeating').facing_sign==-1"
+    },
+    {
+      "index": 374,
+      "step": "assert get_node('Player').position.distance_to(get_meta('old_position'))<.01",
+      "ok": true,
+      "detail": "get_node('Player').position.distance_to(get_meta('old_position'))<.01"
+    },
+    {
+      "index": 375,
+      "step": "assert get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==4",
+      "ok": true,
+      "detail": "get_node('VillageSeating').seated.id=='picnic-hill-mat' and get_node('VillageSeating').seat_index==4"
+    },
+    {
+      "index": 376,
+      "step": "assert get_node('VillageSeating').panel.get_node('Content/TurnAround').visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').panel.get_node('Content/TurnAround').visible"
+    },
+    {
+      "index": 377,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key F"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 378,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 379,
+      "step": "assert get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible",
+      "ok": true,
+      "detail": "get_node('VillageSeating').picnic_basket_open and get_node(\"VillageActivities\").panel.visible"
+    },
+    {
+      "index": 380,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 381,
+      "step": "assert get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open",
+      "ok": true,
+      "detail": "get_node('VillageSeating').occupied() and not get_node('VillageSeating').picnic_basket_open"
+    },
+    {
+      "index": 382,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 383,
+      "step": "assert not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked",
+      "ok": true,
+      "detail": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked"
+    },
+    {
+      "index": 384,
+      "step": "assert_no_errors",
+      "ok": true
+    }
+  ],
+  "runtime_errors": [],
+  "screenshots": []
+}

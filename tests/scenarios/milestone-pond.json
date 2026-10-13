@@ -1,0 +1,418 @@
+{
+  "name": "Pond life, feeding and breathing at 1080p",
+  "scene": "main",
+  "keep_running": true,
+  "steps": [
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "enter_game",
+        "args": [
+          false
+        ]
+      }
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          2
+        ]
+      }
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").active==\"breathe\"",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"Player\").activity_locked",
+      "message": ""
+    },
+    {
+      "assert": "get_viewport().get_visible_rect().size==Vector2(1920,1080)",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"WorldSurface\").can_enter(Vector2(get_node(\"Player\").position.x,get_node(\"Player\").position.z))",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"PondLife\").get_node(\"Birds\").get_child_count()==15",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"PondLife\").get_node(\"Fish\").get_child_count()==8",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"PondLife\").set_meta(\"bird_start\",get_node(\"PondLife\").get_node(\"Birds/3\").position)"
+    },
+    {
+      "wait": 1.0
+    },
+    {
+      "assert": "get_node(\"PondLife\").get_node(\"Birds/3\").position.distance_to(get_node(\"PondLife\").get_meta(\"bird_start\"))>.01",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"PondLife\").animations[0].current_animation==\"swim\"",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"VillageLife\").set_meta(\"saved_crumbs\",get_node(\"VillageLife\").crumbs)"
+    },
+    {
+      "eval": "get_node(\"VillageLife\").set(\"crumbs\",0)"
+    },
+    {
+      "assert": "not get_node(\"PondLife\").feed()",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"PondLife\").reply.contains(\"Ask Maple\")",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"VillageLife\").set(\"crumbs\",1)"
+    },
+    {
+      "input": [
+        {
+          "action": "talk"
+        }
+      ]
+    },
+    {
+      "assert": "get_node(\"PondLife\").elapsed-get_node(\"PondLife\").feed_at<1",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"VillageLife\").crumbs==1",
+      "message": ""
+    },
+    {
+      "assert": "not get_node(\"PondLife\").feed()",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"PondLife\").reply.contains(\"Give them a moment\")",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"PondLife\").set(\"feed_at\",get_node(\"PondLife\").elapsed-7.5)"
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node(\"HUD/Speech\").visible and get_node(\"HUD/Speech/Animal\").visible"
+    },
+    {
+      "assert": "get_node(\"HUD/Speech/Animal/Content/Line\").text.contains(\"Quack\")"
+    },
+    {
+      "assert": "get_node(\"PondLife\").get_node(\"Replies/3\").visible",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"PondLife\").get_node(\"Hearts/3\").visible",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"PondLife\").get_node(\"Birds/3\").position.distance_to(get_node(\"PondLife\").meal(3))<.5",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"PondLife\").set(\"feed_at\",get_node(\"PondLife\").elapsed-17.1)"
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "not get_node(\"PondLife\").get_node(\"Replies/3\").visible",
+      "message": ""
+    },
+    {
+      "assert": "not get_node(\"PondLife\").get_node(\"Hearts/3\").visible",
+      "message": ""
+    },
+    {
+      "assert": "not get_node(\"PondLife\").get_node(\"Crumbs\").visible",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"PondLife\").feed()",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "key": "Space"
+        }
+      ]
+    },
+    {
+      "wait": 0.25
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").breathing",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").breath_elapsed>.1",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").breath_phase==0",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").set(\"breath_elapsed\",4.5)"
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").breath_phase==1",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").breath_amount==1",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").set(\"breath_elapsed\",9.0)"
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").breath_phase==2",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").breath_amount>0 and get_node(\"QuietPlaces\").breath_amount<1",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "key": "Space"
+        }
+      ]
+    },
+    {
+      "assert": "not get_node(\"QuietPlaces\").breathing",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").set_meta(\"paused\",get_node(\"QuietPlaces\").breath_elapsed)"
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").breath_elapsed==get_node(\"QuietPlaces\").get_meta(\"paused\")",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "key": "R"
+        }
+      ]
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").breath_elapsed==0",
+      "message": ""
+    },
+    {
+      "assert": "not get_node(\"QuietPlaces\").breathing",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "action": "activity_2"
+        }
+      ]
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").pattern==1",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "key": "Space"
+        }
+      ]
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").set(\"breath_elapsed\",12.5)"
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").breath_phase==3",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").breath_amount==0",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "click_node": "QuietPlaces/UI/Breathe/Content/Pattern2"
+        }
+      ]
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").pattern==2",
+      "message": ""
+    },
+    {
+      "assert": "not get_node(\"QuietPlaces\").breathing",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "click_node": "QuietPlaces/UI/Breathe/Content/Toggle"
+        }
+      ]
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").breathing",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").set(\"breath_elapsed\",10.8)"
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").breath_phase==1",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"QuietPlaces\").set(\"breath_elapsed\",11.3)"
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").breath_phase==2",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"HUD/Menus\").set(\"reduced_motion\",true)"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node(\"PondLife\").animations[0].current_animation==\"idle\"",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"PondLife\").animations[0].speed_scale==0",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").get_node(\"Rings/Ring0\").scale.x>1.199 and get_node(\"QuietPlaces\").get_node(\"Rings/Ring0\").scale.x<1.201",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"Player\").visual.scale.distance_to(Vector3(1,1,1))<.001",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"HUD/Menus\").set(\"reduced_motion\",false)"
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          0
+        ]
+      }
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").active==\"\"",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"FocusCottage\").inside",
+      "message": ""
+    },
+    {
+      "call": {
+        "path": "FocusCottage",
+        "method": "leave",
+        "args": []
+      }
+    },
+    {
+      "assert": "not get_node(\"Player\").activity_locked",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"HUD/VillageMap\").travel_point(Vector2(-22.15,-6.6))"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").nearby==\"breathe\"",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "action": "interact"
+        }
+      ]
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").active==\"breathe\"",
+      "message": ""
+    },
+    {
+      "input": [
+        {
+          "key": "Escape"
+        }
+      ]
+    },
+    {
+      "assert": "get_node(\"QuietPlaces\").active==\"\"",
+      "message": ""
+    },
+    {
+      "assert": "not get_node(\"Player\").activity_locked",
+      "message": ""
+    },
+    {
+      "assert": "get_node(\"WorldSurface\").can_enter(Vector2(get_node(\"Player\").position.x,get_node(\"Player\").position.z))",
+      "message": ""
+    },
+    {
+      "eval": "get_node(\"VillageLife\").set(\"crumbs\",get_node(\"VillageLife\").get_meta(\"saved_crumbs\"))"
+    },
+    {
+      "assert_no_errors": true
+    }
+  ]
+}

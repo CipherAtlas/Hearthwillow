@@ -1,0 +1,74 @@
+[gd_resource type="Theme" format=3 uid="uid://cl8xytnmv3fqs"]
+
+[sub_resource type="StyleBoxFlat" id="Focus"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.93, 0.68, 0.95)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="Hover"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.16, 0.28, 0.2, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.92, 0.89, 0.7, 0.8)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="Panel"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.055, 0.14, 0.105, 0.83)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.74, 0.82, 0.65, 0.5)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="Pressed"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.27, 0.4, 0.29, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.96, 0.81, 0.95)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[resource]
+default_font_size = 16
+Button/colors/font_color = Color(1, 0.96, 0.82, 1)
+Button/colors/font_hover_color = Color(1, 0.98, 0.9, 1)
+Button/colors/font_pressed_color = Color(1, 0.98, 0.9, 1)
+Button/styles/focus = SubResource("Focus")
+Button/styles/hover = SubResource("Hover")
+Button/styles/normal = SubResource("Panel")
+Button/styles/pressed = SubResource("Pressed")
+Label/colors/font_color = Color(1, 0.96, 0.82, 1)
+Panel/styles/panel = SubResource("Panel")
+PanelContainer/styles/panel = SubResource("Panel")

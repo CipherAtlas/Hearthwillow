@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="1_5nxyw"]
+
+[resource]
+resource_name = "Village material 6"
+render_priority = 0
+shader = ExtResource("1_5nxyw")
+shader_parameter/pond = true

@@ -1,0 +1,339 @@
+{
+  "name": "Native dog card bottom right, pointer and keyboard controls at 1080p",
+  "passed": true,
+  "duration_s": 5.702,
+  "steps": [
+    {
+      "index": 0,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 1,
+      "step": "assert get_viewport().get_texture().get_size()==Vector2(1920,1080)",
+      "ok": true,
+      "detail": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
+    },
+    {
+      "index": 2,
+      "step": "eval get_node('Village/Actors/puppy-mochi').set_meta('control_fixture',{'processing':get_node('Village/Actors/puppy-moch",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 3,
+      "step": "eval get_node('Village/Actors/puppy-mochi').set_physics_process(false)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 4,
+      "step": "eval get_node('Village/Actors/puppy-mochi').set(\"following\",false)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 5,
+      "step": "eval get_node('Player').set('position',get_node('Village/Actors/puppy-mochi').position+Vector3(0,0,1.4))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 6,
+      "step": "eval get_node('Player').set('velocity',Vector3(0,0,0))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 7,
+      "step": "wait 0.3",
+      "ok": true
+    },
+    {
+      "index": 8,
+      "step": "assert get_node('HUD/Interaction').get_node('Dog').visible and not get_node('HUD/Interaction').get_node('Text').visible",
+      "ok": true,
+      "detail": "get_node('HUD/Interaction').get_node('Dog').visible and not get_node('HUD/Interaction').get_node('Text').visible"
+    },
+    {
+      "index": 9,
+      "step": "assert abs(get_node('HUD/Interaction').position.x-1580)<1 and abs(get_node('HUD/Interaction').get_rect().end.y-1058)<1",
+      "ok": true,
+      "detail": "abs(get_node('HUD/Interaction').position.x-1580)<1 and abs(get_node('HUD/Interaction').get_rect().end.y-1058)<1"
+    },
+    {
+      "index": 10,
+      "step": "eval get_node('HUD/Menus').set_meta('interaction_binding_fixture',get_node('HUD/Menus').bindings.interact)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 11,
+      "step": "eval get_node('HUD/Menus').bindings.merge({'interact':4194308},true)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 12,
+      "step": "wait 0.2",
+      "ok": true
+    },
+    {
+      "index": 13,
+      "step": "assert get_node('HUD/Interaction/Dog/Main/Pet/Row/Key/Text').text=='Backspace'",
+      "ok": true,
+      "detail": "get_node('HUD/Interaction/Dog/Main/Pet/Row/Key/Text').text=='Backspace'"
+    },
+    {
+      "index": 14,
+      "step": "assert get_node('HUD/Interaction/Dog/Main/Pet/Row/Key').size.x>70 and get_node('HUD/Interaction/Dog/Main/Pet/Row/Key').g",
+      "ok": true,
+      "detail": "get_node('HUD/Interaction/Dog/Main/Pet/Row/Key').size.x>70 and get_node('HUD/Interaction/Dog/Main/Pet/Row/Key').get_theme_stylebox('panel').content_margin_left>=8"
+    },
+    {
+      "index": 15,
+      "step": "assert get_node('HUD/Interaction/Dog/Main/Pet/Row').get_rect().end.x<=get_node('HUD/Interaction/Dog/Main/Pet').size.x",
+      "ok": true,
+      "detail": "get_node('HUD/Interaction/Dog/Main/Pet/Row').get_rect().end.x<=get_node('HUD/Interaction/Dog/Main/Pet').size.x"
+    },
+    {
+      "index": 16,
+      "step": "eval get_node('HUD/Menus').bindings.merge({'interact':get_node('HUD/Menus').get_meta('interaction_binding_fixture')},tru",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 17,
+      "step": "wait 0.2",
+      "ok": true
+    },
+    {
+      "index": 18,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1636.5, 1024)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 19,
+      "step": "assert get_node('Village/Actors/puppy-mochi').action=='pet'",
+      "ok": true,
+      "detail": "get_node('Village/Actors/puppy-mochi').action=='pet'"
+    },
+    {
+      "index": 20,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped puppy_tricks for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 21,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 22,
+      "step": "assert get_node('HUD/Interaction').get_node('Dog').get_node('Tricks').visible",
+      "ok": true,
+      "detail": "get_node('HUD/Interaction').get_node('Dog').get_node('Tricks').visible"
+    },
+    {
+      "index": 23,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1815.5, 924)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 24,
+      "step": "assert get_node('Village/Actors/puppy-mochi').action=='dance'",
+      "ok": true,
+      "detail": "get_node('Village/Actors/puppy-mochi').action=='dance'"
+    },
+    {
+      "index": 25,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1872, 808)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 26,
+      "step": "assert not get_node('HUD/Interaction/Dog/Tricks').visible",
+      "ok": true,
+      "detail": "not get_node('HUD/Interaction/Dog/Tricks').visible"
+    },
+    {
+      "index": 27,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped puppy_tricks for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 28,
+      "step": "assert get_node('HUD/Interaction/Dog/Tricks').visible and get_node('HUD/Interaction/Dog/Divider').visible",
+      "ok": true,
+      "detail": "get_node('HUD/Interaction/Dog/Tricks').visible and get_node('HUD/Interaction/Dog/Divider').visible"
+    },
+    {
+      "index": 29,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped release_mouse for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 30,
+      "step": "assert not get_node('HUD/Interaction').get_node('Dog').get_node('Tricks').visible",
+      "ok": true,
+      "detail": "not get_node('HUD/Interaction').get_node('Dog').get_node('Tricks').visible"
+    },
+    {
+      "index": 31,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1834, 1024)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 32,
+      "step": "assert get_node('HUD/Interaction').get_node('Dog').get_node('Tricks').visible",
+      "ok": true,
+      "detail": "get_node('HUD/Interaction').get_node('Dog').get_node('Tricks').visible"
+    },
+    {
+      "index": 33,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped puppy_sit for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 34,
+      "step": "assert get_node('Village/Actors/puppy-mochi').action=='sit'",
+      "ok": true,
+      "detail": "get_node('Village/Actors/puppy-mochi').action=='sit'"
+    },
+    {
+      "index": 35,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1730.5, 858)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 36,
+      "step": "assert get_node('Village/Actors/puppy-mochi').following",
+      "ok": true,
+      "detail": "get_node('Village/Actors/puppy-mochi').following"
+    },
+    {
+      "index": 37,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 38,
+      "step": "assert get_node('HUD/Interaction').get_node('Dog').get_node('Home').visible",
+      "ok": true,
+      "detail": "get_node('HUD/Interaction').get_node('Dog').get_node('Home').visible"
+    },
+    {
+      "index": 39,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1740, 1024)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 40,
+      "step": "assert not get_node('Village/Actors/puppy-mochi').following",
+      "ok": true,
+      "detail": "not get_node('Village/Actors/puppy-mochi').following"
+    },
+    {
+      "index": 41,
+      "step": "eval get_node('Village/Actors/puppy-mochi').set_physics_process(get_node('Village/Actors/puppy-mochi').get_meta('control",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 42,
+      "step": "eval get_node('Village/Actors/puppy-mochi').set('following',get_node('Village/Actors/puppy-mochi').get_meta('control_fix",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 43,
+      "step": "assert_no_errors",
+      "ok": true
+    }
+  ],
+  "runtime_errors": [],
+  "screenshots": []
+}

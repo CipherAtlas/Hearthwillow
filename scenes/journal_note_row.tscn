@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://b68hy3a4kho6y"]
+
+[ext_resource type="SystemFont" uid="uid://cqchiyb3agy3t" path="res://assets/fonts/Georgia.tres" id="display"]
+[ext_resource type="Theme" uid="uid://bflxvmjfrrirv" path="res://scenes/journal_theme.tres" id="paper"]
+
+[sub_resource type="StyleBoxFlat" id="row"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 0.985, 0.95, 1)
+border_width_bottom = 1
+border_color = Color(0.82, 0.86, 0.8, 1)
+
+[node name="NoteRow" type="Button" unique_id=1804630813]
+custom_minimum_size = Vector2(0, 70)
+size_flags_horizontal = 3
+theme = ExtResource("paper")
+theme_override_styles/normal = SubResource("row")
+theme_override_styles/pressed = SubResource("row")
+theme_override_styles/hover = SubResource("row")
+
+[node name="Content" type="VBoxContainer" parent="." unique_id=1039038428]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = -12.0
+offset_bottom = -8.0
+mouse_filter = 2
+
+[node name="Preview" type="Label" parent="Content" unique_id=412858755]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("display")
+theme_override_font_sizes/font_size = 17
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Date" type="Label" parent="Content" unique_id=690252609]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12

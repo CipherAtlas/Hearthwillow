@@ -1,0 +1,678 @@
+{
+  "name": "Pond life, feeding and breathing at 1080p",
+  "passed": true,
+  "duration_s": 14.144,
+  "steps": [
+    {
+      "index": 0,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 1,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 2,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 3,
+      "step": "assert get_node(\"QuietPlaces\").active==\"breathe\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 4,
+      "step": "assert get_node(\"Player\").activity_locked",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 5,
+      "step": "assert get_viewport().get_visible_rect().size==Vector2(1920,1080)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 6,
+      "step": "assert get_node(\"WorldSurface\").can_enter(Vector2(get_node(\"Player\").position.x,get_node(\"Player\").position.z))",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 7,
+      "step": "assert get_node(\"PondLife\").get_node(\"Birds\").get_child_count()==15",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 8,
+      "step": "assert get_node(\"PondLife\").get_node(\"Fish\").get_child_count()==8",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 9,
+      "step": "eval get_node(\"PondLife\").set_meta(\"bird_start\",get_node(\"PondLife\").get_node(\"Birds/3\").position)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 10,
+      "step": "wait 1",
+      "ok": true
+    },
+    {
+      "index": 11,
+      "step": "assert get_node(\"PondLife\").get_node(\"Birds/3\").position.distance_to(get_node(\"PondLife\").get_meta(\"bird_start\"))>.01",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 12,
+      "step": "assert get_node(\"PondLife\").animations[0].current_animation==\"swim\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 13,
+      "step": "eval get_node(\"VillageLife\").set_meta(\"saved_crumbs\",get_node(\"VillageLife\").crumbs)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 14,
+      "step": "eval get_node(\"VillageLife\").set(\"crumbs\",0)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 15,
+      "step": "assert not get_node(\"PondLife\").feed()",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 16,
+      "step": "assert get_node(\"PondLife\").reply.contains(\"Ask Maple\")",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 17,
+      "step": "eval get_node(\"VillageLife\").set(\"crumbs\",1)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 18,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped talk for 0.10s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 19,
+      "step": "assert get_node(\"PondLife\").elapsed-get_node(\"PondLife\").feed_at<1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 20,
+      "step": "assert get_node(\"VillageLife\").crumbs==1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 21,
+      "step": "assert not get_node(\"PondLife\").feed()",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 22,
+      "step": "assert get_node(\"PondLife\").reply.contains(\"Give them a moment\")",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 23,
+      "step": "eval get_node(\"PondLife\").set(\"feed_at\",get_node(\"PondLife\").elapsed-7.5)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 24,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 25,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 26,
+      "step": "assert get_node(\"HUD/Speech\").visible and get_node(\"HUD/Speech/Animal\").visible",
+      "ok": true,
+      "detail": "get_node(\"HUD/Speech\").visible and get_node(\"HUD/Speech/Animal\").visible"
+    },
+    {
+      "index": 27,
+      "step": "assert get_node(\"HUD/Speech/Animal/Content/Line\").text.contains(\"Quack\")",
+      "ok": true,
+      "detail": "get_node(\"HUD/Speech/Animal/Content/Line\").text.contains(\"Quack\")"
+    },
+    {
+      "index": 28,
+      "step": "assert get_node(\"PondLife\").get_node(\"Replies/3\").visible",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 29,
+      "step": "assert get_node(\"PondLife\").get_node(\"Hearts/3\").visible",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 30,
+      "step": "assert get_node(\"PondLife\").get_node(\"Birds/3\").position.distance_to(get_node(\"PondLife\").meal(3))<.5",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 31,
+      "step": "eval get_node(\"PondLife\").set(\"feed_at\",get_node(\"PondLife\").elapsed-17.1)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 32,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 33,
+      "step": "assert not get_node(\"PondLife\").get_node(\"Replies/3\").visible",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 34,
+      "step": "assert not get_node(\"PondLife\").get_node(\"Hearts/3\").visible",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 35,
+      "step": "assert not get_node(\"PondLife\").get_node(\"Crumbs\").visible",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 36,
+      "step": "assert get_node(\"PondLife\").feed()",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 37,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Space"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 38,
+      "step": "wait 0.25",
+      "ok": true
+    },
+    {
+      "index": 39,
+      "step": "assert get_node(\"QuietPlaces\").breathing",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 40,
+      "step": "assert get_node(\"QuietPlaces\").breath_elapsed>.1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 41,
+      "step": "assert get_node(\"QuietPlaces\").breath_phase==0",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 42,
+      "step": "eval get_node(\"QuietPlaces\").set(\"breath_elapsed\",4.5)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 43,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 44,
+      "step": "assert get_node(\"QuietPlaces\").breath_phase==1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 45,
+      "step": "assert get_node(\"QuietPlaces\").breath_amount==1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 46,
+      "step": "eval get_node(\"QuietPlaces\").set(\"breath_elapsed\",9.0)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 47,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 48,
+      "step": "assert get_node(\"QuietPlaces\").breath_phase==2",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 49,
+      "step": "assert get_node(\"QuietPlaces\").breath_amount>0 and get_node(\"QuietPlaces\").breath_amount<1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 50,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Space"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 51,
+      "step": "assert not get_node(\"QuietPlaces\").breathing",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 52,
+      "step": "eval get_node(\"QuietPlaces\").set_meta(\"paused\",get_node(\"QuietPlaces\").breath_elapsed)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 53,
+      "step": "wait 0.3",
+      "ok": true
+    },
+    {
+      "index": 54,
+      "step": "assert get_node(\"QuietPlaces\").breath_elapsed==get_node(\"QuietPlaces\").get_meta(\"paused\")",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 55,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key R"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 56,
+      "step": "assert get_node(\"QuietPlaces\").breath_elapsed==0",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 57,
+      "step": "assert not get_node(\"QuietPlaces\").breathing",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 58,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped activity_2 for 0.10s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 59,
+      "step": "assert get_node(\"QuietPlaces\").pattern==1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 60,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Space"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 61,
+      "step": "eval get_node(\"QuietPlaces\").set(\"breath_elapsed\",12.5)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 62,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 63,
+      "step": "assert get_node(\"QuietPlaces\").breath_phase==3",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 64,
+      "step": "assert get_node(\"QuietPlaces\").breath_amount==0",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 65,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1722, 737)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 66,
+      "step": "assert get_node(\"QuietPlaces\").pattern==2",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 67,
+      "step": "assert not get_node(\"QuietPlaces\").breathing",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 68,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1722, 513)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 69,
+      "step": "assert get_node(\"QuietPlaces\").breathing",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 70,
+      "step": "eval get_node(\"QuietPlaces\").set(\"breath_elapsed\",10.8)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 71,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 72,
+      "step": "assert get_node(\"QuietPlaces\").breath_phase==1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 73,
+      "step": "eval get_node(\"QuietPlaces\").set(\"breath_elapsed\",11.3)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 74,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 75,
+      "step": "assert get_node(\"QuietPlaces\").breath_phase==2",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 76,
+      "step": "eval get_node(\"HUD/Menus\").set(\"reduced_motion\",true)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 77,
+      "step": "wait 0.2",
+      "ok": true
+    },
+    {
+      "index": 78,
+      "step": "assert get_node(\"PondLife\").animations[0].current_animation==\"idle\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 79,
+      "step": "assert get_node(\"PondLife\").animations[0].speed_scale==0",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 80,
+      "step": "assert get_node(\"QuietPlaces\").get_node(\"Rings/Ring0\").scale.x>1.199 and get_node(\"QuietPlaces\").get_node(\"Rings/Ring0\")",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 81,
+      "step": "assert get_node(\"Player\").visual.scale.distance_to(Vector3(1,1,1))<.001",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 82,
+      "step": "eval get_node(\"HUD/Menus\").set(\"reduced_motion\",false)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 83,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 84,
+      "step": "assert get_node(\"QuietPlaces\").active==\"\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 85,
+      "step": "assert get_node(\"FocusCottage\").inside",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 86,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 87,
+      "step": "assert not get_node(\"Player\").activity_locked",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 88,
+      "step": "eval get_node(\"HUD/VillageMap\").travel_point(Vector2(-22.15,-6.6))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 89,
+      "step": "wait 0.2",
+      "ok": true
+    },
+    {
+      "index": 90,
+      "step": "assert get_node(\"QuietPlaces\").nearby==\"breathe\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 91,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.10s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 92,
+      "step": "assert get_node(\"QuietPlaces\").active==\"breathe\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 93,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 94,
+      "step": "assert get_node(\"QuietPlaces\").active==\"\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 95,
+      "step": "assert not get_node(\"Player\").activity_locked",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 96,
+      "step": "assert get_node(\"WorldSurface\").can_enter(Vector2(get_node(\"Player\").position.x,get_node(\"Player\").position.z))",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 97,
+      "step": "eval get_node(\"VillageLife\").set(\"crumbs\",get_node(\"VillageLife\").get_meta(\"saved_crumbs\"))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 98,
+      "step": "assert_no_errors",
+      "ok": true
+    }
+  ],
+  "runtime_errors": [],
+  "screenshots": []
+}

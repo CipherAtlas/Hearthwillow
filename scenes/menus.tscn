@@ -1,0 +1,1445 @@
+[gd_scene format=3 uid="uid://brnqx2ucu5508"]
+
+[ext_resource type="Script" uid="uid://cbi15g0m10r7x" path="res://scenes/village_menus.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://bsawl3pyomraa" path="res://assets/fonts/Outfit.tres" id="2"]
+[ext_resource type="Shader" uid="uid://0q7ddcpon1tq" path="res://assets/shaders/menu_blur.gdshader" id="3_ugpjx"]
+
+[sub_resource type="StyleBoxFlat" id="Hover"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+bg_color = Color(0.192, 0.326, 0.251, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.945, 0.874, 0.725, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="Button"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+bg_color = Color(0.08235, 0.21569, 0.18039, 0.87843)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8667, 0.8549, 0.7569, 0.23)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="Panel"]
+content_margin_left = 22.0
+content_margin_top = 22.0
+content_margin_right = 22.0
+content_margin_bottom = 22.0
+bg_color = Color(0.12549, 0.239216, 0.203922, 0.92157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9137, 0.8627, 0.7373, 0.2588)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.0353, 0.149, 0.1137, 0.25)
+shadow_size = 20
+shadow_offset = Vector2(0, 12)
+
+[sub_resource type="FontVariation" id="Sans"]
+base_font = ExtResource("2")
+variation_opentype = {
+2003265652: 400.0
+}
+
+[sub_resource type="Theme" id="Theme"]
+default_font = SubResource("Sans")
+default_font_size = 14
+Button/colors/font_color = Color(0.965, 0.933, 0.851, 1)
+Button/styles/focus = SubResource("Hover")
+Button/styles/hover = SubResource("Hover")
+Button/styles/normal = SubResource("Button")
+Button/styles/pressed = SubResource("Hover")
+Label/colors/font_color = Color(0.965, 0.933, 0.851, 1)
+OptionButton/colors/font_color = Color(0.965, 0.933, 0.851, 1)
+OptionButton/styles/hover = SubResource("Hover")
+OptionButton/styles/normal = SubResource("Button")
+PanelContainer/styles/panel = SubResource("Panel")
+
+[sub_resource type="Gradient" id="ShadeGradient"]
+offsets = PackedFloat32Array(0, 0.48, 0.8, 1)
+colors = PackedColorArray(0.06275, 0.15294, 0.11373, 0.86, 0.06275, 0.15294, 0.11373, 0.41, 0.06275, 0.15294, 0.11373, 0.03, 0.06275, 0.15294, 0.11373, 0.03)
+
+[sub_resource type="GradientTexture2D" id="ShadeTexture"]
+gradient = SubResource("ShadeGradient")
+
+[sub_resource type="SystemFont" id="Serif"]
+font_names = PackedStringArray("Georgia", "Times New Roman")
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ou0nh"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.92156863, 0.8627451, 0.7411765, 0.9098039)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9529412, 0.84705883, 0.7019608)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugpjx"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 0.9529412, 0.84705883, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9529412, 0.84705883, 0.7019608)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbhjr"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.09411765, 0.21960784, 0.16862746, 0.8)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.91764706, 0.8392157, 0.6745098, 0.4392157)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nefl"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.19215687, 0.3254902, 0.2509804, 0.9019608)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.91764706, 0.8392157, 0.6745098, 0.4392157)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hbm71"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.09411765, 0.21960784, 0.16862746, 0.8)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.91764706, 0.8392157, 0.6745098, 0.4392157)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vid2"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.19215687, 0.3254902, 0.2509804, 0.9019608)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.91764706, 0.8392157, 0.6745098, 0.4392157)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbhjr"]
+shader = ExtResource("3_ugpjx")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ou0nh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_he6ts"]
+bg_color = Color(0.8980392, 0.84313726, 0.6901961, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9529412, 0.90588236, 0.78039217, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Menus" type="Control" unique_id=854173991]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme")
+script = ExtResource("1")
+
+[node name="Starter" type="Control" parent="." unique_id=735880882]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shade" type="TextureRect" parent="Starter" unique_id=1460324944]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("ShadeTexture")
+expand_mode = 1
+
+[node name="Content" type="VBoxContainer" parent="Starter" unique_id=615950424]
+layout_mode = 0
+anchor_left = 0.07
+anchor_top = 0.5
+anchor_right = 0.07
+anchor_bottom = 0.5
+offset_top = -200.0
+offset_right = 660.0
+offset_bottom = 220.0
+theme_override_constants/separation = 36
+
+[node name="Title" type="Label" parent="Starter/Content" unique_id=1917622882]
+layout_mode = 2
+theme_override_fonts/font = SubResource("Serif")
+theme_override_font_sizes/font_size = 94
+text = "Hearthwillow"
+
+[node name="Menu" type="VBoxContainer" parent="Starter/Content" unique_id=912893604]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 12
+
+[node name="Enter" type="Button" parent="Starter/Content/Menu" unique_id=973295459]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.12941177, 0.25882354, 0.2, 1)
+theme_override_colors/font_focus_color = Color(0.12941177, 0.25882354, 0.2, 1)
+theme_override_colors/font_hover_color = Color(0.12941177, 0.25882354, 0.2, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_ou0nh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ugpjx")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ugpjx")
+text = "Enter Hearthwillow"
+alignment = 0
+
+[node name="Language" type="Button" parent="Starter/Content/Menu" unique_id=977880294]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_dbhjr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1nefl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1nefl")
+text = "Language                         English"
+alignment = 0
+
+[node name="Settings" type="Button" parent="Starter/Content/Menu" unique_id=959813944]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_hbm71")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8vid2")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8vid2")
+text = "Settings"
+alignment = 0
+
+[node name="Hint" type="Label" parent="Starter" unique_id=856336517]
+layout_mode = 0
+anchor_left = 0.07
+anchor_top = 1.0
+anchor_right = 0.9
+anchor_bottom = 1.0
+offset_top = -52.0
+offset_bottom = -24.0
+theme_override_font_sizes/font_size = 13
+text = "W A S D   Move       Mouse to look       E   Interact"
+
+[node name="Dim" type="ColorRect" parent="." unique_id=2001912065]
+visible = false
+material = SubResource("ShaderMaterial_dbhjr")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.075, 0.169, 0.137, 0.2)
+
+[node name="Settings" type="PanelContainer" parent="." unique_id=2026048299]
+visible = false
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -440.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 860.0
+
+[node name="Content" type="VBoxContainer" parent="Settings" unique_id=228166099]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Heading" type="HBoxContainer" parent="Settings/Content" unique_id=1866759913]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Settings/Content/Heading" unique_id=657364402]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = SubResource("Serif")
+theme_override_font_sizes/font_size = 28
+text = "Settings"
+
+[node name="Close" type="Button" parent="Settings/Content/Heading" unique_id=1289418434]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "×"
+
+[node name="Tabs" type="HBoxContainer" parent="Settings/Content" unique_id=1303928385]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Experience" type="Button" parent="Settings/Content/Tabs" unique_id=854381976]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_pressed_color = Color(0.14117648, 0.28235295, 0.23137255, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ou0nh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_he6ts")
+toggle_mode = true
+text = "Experience"
+
+[node name="Sound" type="Button" parent="Settings/Content/Tabs" unique_id=1683087149]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_pressed_color = Color(0.14117648, 0.28235295, 0.23137255, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ou0nh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_he6ts")
+toggle_mode = true
+text = "Sound"
+
+[node name="Controls" type="Button" parent="Settings/Content/Tabs" unique_id=989915214]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_pressed_color = Color(0.14117648, 0.28235295, 0.23137255, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ou0nh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_he6ts")
+toggle_mode = true
+text = "Controls"
+
+[node name="Scroll" type="ScrollContainer" parent="Settings/Content" unique_id=1399935829]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Pages" type="VBoxContainer" parent="Settings/Content/Scroll" unique_id=83915918]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 18
+
+[node name="Experience" type="VBoxContainer" parent="Settings/Content/Scroll/Pages" unique_id=178552318]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="WeatherLabel" type="Label" parent="Settings/Content/Scroll/Pages/Experience" unique_id=786853923]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Time & weather"
+
+[node name="Weather" type="OptionButton" parent="Settings/Content/Scroll/Pages/Experience" unique_id=1660628768]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+item_count = 5
+popup/item_0/text = "Follow local time"
+popup/item_0/id = 0
+popup/item_1/text = "Golden hour"
+popup/item_1/id = 1
+popup/item_2/text = "Blue hour"
+popup/item_2/id = 2
+popup/item_3/text = "Night"
+popup/item_3/id = 3
+popup/item_4/text = "Rain"
+popup/item_4/id = 4
+
+[node name="GraphicsLabel" type="Label" parent="Settings/Content/Scroll/Pages/Experience" unique_id=1591176109]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Graphics"
+
+[node name="Graphics" type="OptionButton" parent="Settings/Content/Scroll/Pages/Experience" unique_id=1319612688]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Detailed"
+popup/item_0/id = 0
+popup/item_1/text = "Low power"
+popup/item_1/id = 1
+popup/item_2/text = "Automatic"
+popup/item_2/id = 2
+
+[node name="LanguageLabel" type="Label" parent="Settings/Content/Scroll/Pages/Experience" unique_id=926797509]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Language"
+
+[node name="Language" type="OptionButton" parent="Settings/Content/Scroll/Pages/Experience" unique_id=1715313585]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "日本語"
+popup/item_1/id = 1
+
+[node name="SkipGuide" type="CheckBox" parent="Settings/Content/Scroll/Pages/Experience" unique_id=1145999021]
+layout_mode = 2
+text = "Don't show tutorial"
+
+[node name="ReducedMotion" type="CheckButton" parent="Settings/Content/Scroll/Pages/Experience"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Reduce motion"
+
+[node name="Guide" type="Button" parent="Settings/Content/Scroll/Pages/Experience" unique_id=1830314487]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Read the village guide"
+
+[node name="Performance" type="Label" parent="Settings/Content/Scroll/Pages/Experience" unique_id=1095876380]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+
+[node name="Sound" type="VBoxContainer" parent="Settings/Content/Scroll/Pages" unique_id=1372992870]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Heading" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Sound" unique_id=904477474]
+layout_mode = 2
+
+[node name="Balance" type="Label" parent="Settings/Content/Scroll/Pages/Sound/Heading" unique_id=383044917]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Sound balance"
+
+[node name="Reset" type="Button" parent="Settings/Content/Scroll/Pages/Sound/Heading" unique_id=1209719707]
+custom_minimum_size = Vector2(72, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Reset"
+
+[node name="Toggle" type="Button" parent="Settings/Content/Scroll/Pages/Sound" unique_id=565297284]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Turn sound on"
+
+[node name="SoundtrackLabel" type="Label" parent="Settings/Content/Scroll/Pages/Sound" unique_id=1120818475]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Soundtrack"
+
+[node name="Soundtrack" type="OptionButton" parent="Settings/Content/Scroll/Pages/Sound" unique_id=1696399627]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+item_count = 5
+popup/item_0/text = "Follow the scenery"
+popup/item_0/id = 0
+popup/item_1/text = "Village paths"
+popup/item_1/id = 1
+popup/item_2/text = "Pond & tea garden"
+popup/item_2/id = 2
+popup/item_3/text = "Quiet cottage"
+popup/item_3/id = 3
+popup/item_4/text = "By the hearth"
+popup/item_4/id = 4
+
+[node name="Credit" type="Label" parent="Settings/Content/Scroll/Pages/Sound" unique_id=1539894040]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Recorded music by Holizna."
+
+[node name="MusicRow" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Sound" unique_id=1527208690]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Sound/MusicRow" unique_id=1290179709]
+custom_minimum_size = Vector2(114, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Music"
+
+[node name="Slider" type="HSlider" parent="Settings/Content/Scroll/Pages/Sound/MusicRow" unique_id=2078320848]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 0.15
+
+[node name="Value" type="Label" parent="Settings/Content/Scroll/Pages/Sound/MusicRow" unique_id=153459222]
+custom_minimum_size = Vector2(38, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "15%"
+horizontal_alignment = 2
+
+[node name="WorldRow" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Sound" unique_id=889829360]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Sound/WorldRow" unique_id=646581490]
+custom_minimum_size = Vector2(114, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "World"
+
+[node name="Slider" type="HSlider" parent="Settings/Content/Scroll/Pages/Sound/WorldRow" unique_id=401698925]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 0.54
+
+[node name="Value" type="Label" parent="Settings/Content/Scroll/Pages/Sound/WorldRow" unique_id=1487646153]
+custom_minimum_size = Vector2(38, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "54%"
+horizontal_alignment = 2
+
+[node name="EffectsRow" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Sound" unique_id=381008493]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Sound/EffectsRow" unique_id=375929649]
+custom_minimum_size = Vector2(114, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Effects"
+
+[node name="Slider" type="HSlider" parent="Settings/Content/Scroll/Pages/Sound/EffectsRow" unique_id=294372327]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 0.75
+
+[node name="Value" type="Label" parent="Settings/Content/Scroll/Pages/Sound/EffectsRow" unique_id=1676073264]
+custom_minimum_size = Vector2(38, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "75%"
+horizontal_alignment = 2
+
+[node name="RainRow" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Sound" unique_id=1107382757]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Sound/RainRow" unique_id=1677427924]
+custom_minimum_size = Vector2(114, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Rain"
+
+[node name="Slider" type="HSlider" parent="Settings/Content/Scroll/Pages/Sound/RainRow" unique_id=402982672]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 0.12
+
+[node name="Value" type="Label" parent="Settings/Content/Scroll/Pages/Sound/RainRow" unique_id=1988045675]
+custom_minimum_size = Vector2(38, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "12%"
+horizontal_alignment = 2
+
+[node name="FireRow" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Sound" unique_id=649741690]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Sound/FireRow" unique_id=172151375]
+custom_minimum_size = Vector2(114, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Fire"
+
+[node name="Slider" type="HSlider" parent="Settings/Content/Scroll/Pages/Sound/FireRow" unique_id=1769432460]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 0.35
+
+[node name="Value" type="Label" parent="Settings/Content/Scroll/Pages/Sound/FireRow" unique_id=1090356925]
+custom_minimum_size = Vector2(38, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "35%"
+horizontal_alignment = 2
+
+[node name="MasterRow" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Sound" unique_id=870384515]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Sound/MasterRow" unique_id=225318865]
+custom_minimum_size = Vector2(114, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Volume"
+
+[node name="Slider" type="HSlider" parent="Settings/Content/Scroll/Pages/Sound/MasterRow" unique_id=266408245]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="Value" type="Label" parent="Settings/Content/Scroll/Pages/Sound/MasterRow" unique_id=861899950]
+custom_minimum_size = Vector2(38, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "50%"
+horizontal_alignment = 2
+
+[node name="Controls" type="VBoxContainer" parent="Settings/Content/Scroll/Pages" unique_id=1842570059]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="SensitivityLabel" type="Label" parent="Settings/Content/Scroll/Pages/Controls" unique_id=656232473]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Mouse sensitivity   100%"
+
+[node name="Sensitivity" type="HSlider" parent="Settings/Content/Scroll/Pages/Controls" unique_id=1386012655]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+min_value = 0.25
+max_value = 2.0
+step = 0.05
+value = 1.0
+
+[node name="KeysTitle" type="Label" parent="Settings/Content/Scroll/Pages/Controls" unique_id=373021990]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Keybindings"
+
+[node name="KeyHelp" type="Label" parent="Settings/Content/Scroll/Pages/Controls" unique_id=2029467669]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Select a key, then press its replacement. Escape cancels."
+autowrap_mode = 3
+
+[node name="ResetKeys" type="Button" parent="Settings/Content/Scroll/Pages/Controls" unique_id=1402695338]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Reset keys"
+
+[node name="Bindings" type="VBoxContainer" parent="Settings/Content/Scroll/Pages/Controls" unique_id=1663127255]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="move_forward" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=1032244510]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/move_forward" unique_id=2013514883]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Move forward"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/move_forward" unique_id=332297859]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="move_left" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=773719642]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/move_left" unique_id=236512968]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Move left"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/move_left" unique_id=1151251686]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="move_back" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=1071322422]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/move_back" unique_id=389802859]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Move back"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/move_back" unique_id=427841882]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="move_right" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=1077100348]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/move_right" unique_id=614873401]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Move right"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/move_right" unique_id=1672362028]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="dash" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=236486648]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/dash" unique_id=944118196]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Hold to run / canter"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/dash" unique_id=1357597485]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="jump" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=893805353]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/jump" unique_id=1919737664]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Jump / brake"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/jump" unique_id=64353479]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="glide" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=1386393300]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/glide" unique_id=1998467298]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Glide"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/glide" unique_id=37319284]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="unstuck" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=2106777412]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/unstuck" unique_id=923634230]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Recover"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/unstuck" unique_id=352816281]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="interact" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=1595631556]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/interact" unique_id=1809460936]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Interact"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/interact" unique_id=116186847]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="talk" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=1510249511]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/talk" unique_id=176129165]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Talk / feed"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/talk" unique_id=1706600640]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="companion" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=894505931]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/companion" unique_id=780154404]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Walk with a resident"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/companion" unique_id=1782992773]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="bread" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=1069884520]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/bread" unique_id=2057190330]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Crumbs / forage"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/bread" unique_id=1754559052]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="puppy_follow" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=71390122]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_follow" unique_id=882140089]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Walk with a dog"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_follow" unique_id=1557621]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="puppy_home" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=2033160654]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_home" unique_id=2016369425]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Dog home"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_home" unique_id=1339146384]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="puppy_sit" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=2090772579]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_sit" unique_id=724101301]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Dog sit"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_sit" unique_id=1918681669]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="puppy_dance" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=56111228]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_dance" unique_id=638354749]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Dog dance"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_dance" unique_id=455673667]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="puppy_spin" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=746717806]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_spin" unique_id=637717781]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Dog spin"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_spin" unique_id=1033205384]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="puppy_bow" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=152977460]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_bow" unique_id=1887781583]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Dog bow"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_bow" unique_id=20392491]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="puppy_wave" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=426123159]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_wave" unique_id=502882776]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Dog wave"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_wave" unique_id=2050005430]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="puppy_roll" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=1867917525]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_roll" unique_id=635025561]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Dog roll"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_roll" unique_id=361706522]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="toggle_map" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=1112688562]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/toggle_map" unique_id=519125674]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Map"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/toggle_map" unique_id=397326587]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="toggle_sound" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=2141738373]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/toggle_sound" unique_id=739032938]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Sound"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/toggle_sound" unique_id=480333665]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="toggle_settings" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=253430209]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/toggle_settings" unique_id=268801792]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Settings"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/toggle_settings" unique_id=840574444]
+custom_minimum_size = Vector2(74, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="toggle_inventory" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=60372863]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/toggle_inventory" unique_id=1080278981]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Inventory"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/toggle_inventory" unique_id=1091356018]
+custom_minimum_size = Vector2(80, 44)
+layout_mode = 2
+text = "I"
+
+[node name="puppy_tricks" type="HBoxContainer" parent="Settings/Content/Scroll/Pages/Controls/Bindings" unique_id=1357105444]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_tricks" unique_id=274520087]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Open dog tricks"
+
+[node name="Key" type="Button" parent="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_tricks" unique_id=1283850310]
+custom_minimum_size = Vector2(80, 44)
+layout_mode = 2
+text = "I"
+
+[node name="Status" type="Label" parent="Settings/Content/Scroll/Pages/Controls" unique_id=524574194]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+autowrap_mode = 3
+
+[node name="FooterRow" type="HBoxContainer" parent="Settings/Content" unique_id=776544896]
+layout_mode = 2
+
+[node name="Footer" type="Label" parent="Settings/Content/FooterRow" unique_id=1696520500]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
+text = "Changes save on this device."
+
+[node name="Credits" type="Button" parent="Settings/Content/FooterRow" unique_id=847963265]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Credits"
+flat = true
+
+[node name="Back" type="Button" parent="Settings/Content" unique_id=1066501800]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+text = "Esc   Back   ⌫"
+
+[node name="Guide" type="PanelContainer" parent="." unique_id=1944446168]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -260.0
+offset_right = 250.0
+offset_bottom = 260.0
+
+[node name="Content" type="VBoxContainer" parent="Guide" unique_id=1847998338]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="Guide/Content" unique_id=1260856772]
+layout_mode = 2
+theme_override_fonts/font = SubResource("Serif")
+theme_override_font_sizes/font_size = 28
+text = "Village guide"
+
+[node name="Text" type="Label" parent="Guide/Content" unique_id=446728883]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 16
+text = "Move
+W A S D to move. Mouse look starts automatically. Escape releases the pointer; click the view to resume. E is for nearby actions.
+
+Activities
+M opens the village map.
+
+Conversations
+F talks to a nearby villager. C invites a walking companion. E pets an animal or mounts a horse.
+
+Settings
+Comma opens Settings. O opens Sound. Escape leaves menus."
+autowrap_mode = 3
+
+[node name="Back" type="Button" parent="Guide/Content" unique_id=1487342009]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "E   Continue"
+
+[node name="Language" type="PanelContainer" parent="." unique_id=1521282420]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -260.0
+offset_right = 250.0
+offset_bottom = 260.0
+
+[node name="Content" type="VBoxContainer" parent="Language" unique_id=1513979852]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="Language/Content" unique_id=304899725]
+layout_mode = 2
+theme_override_fonts/font = SubResource("Serif")
+theme_override_font_sizes/font_size = 28
+text = "Language"
+
+[node name="Choice0" type="Button" parent="Language/Content" unique_id=1563504829]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "English"
+
+[node name="Choice1" type="Button" parent="Language/Content" unique_id=168871074]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "日本語"
+
+[node name="Back" type="Button" parent="Language/Content" unique_id=602972089]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Esc   Back"
+
+[node name="Credits" type="PanelContainer" parent="." unique_id=1266686806]
+visible = false
+layout_mode = 0
+offset_left = 560.0
+offset_top = 180.0
+offset_right = 1360.0
+offset_bottom = 900.0
+
+[node name="Content" type="VBoxContainer" parent="Credits" unique_id=431087445]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="Credits/Content" unique_id=1812697122]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Credits"
+
+[node name="Scroll" type="ScrollContainer" parent="Credits/Content" unique_id=1190415355]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Text" type="Label" parent="Credits/Content/Scroll" unique_id=1403998662]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cosy Village — art and music credits
+
+Poly Haven materials, tree and sky: CC0 (https://polyhaven.com/license)
+https://polyhaven.com/a/medieval_wood
+https://polyhaven.com/a/roof_slates_02
+https://polyhaven.com/a/plastered_stone_wall
+https://polyhaven.com/a/medieval_blocks_03
+https://polyhaven.com/a/forest_ground_04
+https://polyhaven.com/a/tree_small_02
+https://polyhaven.com/a/kloppenheim_06_puresky
+Sky by Greg Zaal and Jarod Guest. Tree simplified for browser rendering.
+
+Salamander Grand Piano: Alexander Holm, CC BY 3.0
+https://creativecommons.org/licenses/by/3.0/
+Samples distributed by https://github.com/Tonejs/audio/tree/master/salamander
+Locally served MP3 samples; original generative arrangements with pitch shifting,
+filtering and reverb. Original sample README: audio/Salamander-LICENSE.txt
+
+Village architecture, terrain, traveller and music arrangements: authored for Cosy.
+Cobblestone texture: generated for this project using OpenAI ImageGen.
+Arkenfall is a design reference; no Arkenfall assets were copied.
+
+Representative-slice additions (2026-09-25):
+Qwantani Sunset (Pure Sky), Greg Zaal (photography), Jarod Guest (processing).
+CC0, https://polyhaven.com/a/qwantani_sunset_puresky
+Original 1K HDR, locally served as textures/sunset.hdr.
+Skinned traveller, woven textures, eight animation clips and willow geometry are
+original scripted project artwork. Editable traveller source: assets/village/traveller.blend.
+Footsteps, percussion, bass, birds and other new foley are original Web Audio synthesis.
+
+2026-09-25 additions: original procedural cloud sky, stone arch bridge, ambient resident routes and bird geometry. Distant birch cards are rendered at runtime from the licensed birch model above; they add no third-party source asset.
+
+2026-09-26 additions: original white smiling spirit, modeled in isolated Blender 5.2.1.
+Editable source: assets/village/spirit.blend; generator: scripts/village/create_spirit.py.
+Three PBR materials, no texture images or third-party character sources.
+Genshin Impact and Arkenfall inform art direction; no assets from either game are used.
+New palette, path shoulders, cottage details and spirit motion are original project work.
+
+2026-09-26 fantasy village pass: original swept-roof cottage kit, painted CanvasTexture
+surfaces, rounded tree geometry, vertex-painted mountain layers and suspended gardens.
+Sources: features/village/architecture.ts, paintedTextures.ts, fantasyTrees.ts, world.ts.
+Pastel blob residents reuse the original spirit mesh; accessories and animation are
+original runtime geometry/transforms in life.ts. Older traveller/birch models and
+photographic surfaces remain archived but are not loaded by the current village.
+
+Recorded soundtrack and nature audio (2026-09-26)
+------------------------------------------------
+Quiet Village 1, 2, 3 and 4 — Holizna / HoliznaCC0.
+Source: https://opengameart.org/content/quiet-village-collection
+CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/
+Full compositions retained; normalized and transcoded for local streaming.
+
+Stream Sounds (stream1) — kurt.
+Source: https://opengameart.org/content/stream-sounds
+Creative Commons Attribution 3.0: https://creativecommons.org/licenses/by/3.0/
+Excerpt, mono downmix, normalization and MP3 transcode; overlapping loop boundaries.
+
+Fireplace Sound loop — PagDev.
+Source: https://opengameart.org/content/fireplace-sound-loop
+Rain (loopable), sample 1 — Ylmir.
+Source: https://opengameart.org/content/rain-loopable
+Both CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/
+Excerpts, mono downmix, normalization and MP3 transcodes; overlapping loop boundaries.
+
+Detailed file provenance, duration and SHA-256: audio/recordings.json.
+The village no longer schedules procedural musical notes or loads the Salamander
+piano samples. Those earlier assets and credits are retained as historical sources.
+
+Garden and pond kit (2026-09-27) — original project artwork.
+17 models authored in Blender: flowers, sunflower, mint, vegetables, reeds,
+lily, swan, duck, duckling, fish, watering can, basket, bread pouch and teapot.
+Mint v2 adds original serrated green leaves and veins; bed signs and countdowns are authored in the runtime.
+Editable source: assets/village/garden-pond.blend. Runtime: models/garden-pond.glb.
+Named pivots are animated by the village runtime; no third-party models or textures.
+Planting, watering, picking, pouring, bread crumbs, splashes and duck calls are
+original procedural Web Audio effects. Existing recorded soundtrack credits above apply.
+
+White dove and bird clearing (2026-09-27) — original project artwork.
+Dove authored in Blender 5.2.1 LTS: assets/village/dove.blend;
+runtime models/dove.glb; generator scripts/village/create_dove.py.
+White plumage, scalloped wings, rosy cheeks and tiny peach feet use vertex colors.
+Wren uses the original spirit with original flower/scarf/pouch accessories.
+No third-party models or textures. The two-note coo is an original Web Audio effect.
+
+Village puppies (2026-09-29) — original Cosy project artwork.
+Mochi, Kiko, Biscuit and Cloud modeled in Blender 5.2.1 LTS.
+Editable source: assets/village/puppies.blend; generator: scripts/village/create_puppies.py.
+Runtime model: models/puppies.glb. No third-party character models or textures.
+
+Puppy bark recordings — Brandon Morris (submitted by HaelDB).
+Source: https://opengameart.org/content/dog-barking-mono
+CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/
+Four short cuts were trimmed, filtered, pitched and normalized for individual dogs.
+The original recording is archived at assets/village/audio/dog-barking-source.wav;
+file hashes and modifications are in docs/village/puppy-sound-manifest.json.
+
+Animal one-shot recordings (2026-10-04)
+
+animals/cow.mp3 — Secretlondon
+Source: https://opengameart.org/content/farm-animals
+License for this adapted clip: https://creativecommons.org/licenses/by-sa/3.0/
+Changes: Mono excerpt, 70 Hz high-pass / 4200 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/sheep.mp3 — Secretlondon
+Source: https://opengameart.org/content/farm-animals
+License for this adapted clip: https://creativecommons.org/licenses/by-sa/3.0/
+Changes: Mono excerpt, 100 Hz high-pass / 4500 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/lamb.mp3 — Secretlondon
+Source: https://opengameart.org/content/farm-animals
+License for this adapted clip: https://creativecommons.org/licenses/by-sa/3.0/
+Changes: Mono excerpt, 130 Hz high-pass / 4500 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/duck.mp3 — Secretlondon
+Source: https://opengameart.org/content/farm-animals
+License for this adapted clip: https://creativecommons.org/licenses/by-sa/3.0/
+Changes: Mono excerpt, 130 Hz high-pass / 4500 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/horse.mp3 — Joseph Sardin
+Source: https://bigsoundbank.com/horse-neighing-4-s1541.html
+License for this adapted clip: https://creativecommons.org/publicdomain/zero/1.0/
+Changes: Mono excerpt, 110 Hz high-pass / 5000 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/owl.mp3 — Breviceps
+Source: https://freesound.org/people/Breviceps/sounds/465697/
+License for this adapted clip: https://creativecommons.org/publicdomain/zero/1.0/
+Changes: Mono excerpt, 240 Hz high-pass / 1800 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/hedgehog.mp3 — soundmary
+Source: https://freesound.org/people/soundmary/sounds/194938/
+License for this adapted clip: https://creativecommons.org/licenses/by/4.0/
+Changes: Mono excerpt, 250 Hz high-pass / 4000 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/swan.mp3 — omnisounddesign
+Source: https://freesound.org/people/omnisounddesign/sounds/336174/
+License for this adapted clip: https://creativecommons.org/licenses/by/4.0/
+Changes: Mono excerpt, 220 Hz high-pass / 4500 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/duckling.mp3 — LantC
+Source: https://freesound.org/people/LantC/sounds/678061/
+License for this adapted clip: https://creativecommons.org/publicdomain/zero/1.0/
+Changes: Mono excerpt, 550 Hz high-pass / 6000 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/dove.mp3 — Alva Majo / 5ro4
+Source: https://freesound.org/people/5ro4/sounds/795719/
+License for this adapted clip: https://creativecommons.org/publicdomain/zero/1.0/
+Changes: Mono excerpt, 160 Hz high-pass / 2400 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/cat.mp3 — IgnasD
+Source: https://opengameart.org/content/meow
+License for this adapted clip: https://creativecommons.org/publicdomain/zero/1.0/
+Changes: Mono excerpt, 130 Hz high-pass / 4500 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+animals/purr.mp3 — esperri
+Source: https://freesound.org/people/esperri/sounds/118959/
+License for this adapted clip: https://creativecommons.org/publicdomain/zero/1.0/
+Changes: Mono excerpt, 40 Hz high-pass / 1500 Hz low-pass, measured -22 LUFS gain with -6 dB peak ceiling, short fades, 32 kHz 64 kbps MP3. Freesound sources use the publicly downloadable HQ MP3.
+
+
+Outfit font: SIL Open Font License 1.1. Georgia supplied by macOS."
+autowrap_mode = 3
+
+[node name="Back" type="Button" parent="Credits/Content" unique_id=1633522755]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Esc   Back"
+
+[node name="Inventory" type="PanelContainer" parent="." unique_id=574271560]
+visible = false
+layout_mode = 0
+offset_left = 1480.0
+offset_top = 20.0
+offset_right = 1900.0
+offset_bottom = 440.0
+
+[node name="Content" type="VBoxContainer" parent="Inventory" unique_id=1047492525]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Inventory/Content" unique_id=1640063251]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Harvest basket"
+
+[node name="Text" type="Label" parent="Inventory/Content" unique_id=2042925852]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Apples   0
+
+Bread crumbs   0
+
+Owl treats   0"
+
+[node name="Back" type="Button" parent="Inventory/Content" unique_id=1096134189]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Esc   Back"
+
+[connection signal="pressed" from="Starter/Content/Menu/Enter" to="." method="enter_game"]
+[connection signal="pressed" from="Starter/Content/Menu/Language" to="." method="open_language"]
+[connection signal="pressed" from="Starter/Content/Menu/Settings" to="." method="open_settings"]
+[connection signal="pressed" from="Settings/Content/Heading/Close" to="." method="close_menu"]
+[connection signal="pressed" from="Settings/Content/Tabs/Experience" to="." method="set_tab" binds= [0]]
+[connection signal="pressed" from="Settings/Content/Tabs/Sound" to="." method="set_tab" binds= [1]]
+[connection signal="pressed" from="Settings/Content/Tabs/Controls" to="." method="set_tab" binds= [2]]
+[connection signal="item_selected" from="Settings/Content/Scroll/Pages/Experience/Weather" to="." method="set_weather"]
+[connection signal="item_selected" from="Settings/Content/Scroll/Pages/Experience/Graphics" to="." method="set_graphics"]
+[connection signal="item_selected" from="Settings/Content/Scroll/Pages/Experience/Language" to="." method="set_language"]
+[connection signal="toggled" from="Settings/Content/Scroll/Pages/Experience/SkipGuide" to="." method="set_skip_guide"]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Experience/Guide" to="." method="open_guide"]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Sound/Heading/Reset" to="." method="reset_sound"]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Sound/Toggle" to="." method="toggle_audio"]
+[connection signal="item_selected" from="Settings/Content/Scroll/Pages/Sound/Soundtrack" to="." method="set_soundtrack"]
+[connection signal="value_changed" from="Settings/Content/Scroll/Pages/Sound/MusicRow/Slider" to="." method="set_mix" binds= ["music"]]
+[connection signal="value_changed" from="Settings/Content/Scroll/Pages/Sound/WorldRow/Slider" to="." method="set_mix" binds= ["world"]]
+[connection signal="value_changed" from="Settings/Content/Scroll/Pages/Sound/EffectsRow/Slider" to="." method="set_mix" binds= ["effects"]]
+[connection signal="value_changed" from="Settings/Content/Scroll/Pages/Sound/RainRow/Slider" to="." method="set_mix" binds= ["rain"]]
+[connection signal="value_changed" from="Settings/Content/Scroll/Pages/Sound/FireRow/Slider" to="." method="set_mix" binds= ["fire"]]
+[connection signal="value_changed" from="Settings/Content/Scroll/Pages/Sound/MasterRow/Slider" to="." method="set_mix" binds= ["master"]]
+[connection signal="value_changed" from="Settings/Content/Scroll/Pages/Controls/Sensitivity" to="." method="set_sensitivity"]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/ResetKeys" to="." method="reset_keys"]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/move_forward/Key" to="." method="begin_rebind" binds= ["move_forward"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/move_left/Key" to="." method="begin_rebind" binds= ["move_left"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/move_back/Key" to="." method="begin_rebind" binds= ["move_back"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/move_right/Key" to="." method="begin_rebind" binds= ["move_right"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/dash/Key" to="." method="begin_rebind" binds= ["dash"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/jump/Key" to="." method="begin_rebind" binds= ["jump"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/glide/Key" to="." method="begin_rebind" binds= ["glide"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/unstuck/Key" to="." method="begin_rebind" binds= ["unstuck"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/interact/Key" to="." method="begin_rebind" binds= ["interact"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/talk/Key" to="." method="begin_rebind" binds= ["talk"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/companion/Key" to="." method="begin_rebind" binds= ["companion"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/bread/Key" to="." method="begin_rebind" binds= ["bread"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_follow/Key" to="." method="begin_rebind" binds= ["puppy_follow"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_home/Key" to="." method="begin_rebind" binds= ["puppy_home"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_sit/Key" to="." method="begin_rebind" binds= ["puppy_sit"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_dance/Key" to="." method="begin_rebind" binds= ["puppy_dance"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_spin/Key" to="." method="begin_rebind" binds= ["puppy_spin"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_bow/Key" to="." method="begin_rebind" binds= ["puppy_bow"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_wave/Key" to="." method="begin_rebind" binds= ["puppy_wave"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_roll/Key" to="." method="begin_rebind" binds= ["puppy_roll"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/toggle_map/Key" to="." method="begin_rebind" binds= ["toggle_map"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/toggle_sound/Key" to="." method="begin_rebind" binds= ["toggle_sound"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/toggle_settings/Key" to="." method="begin_rebind" binds= ["toggle_settings"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/toggle_inventory/Key" to="." method="begin_rebind" binds= ["toggle_inventory"]]
+[connection signal="pressed" from="Settings/Content/Scroll/Pages/Controls/Bindings/puppy_tricks/Key" to="." method="begin_rebind" binds= ["puppy_tricks"]]
+[connection signal="pressed" from="Settings/Content/FooterRow/Credits" to="." method="open_credits"]
+[connection signal="pressed" from="Settings/Content/Back" to="." method="close_menu"]
+[connection signal="pressed" from="Guide/Content/Back" to="." method="close_menu"]
+[connection signal="pressed" from="Language/Content/Choice0" to="." method="choose_language" binds= [0]]
+[connection signal="pressed" from="Language/Content/Choice1" to="." method="choose_language" binds= [1]]
+[connection signal="pressed" from="Language/Content/Back" to="." method="close_menu"]
+[connection signal="pressed" from="Credits/Content/Back" to="." method="open_settings"]
+[connection signal="pressed" from="Inventory/Content/Back" to="." method="close_menu"]
+
+[connection signal="toggled" from="Settings/Content/Scroll/Pages/Experience/ReducedMotion" to="." method="set_reduced_motion"]

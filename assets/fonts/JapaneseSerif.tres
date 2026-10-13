@@ -1,0 +1,4 @@
+[gd_resource type="SystemFont" format=3 uid="uid://bqr3p2uv7ds2c"]
+
+[resource]
+font_names = PackedStringArray("Hiragino Mincho ProN", "Noto Serif CJK JP", "Yu Mincho")

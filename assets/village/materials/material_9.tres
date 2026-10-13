@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/original_9.gdshader" id="1_65vnn"]
+
+[resource]
+resource_name = "Village material 9"
+render_priority = 0
+shader = ExtResource("1_65vnn")
+shader_parameter/scale = Vector2(1.25, 1.7)

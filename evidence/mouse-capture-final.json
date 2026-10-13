@@ -1,0 +1,716 @@
+{
+  "name": "Gameplay captures at spawn; Escape releases; map/settings/basket restore capture",
+  "passed": true,
+  "duration_s": 9.541,
+  "steps": [
+    {
+      "index": 0,
+      "step": "wait 0.3",
+      "ok": true
+    },
+    {
+      "index": 1,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 2,
+      "step": "assert get_meta(\"mouse_mode\") == 0",
+      "ok": true,
+      "detail": "Starter has a usable pointer"
+    },
+    {
+      "index": 3,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 4,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 5,
+      "step": "assert get_meta(\"mouse_mode\") == 2",
+      "ok": true,
+      "detail": "Gameplay spawn captures without clicking"
+    },
+    {
+      "index": 6,
+      "step": "eval set_meta('yaw_before',get_node('CameraRig').desired_yaw)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 7,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 8,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 9,
+      "step": "assert abs(get_node('CameraRig').desired_yaw-get_meta('yaw_before'))>.01",
+      "ok": true,
+      "detail": "Captured mouse motion immediately turns the camera"
+    },
+    {
+      "index": 10,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped release_mouse for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 11,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 12,
+      "step": "assert get_meta(\"mouse_mode\") == 0",
+      "ok": true,
+      "detail": "get_meta(\"mouse_mode\") == 0"
+    },
+    {
+      "index": 13,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 14,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 15,
+      "step": "assert get_meta(\"mouse_mode\") == 0",
+      "ok": true,
+      "detail": "HUD synchronization preserves an explicit Escape release"
+    },
+    {
+      "index": 16,
+      "step": "eval get_tree().root.grab_focus()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 17,
+      "step": "eval get_viewport().warp_mouse(Vector2(700,350))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 18,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(700, 350)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 19,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 20,
+      "step": "assert get_meta(\"mouse_mode\") == 2",
+      "ok": true,
+      "detail": "Clicking back into world restores capture"
+    },
+    {
+      "index": 21,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 22,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 23,
+      "step": "assert get_meta(\"mouse_mode\") == 0",
+      "ok": true,
+      "detail": "toggle_map releases pointer for UI"
+    },
+    {
+      "index": 24,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 25,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 26,
+      "step": "assert get_meta(\"mouse_mode\") == 2",
+      "ok": true,
+      "detail": "toggle_map recaptures when closed"
+    },
+    {
+      "index": 27,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 28,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped release_mouse for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 29,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 30,
+      "step": "assert get_meta(\"mouse_mode\") == 2",
+      "ok": true,
+      "detail": "Escape closing toggle_map returns to captured gameplay"
+    },
+    {
+      "index": 31,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_settings for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 32,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 33,
+      "step": "assert get_meta(\"mouse_mode\") == 0",
+      "ok": true,
+      "detail": "toggle_settings releases pointer for UI"
+    },
+    {
+      "index": 34,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_settings for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 35,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 36,
+      "step": "assert get_meta(\"mouse_mode\") == 2",
+      "ok": true,
+      "detail": "toggle_settings recaptures when closed"
+    },
+    {
+      "index": 37,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_settings for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 38,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped release_mouse for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 39,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 40,
+      "step": "assert get_meta(\"mouse_mode\") == 2",
+      "ok": true,
+      "detail": "Escape closing toggle_settings returns to captured gameplay"
+    },
+    {
+      "index": 41,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_sound for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 42,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 43,
+      "step": "assert get_meta(\"mouse_mode\") == 0",
+      "ok": true,
+      "detail": "toggle_sound releases pointer for UI"
+    },
+    {
+      "index": 44,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_sound for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 45,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 46,
+      "step": "assert get_meta(\"mouse_mode\") == 2",
+      "ok": true,
+      "detail": "toggle_sound recaptures when closed"
+    },
+    {
+      "index": 47,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_sound for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 48,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped release_mouse for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 49,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 50,
+      "step": "assert get_meta(\"mouse_mode\") == 2",
+      "ok": true,
+      "detail": "Escape closing toggle_sound returns to captured gameplay"
+    },
+    {
+      "index": 51,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_inventory for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 52,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 53,
+      "step": "assert get_meta(\"mouse_mode\") == 0",
+      "ok": true,
+      "detail": "toggle_inventory releases pointer for UI"
+    },
+    {
+      "index": 54,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_inventory for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 55,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 56,
+      "step": "assert get_meta(\"mouse_mode\") == 2",
+      "ok": true,
+      "detail": "toggle_inventory recaptures when closed"
+    },
+    {
+      "index": 57,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_inventory for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 58,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped release_mouse for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 59,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 60,
+      "step": "assert get_meta(\"mouse_mode\") == 2",
+      "ok": true,
+      "detail": "Escape closing toggle_inventory returns to captured gameplay"
+    },
+    {
+      "index": 61,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(-40.5,47.8))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 62,
+      "step": "assert get_node('VillageSeating').sit('pasture-oak-bench',0)",
+      "ok": true,
+      "detail": "Seat accepts and enters gameplay context"
+    },
+    {
+      "index": 63,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 64,
+      "step": "assert get_meta(\"mouse_mode\") == 2",
+      "ok": true,
+      "detail": "Seating does not release capture"
+    },
+    {
+      "index": 65,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped release_mouse for 0.03s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 66,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 67,
+      "step": "assert get_meta(\"mouse_mode\") == 0",
+      "ok": true,
+      "detail": "Escape remains an explicit release when leaving an activity"
+    },
+    {
+      "index": 68,
+      "step": "eval get_viewport().warp_mouse(Vector2(700,350))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 69,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(700, 350)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 70,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 71,
+      "step": "assert get_meta(\"mouse_mode\") == 2",
+      "ok": true,
+      "detail": "get_meta(\"mouse_mode\") == 2"
+    },
+    {
+      "index": 72,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(get_node('Village/Actors/rowan').position.x,get_node('Village/Actor",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 73,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped talk for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 74,
+      "step": "assert get_node('VillageRace').can_invite()",
+      "ok": true,
+      "detail": "get_node('VillageRace').can_invite()"
+    },
+    {
+      "index": 75,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped companion for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 76,
+      "step": "assert get_node('VillageRace').phase=='countdown'",
+      "ok": true,
+      "detail": "get_node('VillageRace').phase=='countdown'"
+    },
+    {
+      "index": 77,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": {
+          "result": null
+        }
+      }
+    },
+    {
+      "index": 78,
+      "step": "assert get_meta(\"mouse_mode\")==2",
+      "ok": true,
+      "detail": "Starting a mounted race keeps gameplay capture"
+    },
+    {
+      "index": 79,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 80,
+      "step": "eval get_node('HUD/VillageMap').travel_point(Vector2(.3,20))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 81,
+      "step": "assert_no_errors",
+      "ok": true
+    }
+  ],
+  "runtime_errors": [],
+  "screenshots": []
+}

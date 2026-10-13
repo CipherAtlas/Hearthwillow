@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/village/texture_0.png" id="1_hfsbn"]
+
+[resource]
+resource_name = "Painted garden soil"
+albedo_color = Color(0.50196075, 0.3882353, 0.29411766, 1)
+albedo_texture = ExtResource("1_hfsbn")
+uv1_scale = Vector3(48, -48, 1)
+uv1_offset = Vector3(0, 1, 0)

@@ -1,0 +1,733 @@
+{
+  "name": "Foraging, pasture feeding and horse riding",
+  "scene": "res://scenes/main.tscn",
+  "keep_running": true,
+  "steps": [
+    {
+      "assert": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
+    },
+    {
+      "assert": "get_tree().root.size.x>=1918 and get_tree().root.size.y>=1079",
+      "message": "1080p display window; allow the macOS one-pixel window frame, never a 720p override."
+    },
+    {
+      "eval": "get_node('VillageLife').set_meta('forage_fixture',{'apples':get_node('VillageLife').apples,'crumbs':get_node('VillageLife').crumbs,'owl_treats':get_node('VillageLife').owl_treats})"
+    },
+    {
+      "eval": "get_node('VillageLife').set('apples',0)"
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "enter_game",
+        "args": [
+          false
+        ]
+      }
+    },
+    {
+      "set": {
+        "path": "Village/Actors/hedgehog-1",
+        "props": {
+          "chatting": 30,
+          "action": "idle"
+        }
+      }
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('Village/Actors/hedgehog-1').position+Vector3(0,0,1.4))"
+    },
+    {
+      "call": {
+        "path": "Player",
+        "method": "reset_physics_interpolation"
+      }
+    },
+    {
+      "set": {
+        "path": "Player",
+        "props": {
+          "velocity": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('VillageLife').nearest.actor_id == 'hedgehog-1'"
+    },
+    {
+      "input": [
+        {
+          "action": "bread",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('VillageLife').apples == 1"
+    },
+    {
+      "input": [
+        {
+          "action": "bread",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('VillageLife').apples == 1",
+      "message": "Tree cooldown prevents repeated harvest"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('Village/Actors/hedgehog-1').action == 'pet'"
+    },
+    {
+      "set": {
+        "path": "VillageLife",
+        "props": {
+          "apples": 7
+        }
+      }
+    },
+    {
+      "set": {
+        "path": "Village/Actors/cow-highland-1",
+        "props": {
+          "chatting": 30,
+          "action": "idle"
+        }
+      }
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('Village/Actors/cow-highland-1').position+Vector3(0,0,1.4))"
+    },
+    {
+      "call": {
+        "path": "Player",
+        "method": "reset_physics_interpolation"
+      }
+    },
+    {
+      "set": {
+        "path": "Player",
+        "props": {
+          "velocity": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('VillageLife').nearest.actor_id == 'cow-highland-1'"
+    },
+    {
+      "assert": "get_node('HUD/Interaction/Generic').visible and get_node('HUD/Interaction/Generic/Actions/Action1/Row/Key/Text').text=='F'"
+    },
+    {
+      "input": [
+        {
+          "release_all": true
+        },
+        {
+          "mouse_move": [
+            300,
+            400
+          ]
+        },
+        {
+          "wait": 0.15
+        },
+        {
+          "click_node": "HUD/Interaction/Generic/Actions/Action1"
+        }
+      ]
+    },
+    {
+      "assert": "get_node('Village/Actors/cow-highland-1').action == 'eat'"
+    },
+    {
+      "set": {
+        "path": "Village/Actors/cow-highland-2",
+        "props": {
+          "chatting": 30,
+          "action": "idle"
+        }
+      }
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('Village/Actors/cow-highland-2').position+Vector3(0,0,1.4))"
+    },
+    {
+      "call": {
+        "path": "Player",
+        "method": "reset_physics_interpolation"
+      }
+    },
+    {
+      "set": {
+        "path": "Player",
+        "props": {
+          "velocity": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('VillageLife').nearest.actor_id == 'cow-highland-2'"
+    },
+    {
+      "input": [
+        {
+          "action": "talk",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('Village/Actors/cow-highland-2').action == 'eat'"
+    },
+    {
+      "set": {
+        "path": "Village/Actors/sheep-1",
+        "props": {
+          "chatting": 30,
+          "action": "idle"
+        }
+      }
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('Village/Actors/sheep-1').position+Vector3(0,0,1.4))"
+    },
+    {
+      "call": {
+        "path": "Player",
+        "method": "reset_physics_interpolation"
+      }
+    },
+    {
+      "set": {
+        "path": "Player",
+        "props": {
+          "velocity": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('VillageLife').nearest.actor_id == 'sheep-1'"
+    },
+    {
+      "input": [
+        {
+          "action": "talk",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('Village/Actors/sheep-1').action == 'eat'"
+    },
+    {
+      "set": {
+        "path": "Village/Actors/sheep-2",
+        "props": {
+          "chatting": 30,
+          "action": "idle"
+        }
+      }
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('Village/Actors/sheep-2').position+Vector3(0,0,1.4))"
+    },
+    {
+      "call": {
+        "path": "Player",
+        "method": "reset_physics_interpolation"
+      }
+    },
+    {
+      "set": {
+        "path": "Player",
+        "props": {
+          "velocity": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('VillageLife').nearest.actor_id == 'sheep-2'"
+    },
+    {
+      "input": [
+        {
+          "action": "talk",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('Village/Actors/sheep-2').action == 'eat'"
+    },
+    {
+      "set": {
+        "path": "Village/Actors/lamb-1",
+        "props": {
+          "chatting": 30,
+          "action": "idle"
+        }
+      }
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('Village/Actors/lamb-1').position+Vector3(0,0,1.4))"
+    },
+    {
+      "call": {
+        "path": "Player",
+        "method": "reset_physics_interpolation"
+      }
+    },
+    {
+      "set": {
+        "path": "Player",
+        "props": {
+          "velocity": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('VillageLife').nearest.actor_id == 'lamb-1'"
+    },
+    {
+      "input": [
+        {
+          "action": "talk",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('Village/Actors/lamb-1').action == 'eat'"
+    },
+    {
+      "set": {
+        "path": "Village/Actors/lamb-2",
+        "props": {
+          "chatting": 30,
+          "action": "idle"
+        }
+      }
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('Village/Actors/lamb-2').position+Vector3(0,0,1.4))"
+    },
+    {
+      "call": {
+        "path": "Player",
+        "method": "reset_physics_interpolation"
+      }
+    },
+    {
+      "set": {
+        "path": "Player",
+        "props": {
+          "velocity": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('VillageLife').nearest.actor_id == 'lamb-2'"
+    },
+    {
+      "input": [
+        {
+          "action": "talk",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('Village/Actors/lamb-2').action == 'eat'"
+    },
+    {
+      "set": {
+        "path": "Village/Actors/hedgehog-1",
+        "props": {
+          "chatting": 30,
+          "action": "idle"
+        }
+      }
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('Village/Actors/hedgehog-1').position+Vector3(0,0,1.4))"
+    },
+    {
+      "call": {
+        "path": "Player",
+        "method": "reset_physics_interpolation"
+      }
+    },
+    {
+      "set": {
+        "path": "Player",
+        "props": {
+          "velocity": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('VillageLife').nearest.actor_id == 'hedgehog-1'"
+    },
+    {
+      "input": [
+        {
+          "action": "talk",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('Village/Actors/hedgehog-1').action == 'eat'"
+    },
+    {
+      "assert": "get_node('VillageLife').apples == 0"
+    },
+    {
+      "set": {
+        "path": "Village/Actors/horse-juniper",
+        "props": {
+          "chatting": 30,
+          "action": "idle"
+        }
+      }
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('Village/Actors/horse-juniper').position+Vector3(0,0,1.4))"
+    },
+    {
+      "call": {
+        "path": "Player",
+        "method": "reset_physics_interpolation"
+      }
+    },
+    {
+      "set": {
+        "path": "Player",
+        "props": {
+          "velocity": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('VillageLife').nearest.actor_id == 'horse-juniper'"
+    },
+    {
+      "input": [
+        {
+          "action": "talk",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('Village/Actors/horse-juniper').action == 'eat'"
+    },
+    {
+      "set": {
+        "path": "Village/Actors/horse-juniper",
+        "props": {
+          "action_age": 9
+        }
+      }
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('Player').mount == get_node('Village/Actors/horse-juniper')"
+    },
+    {
+      "assert": "get_node('Player').saddle_height > 1"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "input": [
+        {
+          "click_node": "HUD/Interaction/Generic/Actions/Action2"
+        }
+      ]
+    },
+    {
+      "assert": "get_node('Player').mount == null"
+    },
+    {
+      "set": {
+        "path": "Village/Actors/horse-juniper",
+        "props": {
+          "position": [
+            85,
+            0.03,
+            20
+          ],
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "chatting": 30
+        }
+      }
+    },
+    {
+      "set": {
+        "path": "Village/Actors/horse-juniper",
+        "props": {
+          "chatting": 30,
+          "action": "idle"
+        }
+      }
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('Village/Actors/horse-juniper').position+Vector3(0,0,1.4))"
+    },
+    {
+      "call": {
+        "path": "Player",
+        "method": "reset_physics_interpolation"
+      }
+    },
+    {
+      "set": {
+        "path": "Player",
+        "props": {
+          "velocity": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('VillageLife').nearest.actor_id == 'horse-juniper'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "input": [
+        {
+          "action": "move_forward",
+          "pressed": true
+        }
+      ]
+    },
+    {
+      "wait": 1
+    },
+    {
+      "assert": "get_node('Player').horse_speed > 4.4"
+    },
+    {
+      "input": [
+        {
+          "action": "dash",
+          "pressed": true
+        }
+      ]
+    },
+    {
+      "wait": 0.7
+    },
+    {
+      "assert": "get_node('Player').horse_speed > 8.8"
+    },
+    {
+      "input": [
+        {
+          "action": "dash",
+          "pressed": false
+        },
+        {
+          "action": "move_forward",
+          "pressed": false
+        }
+      ]
+    },
+    {
+      "input": [
+        {
+          "action": "jump",
+          "hold": 0.6
+        }
+      ]
+    },
+    {
+      "assert": "abs(get_node('Player').horse_speed) < .01"
+    },
+    {
+      "input": [
+        {
+          "action": "move_left",
+          "pressed": true
+        }
+      ]
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "abs(get_node('Player').mount.rotation.y) > .3"
+    },
+    {
+      "input": [
+        {
+          "action": "move_left",
+          "pressed": false
+        }
+      ]
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_map",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('Player').controls_blocked"
+    },
+    {
+      "input": [
+        {
+          "action": "move_forward",
+          "hold": 0.3
+        }
+      ]
+    },
+    {
+      "assert": "abs(get_node('Player').horse_speed) < .01"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_map",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('Player').mount == null"
+    },
+    {
+      "assert_no_errors": true
+    },
+    {
+      "eval": "get_node('VillageLife').set('apples',get_node('VillageLife').get_meta('forage_fixture').apples)"
+    },
+    {
+      "eval": "get_node('VillageLife').set('crumbs',get_node('VillageLife').get_meta('forage_fixture').crumbs)"
+    },
+    {
+      "eval": "get_node('VillageLife').set('owl_treats',get_node('VillageLife').get_meta('forage_fixture').owl_treats)"
+    },
+    {
+      "call": {
+        "path": "VillageActivities",
+        "method": "save_state"
+      }
+    }
+  ],
+  "stop_on_failure": false
+}

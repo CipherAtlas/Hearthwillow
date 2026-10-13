@@ -1,0 +1,14 @@
+{
+	"actor_scale": "(0.959986, 0.96, 0.959986)",
+	"background": "293c33f7",
+	"camera_after": -0.263907372951508,
+	"camera_before": 0.0,
+	"camera_immediate": 0.0,
+	"camera_target": -0.264,
+	"compact": true,
+	"head_anchor": "(46.43957, 2.035902, 23.85815)",
+	"serif": "Georgia",
+	"text": "I found a heart-shaped leaf! You can have it. I've got six.",
+	"visible": true,
+	"width": 290.0
+}

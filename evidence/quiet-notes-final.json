@@ -1,0 +1,998 @@
+{
+  "name": "Writing nook, journal and kind notes at 1080p",
+  "passed": true,
+  "duration_s": 11.351,
+  "steps": [
+    {
+      "index": 0,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 1,
+      "step": "eval get_node(\"QuietPlaces\").journal.set(\"save_path\",\"user://quiet-test-journal.json\")",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 2,
+      "step": "eval get_node(\"QuietPlaces\").journal.set(\"entries\",[])",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 3,
+      "step": "eval get_node(\"QuietPlaces\").journal.set(\"read_failed\",false)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 4,
+      "step": "eval get_node(\"QuietPlaces\").set(\"kind_save_path\",\"user://quiet-test-kind.cfg\")",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 5,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 6,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 7,
+      "step": "assert get_node(\"QuietPlaces/UI/Journal/Content/Heading\").get_theme_font(\"font\").has_char(\"記\".unicode_at(0))",
+      "ok": true,
+      "detail": "get_node(\"QuietPlaces/UI/Journal/Content/Heading\").get_theme_font(\"font\").has_char(\"記\".unicode_at(0))"
+    },
+    {
+      "index": 8,
+      "step": "assert get_node(\"QuietPlaces/UI/Journal/Content/Write/Save/Row/Text\").get_theme_font(\"font\").has_char(\"残\".unicode_at(0))",
+      "ok": true,
+      "detail": "get_node(\"QuietPlaces/UI/Journal/Content/Write/Save/Row/Text\").get_theme_font(\"font\").has_char(\"残\".unicode_at(0))"
+    },
+    {
+      "index": 9,
+      "step": "assert get_node(\"QuietPlaces\").active==\"gratitude\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 10,
+      "step": "assert get_node(\"Player\").activity_locked",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 11,
+      "step": "assert get_viewport().get_visible_rect().size==Vector2(1920,1080)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 12,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "typed 75 chars"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 13,
+      "step": "assert get_node(\"QuietPlaces\").journal.editor.text.contains(\"m i o w a s d r e f g k u,\")",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 14,
+      "step": "assert get_node(\"HUD/Menus\").current_menu==\"\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 15,
+      "step": "assert not get_node(\"HUD/VillageMap\").expanded",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 16,
+      "step": "assert get_node(\"Player\").position.distance_to(Vector3(-18.2,.05,6.6))<.01",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 17,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Ctrl+Enter"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 18,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 19,
+      "step": "assert get_node(\"QuietPlaces\").journal.entries.size()==1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 20,
+      "step": "assert get_node(\"QuietPlaces\").journal.editor.text.is_empty()",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 21,
+      "step": "assert get_node(\"QuietPlaces\").journal.entries[0].text.contains(\"日本語\")",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 22,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": true
+      }
+    },
+    {
+      "index": 23,
+      "step": "assert get_node(\"QuietPlaces\").journal.entries.size()==1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 24,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 25,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 26,
+      "step": "assert get_node(\"QuietPlaces\").journal.view==\"list\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 27,
+      "step": "assert get_node(\"QuietPlaces\").journal.get_node(\"Content/Library/List/Rows\").get_child_count()==1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 28,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1692, 383)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 29,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 30,
+      "step": "assert get_node(\"QuietPlaces\").journal.view==\"note\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 31,
+      "step": "assert get_node(\"QuietPlaces\").journal.get_node(\"Content/Library/Read/Text\").text.contains(\"A second line.\")",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 32,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1692, 662)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 33,
+      "step": "assert get_node(\"QuietPlaces\").journal.removing",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 34,
+      "step": "assert get_node(\"QuietPlaces\").journal.entries.size()==1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 35,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1692, 748)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 36,
+      "step": "assert not get_node(\"QuietPlaces\").journal.removing",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 37,
+      "step": "assert get_node(\"QuietPlaces\").journal.entries.size()==1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 38,
+      "step": "eval get_node(\"QuietPlaces\").set_meta(\"backup\",get_node(\"QuietPlaces\").journal.backup_text())",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 39,
+      "step": "assert get_node(\"QuietPlaces\").journal.import_text(get_node(\"QuietPlaces\").get_meta(\"backup\"))",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 40,
+      "step": "assert get_node(\"QuietPlaces\").journal.entries.size()==1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 41,
+      "step": "eval get_node(\"QuietPlaces\").set_meta(\"duplicate\",get_node(\"QuietPlaces\").get_meta(\"backup\")+\"\\n\"+str(get_node(\"QuietPla",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 42,
+      "step": "assert get_node(\"QuietPlaces\").journal.import_text(get_node(\"QuietPlaces\").get_meta(\"duplicate\"))",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 43,
+      "step": "assert get_node(\"QuietPlaces\").journal.entries.size()==2",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 44,
+      "step": "assert get_node(\"QuietPlaces\").journal.import_text(get_node(\"QuietPlaces\").get_meta(\"duplicate\"))",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 45,
+      "step": "assert get_node(\"QuietPlaces\").journal.entries.size()==2",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 46,
+      "step": "assert not get_node(\"QuietPlaces\").journal.import_text(\"not a backup\")",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 47,
+      "step": "assert get_node(\"QuietPlaces\").journal.entries.size()==2",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 48,
+      "step": "assert not get_node(\"QuietPlaces\").journal.import_text(\"Hearthwillow notes\\n==================\\n\\n[2026-02-31T00:00:00.0",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 49,
+      "step": "assert get_node(\"QuietPlaces\").journal.entries.size()==2",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 50,
+      "step": "assert get_node(\"QuietPlaces\").journal.export_file(\"user://quiet-test-backup.txt\")",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 51,
+      "step": "assert get_node(\"QuietPlaces\").journal.import_file(\"user://quiet-test-backup.txt\")",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 52,
+      "step": "assert get_node(\"QuietPlaces\").journal.entries.size()==2",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 53,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 54,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 55,
+      "step": "assert get_node(\"QuietPlaces\").journal.delete_note()",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 56,
+      "step": "assert get_node(\"QuietPlaces\").journal.entries.size()==1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 57,
+      "step": "assert get_node(\"QuietPlaces\").journal.load_notes()",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 58,
+      "step": "assert get_node(\"QuietPlaces\").journal.entries.size()==1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 59,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 60,
+      "step": "eval get_node(\"QuietPlaces\").journal.editor.set(\"text\",\"Preserve this draft after failure\")",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 61,
+      "step": "eval get_node(\"QuietPlaces\").journal.set(\"save_path\",\"user://missing-quiet-test-directory/notes.json\")",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 62,
+      "step": "assert not get_node(\"QuietPlaces\").journal.save_note()",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 63,
+      "step": "assert get_node(\"QuietPlaces\").journal.editor.text==\"Preserve this draft after failure\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 64,
+      "step": "assert get_node(\"QuietPlaces\").journal.entries.size()==1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 65,
+      "step": "eval get_node(\"QuietPlaces\").journal.set(\"save_path\",\"user://quiet-test-journal.json\")",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 66,
+      "step": "eval get_node(\"QuietPlaces\").journal.set(\"read_failed\",true)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 67,
+      "step": "assert not get_node(\"QuietPlaces\").journal.save_note()",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 68,
+      "step": "assert get_node(\"QuietPlaces\").journal.entries.size()==1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 69,
+      "step": "eval get_node(\"QuietPlaces\").journal.set(\"read_failed\",false)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 70,
+      "step": "eval get_node(\"QuietPlaces\").journal.editor.set(\"text\",\"\")",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 71,
+      "step": "eval get_node(\"QuietPlaces\").journal.set(\"save_path\",\"res://tests/fixtures/journal-corrupt.json\")",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 72,
+      "step": "assert not get_node(\"QuietPlaces\").journal.load_notes()",
+      "ok": true,
+      "detail": "not get_node(\"QuietPlaces\").journal.load_notes()"
+    },
+    {
+      "index": 73,
+      "step": "assert get_node(\"QuietPlaces\").journal.read_failed",
+      "ok": true,
+      "detail": "get_node(\"QuietPlaces\").journal.read_failed"
+    },
+    {
+      "index": 74,
+      "step": "assert not get_node(\"QuietPlaces\").journal.save_note()",
+      "ok": true,
+      "detail": "not get_node(\"QuietPlaces\").journal.save_note()"
+    },
+    {
+      "index": 75,
+      "step": "assert not get_node(\"QuietPlaces\").journal.import_text(get_node(\"QuietPlaces\").get_meta(\"backup\"))",
+      "ok": true,
+      "detail": "not get_node(\"QuietPlaces\").journal.import_text(get_node(\"QuietPlaces\").get_meta(\"backup\"))"
+    },
+    {
+      "index": 76,
+      "step": "eval get_node(\"QuietPlaces\").journal.set(\"save_path\",\"user://quiet-test-journal.json\")",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 77,
+      "step": "assert get_node(\"QuietPlaces\").journal.load_notes()",
+      "ok": true,
+      "detail": "get_node(\"QuietPlaces\").journal.load_notes()"
+    },
+    {
+      "index": 78,
+      "step": "assert get_node(\"QuietPlaces\").journal.import_text(\"Hearthwillow notes\\n==================\\n\\n[2026-10-13T00:00:00.000Z]",
+      "ok": true,
+      "detail": "get_node(\"QuietPlaces\").journal.import_text(\"Hearthwillow notes\\n==================\\n\\n[2026-10-13T00:00:00.000Z]\\n  Note number 0\\n  Two lines.\\n\\n[2026-10-13T00:00:01.000Z]\\n  Note number 1\\n  Two lines.\\n\\n[2026-10-13T00:00:02.000Z]\\n  Note number 2\\n  Two lines.\\n\\n[2026-10-13T00:00:03.000Z]\\n  Note number 3\\n  Two lines.\\n\\n[2026-10-13T00:00:04.000Z]\\n  Note number 4\\n  Two lines.\\n\\n[2026-10-13T00:00:05.000Z]\\n  Note number 5\\n  Two lines.\\n\\n[2026-10-13T00:00:06.000Z]\\n  Note number 6\\n  Two lines.\\n\\n[2026-10-13T00:00:07.000Z]\\n  Note number 7\\n  Two lines.\\n\\n[2026-10-13T00:00:08.000Z]\\n  Note number 8\\n  Two lines.\\n\\n[2026-10-13T00:00:09.000Z]\\n  Note number 9\\n  Two lines.\\n\\n[2026-10-13T00:00:10.000Z]\\n  Note number 10\\n  Two lines.\\n\\n[2026-10-13T00:00:11.000Z]\\n  Note number 11\\n  Two lines.\\n\\n[2026-10-13T00:00:12.000Z]\\n  Note number 12\\n  Two lines.\\n\\n[2026-10-13T00:00:13.000Z]\\n  Note number 13\\n  Two lines.\\n\\n[2026-10-13T00:00:14.000Z]\\n  Note number 14\\n  Two lines.\\n\\n[2026-10-13T00:00:15.000Z]\\n  Note number 15\\n  Two lines.\\n\\n[2026-10-13T00:00:16.000Z]\\n  Note number 16\\n  Two lines.\\n\\n[2026-10-13T00:00:17.000Z]\\n  Note number 17\\n  Two lines.\\n\\n[2026-10-13T00:00:18.000Z]\\n  Note number 18\\n  Two lines.\\n\\n[2026-10-13T00:00:19.000Z]\\n  Note number 19\\n  Two lines.\\n\\n[2026-10-13T00:00:20.000Z]\\n  Note number 20\\n  Two lines.\\n\\n[2026-10-13T00:00:21.000Z]\\n  Note number 21\\n  Two lines.\\n\\n[2026-10-13T00:00:22.000Z]\\n  Note number 22\\n  Two lines.\\n\\n[2026-10-13T00:00:23.000Z]\\n  Note number 23\\n  Two lines.\\n\\n[2026-10-13T00:00:24.000Z]\\n  Note number 24\\n  Two lines.\\n\\n[2026-10-13T00:00:25.000Z]\\n  Note number 25\\n  Two lines.\\n\\n[2026-10-13T00:00:26.000Z]\\n  Note number 26\\n  Two lines.\\n\\n[2026-10-13T00:00:27.000Z]\\n  Note number 27\\n  Two lines.\\n\\n[2026-10-13T00:00:28.000Z]\\n  Note number 28\\n  Two lines.\\n\\n[2026-10-13T00:00:29.000Z]\\n  Note number 29\\n  Two lines.\\n\")"
+    },
+    {
+      "index": 79,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 80,
+      "step": "eval get_node(\"QuietPlaces\").journal.get_node(\"Content/Library/List\").set(\"scroll_vertical\",200)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 81,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 82,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 83,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 84,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 85,
+      "step": "assert get_node(\"QuietPlaces\").journal.get_node(\"Content/Library/List\").scroll_vertical>=190",
+      "ok": true,
+      "detail": "get_node(\"QuietPlaces\").journal.get_node(\"Content/Library/List\").scroll_vertical>=190"
+    },
+    {
+      "index": 86,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 87,
+      "step": "eval get_node(\"QuietPlaces\").journal.editor.set(\"text\",\"長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。\\n長い日本語のメモ。",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 88,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 89,
+      "step": "assert get_node(\"QuietPlaces\").journal.editor.text.length()==10000",
+      "ok": true,
+      "detail": "get_node(\"QuietPlaces\").journal.editor.text.length()==10000"
+    },
+    {
+      "index": 90,
+      "step": "assert get_node(\"QuietPlaces\").journal.save_note()",
+      "ok": true,
+      "detail": "get_node(\"QuietPlaces\").journal.save_note()"
+    },
+    {
+      "index": 91,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 92,
+      "step": "wait 0.2",
+      "ok": true
+    },
+    {
+      "index": 93,
+      "step": "assert get_node(\"QuietPlaces\").journal.get_node(\"Content/Library/Read/Text\").size.y>280",
+      "ok": true,
+      "detail": "get_node(\"QuietPlaces\").journal.get_node(\"Content/Library/Read/Text\").size.y>280"
+    },
+    {
+      "index": 94,
+      "step": "assert get_node(\"QuietPlaces\").journal.get_node(\"Content/Library/Remove\").get_global_rect().end.y<950",
+      "ok": true,
+      "detail": "get_node(\"QuietPlaces\").journal.get_node(\"Content/Library/Remove\").get_global_rect().end.y<950"
+    },
+    {
+      "index": 95,
+      "step": "assert get_node(\"QuietPlaces\").journal.get_global_rect().end.x<=1920",
+      "ok": true,
+      "detail": "get_node(\"QuietPlaces\").journal.get_global_rect().end.x<=1920"
+    },
+    {
+      "index": 96,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 97,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 98,
+      "step": "assert get_node(\"QuietPlaces\").journal.get_node(\"Export\").visible",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 99,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 100,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 101,
+      "step": "assert get_node(\"QuietPlaces\").journal.get_node(\"Import\").visible",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 102,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 103,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Escape"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 104,
+      "step": "assert get_node(\"QuietPlaces\").active==\"\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 105,
+      "step": "assert not get_node(\"Player\").activity_locked",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 106,
+      "step": "assert get_viewport().get_camera_3d()==get_node(\"CameraRig\").camera",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 107,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 108,
+      "step": "assert get_node(\"QuietPlaces\").active==\"compliment\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 109,
+      "step": "eval get_node(\"QuietPlaces\").set_meta(\"old_index\",get_node(\"QuietPlaces\").note_index)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 110,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.10s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 111,
+      "step": "assert get_node(\"QuietPlaces\").note_index==(get_node(\"QuietPlaces\").get_meta(\"old_index\")+1)%8",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 112,
+      "step": "assert not get_node(\"QuietPlaces\").note_saved",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 113,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key K"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 114,
+      "step": "assert get_node(\"QuietPlaces\").note_saved",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 115,
+      "step": "assert get_node(\"QuietPlaces\").load_kind_note()",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 116,
+      "step": "assert get_node(\"QuietPlaces\").note_saved",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 117,
+      "step": "eval get_node(\"HUD/Menus\").set(\"language\",1)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 118,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 119,
+      "step": "assert get_node(\"QuietPlaces\").get_node(\"UI/Kind/Content/Note\").text.contains(get_node(\"QuietPlaces\").notes.ja[get_node(",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 120,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1712, 486)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 121,
+      "step": "assert not get_node(\"QuietPlaces\").note_saved",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 122,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1712, 542)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 123,
+      "step": "assert get_node(\"QuietPlaces\").note_saved",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 124,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_activity for 0.10s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 125,
+      "step": "assert get_node(\"QuietPlaces\").collapsed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 126,
+      "step": "assert not get_node(\"QuietPlaces\").get_node(\"UI/Kind\").visible",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 127,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_activity for 0.10s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 128,
+      "step": "assert not get_node(\"QuietPlaces\").collapsed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 129,
+      "step": "eval get_node(\"QuietPlaces\").set(\"kind_save_path\",\"user://missing-quiet-test-directory/kind.cfg\")",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 130,
+      "step": "assert not get_node(\"QuietPlaces\").keep_kind_note()",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 131,
+      "step": "eval get_node(\"QuietPlaces\").set(\"kind_save_path\",\"user://quiet-test-kind.cfg\")",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 132,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 133,
+      "step": "assert get_node(\"QuietPlaces\").active==\"gratitude\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 134,
+      "step": "wait 0.1",
+      "ok": true
+    },
+    {
+      "index": 135,
+      "step": "assert get_node(\"QuietPlaces\").journal.get_node(\"Content/Heading\").text==\"日記\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "index": 136,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 137,
+      "step": "eval get_node(\"HUD/Menus\").set(\"language\",0)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 138,
+      "step": "eval get_node(\"QuietPlaces\").journal.set(\"save_path\",\"user://journal-notes.json\")",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 139,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": true
+      }
+    },
+    {
+      "index": 140,
+      "step": "eval get_node(\"QuietPlaces\").set(\"kind_save_path\",\"user://kind-note.cfg\")",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 141,
+      "step": "assert_no_errors",
+      "ok": true
+    }
+  ],
+  "runtime_errors": [],
+  "screenshots": []
+}

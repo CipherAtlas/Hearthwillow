@@ -1,0 +1,76 @@
+{
+	"gpu": "Apple M4 (Apple9)",
+	"measured_seconds_each": 8.0,
+	"release": true,
+	"render_size": "(1920.0, 1080.0)",
+	"renderer": "mobile",
+	"scenarios": [
+		{
+			"average_ms": 25.9121350482315,
+			"draw_calls": 1018.0,
+			"fps": 38.5919569398142,
+			"frames": 311,
+			"p95_ms": 56.882,
+			"p99_ms": 69.188,
+			"physics_ms": 7.432,
+			"primitives": 2629580.0,
+			"process_ms": 30.861,
+			"view": "entrance",
+			"worst_ms": 83.511
+		},
+		{
+			"average_ms": 24.5935518292683,
+			"draw_calls": 1117.0,
+			"fps": 40.6610646132829,
+			"frames": 328,
+			"p95_ms": 53.577,
+			"p99_ms": 70.363,
+			"physics_ms": 7.374,
+			"primitives": 2805277.0,
+			"process_ms": 41.247,
+			"view": "village",
+			"worst_ms": 113.268
+		},
+		{
+			"average_ms": 20.6785552699229,
+			"draw_calls": 862.0,
+			"fps": 48.3592778579898,
+			"frames": 389,
+			"p95_ms": 41.194,
+			"p99_ms": 50.639,
+			"physics_ms": 6.196,
+			"primitives": 2113546.0,
+			"process_ms": 26.529,
+			"view": "western bridge",
+			"worst_ms": 56.491
+		},
+		{
+			"average_ms": 23.195176300578,
+			"draw_calls": 875.0,
+			"fps": 43.1124121257522,
+			"frames": 346,
+			"p95_ms": 40.209,
+			"p99_ms": 49.668,
+			"physics_ms": 6.113,
+			"primitives": 2057325.0,
+			"process_ms": 35.544,
+			"view": "pond",
+			"worst_ms": 60.735
+		},
+		{
+			"average_ms": 30.1603684210526,
+			"draw_calls": 1217.0,
+			"fps": 33.1560936537492,
+			"frames": 266,
+			"p95_ms": 56.935,
+			"p99_ms": 63.133,
+			"physics_ms": 4.778,
+			"primitives": 2222623.0,
+			"process_ms": 37.719,
+			"view": "hill waterfall",
+			"worst_ms": 69.991
+		}
+	],
+	"vsync": 0,
+	"warmup_seconds_each": 3
+}

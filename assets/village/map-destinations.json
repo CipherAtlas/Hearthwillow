@@ -1,0 +1,222 @@
+{
+  "bounds": {
+    "x": -154,
+    "z": -107,
+    "width": 306,
+    "height": 199
+  },
+  "destinations": [
+    {
+      "id": "focus",
+      "name": "Focus cottage",
+      "japanese": "集中のコテージ",
+      "point": [
+        5.1,
+        11
+      ],
+      "icon": "Timer"
+    },
+    {
+      "id": "music",
+      "name": "Village hearth",
+      "japanese": "村の焚き火",
+      "point": [
+        -5.8,
+        -19
+      ],
+      "icon": "Fire",
+      "arrival": [
+        -5.8,
+        -15
+      ]
+    },
+    {
+      "id": "breathe",
+      "name": "Willow pond",
+      "japanese": "柳の池",
+      "point": [
+        -33,
+        -18
+      ],
+      "icon": "Drop",
+      "arrival": [
+        -22.15,
+        -6.6
+      ]
+    },
+    {
+      "id": "gratitude",
+      "name": "Writing nook",
+      "japanese": "書きものの隅",
+      "point": [
+        -19.5,
+        8
+      ],
+      "icon": "BookOpen"
+    },
+    {
+      "id": "compliment",
+      "name": "Little postbox",
+      "japanese": "小さなポスト",
+      "point": [
+        3,
+        -1
+      ],
+      "icon": "EnvelopeSimple"
+    },
+    {
+      "id": "garden",
+      "name": "Kitchen garden",
+      "japanese": "小さな菜園",
+      "point": [
+        24.6,
+        -2.7
+      ],
+      "icon": "Leaf"
+    },
+    {
+      "id": "birds",
+      "name": "Bird clearing",
+      "japanese": "小鳥の広場",
+      "point": [
+        -37,
+        6.5
+      ],
+      "icon": "Bird",
+      "arrival": [
+        -37,
+        4
+      ]
+    },
+    {
+      "id": "swing:sunrise-meadow-swings",
+      "name": "Meadow Swings",
+      "japanese": "草原のブランコ 1",
+      "kind": "swing",
+      "x": -46,
+      "z": 39.5,
+      "point": [
+        -46,
+        39.5
+      ],
+      "icon": "Leaf"
+    },
+    {
+      "id": "tower:watchtower",
+      "name": "Watch tower",
+      "japanese": "見張り塔",
+      "kind": "tower",
+      "x": 10.5,
+      "z": -68,
+      "point": [
+        10.5,
+        -68
+      ],
+      "icon": "CastleTurret"
+    },
+    {
+      "id": "circuit:horse-racetrack",
+      "name": "Willow circuit",
+      "japanese": "ウィロー・サーキット",
+      "kind": "circuit",
+      "x": 85,
+      "z": 38,
+      "point": [
+        85,
+        38
+      ],
+      "icon": "Timer"
+    },
+    {
+      "id": "owls:owl-feeding-perch",
+      "name": "Owl grove",
+      "japanese": "フクロウの木立",
+      "kind": "owls",
+      "x": -48,
+      "z": -28.2,
+      "point": [
+        -48,
+        -28.2
+      ],
+      "icon": "Bird"
+    },
+    {
+      "id": "kitchen:farm-kitchen",
+      "name": "Garden kitchen",
+      "japanese": "畑のキッチン",
+      "kind": "kitchen",
+      "x": 113,
+      "z": -76.1,
+      "point": [
+        113,
+        -76.1
+      ],
+      "icon": "Leaf"
+    },
+    {
+      "id": "picnic:picnic-hill-mat",
+      "name": "Picnic hill",
+      "japanese": "ピクニックの丘",
+      "kind": "picnic",
+      "x": -98.78934515465689,
+      "z": -20.244036079693444,
+      "point": [
+        -98.78934515465689,
+        -20.244036079693444
+      ],
+      "icon": "Leaf"
+    },
+    {
+      "id": "farm:farm-1",
+      "name": "Carrot farm",
+      "japanese": "ニンジン畑",
+      "kind": "farm",
+      "x": 30,
+      "z": -73.7,
+      "point": [
+        30,
+        -73.7
+      ],
+      "icon": "Leaf"
+    },
+    {
+      "id": "farm:farm-2",
+      "name": "Radish farm",
+      "japanese": "ラディッシュ畑",
+      "kind": "farm",
+      "x": 73,
+      "z": -61.699999999999996,
+      "point": [
+        73,
+        -61.699999999999996
+      ],
+      "icon": "Leaf"
+    },
+    {
+      "id": "farm:farm-3",
+      "name": "Mint farm",
+      "japanese": "ミント畑",
+      "kind": "farm",
+      "x": 98,
+      "z": -47.699999999999996,
+      "point": [
+        98,
+        -47.699999999999996
+      ],
+      "icon": "Leaf"
+    },
+    {
+      "id": "field:grazing",
+      "name": "Grazing field",
+      "japanese": "放牧場",
+      "kind": "field",
+      "x": -42.5,
+      "z": 58.833333333333336,
+      "point": [
+        -42.5,
+        58.833333333333336
+      ],
+      "icon": "Leaf"
+    }
+  ]
+}

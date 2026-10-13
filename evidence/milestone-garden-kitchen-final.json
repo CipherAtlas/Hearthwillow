@@ -1,0 +1,1904 @@
+{
+  "name": "All crops, farm rules, four recipes, picnic portions and local save",
+  "passed": true,
+  "duration_s": 48.668,
+  "steps": [
+    {
+      "index": 0,
+      "step": "assert get_tree().root.size.x>=1918 and get_tree().root.size.y>=1079",
+      "ok": true,
+      "detail": "1080p display window; allow the macOS one-pixel window frame, never a 720p override."
+    },
+    {
+      "index": 1,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 2,
+      "step": "eval get_node('VillageActivities').set_meta('fixture',{'beds':get_node('VillageActivities').beds.duplicate(true),'invent",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 3,
+      "step": "assert get_viewport().get_texture().get_size()==Vector2(1920,1080)",
+      "ok": true,
+      "detail": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
+    },
+    {
+      "index": 4,
+      "step": "assert get_node('VillageActivities').beds.size()==22",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds.size()==22"
+    },
+    {
+      "index": 5,
+      "step": "eval get_node('VillageActivities').beds.set('garden-0',{'crop':'carrot','stage':'grown','watered':0.0})",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 6,
+      "step": "eval get_node('VillageActivities').inventory.set('carrots',0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 7,
+      "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(20,-10)))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 8,
+      "step": "eval get_node('Player').set('velocity',Vector3(0,0,0))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 9,
+      "step": "wait 0.25",
+      "ok": true
+    },
+    {
+      "index": 10,
+      "step": "assert get_node('VillageActivities').nearby.id=='garden-0'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').nearby.id=='garden-0'"
+    },
+    {
+      "index": 11,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 12,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 13,
+      "step": "assert get_node('VillageActivities').count_item('carrots')==1 and get_node('VillageActivities').beds['garden-0'].stage==",
+      "ok": true,
+      "detail": "get_node('VillageActivities').count_item('carrots')==1 and get_node('VillageActivities').beds['garden-0'].stage=='empty'"
+    },
+    {
+      "index": 14,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 15,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 16,
+      "step": "assert get_node('VillageActivities').beds['garden-0'].stage=='sprout'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds['garden-0'].stage=='sprout'"
+    },
+    {
+      "index": 17,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 18,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 19,
+      "step": "assert get_node('VillageActivities').beds['garden-0'].stage=='growing'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds['garden-0'].stage=='growing'"
+    },
+    {
+      "index": 20,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 21,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 22,
+      "step": "assert get_node('VillageActivities').count_item('carrots')==1",
+      "ok": true,
+      "detail": "get_node('VillageActivities').count_item('carrots')==1"
+    },
+    {
+      "index": 23,
+      "step": "eval get_node('VillageActivities').beds['garden-0'].set('watered',get_node('VillageActivities').now()-get_node('VillageA",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 24,
+      "step": "wait 0.2",
+      "ok": true
+    },
+    {
+      "index": 25,
+      "step": "assert get_node('VillageActivities').beds['garden-0'].stage=='grown'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds['garden-0'].stage=='grown'"
+    },
+    {
+      "index": 26,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 27,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 28,
+      "step": "assert get_node('VillageActivities').count_item('carrots')==2",
+      "ok": true,
+      "detail": "get_node('VillageActivities').count_item('carrots')==2"
+    },
+    {
+      "index": 29,
+      "step": "eval get_node('VillageActivities').beds.set('garden-1',{'crop':'radish','stage':'grown','watered':0.0})",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 30,
+      "step": "eval get_node('VillageActivities').inventory.set('radishes',0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 31,
+      "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(24.9,-10)))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 32,
+      "step": "eval get_node('Player').set('velocity',Vector3(0,0,0))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 33,
+      "step": "wait 0.25",
+      "ok": true
+    },
+    {
+      "index": 34,
+      "step": "assert get_node('VillageActivities').nearby.id=='garden-1'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').nearby.id=='garden-1'"
+    },
+    {
+      "index": 35,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 36,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 37,
+      "step": "assert get_node('VillageActivities').count_item('radishes')==1 and get_node('VillageActivities').beds['garden-1'].stage=",
+      "ok": true,
+      "detail": "get_node('VillageActivities').count_item('radishes')==1 and get_node('VillageActivities').beds['garden-1'].stage=='empty'"
+    },
+    {
+      "index": 38,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped activity_2 for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 39,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 40,
+      "step": "assert get_node('VillageActivities').beds['garden-1'].stage=='sprout'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds['garden-1'].stage=='sprout'"
+    },
+    {
+      "index": 41,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 42,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 43,
+      "step": "assert get_node('VillageActivities').beds['garden-1'].stage=='growing'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds['garden-1'].stage=='growing'"
+    },
+    {
+      "index": 44,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 45,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 46,
+      "step": "assert get_node('VillageActivities').count_item('radishes')==1",
+      "ok": true,
+      "detail": "get_node('VillageActivities').count_item('radishes')==1"
+    },
+    {
+      "index": 47,
+      "step": "eval get_node('VillageActivities').beds['garden-1'].set('watered',get_node('VillageActivities').now()-get_node('VillageA",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 48,
+      "step": "wait 0.2",
+      "ok": true
+    },
+    {
+      "index": 49,
+      "step": "assert get_node('VillageActivities').beds['garden-1'].stage=='grown'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds['garden-1'].stage=='grown'"
+    },
+    {
+      "index": 50,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 51,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 52,
+      "step": "assert get_node('VillageActivities').count_item('radishes')==2",
+      "ok": true,
+      "detail": "get_node('VillageActivities').count_item('radishes')==2"
+    },
+    {
+      "index": 53,
+      "step": "eval get_node('VillageActivities').beds.set('garden-4',{'crop':'mint','stage':'grown','watered':0.0})",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 54,
+      "step": "eval get_node('VillageActivities').inventory.set('mint',0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 55,
+      "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(20,-1)))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 56,
+      "step": "eval get_node('Player').set('velocity',Vector3(0,0,0))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 57,
+      "step": "wait 0.25",
+      "ok": true
+    },
+    {
+      "index": 58,
+      "step": "assert get_node('VillageActivities').nearby.id=='garden-4'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').nearby.id=='garden-4'"
+    },
+    {
+      "index": 59,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 60,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 61,
+      "step": "assert get_node('VillageActivities').count_item('mint')==1 and get_node('VillageActivities').beds['garden-4'].stage=='em",
+      "ok": true,
+      "detail": "get_node('VillageActivities').count_item('mint')==1 and get_node('VillageActivities').beds['garden-4'].stage=='empty'"
+    },
+    {
+      "index": 62,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 63,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 64,
+      "step": "assert get_node('VillageActivities').beds['garden-4'].stage=='sprout'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds['garden-4'].stage=='sprout'"
+    },
+    {
+      "index": 65,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 66,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 67,
+      "step": "assert get_node('VillageActivities').beds['garden-4'].stage=='growing'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds['garden-4'].stage=='growing'"
+    },
+    {
+      "index": 68,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 69,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 70,
+      "step": "assert get_node('VillageActivities').count_item('mint')==1",
+      "ok": true,
+      "detail": "get_node('VillageActivities').count_item('mint')==1"
+    },
+    {
+      "index": 71,
+      "step": "eval get_node('VillageActivities').beds['garden-4'].set('watered',get_node('VillageActivities').now()-get_node('VillageA",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 72,
+      "step": "wait 0.2",
+      "ok": true
+    },
+    {
+      "index": 73,
+      "step": "assert get_node('VillageActivities').beds['garden-4'].stage=='grown'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds['garden-4'].stage=='grown'"
+    },
+    {
+      "index": 74,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 75,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 76,
+      "step": "assert get_node('VillageActivities').count_item('mint')==2",
+      "ok": true,
+      "detail": "get_node('VillageActivities').count_item('mint')==2"
+    },
+    {
+      "index": 77,
+      "step": "eval get_node('VillageActivities').beds.set('garden-5',{'crop':'daisy','stage':'grown','watered':0.0})",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 78,
+      "step": "eval get_node('VillageActivities').inventory.set('daisies',0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 79,
+      "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(24.9,-1)))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 80,
+      "step": "eval get_node('Player').set('velocity',Vector3(0,0,0))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 81,
+      "step": "wait 0.25",
+      "ok": true
+    },
+    {
+      "index": 82,
+      "step": "assert get_node('VillageActivities').nearby.id=='garden-5'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').nearby.id=='garden-5'"
+    },
+    {
+      "index": 83,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 84,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 85,
+      "step": "assert get_node('VillageActivities').count_item('daisies')==1 and get_node('VillageActivities').beds['garden-5'].stage==",
+      "ok": true,
+      "detail": "get_node('VillageActivities').count_item('daisies')==1 and get_node('VillageActivities').beds['garden-5'].stage=='empty'"
+    },
+    {
+      "index": 86,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 87,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 88,
+      "step": "assert get_node('VillageActivities').beds['garden-5'].stage=='sprout'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds['garden-5'].stage=='sprout'"
+    },
+    {
+      "index": 89,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 90,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 91,
+      "step": "assert get_node('VillageActivities').beds['garden-5'].stage=='growing'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds['garden-5'].stage=='growing'"
+    },
+    {
+      "index": 92,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 93,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 94,
+      "step": "assert get_node('VillageActivities').count_item('daisies')==1",
+      "ok": true,
+      "detail": "get_node('VillageActivities').count_item('daisies')==1"
+    },
+    {
+      "index": 95,
+      "step": "eval get_node('VillageActivities').beds['garden-5'].set('watered',get_node('VillageActivities').now()-get_node('VillageA",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 96,
+      "step": "wait 0.2",
+      "ok": true
+    },
+    {
+      "index": 97,
+      "step": "assert get_node('VillageActivities').beds['garden-5'].stage=='grown'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds['garden-5'].stage=='grown'"
+    },
+    {
+      "index": 98,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 99,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 100,
+      "step": "assert get_node('VillageActivities').count_item('daisies')==2",
+      "ok": true,
+      "detail": "get_node('VillageActivities').count_item('daisies')==2"
+    },
+    {
+      "index": 101,
+      "step": "eval get_node('VillageActivities').beds.set('garden-6',{'crop':'sunflower','stage':'grown','watered':0.0})",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 102,
+      "step": "eval get_node('VillageActivities').inventory.set('sunflowers',0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 103,
+      "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(24.7,-11.6)))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 104,
+      "step": "eval get_node('Player').set('velocity',Vector3(0,0,0))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 105,
+      "step": "wait 0.25",
+      "ok": true
+    },
+    {
+      "index": 106,
+      "step": "assert get_node('VillageActivities').nearby.id=='garden-6'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').nearby.id=='garden-6'"
+    },
+    {
+      "index": 107,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 108,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 109,
+      "step": "assert get_node('VillageActivities').count_item('sunflowers')==1 and get_node('VillageActivities').beds['garden-6'].stag",
+      "ok": true,
+      "detail": "get_node('VillageActivities').count_item('sunflowers')==1 and get_node('VillageActivities').beds['garden-6'].stage=='empty'"
+    },
+    {
+      "index": 110,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 111,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 112,
+      "step": "assert get_node('VillageActivities').beds['garden-6'].stage=='sprout'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds['garden-6'].stage=='sprout'"
+    },
+    {
+      "index": 113,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 114,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 115,
+      "step": "assert get_node('VillageActivities').beds['garden-6'].stage=='growing'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds['garden-6'].stage=='growing'"
+    },
+    {
+      "index": 116,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 117,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 118,
+      "step": "assert get_node('VillageActivities').count_item('sunflowers')==1",
+      "ok": true,
+      "detail": "get_node('VillageActivities').count_item('sunflowers')==1"
+    },
+    {
+      "index": 119,
+      "step": "eval get_node('VillageActivities').beds['garden-6'].set('watered',get_node('VillageActivities').now()-get_node('VillageA",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 120,
+      "step": "wait 0.2",
+      "ok": true
+    },
+    {
+      "index": 121,
+      "step": "assert get_node('VillageActivities').beds['garden-6'].stage=='grown'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds['garden-6'].stage=='grown'"
+    },
+    {
+      "index": 122,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 123,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 124,
+      "step": "assert get_node('VillageActivities').count_item('sunflowers')==2",
+      "ok": true,
+      "detail": "get_node('VillageActivities').count_item('sunflowers')==2"
+    },
+    {
+      "index": 125,
+      "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(30,-70.2)))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 126,
+      "step": "eval get_node('Player').set('velocity',Vector3(0,0,0))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 127,
+      "step": "wait 0.25",
+      "ok": true
+    },
+    {
+      "index": 128,
+      "step": "assert get_node('VillageActivities').nearby.id=='farm-1-row-5'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').nearby.id=='farm-1-row-5'"
+    },
+    {
+      "index": 129,
+      "step": "eval get_node('VillageActivities').beds.set('farm-1-row-5',{'crop':'carrot','stage':'empty','watered':0.0})",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 130,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 131,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 132,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 133,
+      "step": "assert get_node('VillageActivities').beds['farm-1-row-5'].crop=='carrot' and get_node('VillageActivities').beds['farm-1-",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds['farm-1-row-5'].crop=='carrot' and get_node('VillageActivities').beds['farm-1-row-5'].stage=='sprout'"
+    },
+    {
+      "index": 134,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 135,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 136,
+      "step": "assert get_node('VillageActivities').growth_duration('farm-1-row-5','carrot')==180",
+      "ok": true,
+      "detail": "get_node('VillageActivities').growth_duration('farm-1-row-5','carrot')==180"
+    },
+    {
+      "index": 137,
+      "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(73,-58.2)))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 138,
+      "step": "eval get_node('Player').set('velocity',Vector3(0,0,0))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 139,
+      "step": "wait 0.25",
+      "ok": true
+    },
+    {
+      "index": 140,
+      "step": "assert get_node('VillageActivities').nearby.id=='farm-2-row-5'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').nearby.id=='farm-2-row-5'"
+    },
+    {
+      "index": 141,
+      "step": "eval get_node('VillageActivities').beds.set('farm-2-row-5',{'crop':'radish','stage':'empty','watered':0.0})",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 142,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 143,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 144,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 145,
+      "step": "assert get_node('VillageActivities').beds['farm-2-row-5'].crop=='radish' and get_node('VillageActivities').beds['farm-2-",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds['farm-2-row-5'].crop=='radish' and get_node('VillageActivities').beds['farm-2-row-5'].stage=='sprout'"
+    },
+    {
+      "index": 146,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 147,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 148,
+      "step": "assert get_node('VillageActivities').growth_duration('farm-2-row-5','radish')==180",
+      "ok": true,
+      "detail": "get_node('VillageActivities').growth_duration('farm-2-row-5','radish')==180"
+    },
+    {
+      "index": 149,
+      "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(98,-44.2)))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 150,
+      "step": "eval get_node('Player').set('velocity',Vector3(0,0,0))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 151,
+      "step": "wait 0.25",
+      "ok": true
+    },
+    {
+      "index": 152,
+      "step": "assert get_node('VillageActivities').nearby.id=='farm-3-row-5'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').nearby.id=='farm-3-row-5'"
+    },
+    {
+      "index": 153,
+      "step": "eval get_node('VillageActivities').beds.set('farm-3-row-5',{'crop':'mint','stage':'empty','watered':0.0})",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 154,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 155,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 156,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 157,
+      "step": "assert get_node('VillageActivities').beds['farm-3-row-5'].crop=='mint' and get_node('VillageActivities').beds['farm-3-ro",
+      "ok": true,
+      "detail": "get_node('VillageActivities').beds['farm-3-row-5'].crop=='mint' and get_node('VillageActivities').beds['farm-3-row-5'].stage=='sprout'"
+    },
+    {
+      "index": 158,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 159,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 160,
+      "step": "assert get_node('VillageActivities').growth_duration('farm-3-row-5','mint')==180",
+      "ok": true,
+      "detail": "get_node('VillageActivities').growth_duration('farm-3-row-5','mint')==180"
+    },
+    {
+      "index": 161,
+      "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(31.5,4.8)))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 162,
+      "step": "eval get_node('Player').set('velocity',Vector3(0,0,0))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 163,
+      "step": "wait 0.25",
+      "ok": true
+    },
+    {
+      "index": 164,
+      "step": "assert get_node('VillageActivities').nearby.kind=='mushroom'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').nearby.kind=='mushroom'"
+    },
+    {
+      "index": 165,
+      "step": "eval get_node('VillageActivities').forage_ready.clear()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 166,
+      "step": "eval get_node('VillageActivities').inventory.set('mushrooms',0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 167,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 168,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 169,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 170,
+      "step": "assert get_node('VillageActivities').count_item('mushrooms')==1",
+      "ok": true,
+      "detail": "get_node('VillageActivities').count_item('mushrooms')==1"
+    },
+    {
+      "index": 171,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 172,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 173,
+      "step": "assert get_node('VillageActivities').count_item('mushrooms')==1",
+      "ok": true,
+      "detail": "get_node('VillageActivities').count_item('mushrooms')==1"
+    },
+    {
+      "index": 174,
+      "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(113,-75.9)))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 175,
+      "step": "eval get_node('Player').set('velocity',Vector3(0,0,0))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 176,
+      "step": "wait 0.25",
+      "ok": true
+    },
+    {
+      "index": 177,
+      "step": "assert get_node('VillageActivities').nearby.kind=='kitchen'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').nearby.kind=='kitchen'"
+    },
+    {
+      "index": 178,
+      "step": "eval get_node('VillageActivities').set('cooking',{})",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 179,
+      "step": "eval get_node('VillageActivities').inventory.set('gardenSoup',0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 180,
+      "step": "eval get_node('VillageActivities').inventory.set('crispSalad',0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 181,
+      "step": "eval get_node('VillageActivities').inventory.set('bakedApples',0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 182,
+      "step": "eval get_node('VillageActivities').inventory.set('roastRoots',0)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 183,
+      "step": "eval get_node('VillageActivities').inventory.set('carrots',2)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 184,
+      "step": "eval get_node('VillageActivities').inventory.set('radishes',2)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 185,
+      "step": "eval get_node('VillageActivities').inventory.set('mint',2)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 186,
+      "step": "eval get_node('VillageActivities').inventory.set('mushrooms',2)",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 187,
+      "step": "eval get_node('VillageLife').set('apples',1)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 188,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 189,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped activity_1 for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 190,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 191,
+      "step": "assert get_node('VillageActivities').cooking.recipe=='gardenSoup'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').cooking.recipe=='gardenSoup'"
+    },
+    {
+      "index": 192,
+      "step": "assert not get_node('VillageActivities').activate(4)",
+      "ok": true,
+      "detail": "not get_node('VillageActivities').activate(4)"
+    },
+    {
+      "index": 193,
+      "step": "wait 4.7",
+      "ok": true
+    },
+    {
+      "index": 194,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 195,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 196,
+      "step": "assert get_node('VillageActivities').cooking.is_empty() and get_node('VillageActivities').count_item('gardenSoup')==1",
+      "ok": true,
+      "detail": "get_node('VillageActivities').cooking.is_empty() and get_node('VillageActivities').count_item('gardenSoup')==1"
+    },
+    {
+      "index": 197,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped activity_2 for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 198,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 199,
+      "step": "assert get_node('VillageActivities').cooking.recipe=='crispSalad'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').cooking.recipe=='crispSalad'"
+    },
+    {
+      "index": 200,
+      "step": "assert not get_node('VillageActivities').activate(4)",
+      "ok": true,
+      "detail": "not get_node('VillageActivities').activate(4)"
+    },
+    {
+      "index": 201,
+      "step": "wait 4.7",
+      "ok": true
+    },
+    {
+      "index": 202,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 203,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 204,
+      "step": "assert get_node('VillageActivities').cooking.is_empty() and get_node('VillageActivities').count_item('crispSalad')==1",
+      "ok": true,
+      "detail": "get_node('VillageActivities').cooking.is_empty() and get_node('VillageActivities').count_item('crispSalad')==1"
+    },
+    {
+      "index": 205,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped activity_3 for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 206,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 207,
+      "step": "assert get_node('VillageActivities').cooking.recipe=='bakedApples'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').cooking.recipe=='bakedApples'"
+    },
+    {
+      "index": 208,
+      "step": "assert not get_node('VillageActivities').activate(4)",
+      "ok": true,
+      "detail": "not get_node('VillageActivities').activate(4)"
+    },
+    {
+      "index": 209,
+      "step": "wait 4.7",
+      "ok": true
+    },
+    {
+      "index": 210,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 211,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 212,
+      "step": "assert get_node('VillageActivities').cooking.is_empty() and get_node('VillageActivities').count_item('bakedApples')==1",
+      "ok": true,
+      "detail": "get_node('VillageActivities').cooking.is_empty() and get_node('VillageActivities').count_item('bakedApples')==1"
+    },
+    {
+      "index": 213,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped activity_4 for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 214,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 215,
+      "step": "assert get_node('VillageActivities').cooking.recipe=='roastRoots'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').cooking.recipe=='roastRoots'"
+    },
+    {
+      "index": 216,
+      "step": "assert not get_node('VillageActivities').activate(4)",
+      "ok": true,
+      "detail": "not get_node('VillageActivities').activate(4)"
+    },
+    {
+      "index": 217,
+      "step": "wait 4.7",
+      "ok": true
+    },
+    {
+      "index": 218,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 219,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 220,
+      "step": "assert get_node('VillageActivities').cooking.is_empty() and get_node('VillageActivities').count_item('roastRoots')==1",
+      "ok": true,
+      "detail": "get_node('VillageActivities').cooking.is_empty() and get_node('VillageActivities').count_item('roastRoots')==1"
+    },
+    {
+      "index": 221,
+      "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(-96,-20)))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 222,
+      "step": "eval get_node('Player').set('velocity',Vector3(0,0,0))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 223,
+      "step": "wait 0.25",
+      "ok": true
+    },
+    {
+      "index": 224,
+      "step": "assert get_node('VillageActivities').nearby.kind=='picnic'",
+      "ok": true,
+      "detail": "get_node('VillageActivities').nearby.kind=='picnic'"
+    },
+    {
+      "index": 225,
+      "step": "eval get_node('VillageActivities').dishes.clear()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 226,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped activity_1 for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 227,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 228,
+      "step": "assert get_node('VillageActivities').dishes.size()==1",
+      "ok": true,
+      "detail": "get_node('VillageActivities').dishes.size()==1"
+    },
+    {
+      "index": 229,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped activity_2 for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 230,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 231,
+      "step": "assert get_node('VillageActivities').dishes.size()==2",
+      "ok": true,
+      "detail": "get_node('VillageActivities').dishes.size()==2"
+    },
+    {
+      "index": 232,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped activity_3 for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 233,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 234,
+      "step": "assert get_node('VillageActivities').dishes.size()==3",
+      "ok": true,
+      "detail": "get_node('VillageActivities').dishes.size()==3"
+    },
+    {
+      "index": 235,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped activity_4 for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 236,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 237,
+      "step": "assert get_node('VillageActivities').dishes.size()==4",
+      "ok": true,
+      "detail": "get_node('VillageActivities').dishes.size()==4"
+    },
+    {
+      "index": 238,
+      "step": "assert get_node('VillageActivities').dishes[0].portions==3 and get_node('VillageActivities').dishes[1].portions==3 and g",
+      "ok": true,
+      "detail": "get_node('VillageActivities').dishes[0].portions==3 and get_node('VillageActivities').dishes[1].portions==3 and get_node('VillageActivities').dishes[2].portions==3 and get_node('VillageActivities').dishes[3].portions==3"
+    },
+    {
+      "index": 239,
+      "step": "assert not get_node('VillageActivities').activate(0)",
+      "ok": true,
+      "detail": "not get_node('VillageActivities').activate(0)"
+    },
+    {
+      "index": 240,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 241,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 242,
+      "step": "assert get_node('VillageActivities').dishes[0].portions==2",
+      "ok": true,
+      "detail": "get_node('VillageActivities').dishes[0].portions==2"
+    },
+    {
+      "index": 243,
+      "step": "assert not get_node('VillageActivities').activate(4)",
+      "ok": true,
+      "detail": "not get_node('VillageActivities').activate(4)"
+    },
+    {
+      "index": 244,
+      "step": "wait 3.1",
+      "ok": true
+    },
+    {
+      "index": 245,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 246,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 247,
+      "step": "assert get_node('VillageActivities').dishes[0].portions==1",
+      "ok": true,
+      "detail": "get_node('VillageActivities').dishes[0].portions==1"
+    },
+    {
+      "index": 248,
+      "step": "wait 3.1",
+      "ok": true
+    },
+    {
+      "index": 249,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 250,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 251,
+      "step": "assert get_node('VillageActivities').dishes.size()==3",
+      "ok": true,
+      "detail": "get_node('VillageActivities').dishes.size()==3"
+    },
+    {
+      "index": 252,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 253,
+      "step": "assert not get_node('VillageActivities').save_error",
+      "ok": true,
+      "detail": "not get_node('VillageActivities').save_error"
+    },
+    {
+      "index": 254,
+      "step": "eval get_node('VillageActivities').set_meta('roundtrip',{'beds':get_node('VillageActivities').beds.duplicate(true),'inve",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 255,
+      "step": "eval [get_node('VillageActivities').inventory.set('mint',999),get_node('VillageActivities').load_state()]",
+      "ok": true,
+      "detail": {
+        "value": [
+          true,
+          null
+        ]
+      }
+    },
+    {
+      "index": 256,
+      "step": "assert get_node('VillageActivities').inventory==get_node('VillageActivities').get_meta('roundtrip').inventory",
+      "ok": true,
+      "detail": "get_node('VillageActivities').inventory==get_node('VillageActivities').get_meta('roundtrip').inventory"
+    },
+    {
+      "index": 257,
+      "step": "eval get_node('VillageActivities').set('beds',get_node('VillageActivities').get_meta('fixture').beds)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 258,
+      "step": "eval get_node('VillageActivities').set('inventory',get_node('VillageActivities').get_meta('fixture').inventory)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 259,
+      "step": "eval get_node('VillageActivities').set('cooking',get_node('VillageActivities').get_meta('fixture').cooking)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 260,
+      "step": "eval get_node('VillageActivities').set('dishes',get_node('VillageActivities').get_meta('fixture').dishes)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 261,
+      "step": "eval get_node('VillageActivities').set('forage_ready',get_node('VillageActivities').get_meta('fixture').forage)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 262,
+      "step": "eval get_node('VillageLife').set('apples',get_node('VillageActivities').get_meta('fixture').apples)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 263,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 264,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 265,
+      "step": "assert_no_errors",
+      "ok": true
+    }
+  ],
+  "runtime_errors": [],
+  "screenshots": []
+}

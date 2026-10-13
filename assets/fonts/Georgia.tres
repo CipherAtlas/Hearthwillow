@@ -1,0 +1,8 @@
+[gd_resource type="SystemFont" format=3 uid="uid://cqchiyb3agy3t"]
+
+[sub_resource type="SystemFont" id="SystemFont_evyou"]
+font_names = PackedStringArray("Hiragino Mincho ProN", "Noto Serif CJK JP", "Yu Mincho")
+
+[resource]
+fallbacks = Array[Font]([SubResource("SystemFont_evyou")])
+font_names = PackedStringArray("Georgia", "Hiragino Mincho ProN")

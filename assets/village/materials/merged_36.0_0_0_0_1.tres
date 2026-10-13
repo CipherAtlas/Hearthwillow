@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "Village material 36"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.16078432, 0.15294117, 0.1254902, 1)
+metallic = 0.55
+roughness = 0.6

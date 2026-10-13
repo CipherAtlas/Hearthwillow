@@ -1,0 +1,278 @@
+{
+ "name": "Four bridge crossings",
+ "passed": true,
+ "duration_s": 17.883,
+ "steps": [
+  {
+   "index": 0,
+   "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(-17.533896,3.0)))",
+   "ok": true,
+   "detail": {
+    "value": null
+   }
+  },
+  {
+   "index": 1,
+   "step": "set",
+   "ok": true,
+   "detail": {
+    "path": "/root/Hearthwillow/Player",
+    "set": [
+     "controls_blocked",
+     "velocity"
+    ]
+   }
+  },
+  {
+   "index": 2,
+   "step": "set",
+   "ok": true,
+   "detail": {
+    "path": "/root/Hearthwillow/CameraRig",
+    "set": [
+     "rotation"
+    ]
+   }
+  },
+  {
+   "index": 3,
+   "step": "wait 0.2",
+   "ok": true
+  },
+  {
+   "index": 4,
+   "step": "input",
+   "ok": true,
+   "detail": {
+    "results": [
+     "dash pressed",
+     "tapped move_right for 2.60s",
+     "dash released"
+    ],
+    "steps": 3
+   }
+  },
+  {
+   "index": 5,
+   "step": "wait 0.2",
+   "ok": true
+  },
+  {
+   "index": 6,
+   "step": "assert (get_node('Player').position.x--10.533896)*cos(0.0)-(get_node('Player').position.z-3)*sin(0.0) > 5.5",
+   "ok": true,
+   "detail": "Traverse bridge through its actual deck and bank openings"
+  },
+  {
+   "index": 7,
+   "step": "assert get_node('Player').is_on_floor()",
+   "ok": true,
+   "detail": "Remain grounded after crossing"
+  },
+  {
+   "index": 8,
+   "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(51.0,42.0)))",
+   "ok": true,
+   "detail": {
+    "value": null
+   }
+  },
+  {
+   "index": 9,
+   "step": "set",
+   "ok": true,
+   "detail": {
+    "path": "/root/Hearthwillow/Player",
+    "set": [
+     "controls_blocked",
+     "velocity"
+    ]
+   }
+  },
+  {
+   "index": 10,
+   "step": "set",
+   "ok": true,
+   "detail": {
+    "path": "/root/Hearthwillow/CameraRig",
+    "set": [
+     "rotation"
+    ]
+   }
+  },
+  {
+   "index": 11,
+   "step": "wait 0.2",
+   "ok": true
+  },
+  {
+   "index": 12,
+   "step": "input",
+   "ok": true,
+   "detail": {
+    "results": [
+     "dash pressed",
+     "tapped move_right for 2.60s",
+     "dash released"
+    ],
+    "steps": 3
+   }
+  },
+  {
+   "index": 13,
+   "step": "wait 0.2",
+   "ok": true
+  },
+  {
+   "index": 14,
+   "step": "assert (get_node('Player').position.x-58)*cos(0.0)-(get_node('Player').position.z-42)*sin(0.0) > 5.5",
+   "ok": true,
+   "detail": "Traverse town-brook-bridge through its actual deck and bank openings"
+  },
+  {
+   "index": 15,
+   "step": "assert get_node('Player').is_on_floor()",
+   "ok": true,
+   "detail": "Remain grounded after crossing"
+  },
+  {
+   "index": 16,
+   "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(51.8,-53.0)))",
+   "ok": true,
+   "detail": {
+    "value": null
+   }
+  },
+  {
+   "index": 17,
+   "step": "set",
+   "ok": true,
+   "detail": {
+    "path": "/root/Hearthwillow/Player",
+    "set": [
+     "controls_blocked",
+     "velocity"
+    ]
+   }
+  },
+  {
+   "index": 18,
+   "step": "set",
+   "ok": true,
+   "detail": {
+    "path": "/root/Hearthwillow/CameraRig",
+    "set": [
+     "rotation"
+    ]
+   }
+  },
+  {
+   "index": 19,
+   "step": "wait 0.2",
+   "ok": true
+  },
+  {
+   "index": 20,
+   "step": "input",
+   "ok": true,
+   "detail": {
+    "results": [
+     "dash pressed",
+     "tapped move_right for 2.60s",
+     "dash released"
+    ],
+    "steps": 3
+   }
+  },
+  {
+   "index": 21,
+   "step": "wait 0.2",
+   "ok": true
+  },
+  {
+   "index": 22,
+   "step": "assert (get_node('Player').position.x-58.8)*cos(0.0)-(get_node('Player').position.z--53)*sin(0.0) > 5.5",
+   "ok": true,
+   "detail": "Traverse town-farm-bridge through its actual deck and bank openings"
+  },
+  {
+   "index": 23,
+   "step": "assert get_node('Player').is_on_floor()",
+   "ok": true,
+   "detail": "Remain grounded after crossing"
+  },
+  {
+   "index": 24,
+   "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(-56.03531299655103,-31.48557141362",
+   "ok": true,
+   "detail": {
+    "value": null
+   }
+  },
+  {
+   "index": 25,
+   "step": "set",
+   "ok": true,
+   "detail": {
+    "path": "/root/Hearthwillow/Player",
+    "set": [
+     "controls_blocked",
+     "velocity"
+    ]
+   }
+  },
+  {
+   "index": 26,
+   "step": "set",
+   "ok": true,
+   "detail": {
+    "path": "/root/Hearthwillow/CameraRig",
+    "set": [
+     "rotation"
+    ]
+   }
+  },
+  {
+   "index": 27,
+   "step": "wait 0.2",
+   "ok": true
+  },
+  {
+   "index": 28,
+   "step": "input",
+   "ok": true,
+   "detail": {
+    "results": [
+     "dash pressed",
+     "tapped move_right for 2.60s",
+     "dash released"
+    ],
+    "steps": 3
+   }
+  },
+  {
+   "index": 29,
+   "step": "wait 0.2",
+   "ok": true
+  },
+  {
+   "index": 30,
+   "step": "assert (get_node('Player').position.x--58.52605)*cos(2.0317187581577523)-(get_node('Player').position.z--36.50117)*sin(2",
+   "ok": true,
+   "detail": "Traverse hill-stream-bridge through its actual deck and bank openings"
+  },
+  {
+   "index": 31,
+   "step": "assert get_node('Player').is_on_floor()",
+   "ok": true,
+   "detail": "Remain grounded after crossing"
+  },
+  {
+   "index": 32,
+   "step": "assert_no_errors",
+   "ok": true
+  }
+ ],
+ "runtime_errors": [],
+ "screenshots": []
+}

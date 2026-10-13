@@ -1,0 +1,142 @@
+{
+  "runtime_source_sha256": {
+    "scenes/main.tscn": "2485f4f49c3c0c55a30a0a5d6c16f11bc9357f8a2929370024d5b3ae40b03bc9",
+    "scenes/village_map.gd": "0a2532acbe1e430c2217d2f03adf8551097f10b0107a24b0f738b9c38f8b3503",
+    "scenes/map_visitor.gd": "0f84fea2333898ea3537e9e84b0a50c06ca08360df3edf62619572d689a3ab9b",
+    "scenes/camera.gd": "a946f7ac3d8287890bd4d987bcc205161478663ed4bc08259ce076698a7b7266",
+    "scenes/village_menus.gd": "cbc039b248bb93eabf3d54b6377e508f3a554e9f607370be7ed7cab06177c697",
+    "scenes/menus.tscn": "f61d3dc4a9a22ebf091e8d5c1f1c546b10375a62dafdfd43416a72f3d77ba2ab",
+    "scenes/village_seating.gd": "ba767a24a03b15bf9fd00416099c25a5cc6c6a1e0c88dab27b800f92fc46e319",
+    "scenes/village_race.gd": "c51ed626bbe358f5afabe671fc414e467cbdaffb298d0a5f08f190e4ce829244",
+    "scenes/pond_life.gd": "c7a103609e9ab38d7a90a077aa79e99c801e162c7740aa4428a826d67eb00928",
+    "scenes/pond_life.tscn": "125a8c5e8ac6ce8c9f03cf790cc5a6f348de7eacf57a524cdfe96a66e68fed72",
+    "scenes/quiet_places.gd": "458bc57a3437cace1f22fcf3c9ecc19af93486418fb349d9cf5220872db9d55a",
+    "scenes/village_life.gd": "d6a432bdba40b4e235ca59d857d5e1c24d6e6ef30714f9856bf3e0ab5a541ddd",
+    "assets/ui/map/Bird.svg": "804157f861776b2a9caadab395950095adff89ff265ae5ddad34b0c3ae905173",
+    "assets/ui/map/BookOpen.svg": "2f2bb9e124703ea29bf51a519f1d102878c25e7501e318d215d03b3ab080b94e",
+    "assets/ui/map/CastleTurret.svg": "6737ad04bf2623b85d364275c06042bde3d5d7b50de2c82c8eda2e14dbc07cca",
+    "assets/ui/map/Drop.svg": "637a6e0442fdac062463d8a5432ba47e8bf655f52b155d1037e33ed62db61bce",
+    "assets/ui/map/EnvelopeSimple.svg": "f9e72461f919eb1219652b4eb0593dd0dd93d92880cc0c4542c181e5266ec075",
+    "assets/ui/map/Farm.svg": "8f8a179f86bb97b2200cf8373d2ad42d69b164a99c0bd4f15b3595be11e78c6c",
+    "assets/ui/map/Fire.svg": "eaaa8b63d7d984153c13513003baeebd70e29eeeaec604e5a2215f1b732277dc",
+    "assets/ui/map/Kitchen.svg": "85ff63f325667c52bbf654beeda23f32efe3901417bd6ffc2de2152a55641a99",
+    "assets/ui/map/Leaf.svg": "5bfa256aba717751a64e0b9fa9f5de3d27504e1e134e7fa20e17fc34cd6eb4ea",
+    "assets/ui/map/Picnic.svg": "be114693a2b3b90ce62f8c2b975c8cd24b2e7199cc13e9e6fea21fcb25cf493b",
+    "assets/ui/map/Swings.svg": "8b8af66777190afd37f0ad776c88118d114377704e9a62f6b404cb91013a16d3",
+    "assets/ui/map/Timer.svg": "7a2cb11a46ef1e8e7a6589183dd1cd5440f407cc229a9d0b95fe7529da77b877"
+  },
+  "checks": {
+    "map": {
+      "passed": true,
+      "steps": 199,
+      "runtime_errors": []
+    },
+    "mouse": {
+      "passed": true,
+      "steps": 82,
+      "runtime_errors": []
+    },
+    "duck": {
+      "passed": true,
+      "steps": 67,
+      "runtime_errors": []
+    },
+    "pond": {
+      "passed": true,
+      "steps": 99,
+      "runtime_errors": []
+    },
+    "residents": {
+      "passed": true,
+      "steps": 91,
+      "runtime_errors": []
+    }
+  },
+  "redraws": {
+    "method": "CanvasItem.draw signal counts while player is idle and local actor simulation continues",
+    "samples": [
+      {
+        "actor_count": 25,
+        "actors_that_moved": 16,
+        "expanded": false,
+        "map_redraws": 0,
+        "seconds": 1.99,
+        "visitor_redraws": 0
+      },
+      {
+        "actor_count": 25,
+        "actors_that_moved": 17,
+        "expanded": true,
+        "map_redraws": 0,
+        "seconds": 1.999,
+        "visitor_redraws": 0
+      }
+    ],
+    "runtime_errors": {
+      "entries": [],
+      "last_seq": 32
+    }
+  },
+  "package": {
+    "path": "/Users/sabar/Documents/ChatGPT/hearthwillow-port/build/macos/Hearthwillow-port.app",
+    "startup_exit_code": 0,
+    "startup_log": "evidence/map-duck-package-startup.log",
+    "resource_probe": {
+      "cached_map": true,
+      "destinations": 17,
+      "dock_feeding": true,
+      "main_scene": true,
+      "map_textures": 12,
+      "mouse_capture": true,
+      "script_sha256": {
+        "res://scenes/camera.gd": "a946f7ac3d8287890bd4d987bcc205161478663ed4bc08259ce076698a7b7266",
+        "res://scenes/map_visitor.gd": "0f84fea2333898ea3537e9e84b0a50c06ca08360df3edf62619572d689a3ab9b",
+        "res://scenes/pond_life.gd": "c7a103609e9ab38d7a90a077aa79e99c801e162c7740aa4428a826d67eb00928",
+        "res://scenes/quiet_places.gd": "458bc57a3437cace1f22fcf3c9ecc19af93486418fb349d9cf5220872db9d55a",
+        "res://scenes/village_life.gd": "d6a432bdba40b4e235ca59d857d5e1c24d6e6ef30714f9856bf3e0ab5a541ddd",
+        "res://scenes/village_map.gd": "0a2532acbe1e430c2217d2f03adf8551097f10b0107a24b0f738b9c38f8b3503",
+        "res://scenes/village_menus.gd": "cbc039b248bb93eabf3d54b6377e508f3a554e9f607370be7ed7cab06177c697",
+        "res://scenes/village_race.gd": "c51ed626bbe358f5afabe671fc414e467cbdaffb298d0a5f08f190e4ce829244",
+        "res://scenes/village_seating.gd": "ba767a24a03b15bf9fd00416099c25a5cc6c6a1e0c88dab27b800f92fc46e319"
+      }
+    },
+    "packed_script_hashes_match_source": true,
+    "pck_sha256": "5ab6d8c7f090fdca23e97732986b37d00e7f209c22fb1bb74de706c8a0bab440",
+    "executable_sha256": "6135ad137facbb26cd73a5f7f7d541d334a84fc81650e870ef075cdd14a129cd",
+    "rollback": "/tmp/hearthwillow-before-map-capture-2026-10-13.zip",
+    "export_exit_code": 0,
+    "export_shutdown_warning": "66 ObjectDB instances and 31 resources retained at exporter shutdown; release startup was clean"
+  },
+  "captures": {
+    "evidence/map-rework-1080p.png": {
+      "sha256": "186ed8ceed6e87b14fd4483be43a36d74f52a796f032b6c3785b31365ccc502a",
+      "width": 1920,
+      "height": 1080
+    },
+    "evidence/map-rework-japanese-1080p.png": {
+      "sha256": "8c708a630bdeac35e62dfc92cf43fe9b421ca8c661504c5277341fe2ba6b37bf",
+      "width": 1920,
+      "height": 1080
+    },
+    "evidence/map-rework-mini-1080p.png": {
+      "sha256": "333913ad6e5ddf18f252e4b261d377e806489f42f2b4fba6ca7f27b9cc387df9",
+      "width": 1920,
+      "height": 1080
+    },
+    "evidence/duck-feeding-happy-1080p.png": {
+      "sha256": "b044b71eb519de900ebb7a60c8c9a4340b5cae694583c63ca6d9e75bc12306c2",
+      "width": 1920,
+      "height": 1080
+    },
+    "evidence/duck-feeding-japanese-1080p.png": {
+      "sha256": "343bdf9363ba9094c3692581f7beaaa0386b73d11326d88c72cb94943eaa3381",
+      "width": 1920,
+      "height": 1080
+    },
+    "evidence/duck-feeding-no-crumbs-1080p.png": {
+      "sha256": "8ae8ad693443c52ecec186d856bb05da2c1eaeeaa4ffe7b73fff9ecffc8e22e9",
+      "width": 1920,
+      "height": 1080
+    }
+  }
+}

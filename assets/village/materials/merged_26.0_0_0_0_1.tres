@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/village/texture_1.png" id="1_nk5pm"]
+
+[resource]
+resource_name = "Bridge limestone"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.7607843, 0.76862746, 0.7058823, 1)
+albedo_texture = ExtResource("1_nk5pm")
+uv1_scale = Vector3(1, -1, 1)
+uv1_offset = Vector3(0, 1, 0)

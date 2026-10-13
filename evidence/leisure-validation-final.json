@@ -1,0 +1,50 @@
+{
+  "viewport": [
+    1920,
+    1080
+  ],
+  "fps_benchmark": "deferred",
+  "scenario_steps": 1196,
+  "suites": 13,
+  "lint": {
+    "scripts": 27,
+    "scenes": 8,
+    "errors": 0,
+    "warnings": 0
+  },
+  "new_scenarios": [
+    {
+      "name": "seating",
+      "passed": true,
+      "steps": 201,
+      "evidence": "seating-final.json"
+    },
+    {
+      "name": "race",
+      "passed": true,
+      "steps": 73,
+      "evidence": "race-final.json"
+    },
+    {
+      "name": "focus",
+      "passed": true,
+      "steps": 86,
+      "evidence": "focus-final.json"
+    }
+  ],
+  "visual_evidence": [
+    "bench-seating-1080p.png",
+    "meadow-swings-1080p.png",
+    "rowan-race-1080p.png",
+    "focus-cottage-1080p.png",
+    "cottage-cat-1080p.png",
+    "leisure-release-starter-1080p.png"
+  ],
+  "release": {
+    "export_exit": 0,
+    "headless_startup_exit": 0,
+    "native_render_exit": 0,
+    "exporter_shutdown_resource_warning": true,
+    "app_runtime_errors": []
+  }
+}

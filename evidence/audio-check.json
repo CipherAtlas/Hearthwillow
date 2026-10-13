@@ -1,0 +1,9 @@
+{
+  "seconds": 8.0,
+  "rate": 48000,
+  "channels": 2,
+  "peak_dbfs": -26.352364832616303,
+  "rms_dbfs": -43.75752645067487,
+  "clipped_samples": 0,
+  "captured_in": "Godot Master bus, actual 8 second mix, music/wind/rain/stream/fire and walking; game muted externally"
+}

@@ -1,0 +1,219 @@
+{
+  "name": "Original world and garden-card growth clocks at 1080p",
+  "scene": "res://scenes/main.tscn",
+  "keep_running": true,
+  "stop_on_failure": false,
+  "steps": [
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "enter_game",
+        "args": [
+          false
+        ]
+      }
+    },
+    {
+      "assert": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
+    },
+    {
+      "assert": "get_tree().root.size.x>=1918 and get_tree().root.size.y>=1079",
+      "message": "1080p display window; allow the macOS one-pixel window frame, never a 720p override."
+    },
+    {
+      "eval": "get_node('VillageActivities').set_meta('clock_test',get_node('VillageActivities').beds.duplicate(true))"
+    },
+    {
+      "assert": "get_node('VillageActivities/Clocks').get_child_count()==22"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds.set('garden-0',{'crop':'carrot','stage':'sprout','watered':0.0})"
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "not get_node('VillageActivities/Clocks/garden-0').visible"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds.set('garden-0',{'crop':'carrot','stage':'growing','watered':get_node('VillageActivities').now()-300/2.0})"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageActivities/Clocks/garden-0').visible and not get_node('VillageActivities/Clocks/garden-0').get_node('Time').text.is_empty()"
+    },
+    {
+      "assert": "get_node('VillageActivities/Clocks/garden-0').get_node('Face').material_override.get_shader_parameter('progress')>=0.5 and get_node('VillageActivities/Clocks/garden-0').get_node('Face').material_override.get_shader_parameter('progress')<0.55"
+    },
+    {
+      "eval": "get_node('VillageActivities/Clocks/garden-0').set_meta('previous',get_node('VillageActivities/Clocks/garden-0').get_node('Time').text)"
+    },
+    {
+      "wait": 1.15
+    },
+    {
+      "assert": "get_node('VillageActivities/Clocks/garden-0').get_node('Time').text!=get_node('VillageActivities/Clocks/garden-0').get_meta('previous')"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds['garden-0'].set('watered',get_node('VillageActivities').now()-300-1)"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['garden-0'].stage=='grown' and not get_node('VillageActivities/Clocks/garden-0').visible"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds.set('garden-1',{'crop':'radish','stage':'sprout','watered':0.0})"
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "not get_node('VillageActivities/Clocks/garden-1').visible"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds.set('garden-1',{'crop':'radish','stage':'growing','watered':get_node('VillageActivities').now()-120/2.0})"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageActivities/Clocks/garden-1').visible and not get_node('VillageActivities/Clocks/garden-1').get_node('Time').text.is_empty()"
+    },
+    {
+      "assert": "get_node('VillageActivities/Clocks/garden-1').get_node('Face').material_override.get_shader_parameter('progress')>=0.5 and get_node('VillageActivities/Clocks/garden-1').get_node('Face').material_override.get_shader_parameter('progress')<0.55"
+    },
+    {
+      "eval": "get_node('VillageActivities/Clocks/garden-1').set_meta('previous',get_node('VillageActivities/Clocks/garden-1').get_node('Time').text)"
+    },
+    {
+      "wait": 1.15
+    },
+    {
+      "assert": "get_node('VillageActivities/Clocks/garden-1').get_node('Time').text!=get_node('VillageActivities/Clocks/garden-1').get_meta('previous')"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds['garden-1'].set('watered',get_node('VillageActivities').now()-120-1)"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['garden-1'].stage=='grown' and not get_node('VillageActivities/Clocks/garden-1').visible"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds.set('garden-4',{'crop':'mint','stage':'sprout','watered':0.0})"
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "not get_node('VillageActivities/Clocks/garden-4').visible"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds.set('garden-4',{'crop':'mint','stage':'growing','watered':get_node('VillageActivities').now()-180/2.0})"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageActivities/Clocks/garden-4').visible and not get_node('VillageActivities/Clocks/garden-4').get_node('Time').text.is_empty()"
+    },
+    {
+      "assert": "get_node('VillageActivities/Clocks/garden-4').get_node('Face').material_override.get_shader_parameter('progress')>=0.5 and get_node('VillageActivities/Clocks/garden-4').get_node('Face').material_override.get_shader_parameter('progress')<0.55"
+    },
+    {
+      "eval": "get_node('VillageActivities/Clocks/garden-4').set_meta('previous',get_node('VillageActivities/Clocks/garden-4').get_node('Time').text)"
+    },
+    {
+      "wait": 1.15
+    },
+    {
+      "assert": "get_node('VillageActivities/Clocks/garden-4').get_node('Time').text!=get_node('VillageActivities/Clocks/garden-4').get_meta('previous')"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds['garden-4'].set('watered',get_node('VillageActivities').now()-180-1)"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['garden-4'].stage=='grown' and not get_node('VillageActivities/Clocks/garden-4').visible"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds.set('farm-1-row-5',{'crop':'carrot','stage':'sprout','watered':0.0})"
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "not get_node('VillageActivities/Clocks/farm-1-row-5').visible"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds.set('farm-1-row-5',{'crop':'carrot','stage':'growing','watered':get_node('VillageActivities').now()-180/2.0})"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageActivities/Clocks/farm-1-row-5').visible and not get_node('VillageActivities/Clocks/farm-1-row-5').get_node('Time').text.is_empty()"
+    },
+    {
+      "assert": "get_node('VillageActivities/Clocks/farm-1-row-5').get_node('Face').material_override.get_shader_parameter('progress')>=0.5 and get_node('VillageActivities/Clocks/farm-1-row-5').get_node('Face').material_override.get_shader_parameter('progress')<0.55"
+    },
+    {
+      "eval": "get_node('VillageActivities/Clocks/farm-1-row-5').set_meta('previous',get_node('VillageActivities/Clocks/farm-1-row-5').get_node('Time').text)"
+    },
+    {
+      "wait": 1.15
+    },
+    {
+      "assert": "get_node('VillageActivities/Clocks/farm-1-row-5').get_node('Time').text!=get_node('VillageActivities/Clocks/farm-1-row-5').get_meta('previous')"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds['farm-1-row-5'].set('watered',get_node('VillageActivities').now()-180-1)"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['farm-1-row-5'].stage=='grown' and not get_node('VillageActivities/Clocks/farm-1-row-5').visible"
+    },
+    {
+      "eval": "get_node('VillageActivities').set('garden_page',true)"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds.set('garden-0',{'crop':'carrot','stage':'growing','watered':get_node('VillageActivities').now()-60})"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageActivities/UI/Garden/Content/Beds/Bed0/Content/Heading/Clock').visible"
+    },
+    {
+      "assert": "not get_node('VillageActivities/UI/Context').visible"
+    },
+    {
+      "eval": "get_node('VillageActivities').set('beds',get_node('VillageActivities').get_meta('clock_test'))"
+    },
+    {
+      "call": {
+        "path": "VillageActivities",
+        "method": "close_garden"
+      }
+    },
+    {
+      "call": {
+        "path": "VillageActivities",
+        "method": "save_state"
+      }
+    },
+    {
+      "assert": "not get_node('VillageActivities').save_error"
+    }
+  ]
+}

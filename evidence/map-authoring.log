@@ -1,0 +1,4 @@
+{"bounds":{"x":-154,"z":-107,"width":306,"height":199},"destinations":17,"svgBytes":412231}
+(node:99824) [THREE_CJS_DEPRECATED] DeprecationWarning: `require("three")` is deprecated and will be removed.
+Replace `const THREE = require("three")` with `import * as THREE from "three"`.
+(Use `node --trace-deprecation ...` to show where the warning was created)

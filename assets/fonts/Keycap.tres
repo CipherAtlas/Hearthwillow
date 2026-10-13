@@ -1,0 +1,5 @@
+[gd_resource type="SystemFont" format=3 uid="uid://joxry5r2lap6"]
+
+[resource]
+font_names = PackedStringArray("Menlo", "Consolas", "monospace")
+font_weight = 600

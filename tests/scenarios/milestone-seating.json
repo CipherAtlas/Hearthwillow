@@ -1,0 +1,760 @@
+{
+  "name": "Seven benches, five cushions, four swings and stationary ride camera at 1080p",
+  "scene": "res://scenes/main.tscn",
+  "keep_running": true,
+  "steps": [
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
+    },
+    {
+      "eval": "get_node('HUD/Menus').enter_game(false)"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageSeating').benches.size()==7"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-40.5,47.8))"
+    },
+    {
+      "assert": "get_node('VillageSeating').sit('pasture-oak-bench',0)",
+      "message": "Seat pasture-oak-bench/0 accepts proximity and locks pose."
+    },
+    {
+      "wait": 0.04
+    },
+    {
+      "assert": "get_node('Player').activity_locked and get_node('Player').position.distance_to(get_node('VillageSeating').seat_point(get_node('VillageSeating').seated,0))<.01 and abs(angle_difference(get_node('Player').visual.rotation.y,0))<.01"
+    },
+    {
+      "assert": "not get_node('VillageSeating').sit('pasture-oak-bench',0)"
+    },
+    {
+      "assert": "get_node('VillageSeating').leave()"
+    },
+    {
+      "assert": "not get_node('Player').activity_locked and get_node('VillageSeating').seated.is_empty() and get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-40.5,47.8))"
+    },
+    {
+      "assert": "get_node('VillageSeating').sit('pasture-oak-bench',1)",
+      "message": "Seat pasture-oak-bench/1 accepts proximity and locks pose."
+    },
+    {
+      "wait": 0.04
+    },
+    {
+      "assert": "get_node('Player').activity_locked and get_node('Player').position.distance_to(get_node('VillageSeating').seat_point(get_node('VillageSeating').seated,1))<.01 and abs(angle_difference(get_node('Player').visual.rotation.y,0))<.01"
+    },
+    {
+      "assert": "not get_node('VillageSeating').sit('pasture-oak-bench',1)"
+    },
+    {
+      "assert": "get_node('VillageSeating').leave()"
+    },
+    {
+      "assert": "not get_node('Player').activity_locked and get_node('VillageSeating').seated.is_empty() and get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-99.138013298989,-20.274540589655125))"
+    },
+    {
+      "assert": "get_node('VillageSeating').sit('picnic-hill-mat',0)",
+      "message": "Seat picnic-hill-mat/0 accepts proximity and locks pose."
+    },
+    {
+      "wait": 0.04
+    },
+    {
+      "assert": "get_node('Player').activity_locked and get_node('Player').position.distance_to(get_node('VillageSeating').seat_point(get_node('VillageSeating').seated,0))<.01 and abs(angle_difference(get_node('Player').visual.rotation.y,get_node('VillageSeating').facing_yaw))<.01"
+    },
+    {
+      "assert": "not get_node('VillageSeating').sit('picnic-hill-mat',0)"
+    },
+    {
+      "assert": "get_node('VillageSeating').leave()"
+    },
+    {
+      "assert": "not get_node('Player').activity_locked and get_node('VillageSeating').seated.is_empty() and get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-99.138013298989,-20.274540589655125))"
+    },
+    {
+      "assert": "get_node('VillageSeating').sit('picnic-hill-mat',1)",
+      "message": "Seat picnic-hill-mat/1 accepts proximity and locks pose."
+    },
+    {
+      "wait": 0.04
+    },
+    {
+      "assert": "get_node('Player').activity_locked and get_node('Player').position.distance_to(get_node('VillageSeating').seat_point(get_node('VillageSeating').seated,1))<.01 and abs(angle_difference(get_node('Player').visual.rotation.y,get_node('VillageSeating').facing_yaw))<.01"
+    },
+    {
+      "assert": "not get_node('VillageSeating').sit('picnic-hill-mat',1)"
+    },
+    {
+      "assert": "get_node('VillageSeating').leave()"
+    },
+    {
+      "assert": "not get_node('Player').activity_locked and get_node('VillageSeating').seated.is_empty() and get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-99.138013298989,-20.274540589655125))"
+    },
+    {
+      "assert": "get_node('VillageSeating').sit('picnic-hill-mat',2)",
+      "message": "Seat picnic-hill-mat/2 accepts proximity and locks pose."
+    },
+    {
+      "wait": 0.04
+    },
+    {
+      "assert": "get_node('Player').activity_locked and get_node('Player').position.distance_to(get_node('VillageSeating').seat_point(get_node('VillageSeating').seated,2))<.01 and abs(angle_difference(get_node('Player').visual.rotation.y,get_node('VillageSeating').facing_yaw))<.01"
+    },
+    {
+      "assert": "not get_node('VillageSeating').sit('picnic-hill-mat',2)"
+    },
+    {
+      "assert": "get_node('VillageSeating').leave()"
+    },
+    {
+      "assert": "not get_node('Player').activity_locked and get_node('VillageSeating').seated.is_empty() and get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-99.138013298989,-20.274540589655125))"
+    },
+    {
+      "assert": "get_node('VillageSeating').sit('picnic-hill-mat',3)",
+      "message": "Seat picnic-hill-mat/3 accepts proximity and locks pose."
+    },
+    {
+      "wait": 0.04
+    },
+    {
+      "assert": "get_node('Player').activity_locked and get_node('Player').position.distance_to(get_node('VillageSeating').seat_point(get_node('VillageSeating').seated,3))<.01 and abs(angle_difference(get_node('Player').visual.rotation.y,get_node('VillageSeating').facing_yaw))<.01"
+    },
+    {
+      "assert": "not get_node('VillageSeating').sit('picnic-hill-mat',3)"
+    },
+    {
+      "assert": "get_node('VillageSeating').leave()"
+    },
+    {
+      "assert": "not get_node('Player').activity_locked and get_node('VillageSeating').seated.is_empty() and get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-99.138013298989,-20.274540589655125))"
+    },
+    {
+      "assert": "get_node('VillageSeating').sit('picnic-hill-mat',4)",
+      "message": "Seat picnic-hill-mat/4 accepts proximity and locks pose."
+    },
+    {
+      "wait": 0.04
+    },
+    {
+      "assert": "get_node('Player').activity_locked and get_node('Player').position.distance_to(get_node('VillageSeating').seat_point(get_node('VillageSeating').seated,4))<.01 and abs(angle_difference(get_node('Player').visual.rotation.y,get_node('VillageSeating').facing_yaw))<.01"
+    },
+    {
+      "assert": "not get_node('VillageSeating').sit('picnic-hill-mat',4)"
+    },
+    {
+      "assert": "get_node('VillageSeating').leave()"
+    },
+    {
+      "assert": "not get_node('Player').activity_locked and get_node('VillageSeating').seated.is_empty() and get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-37,4.7))"
+    },
+    {
+      "assert": "get_node('VillageSeating').sit('bird-clearing-bench',0)",
+      "message": "Seat bird-clearing-bench/0 accepts proximity and locks pose."
+    },
+    {
+      "wait": 0.04
+    },
+    {
+      "assert": "get_node('Player').activity_locked and get_node('Player').position.distance_to(get_node('VillageSeating').seat_point(get_node('VillageSeating').seated,0))<.01 and abs(angle_difference(get_node('Player').visual.rotation.y,3.141592653589793))<.01"
+    },
+    {
+      "assert": "not get_node('VillageSeating').sit('bird-clearing-bench',0)"
+    },
+    {
+      "assert": "get_node('VillageSeating').leave()"
+    },
+    {
+      "assert": "not get_node('Player').activity_locked and get_node('VillageSeating').seated.is_empty() and get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-37,4.7))"
+    },
+    {
+      "assert": "get_node('VillageSeating').sit('bird-clearing-bench',1)",
+      "message": "Seat bird-clearing-bench/1 accepts proximity and locks pose."
+    },
+    {
+      "wait": 0.04
+    },
+    {
+      "assert": "get_node('Player').activity_locked and get_node('Player').position.distance_to(get_node('VillageSeating').seat_point(get_node('VillageSeating').seated,1))<.01 and abs(angle_difference(get_node('Player').visual.rotation.y,3.141592653589793))<.01"
+    },
+    {
+      "assert": "not get_node('VillageSeating').sit('bird-clearing-bench',1)"
+    },
+    {
+      "assert": "get_node('VillageSeating').leave()"
+    },
+    {
+      "assert": "not get_node('Player').activity_locked and get_node('VillageSeating').seated.is_empty() and get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-5.8,-17.900000000000002))"
+    },
+    {
+      "assert": "get_node('VillageSeating').sit('bench-1',0)",
+      "message": "Seat bench-1/0 accepts proximity and locks pose."
+    },
+    {
+      "wait": 0.04
+    },
+    {
+      "assert": "get_node('Player').activity_locked and get_node('Player').position.distance_to(get_node('VillageSeating').seat_point(get_node('VillageSeating').seated,0))<.01 and abs(angle_difference(get_node('Player').visual.rotation.y,3.141592653589793))<.01"
+    },
+    {
+      "assert": "not get_node('VillageSeating').sit('bench-1',0)"
+    },
+    {
+      "assert": "get_node('VillageSeating').leave()"
+    },
+    {
+      "assert": "not get_node('Player').activity_locked and get_node('VillageSeating').seated.is_empty() and get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-5.8,-17.900000000000002))"
+    },
+    {
+      "assert": "get_node('VillageSeating').sit('bench-1',1)",
+      "message": "Seat bench-1/1 accepts proximity and locks pose."
+    },
+    {
+      "wait": 0.04
+    },
+    {
+      "assert": "get_node('Player').activity_locked and get_node('Player').position.distance_to(get_node('VillageSeating').seat_point(get_node('VillageSeating').seated,1))<.01 and abs(angle_difference(get_node('Player').visual.rotation.y,3.141592653589793))<.01"
+    },
+    {
+      "assert": "not get_node('VillageSeating').sit('bench-1',1)"
+    },
+    {
+      "assert": "get_node('VillageSeating').leave()"
+    },
+    {
+      "assert": "not get_node('Player').activity_locked and get_node('VillageSeating').seated.is_empty() and get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-5.8,-20.099999999999998))"
+    },
+    {
+      "assert": "get_node('VillageSeating').sit('bench-2',0)",
+      "message": "Seat bench-2/0 accepts proximity and locks pose."
+    },
+    {
+      "wait": 0.04
+    },
+    {
+      "assert": "get_node('Player').activity_locked and get_node('Player').position.distance_to(get_node('VillageSeating').seat_point(get_node('VillageSeating').seated,0))<.01 and abs(angle_difference(get_node('Player').visual.rotation.y,0))<.01"
+    },
+    {
+      "assert": "not get_node('VillageSeating').sit('bench-2',0)"
+    },
+    {
+      "assert": "get_node('VillageSeating').leave()"
+    },
+    {
+      "assert": "not get_node('Player').activity_locked and get_node('VillageSeating').seated.is_empty() and get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-5.8,-20.099999999999998))"
+    },
+    {
+      "assert": "get_node('VillageSeating').sit('bench-2',1)",
+      "message": "Seat bench-2/1 accepts proximity and locks pose."
+    },
+    {
+      "wait": 0.04
+    },
+    {
+      "assert": "get_node('Player').activity_locked and get_node('Player').position.distance_to(get_node('VillageSeating').seat_point(get_node('VillageSeating').seated,1))<.01 and abs(angle_difference(get_node('Player').visual.rotation.y,0))<.01"
+    },
+    {
+      "assert": "not get_node('VillageSeating').sit('bench-2',1)"
+    },
+    {
+      "assert": "get_node('VillageSeating').leave()"
+    },
+    {
+      "assert": "not get_node('Player').activity_locked and get_node('VillageSeating').seated.is_empty() and get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-6.7,-19))"
+    },
+    {
+      "assert": "get_node('VillageSeating').sit('bench-3',0)",
+      "message": "Seat bench-3/0 accepts proximity and locks pose."
+    },
+    {
+      "wait": 0.04
+    },
+    {
+      "assert": "get_node('Player').activity_locked and get_node('Player').position.distance_to(get_node('VillageSeating').seat_point(get_node('VillageSeating').seated,0))<.01 and abs(angle_difference(get_node('Player').visual.rotation.y,1.5707963267948966))<.01"
+    },
+    {
+      "assert": "not get_node('VillageSeating').sit('bench-3',0)"
+    },
+    {
+      "assert": "get_node('VillageSeating').leave()"
+    },
+    {
+      "assert": "not get_node('Player').activity_locked and get_node('VillageSeating').seated.is_empty() and get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-6.7,-19))"
+    },
+    {
+      "assert": "get_node('VillageSeating').sit('bench-3',1)",
+      "message": "Seat bench-3/1 accepts proximity and locks pose."
+    },
+    {
+      "wait": 0.04
+    },
+    {
+      "assert": "get_node('Player').activity_locked and get_node('Player').position.distance_to(get_node('VillageSeating').seat_point(get_node('VillageSeating').seated,1))<.01 and abs(angle_difference(get_node('Player').visual.rotation.y,1.5707963267948966))<.01"
+    },
+    {
+      "assert": "not get_node('VillageSeating').sit('bench-3',1)"
+    },
+    {
+      "assert": "get_node('VillageSeating').leave()"
+    },
+    {
+      "assert": "not get_node('Player').activity_locked and get_node('VillageSeating').seated.is_empty() and get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(15.700000000000001,-10))"
+    },
+    {
+      "assert": "get_node('VillageSeating').sit('bench-4',0)",
+      "message": "Seat bench-4/0 accepts proximity and locks pose."
+    },
+    {
+      "wait": 0.04
+    },
+    {
+      "assert": "get_node('Player').activity_locked and get_node('Player').position.distance_to(get_node('VillageSeating').seat_point(get_node('VillageSeating').seated,0))<.01 and abs(angle_difference(get_node('Player').visual.rotation.y,1.5707963267948966))<.01"
+    },
+    {
+      "assert": "not get_node('VillageSeating').sit('bench-4',0)"
+    },
+    {
+      "assert": "get_node('VillageSeating').leave()"
+    },
+    {
+      "assert": "not get_node('Player').activity_locked and get_node('VillageSeating').seated.is_empty() and get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(15.700000000000001,-10))"
+    },
+    {
+      "assert": "get_node('VillageSeating').sit('bench-4',1)",
+      "message": "Seat bench-4/1 accepts proximity and locks pose."
+    },
+    {
+      "wait": 0.04
+    },
+    {
+      "assert": "get_node('Player').activity_locked and get_node('Player').position.distance_to(get_node('VillageSeating').seat_point(get_node('VillageSeating').seated,1))<.01 and abs(angle_difference(get_node('Player').visual.rotation.y,1.5707963267948966))<.01"
+    },
+    {
+      "assert": "not get_node('VillageSeating').sit('bench-4',1)"
+    },
+    {
+      "assert": "get_node('VillageSeating').leave()"
+    },
+    {
+      "assert": "not get_node('Player').activity_locked and get_node('VillageSeating').seated.is_empty() and get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-5.8,-14.3))"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('VillageSeating').seated.id=='bench-1'"
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "not get_node('VillageSeating').occupied()"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-46.98,38.3))"
+    },
+    {
+      "assert": "get_node('VillageSeating').ride(get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings'),0)"
+    },
+    {
+      "wait": 1
+    },
+    {
+      "input": [
+        {
+          "action": "move_forward",
+          "hold": 1.4
+        }
+      ]
+    },
+    {
+      "assert": "abs(get_node('VillageSeating').angles['sunrise-meadow-swings0'])>.02 and abs(get_node('VillageSeating').angles['sunrise-meadow-swings0'])<=deg_to_rad(78) and abs(get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings').get_node('Pivot0').rotation.x+get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings').get_node('Pivot0/Carrier').rotation.x)<.001"
+    },
+    {
+      "assert": "get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings').get_node('ViewAnchor') and get_node('Player').activity_locked"
+    },
+    {
+      "eval": "set_meta('swing_view',get_node('CameraRig').position)"
+    },
+    {
+      "input": [
+        {
+          "action": "move_back",
+          "hold": 0.8
+        }
+      ]
+    },
+    {
+      "assert": "get_node('CameraRig').position.distance_to(get_meta('swing_view'))<.06"
+    },
+    {
+      "input": [
+        {
+          "action": "jump",
+          "hold": 0.8
+        }
+      ]
+    },
+    {
+      "assert": "abs(get_node('VillageSeating').speeds['sunrise-meadow-swings0'])<2"
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked and get_node('CameraRig').follow_anchor==null"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-45.02,38.3))"
+    },
+    {
+      "assert": "get_node('VillageSeating').ride(get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings'),1)"
+    },
+    {
+      "wait": 1
+    },
+    {
+      "input": [
+        {
+          "action": "move_forward",
+          "hold": 1.4
+        }
+      ]
+    },
+    {
+      "assert": "abs(get_node('VillageSeating').angles['sunrise-meadow-swings1'])>.02 and abs(get_node('VillageSeating').angles['sunrise-meadow-swings1'])<=deg_to_rad(78) and abs(get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings').get_node('Pivot1').rotation.x+get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings').get_node('Pivot1/Carrier').rotation.x)<.001"
+    },
+    {
+      "assert": "get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/sunrise-meadow-swings').get_node('ViewAnchor') and get_node('Player').activity_locked"
+    },
+    {
+      "eval": "set_meta('swing_view',get_node('CameraRig').position)"
+    },
+    {
+      "input": [
+        {
+          "action": "move_back",
+          "hold": 0.8
+        }
+      ]
+    },
+    {
+      "assert": "get_node('CameraRig').position.distance_to(get_meta('swing_view'))<.06"
+    },
+    {
+      "input": [
+        {
+          "action": "jump",
+          "hold": 0.8
+        }
+      ]
+    },
+    {
+      "assert": "abs(get_node('VillageSeating').speeds['sunrise-meadow-swings1'])<2"
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked and get_node('CameraRig').follow_anchor==null"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-55.98,37.8))"
+    },
+    {
+      "assert": "get_node('VillageSeating').ride(get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2'),0)"
+    },
+    {
+      "wait": 1
+    },
+    {
+      "input": [
+        {
+          "action": "move_forward",
+          "hold": 1.4
+        }
+      ]
+    },
+    {
+      "assert": "abs(get_node('VillageSeating').angles['pasture-meadow-swings-20'])>.02 and abs(get_node('VillageSeating').angles['pasture-meadow-swings-20'])<=deg_to_rad(78) and abs(get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2').get_node('Pivot0').rotation.x+get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2').get_node('Pivot0/Carrier').rotation.x)<.001"
+    },
+    {
+      "assert": "get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2').get_node('ViewAnchor') and get_node('Player').activity_locked"
+    },
+    {
+      "eval": "set_meta('swing_view',get_node('CameraRig').position)"
+    },
+    {
+      "input": [
+        {
+          "action": "move_back",
+          "hold": 0.8
+        }
+      ]
+    },
+    {
+      "assert": "get_node('CameraRig').position.distance_to(get_meta('swing_view'))<.06"
+    },
+    {
+      "input": [
+        {
+          "action": "jump",
+          "hold": 0.8
+        }
+      ]
+    },
+    {
+      "assert": "abs(get_node('VillageSeating').speeds['pasture-meadow-swings-20'])<2"
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked and get_node('CameraRig').follow_anchor==null"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-54.02,37.8))"
+    },
+    {
+      "assert": "get_node('VillageSeating').ride(get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2'),1)"
+    },
+    {
+      "wait": 1
+    },
+    {
+      "input": [
+        {
+          "action": "move_forward",
+          "hold": 1.4
+        }
+      ]
+    },
+    {
+      "assert": "abs(get_node('VillageSeating').angles['pasture-meadow-swings-21'])>.02 and abs(get_node('VillageSeating').angles['pasture-meadow-swings-21'])<=deg_to_rad(78) and abs(get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2').get_node('Pivot1').rotation.x+get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2').get_node('Pivot1/Carrier').rotation.x)<.001"
+    },
+    {
+      "assert": "get_node('CameraRig').follow_anchor==get_node('VillageSeating').get_node('Swings/pasture-meadow-swings-2').get_node('ViewAnchor') and get_node('Player').activity_locked"
+    },
+    {
+      "eval": "set_meta('swing_view',get_node('CameraRig').position)"
+    },
+    {
+      "input": [
+        {
+          "action": "move_back",
+          "hold": 0.8
+        }
+      ]
+    },
+    {
+      "assert": "get_node('CameraRig').position.distance_to(get_meta('swing_view'))<.06"
+    },
+    {
+      "input": [
+        {
+          "action": "jump",
+          "hold": 0.8
+        }
+      ]
+    },
+    {
+      "assert": "abs(get_node('VillageSeating').speeds['pasture-meadow-swings-21'])<2"
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "not get_node('VillageSeating').occupied() and not get_node('Player').activity_locked and get_node('CameraRig').follow_anchor==null"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-99.1380133,-20.2745406))"
+    },
+    {
+      "wait": 0.25
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('VillageSeating').seated.get('id','')=='picnic-hill-mat'"
+    },
+    {
+      "input": [
+        {
+          "action": "talk",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageSeating').picnic_basket_open and get_node('VillageActivities').panel.visible"
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "not get_node('VillageSeating').picnic_basket_open and get_node('VillageSeating').occupied()"
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "not get_node('VillageSeating').occupied()"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-5.8,-14.3))"
+    },
+    {
+      "set": {
+        "path": "CameraRig",
+        "props": {
+          "desired_yaw": 0,
+          "desired_pitch": 0.3,
+          "distance": 4
+        }
+      }
+    },
+    {
+      "wait": 1.5
+    },
+    {
+      "eval": "get_tree().root.grab_focus()"
+    },
+    {
+      "input": [
+        {
+          "release_all": true
+        },
+        {
+          "click": [
+            837,
+            560
+          ]
+        }
+      ]
+    },
+    {
+      "assert": "get_node('VillageSeating').seated.get('id','')=='bench-1' and get_node('VillageSeating').seat_index==1",
+      "message": "Native pointer selects the individual bench seat without mouse capture."
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert_no_errors": true
+    }
+  ]
+}

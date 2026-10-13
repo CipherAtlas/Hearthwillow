@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/original_7.gdshader" id="1_5hyc8"]
+
+[resource]
+resource_name = "Village material 7"
+render_priority = 0
+shader = ExtResource("1_5hyc8")

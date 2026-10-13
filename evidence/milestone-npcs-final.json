@@ -1,0 +1,685 @@
+{
+  "name": "Local residents, dogs, owls and dove feeding",
+  "passed": true,
+  "duration_s": 10.175,
+  "steps": [
+    {
+      "index": 0,
+      "step": "assert get_viewport().get_texture().get_size()==Vector2(1920,1080)",
+      "ok": true,
+      "detail": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
+    },
+    {
+      "index": 1,
+      "step": "assert get_tree().root.size.x>=1918 and get_tree().root.size.y>=1079",
+      "ok": true,
+      "detail": "1080p display window; allow the macOS one-pixel window frame, never a 720p override."
+    },
+    {
+      "index": 2,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 3,
+      "step": "set",
+      "ok": true,
+      "detail": {
+        "path": "/root/Hearthwillow/CameraRig",
+        "set": [
+          "desired_pitch",
+          "desired_yaw",
+          "distance"
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "step": "eval get_node('Village/Actors/pip').set('chatting',30)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 5,
+      "step": "eval get_node('Player').set('position',get_node('Village/Actors/pip').position+Vector3(0,0,1.4))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 6,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 7,
+      "step": "set",
+      "ok": true,
+      "detail": {
+        "path": "/root/Hearthwillow/Player",
+        "set": [
+          "velocity"
+        ]
+      }
+    },
+    {
+      "index": 8,
+      "step": "wait 0.35",
+      "ok": true
+    },
+    {
+      "index": 9,
+      "step": "assert get_node('VillageLife').nearest.actor_id == 'pip'",
+      "ok": true,
+      "detail": "get_node('VillageLife').nearest.actor_id == 'pip'"
+    },
+    {
+      "index": 10,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped talk for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 11,
+      "step": "assert get_node('HUD/Speech/Resident0/Content/Line').text.contains('heart-shaped leaf')",
+      "ok": true,
+      "detail": "Pip speaks the original dialogue"
+    },
+    {
+      "index": 12,
+      "step": "wait 0.12",
+      "ok": true
+    },
+    {
+      "index": 13,
+      "step": "assert get_node('HUD/Speech/Resident0').visible",
+      "ok": true,
+      "detail": "Pip actual overhead panel appears"
+    },
+    {
+      "index": 14,
+      "step": "assert abs(get_node('HUD/Speech/Resident0').size.x-290) < .1",
+      "ok": true,
+      "detail": "Published desktop width retained"
+    },
+    {
+      "index": 15,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped companion for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 16,
+      "step": "assert get_node('Village/Actors/pip').following",
+      "ok": true,
+      "detail": "Pip accepts a companion invitation"
+    },
+    {
+      "index": 17,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped move_forward for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 18,
+      "step": "wait 0.8",
+      "ok": true
+    },
+    {
+      "index": 19,
+      "step": "assert get_node('Village/Actors/pip').distance_walked > .2",
+      "ok": true,
+      "detail": "Invited companion walks"
+    },
+    {
+      "index": 20,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped companion for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 21,
+      "step": "assert not get_node('Village/Actors/pip').following",
+      "ok": true,
+      "detail": "Companion can be dismissed"
+    },
+    {
+      "index": 22,
+      "step": "eval get_node('Village/Actors/puppy-mochi').set('chatting',30)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 23,
+      "step": "eval get_node('Player').set('position',get_node('Village/Actors/puppy-mochi').position+Vector3(0,0,1.4))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 24,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 25,
+      "step": "set",
+      "ok": true,
+      "detail": {
+        "path": "/root/Hearthwillow/Player",
+        "set": [
+          "velocity"
+        ]
+      }
+    },
+    {
+      "index": 26,
+      "step": "wait 0.35",
+      "ok": true
+    },
+    {
+      "index": 27,
+      "step": "assert get_node('VillageLife').nearest.actor_id == 'puppy-mochi'",
+      "ok": true,
+      "detail": "get_node('VillageLife').nearest.actor_id == 'puppy-mochi'"
+    },
+    {
+      "index": 28,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 29,
+      "step": "assert get_node('Village/Actors/puppy-mochi').action == 'pet'",
+      "ok": true,
+      "detail": "Dog responds to petting"
+    },
+    {
+      "index": 30,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped puppy_sit for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 31,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 32,
+      "step": "assert get_node('Village/Actors/puppy-mochi').animation_player.current_animation.ends_with('sit')",
+      "ok": true,
+      "detail": "Original dog sit animation plays"
+    },
+    {
+      "index": 33,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped puppy_dance for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 34,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 35,
+      "step": "assert get_node('Village/Actors/puppy-mochi').animation_player.current_animation.ends_with('dance')",
+      "ok": true,
+      "detail": "Original dog dance animation plays"
+    },
+    {
+      "index": 36,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped puppy_spin for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 37,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 38,
+      "step": "assert get_node('Village/Actors/puppy-mochi').animation_player.current_animation.ends_with('spin')",
+      "ok": true,
+      "detail": "Original dog spin animation plays"
+    },
+    {
+      "index": 39,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped puppy_bow for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 40,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 41,
+      "step": "assert get_node('Village/Actors/puppy-mochi').animation_player.current_animation.ends_with('bow')",
+      "ok": true,
+      "detail": "Original dog bow animation plays"
+    },
+    {
+      "index": 42,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped puppy_wave for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 43,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 44,
+      "step": "assert get_node('Village/Actors/puppy-mochi').animation_player.current_animation.ends_with('wave')",
+      "ok": true,
+      "detail": "Original dog wave animation plays"
+    },
+    {
+      "index": 45,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped puppy_roll for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 46,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 47,
+      "step": "assert get_node('Village/Actors/puppy-mochi').animation_player.current_animation.ends_with('roll')",
+      "ok": true,
+      "detail": "Original dog roll animation plays"
+    },
+    {
+      "index": 48,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped puppy_follow for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 49,
+      "step": "assert get_node('Village/Actors/puppy-mochi').following",
+      "ok": true,
+      "detail": "Dog follows"
+    },
+    {
+      "index": 50,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped puppy_home for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 51,
+      "step": "assert not get_node('Village/Actors/puppy-mochi').following and get_node('Village/Actors/puppy-mochi').waypoint == 0",
+      "ok": true,
+      "detail": "Dog heads back to its home route"
+    },
+    {
+      "index": 52,
+      "step": "eval get_node('Village/Actors/owl-brown-1').set('chatting',30)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 53,
+      "step": "eval get_node('Player').set('position',get_node('Village/Actors/owl-brown-1').position+Vector3(0,0,1.4))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 54,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 55,
+      "step": "set",
+      "ok": true,
+      "detail": {
+        "path": "/root/Hearthwillow/Player",
+        "set": [
+          "velocity"
+        ]
+      }
+    },
+    {
+      "index": 56,
+      "step": "wait 0.35",
+      "ok": true
+    },
+    {
+      "index": 57,
+      "step": "assert get_node('VillageLife').nearest.actor_id == 'owl-brown-1'",
+      "ok": true,
+      "detail": "get_node('VillageLife').nearest.actor_id == 'owl-brown-1'"
+    },
+    {
+      "index": 58,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped bread for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 59,
+      "step": "assert get_node('VillageLife').owl_treats == 3",
+      "ok": true,
+      "detail": "Treats remain reachable beside the owls"
+    },
+    {
+      "index": 60,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped talk for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 61,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 62,
+      "step": "assert get_node('VillageLife').owl_treats == 2 and get_node('Village/Actors/owl-brown-1').animation_player.current_anima",
+      "ok": true,
+      "detail": "Owl consumes one treat and plays feeding animation"
+    },
+    {
+      "index": 63,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped talk for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 64,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 65,
+      "step": "assert get_node('VillageLife').owl_treats == 2 and get_node('Village/Actors/owl-brown-1').action == 'eat'",
+      "ok": true,
+      "detail": "Repeated actions cannot consume extra food or interrupt the meal"
+    },
+    {
+      "index": 66,
+      "step": "eval get_node('Village/Actors/maple').set('chatting',30)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 67,
+      "step": "eval get_node('Player').set('position',get_node('Village/Actors/maple').position+Vector3(0,0,1.4))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 68,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 69,
+      "step": "set",
+      "ok": true,
+      "detail": {
+        "path": "/root/Hearthwillow/Player",
+        "set": [
+          "velocity"
+        ]
+      }
+    },
+    {
+      "index": 70,
+      "step": "wait 0.35",
+      "ok": true
+    },
+    {
+      "index": 71,
+      "step": "assert get_node('VillageLife').nearest.actor_id == 'maple'",
+      "ok": true,
+      "detail": "get_node('VillageLife').nearest.actor_id == 'maple'"
+    },
+    {
+      "index": 72,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped bread for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 73,
+      "step": "assert get_node('VillageLife').crumbs == 1",
+      "ok": true,
+      "detail": "Maple gives crumbs"
+    },
+    {
+      "index": 74,
+      "step": "eval get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(-37,4)))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 75,
+      "step": "set",
+      "ok": true,
+      "detail": {
+        "path": "/root/Hearthwillow/VillageFlock",
+        "set": [
+          "age",
+          "flight"
+        ]
+      }
+    },
+    {
+      "index": 76,
+      "step": "wait 0.35",
+      "ok": true
+    },
+    {
+      "index": 77,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped bread for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 78,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 79,
+      "step": "assert get_node('VillageLife').crumbs == 0 and get_node('VillageFlock').served and get_node('VillageFlock').status == 'e",
+      "ok": true,
+      "detail": "Flock eats offered crumbs"
+    },
+    {
+      "index": 80,
+      "step": "assert get_node('VillageFlock/Crumbs').visible",
+      "ok": true,
+      "detail": "Serving appears"
+    },
+    {
+      "index": 81,
+      "step": "set",
+      "ok": true,
+      "detail": {
+        "path": "/root/Hearthwillow/VillageFlock",
+        "set": [
+          "meal_age"
+        ]
+      }
+    },
+    {
+      "index": 82,
+      "step": "wait 0.2",
+      "ok": true
+    },
+    {
+      "index": 83,
+      "step": "assert get_node('VillageFlock').status == 'happy'",
+      "ok": true,
+      "detail": "Fed flock becomes happy"
+    },
+    {
+      "index": 84,
+      "step": "set",
+      "ok": true,
+      "detail": {
+        "path": "/root/Hearthwillow/VillageFlock",
+        "set": [
+          "meal_age"
+        ]
+      }
+    },
+    {
+      "index": 85,
+      "step": "wait 0.2",
+      "ok": true
+    },
+    {
+      "index": 86,
+      "step": "assert get_node('VillageFlock').flight and not get_node('VillageFlock').served",
+      "ok": true,
+      "detail": "Flock takes off after its meal"
+    },
+    {
+      "index": 87,
+      "step": "assert_no_errors",
+      "ok": true
+    }
+  ],
+  "runtime_errors": [],
+  "screenshots": []
+}

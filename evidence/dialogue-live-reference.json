@@ -1,0 +1,42 @@
+{
+  "url": "https://cosy.sabarg.com/",
+  "checked": "2026-10-12",
+  "desktop": {
+    "width": 290,
+    "padding": [
+      17,
+      18,
+      10,
+      18
+    ],
+    "background": "#293c33f7",
+    "border": "#eadcbb52",
+    "radius": 12,
+    "dialogue_font": "Georgia",
+    "size": 18,
+    "line_height": 26.1,
+    "footer_font": "Outfit",
+    "footer_size": 13,
+    "name_size": 14,
+    "button_height": 44,
+    "key_size": [
+      24,
+      24
+    ]
+  },
+  "animal": {
+    "background": "#fff8ed",
+    "color": "#665058",
+    "border": "#f6d6dc",
+    "radius": 20,
+    "font": "Georgia",
+    "size": 18,
+    "max_width": 270,
+    "padding": [
+      12,
+      18
+    ]
+  },
+  "placement": "head anchors, line of sight, up to two residents, HUD and bubble avoidance, compact after speech expiry",
+  "limits": "Native text rasterization can differ from CSS. Tea/activity actions are outside this first milestone."
+}

@@ -1,0 +1,354 @@
+{
+  "name": "Private focus cottage, session controls, persistence, cat and map return at 1080p",
+  "scene": "res://scenes/main.tscn",
+  "keep_running": true,
+  "stop_on_failure": false,
+  "steps": [
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
+    },
+    {
+      "eval": "get_node('HUD/Menus').enter_game(false)"
+    },
+    {
+      "eval": "get_node('FocusCottage').set_meta('fixture',{'minutes':get_node('FocusCottage').minutes,'break_minutes':get_node('FocusCottage').break_minutes,'intention':get_node('FocusCottage').intention,'remaining':get_node('FocusCottage').remaining,'running':get_node('FocusCottage').running,'done':get_node('FocusCottage').done,'mode':get_node('FocusCottage').mode,'deadline':get_node('FocusCottage').deadline})"
+    },
+    {
+      "eval": "set_meta('return_view',Vector3(get_node('CameraRig').desired_yaw,get_node('CameraRig').desired_pitch,get_node('CameraRig').distance))"
+    },
+    {
+      "eval": "get_node('VillageSound').set('soundtrack',0)"
+    },
+    {
+      "eval": "get_node('VillageSound').toggle_sound()"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel(0)"
+    },
+    {
+      "wait": 0.4
+    },
+    {
+      "assert": "get_node('FocusCottage').inside and get_node('Player').activity_locked and get_node('FocusCottage').camera.current and not get_node('CameraRig').is_processing()"
+    },
+    {
+      "assert": "get_node('FocusCottage').steam.size()==3 and get_node('FocusCottage').get_node('Window').size==Vector2i(400,345) and get_node('FocusCottage').get_node('Camera').cull_mask==4 and get_node('HUD/VillageMap').visible"
+    },
+    {
+      "assert": "not get_node('Village/Actors/rowan').visible and not get_node('HUD/Hints').visible"
+    },
+    {
+      "input": [
+        {
+          "action": "activity_2",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('FocusCottage').minutes==50 and get_node('FocusCottage').break_minutes==10 and get_node('FocusCottage').remaining==3000"
+    },
+    {
+      "input": [
+        {
+          "action": "activity_3",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('FocusCottage').minutes==10 and get_node('FocusCottage').break_minutes==2 and get_node('FocusCottage').remaining==600"
+    },
+    {
+      "eval": "get_tree().root.grab_focus()"
+    },
+    {
+      "eval": "get_node('FocusCottage').get_node('UI/Session/Content/Actions/Begin').warp_mouse(get_node('FocusCottage').get_node('UI/Session/Content/Actions/Begin').size/2)"
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "input": [
+        {
+          "click_node": "FocusCottage/UI/Session/Content/Actions/Begin"
+        }
+      ]
+    },
+    {
+      "assert": "get_node('FocusCottage').running and get_node('FocusCottage').deadline>get_node('FocusCottage').now() and not get_node('FocusCottage').get_node('UI/Session/Content/Presets').visible"
+    },
+    {
+      "wait": 1
+    },
+    {
+      "assert": "get_node('VillageSound').current_track==3 and get_node('VillageSound/Wind').volume_db < -58 and not get_node('VillageSound/Birds').playing",
+      "message": "Focus uses Quiet Village 3, source shelter gain and no outdoor bird calls."
+    },
+    {
+      "wait": 1.2
+    },
+    {
+      "input": [
+        {
+          "action": "jump",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "not get_node('FocusCottage').running and get_node('FocusCottage').remaining<600 and get_node('FocusCottage').remaining>595"
+    },
+    {
+      "eval": "get_node('FocusCottage').save_session()"
+    },
+    {
+      "eval": "get_node('FocusCottage').set('remaining',123)"
+    },
+    {
+      "eval": "get_node('FocusCottage').load_session()"
+    },
+    {
+      "assert": "get_node('FocusCottage').remaining>595 and not get_node('FocusCottage').running"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_activity",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "not get_node('FocusCottage').controls.visible and get_node('FocusCottage').get_node('UI/Hide').visible"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_activity",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('FocusCottage').controls.visible"
+    },
+    {
+      "input": [
+        {
+          "action": "jump",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "eval": "get_node('FocusCottage').set('deadline',get_node('FocusCottage').now()+1)"
+    },
+    {
+      "wait": 1.4
+    },
+    {
+      "assert": "get_node('FocusCottage').done and not get_node('FocusCottage').running and get_node('FocusCottage').remaining==0 and get_node('FocusCottage').get_node('UI/Session/Content/Break').visible"
+    },
+    {
+      "assert": "get_node('FocusCottage/Chime').playing and get_node('FocusCottage/Chime').stream.resource_path=='res://assets/audio/focus-chime.wav'"
+    },
+    {
+      "input": [
+        {
+          "action": "bread",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('FocusCottage').mode=='break' and get_node('FocusCottage').remaining==120 and not get_node('FocusCottage').done"
+    },
+    {
+      "input": [
+        {
+          "action": "unstuck",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "eval": "get_node('FocusCottage').toggle_options()"
+    },
+    {
+      "assert": "get_node('FocusCottage').get_node('UI/Session/Content/Fields').visible"
+    },
+    {
+      "eval": "get_node('FocusCottage').get_node('UI/Session/Content/Fields/Intention').grab_focus()"
+    },
+    {
+      "input": [
+        {
+          "text": "A quiet session"
+        }
+      ]
+    },
+    {
+      "assert": "get_node('FocusCottage').intention=='A quiet session' and not get_node('FocusCottage').running"
+    },
+    {
+      "input": [
+        {
+          "key": "Space",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "not get_node('FocusCottage').running",
+      "message": "Typing spaces in intention does not start a session."
+    },
+    {
+      "eval": "get_node('FocusCottage').get_node('UI/Session/Content/Actions/Begin').grab_focus()"
+    },
+    {
+      "eval": "get_node('FocusCottage').toggle_options()"
+    },
+    {
+      "eval": "get_node('FocusCottage/Cat').set('position',Vector3(-.48,1.08,-1.69))"
+    },
+    {
+      "call": {
+        "path": "FocusCottage/Cat",
+        "method": "begin",
+        "args": [
+          "ask",
+          24
+        ]
+      }
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('FocusCottage').get_node('UI/Pet').visible and get_node('FocusCottage').get_node('UI/AnimalBubble').visible"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('FocusCottage/Cat').state=='pet'"
+    },
+    {
+      "assert": "get_node('VillageSound/Animals').stream.resource_path=='res://assets/audio/purr.mp3' and get_node('VillageSound/Animals').playing"
+    },
+    {
+      "eval": "get_node('FocusCottage').set('orbit',Vector2(.3,.2))"
+    },
+    {
+      "wait": 0.5
+    },
+    {
+      "assert": "get_node('FocusCottage').camera.position.x>=-3.5 and get_node('FocusCottage').camera.position.x<=3.5 and get_node('FocusCottage').camera.position.y<=3.9 and get_node('FocusCottage').camera.position.z<=3.5"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_map",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('HUD/VillageMap').expanded and get_node('HUD/VillageMap').visible and not get_node('FocusCottage').controls.visible"
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "not get_node('HUD/VillageMap').expanded and get_node('FocusCottage').inside"
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "not get_node('FocusCottage').inside and not get_node('Player').activity_locked and get_node('CameraRig').camera.current and get_node('CameraRig').is_processing() and get_node('Village/Actors/rowan').visible"
+    },
+    {
+      "assert": "get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "eval": "get_node('FocusCottage').enter()"
+    },
+    {
+      "input": [
+        {
+          "action": "jump",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('FocusCottage').running"
+    },
+    {
+      "eval": "get_node('FocusCottage').leave()"
+    },
+    {
+      "eval": "get_node('FocusCottage').set('deadline',get_node('FocusCottage').now()+1)"
+    },
+    {
+      "wait": 1.4
+    },
+    {
+      "assert": "get_node('FocusCottage').done and not get_node('FocusCottage').inside",
+      "message": "Absolute timer completes after leaving the cottage."
+    },
+    {
+      "eval": "get_node('FocusCottage').set('minutes',get_node('FocusCottage').get_meta('fixture')['minutes'])"
+    },
+    {
+      "eval": "get_node('FocusCottage').set('break_minutes',get_node('FocusCottage').get_meta('fixture')['break_minutes'])"
+    },
+    {
+      "eval": "get_node('FocusCottage').set('intention',get_node('FocusCottage').get_meta('fixture')['intention'])"
+    },
+    {
+      "eval": "get_node('FocusCottage').set('remaining',get_node('FocusCottage').get_meta('fixture')['remaining'])"
+    },
+    {
+      "eval": "get_node('FocusCottage').set('running',get_node('FocusCottage').get_meta('fixture')['running'])"
+    },
+    {
+      "eval": "get_node('FocusCottage').set('done',get_node('FocusCottage').get_meta('fixture')['done'])"
+    },
+    {
+      "eval": "get_node('FocusCottage').set('mode',get_node('FocusCottage').get_meta('fixture')['mode'])"
+    },
+    {
+      "eval": "get_node('FocusCottage').set('deadline',get_node('FocusCottage').get_meta('fixture')['deadline'])"
+    },
+    {
+      "eval": "get_node('FocusCottage').save_session()"
+    },
+    {
+      "assert_no_errors": true
+    }
+  ]
+}

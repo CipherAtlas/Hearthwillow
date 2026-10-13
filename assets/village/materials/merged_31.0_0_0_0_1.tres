@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/village/texture_5.png" id="1_dgcdr"]
+
+[resource]
+resource_name = "Village material 31"
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.972549, 0.90588236, 1)
+albedo_texture = ExtResource("1_dgcdr")
+roughness = 0.3
+emission_enabled = true
+emission = Color(1, 0.8156863, 0.5372549, 1)
+emission_energy_multiplier = 0.12
+uv1_scale = Vector3(1, -1, 1)
+uv1_offset = Vector3(0, 1, 0)

@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/surface.gdshader" id="1_secc8"]
+[ext_resource type="Texture2D" path="res://assets/village/texture_0.png" id="2_2ac3p"]
+
+[resource]
+resource_name = "Village material 4"
+render_priority = 0
+shader = ExtResource("1_secc8")
+shader_parameter/tint = Color(1, 1, 1, 1)
+shader_parameter/surface_texture = ExtResource("2_2ac3p")
+shader_parameter/shoulder_texture = ExtResource("2_2ac3p")
+shader_parameter/has_texture = true
+shader_parameter/vertex_colors = true
+shader_parameter/foot_shade = false
+shader_parameter/surface_mode = 1
+shader_parameter/uv_scale = Vector2(48, -48)
+shader_parameter/uv_offset = Vector2(0, 1)
+shader_parameter/surface_roughness = 1.0

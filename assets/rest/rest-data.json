@@ -1,0 +1,172 @@
+{
+  "benches": [
+    {
+      "id": "pasture-oak-bench",
+      "x": -40.5,
+      "z": 46,
+      "facing": 0,
+      "seatHeight": 1.42723,
+      "birdClearing": false,
+      "hitBox": {
+        "min": [
+          -1.1,
+          0.72723,
+          -0.4
+        ],
+        "max": [
+          1.1,
+          2.07723,
+          0.4
+        ]
+      }
+    },
+    {
+      "id": "picnic-hill-mat",
+      "x": -97.34486284242385,
+      "z": -20.11766025270934,
+      "facing": -1.6580627893946132,
+      "seatHeight": 24.24,
+      "seatSpacing": 0.9,
+      "seatCount": 5,
+      "birdClearing": false,
+      "hitBox": {
+        "min": [
+          -2.8,
+          24,
+          -0.6
+        ],
+        "max": [
+          2.8,
+          24.3,
+          0.6
+        ]
+      }
+    },
+    {
+      "id": "bird-clearing-bench",
+      "x": -37,
+      "z": 6.5,
+      "facing": 3.141592653589793,
+      "seatHeight": 0.47,
+      "birdClearing": true,
+      "hitBox": {
+        "min": [
+          -1.25,
+          0,
+          -0.4
+        ],
+        "max": [
+          1.25,
+          1.12,
+          0.4
+        ]
+      }
+    },
+    {
+      "id": "bench-1",
+      "x": -5.8,
+      "z": -16.1,
+      "facing": 3.141592653589793,
+      "seatHeight": 0.7,
+      "birdClearing": false,
+      "hitBox": {
+        "min": [
+          -1.1,
+          0,
+          -0.4
+        ],
+        "max": [
+          1.1,
+          1.35,
+          0.4
+        ]
+      }
+    },
+    {
+      "id": "bench-2",
+      "x": -5.8,
+      "z": -21.9,
+      "facing": 0,
+      "seatHeight": 0.7,
+      "birdClearing": false,
+      "hitBox": {
+        "min": [
+          -1.1,
+          0,
+          -0.4
+        ],
+        "max": [
+          1.1,
+          1.35,
+          0.4
+        ]
+      }
+    },
+    {
+      "id": "bench-3",
+      "x": -8.5,
+      "z": -19,
+      "facing": 1.5707963267948966,
+      "seatHeight": 0.7,
+      "birdClearing": false,
+      "hitBox": {
+        "min": [
+          -1.1,
+          0,
+          -0.4
+        ],
+        "max": [
+          1.1,
+          1.35,
+          0.4
+        ]
+      }
+    },
+    {
+      "id": "bench-4",
+      "x": 13.9,
+      "z": -10,
+      "facing": 1.5707963267948966,
+      "seatHeight": 0.7,
+      "birdClearing": false,
+      "hitBox": {
+        "min": [
+          -1.1,
+          0,
+          -0.4
+        ],
+        "max": [
+          1.1,
+          1.35,
+          0.4
+        ]
+      }
+    }
+  ],
+  "swings": [
+    {
+      "id": "sunrise-meadow-swings",
+      "x": -46,
+      "y": 0.015,
+      "z": 36.5,
+      "yaw": 0,
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "pasture-meadow-swings-2",
+      "x": -55,
+      "y": 0,
+      "z": 36,
+      "yaw": 0,
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    }
+  ]
+}

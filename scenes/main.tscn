@@ -1,0 +1,4133 @@
+[gd_scene format=3 uid="uid://hknld7dfmst8"]
+
+[ext_resource type="PackedScene" uid="uid://cvebsjgfk2kdv" path="res://scenes/village.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2"]
+[ext_resource type="Script" uid="uid://bi53hatc6p2br" path="res://scenes/world_surface.gd" id="3"]
+[ext_resource type="Script" uid="uid://ctdad58aqgrob" path="res://scenes/camera.gd" id="4"]
+[ext_resource type="Script" uid="uid://cx3nxk7qh6ipa" path="res://scenes/village_sound.gd" id="5"]
+[ext_resource type="Script" uid="uid://d03cp7p2ti0fp" path="res://scenes/village_map.gd" id="6"]
+[ext_resource type="Sky" uid="uid://d3h4e1f27u5yx" path="res://assets/village/sky.tres" id="7"]
+[ext_resource type="Theme" uid="uid://cl8xytnmv3fqs" path="res://scenes/village_theme.tres" id="8"]
+[ext_resource type="AudioStream" uid="uid://cc2txqb64rgot" path="res://assets/audio/quiet-village-1.mp3" id="9"]
+[ext_resource type="AudioStream" uid="uid://chh3hot5aal7u" path="res://assets/audio/wind.wav" id="10"]
+[ext_resource type="AudioStream" uid="uid://hd6d4123up6j" path="res://assets/audio/stream-loop.mp3" id="11"]
+[ext_resource type="AudioStream" uid="uid://d4d8md0yfvx8j" path="res://assets/audio/fire-loop.mp3" id="12"]
+[ext_resource type="AudioStream" uid="uid://cr3txsa633chl" path="res://assets/audio/step_grass_0.wav" id="13"]
+[ext_resource type="AudioStream" uid="uid://3bbhta5wa5ys" path="res://assets/audio/rain-loop.mp3" id="14"]
+[ext_resource type="Script" uid="uid://r48w7d4s4vhx" path="res://scenes/release_benchmark.gd" id="15"]
+[ext_resource type="Script" uid="uid://dov5hi31lv2c4" path="res://scenes/village_life.gd" id="16"]
+[ext_resource type="Script" uid="uid://dgtc7ks4ofyx3" path="res://scenes/village_dialogue.gd" id="17_0ld40"]
+[ext_resource type="Script" uid="uid://bejotly6fgpp7" path="res://scenes/village_flock.gd" id="17_muem4"]
+[ext_resource type="FontFile" uid="uid://bsawl3pyomraa" path="res://assets/fonts/Outfit.tres" id="18_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://brnqx2ucu5508" path="res://scenes/menus.tscn" id="19_yc10j"]
+[ext_resource type="Texture2D" uid="uid://bfx75w1dcr63x" path="res://assets/ui/Basket.svg" id="26_c6pm6"]
+[ext_resource type="Texture2D" uid="uid://btpvpc7x0qkxm" path="res://assets/ui/GearSix.svg" id="27_5he1u"]
+[ext_resource type="Shader" uid="uid://1c2ywkaa5av4" path="res://assets/ui/context_blur.gdshader" id="28_pibwh"]
+[ext_resource type="Texture2D" uid="uid://dsx8ya8pnrmda" path="res://assets/ui/PawPrint.svg" id="28_qkpxi"]
+[ext_resource type="Texture2D" uid="uid://b6crcg58ighbl" path="res://assets/ui/X.svg" id="29_fuf3a"]
+[ext_resource type="Script" uid="uid://ysg6i0o1klni" path="res://scenes/interaction_button.gd" id="30_pibwh"]
+[ext_resource type="StyleBox" uid="uid://bow5e54yvrvk2" path="res://scenes/interaction_keycap.tres" id="31_c6pm6"]
+[ext_resource type="SystemFont" uid="uid://joxry5r2lap6" path="res://assets/fonts/Keycap.tres" id="32_5he1u"]
+[ext_resource type="PackedScene" uid="uid://yymdlkwimub6" path="res://scenes/activities.tscn" id="32_qkpxi"]
+[ext_resource type="Texture2D" uid="uid://pycarw2pafql" path="res://assets/ui/CaretDown.svg" id="33_5poiv"]
+[ext_resource type="PackedScene" uid="uid://4p6rifccmjkq" path="res://scenes/seating.tscn" id="39_cjqg0"]
+[ext_resource type="PackedScene" uid="uid://odo4srg1toap" path="res://scenes/race.tscn" id="41_vchkt"]
+[ext_resource type="PackedScene" uid="uid://bc4igqebjehxp" path="res://scenes/focus_cottage.tscn" id="43_txyw0"]
+[ext_resource type="Texture2D" uid="uid://cy4vkgii1qvbn" path="res://assets/village/map-art.svg" id="map_art"]
+[ext_resource type="Texture2D" uid="uid://54f420oixq7k" path="res://assets/ui/map/Bird.svg" id="map_Bird"]
+[ext_resource type="Texture2D" uid="uid://1vqqk31yguxk" path="res://assets/ui/map/BookOpen.svg" id="map_BookOpen"]
+[ext_resource type="Texture2D" uid="uid://y67rhwap0bqj" path="res://assets/ui/map/CastleTurret.svg" id="map_CastleTurret"]
+[ext_resource type="Texture2D" uid="uid://cornqyh7fbhxq" path="res://assets/ui/map/Drop.svg" id="map_Drop"]
+[ext_resource type="Texture2D" uid="uid://c6uye5osopjvn" path="res://assets/ui/map/EnvelopeSimple.svg" id="map_EnvelopeSimple"]
+[ext_resource type="Texture2D" uid="uid://co6xpyow2bc1f" path="res://assets/ui/map/Farm.svg" id="map_Farm"]
+[ext_resource type="Texture2D" uid="uid://cmi654iiwwqm4" path="res://assets/ui/map/Fire.svg" id="map_Fire"]
+[ext_resource type="Texture2D" uid="uid://c5fprot4ix77p" path="res://assets/ui/map/Kitchen.svg" id="map_Kitchen"]
+[ext_resource type="Texture2D" uid="uid://dw3g5j5yroe78" path="res://assets/ui/map/Leaf.svg" id="map_Leaf"]
+[ext_resource type="Texture2D" uid="uid://ck4e0fgvy5gcn" path="res://assets/ui/map/Picnic.svg" id="map_Picnic"]
+[ext_resource type="SystemFont" uid="uid://cqchiyb3agy3t" path="res://assets/fonts/Georgia.tres" id="map_serif"]
+[ext_resource type="Texture2D" uid="uid://bhvig03x0tsca" path="res://assets/ui/map/Swings.svg" id="map_Swings"]
+[ext_resource type="Texture2D" uid="uid://bfddig08a2845" path="res://assets/ui/map/Timer.svg" id="map_Timer"]
+[ext_resource type="Script" uid="uid://cncvm1xyyctur" path="res://scenes/map_visitor.gd" id="map_visitor"]
+[ext_resource type="PackedScene" path="res://scenes/village_lighting.tscn" id="NightLighting"]
+[ext_resource type="PackedScene" uid="uid://ca8su3gk64abg" path="res://scenes/pond_life.tscn" id="pond_life"]
+[ext_resource type="PackedScene" uid="uid://gjjpn8aeypl7" path="res://scenes/quiet_places.tscn" id="quiet_places"]
+
+[sub_resource type="Environment" id="Environment"]
+background_mode = 2
+sky = ExtResource("7")
+ambient_light_source = 2
+ambient_light_color = Color(0.65, 0.7, 0.68, 1)
+ambient_light_energy = 0.45
+reflected_light_source = 2
+tonemap_mode = 3
+tonemap_exposure = 1.02
+fog_enabled = true
+fog_light_color = Color(0.52, 0.69, 0.7, 1)
+fog_density = 0.0046
+fog_sky_affect = 0.0
+
+[sub_resource type="SphereShape3D" id="CameraShape"]
+radius = 0.18
+
+[sub_resource type="StyleBoxFlat" id="Hover"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+bg_color = Color(0.192, 0.326, 0.251, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.945, 0.874, 0.725, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="Button"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+bg_color = Color(0.08235, 0.21569, 0.18039, 0.87843)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8667, 0.8549, 0.7569, 0.23)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="Panel"]
+content_margin_left = 22.0
+content_margin_top = 22.0
+content_margin_right = 22.0
+content_margin_bottom = 22.0
+bg_color = Color(0.12549, 0.239216, 0.203922, 0.92157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9137, 0.8627, 0.7373, 0.2588)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.0353, 0.149, 0.1137, 0.25)
+shadow_size = 20
+shadow_offset = Vector2(0, 12)
+
+[sub_resource type="FontVariation" id="Sans"]
+base_font = ExtResource("18_gqmmt")
+variation_opentype = {
+2003265652: 400.0
+}
+
+[sub_resource type="Theme" id="Theme"]
+default_font = SubResource("Sans")
+default_font_size = 14
+Button/colors/font_color = Color(0.965, 0.933, 0.851, 1)
+Button/styles/focus = SubResource("Hover")
+Button/styles/hover = SubResource("Hover")
+Button/styles/normal = SubResource("Button")
+Button/styles/pressed = SubResource("Hover")
+Label/colors/font_color = Color(0.965, 0.933, 0.851, 1)
+OptionButton/colors/font_color = Color(0.965, 0.933, 0.851, 1)
+OptionButton/styles/hover = SubResource("Hover")
+OptionButton/styles/normal = SubResource("Button")
+PanelContainer/styles/panel = SubResource("Panel")
+
+[sub_resource type="StyleBoxFlat" id="MapPaper"]
+bg_color = Color(0.933, 0.914, 0.843, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_vxglm"]
+base_font = ExtResource("18_gqmmt")
+variation_opentype = {
+2003265652: 400.0
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2f3dj"]
+bg_color = Color(0.09019608, 0.22352941, 0.16862746, 0.72156864)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.34901962)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjg73"]
+bg_color = Color(0.14509805, 0.29411766, 0.23529412, 0.8784314)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.6)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bu4jf"]
+bg_color = Color(0.14509805, 0.29411766, 0.23529412, 0.8784314)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="MapMarker"]
+bg_color = Color(1, 0.976, 0.914, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.43, 0.34, 0.65)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+shadow_color = Color(0.14, 0.24, 0.19, 0.16)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="MapSelected"]
+bg_color = Color(0.192, 0.337, 0.275, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.72, 0.5, 0.18, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="MapFocus"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.72, 0.5, 0.18, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dnhof"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 0.9764706, 0.9137255, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9764706, 0.9137255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kf5aa"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 0.9764706, 0.9137255, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9764706, 0.9137255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_od4ux"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 0.9764706, 0.9137255, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9764706, 0.9137255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4e17"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 0.9764706, 0.9137255, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9764706, 0.9137255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdvew"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 0.9764706, 0.9137255, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9764706, 0.9137255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4bwh"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 0.9764706, 0.9137255, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9764706, 0.9137255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xaipn"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 0.9764706, 0.9137255, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9764706, 0.9137255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b6ruc"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 0.9764706, 0.9137255, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9764706, 0.9137255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjhjs"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 0.9764706, 0.9137255, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9764706, 0.9137255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sgvw8"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 0.9764706, 0.9137255, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9764706, 0.9137255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gr8w0"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 0.9764706, 0.9137255, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9764706, 0.9137255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1uevf"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 0.9764706, 0.9137255, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9764706, 0.9137255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgpkq"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 0.9764706, 0.9137255, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9764706, 0.9137255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_raiwf"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 0.9764706, 0.9137255, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9764706, 0.9137255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37xlc"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 0.9764706, 0.9137255, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9764706, 0.9137255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ga3rw"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 0.9764706, 0.9137255, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9764706, 0.9137255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yton5"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 0.9764706, 0.9137255, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9764706, 0.9137255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ahvx"]
+content_margin_left = 18.0
+content_margin_top = 12.0
+content_margin_right = 14.0
+content_margin_bottom = 12.0
+bg_color = Color(0.09019608, 0.22352941, 0.16862746, 0.85882354)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.34901962)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cr71"]
+bg_color = Color(0.09019608, 0.22352941, 0.16862746, 0.72156864)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.34901962)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hbcg"]
+bg_color = Color(0.14509805, 0.29411766, 0.23529412, 0.8784314)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.6)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m4o51"]
+bg_color = Color(0.14509805, 0.29411766, 0.23529412, 0.8784314)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jp61a"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+bg_color = Color(0.09019608, 0.22352941, 0.16862746, 0.7882353)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.34901962)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_esrwe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4b36k"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(1, 0.9490196, 0.8156863, 0.101960786)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.5019608)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1v8b0"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(1, 0.9490196, 0.8156863, 0.101960786)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.5019608)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_683hg"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(1, 0.9490196, 0.8156863, 0.101960786)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.5019608)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ow8of"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(1, 0.9490196, 0.8156863, 0.101960786)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.5019608)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hj4tt"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(1, 0.9490196, 0.8156863, 0.101960786)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.5019608)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqx4a"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(1, 0.9490196, 0.8156863, 0.101960786)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.5019608)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfcs8"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(1, 0.9490196, 0.8156863, 0.101960786)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.5019608)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50d7c"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(1, 0.9490196, 0.8156863, 0.101960786)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.5019608)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ruytr"]
+bg_color = Color(0.09019608, 0.22352941, 0.16862746, 0.72156864)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.34901962)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_la3dr"]
+bg_color = Color(0.14509805, 0.29411766, 0.23529412, 0.8784314)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.6)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hcsi8"]
+bg_color = Color(0.14509805, 0.29411766, 0.23529412, 0.8784314)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wi1le"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(1, 0.9490196, 0.8156863, 0.101960786)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.5019608)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7pr5"]
+bg_color = Color(0.09019608, 0.22352941, 0.16862746, 0.72156864)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.34901962)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hyj2l"]
+bg_color = Color(0.14509805, 0.29411766, 0.23529412, 0.8784314)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.6)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vuqay"]
+bg_color = Color(0.14509805, 0.29411766, 0.23529412, 0.8784314)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.6)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfmv0"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(1, 0.9490196, 0.8156863, 0.101960786)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.5019608)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c6pm6"]
+shader = ExtResource("28_pibwh")
+shader_parameter/blur_lod = 2.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ws6l1"]
+content_margin_left = 7.0
+content_margin_top = 6.0
+content_margin_right = 7.0
+content_margin_bottom = 6.0
+bg_color = Color(1, 0.9490196, 0.8156863, 0.03137255)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.14901961)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kb78j"]
+content_margin_left = 7.0
+content_margin_top = 6.0
+content_margin_right = 7.0
+content_margin_bottom = 6.0
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.9490196, 0.8156863, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tlqc8"]
+content_margin_left = 7.0
+content_margin_top = 6.0
+content_margin_right = 7.0
+content_margin_bottom = 6.0
+bg_color = Color(1, 0.9490196, 0.8156863, 0.14901961)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.6)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hst7p"]
+content_margin_left = 7.0
+content_margin_top = 6.0
+content_margin_right = 7.0
+content_margin_bottom = 6.0
+bg_color = Color(1, 0.9490196, 0.8156863, 0.05882353)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.3019608)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1l4jt"]
+content_margin_left = 7.0
+content_margin_top = 6.0
+content_margin_right = 7.0
+content_margin_bottom = 6.0
+bg_color = Color(1, 0.9490196, 0.8156863, 0.2)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.3019608)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uytal"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.09019608, 0.22352941, 0.16862746, 0.72156864)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.9490196, 0.8156863, 0.34901962)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.05882353, 0.14117648, 0.12156863, 0.14901961)
+shadow_size = 16
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="FontVariation" id="FontVariation_f3yrf"]
+base_font = ExtResource("18_gqmmt")
+variation_opentype = {
+2003265652: 400.0
+}
+
+[sub_resource type="Theme" id="Theme_5q0nq"]
+default_font = SubResource("FontVariation_f3yrf")
+default_font_size = 13
+Button/colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+Button/colors/font_disabled_color = Color(1, 0.972549, 0.9098039, 0.5019608)
+Button/colors/font_focus_color = Color(1, 0.972549, 0.9098039, 1)
+Button/colors/font_hover_color = Color(1, 0.972549, 0.9098039, 1)
+Button/colors/font_pressed_color = Color(1, 0.972549, 0.9098039, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_ws6l1")
+Button/styles/focus = SubResource("StyleBoxFlat_kb78j")
+Button/styles/hover = SubResource("StyleBoxFlat_tlqc8")
+Button/styles/normal = SubResource("StyleBoxFlat_hst7p")
+Button/styles/pressed = SubResource("StyleBoxFlat_1l4jt")
+Label/colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_uytal")
+
+[sub_resource type="FontVariation" id="FontVariation_fuf3a"]
+base_font = ExtResource("18_gqmmt")
+variation_opentype = {
+2003265652: 600.0
+}
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_fuf3a"]
+color = Color(1, 0.9490196, 0.8156863, 0.14901961)
+
+[sub_resource type="FontVariation" id="FontVariation_2cjbq"]
+base_font = ExtResource("18_gqmmt")
+variation_opentype = {
+2003265652: 600.0
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc10j"]
+content_margin_left = 18.0
+content_margin_top = 17.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.16078432, 0.23529412, 0.2, 0.96862745)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.91764706, 0.8627451, 0.73333335, 0.32156864)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.09019608, 0.14901961, 0.12156863, 0.16078432)
+shadow_size = 14
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="SystemFont" id="SystemFont_jscy8"]
+font_names = PackedStringArray("Georgia", "Times New Roman")
+subpixel_positioning = 0
+
+[sub_resource type="FontVariation" id="FontVariation_0ld40"]
+base_font = ExtResource("18_gqmmt")
+variation_opentype = {
+2003265652: 400.0
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y6deb"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(1, 0.95686275, 0.8627451, 0.07058824)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9607843, 0.9098039, 0.78431374, 0.54901963)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_og1vs"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(1, 0.95686275, 0.8627451, 0.14117648)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9607843, 0.9098039, 0.78431374, 0.54901963)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wyq8"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.95686275, 0.8627451, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="FontVariation" id="FontVariation_gqmmt"]
+base_font = ExtResource("18_gqmmt")
+variation_opentype = {
+2003265652: 400.0
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxglm"]
+bg_color = Color(1, 0.95686275, 0.8627451, 0.12156863)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9607843, 0.9098039, 0.78431374, 0.7019608)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="SystemFont" id="SystemFont_2f3dj"]
+font_names = PackedStringArray("Menlo", "monospace")
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq6so"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(1, 0.95686275, 0.8627451, 0.07058824)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9607843, 0.9098039, 0.78431374, 0.54901963)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fv21b"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(1, 0.95686275, 0.8627451, 0.14117648)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9607843, 0.9098039, 0.78431374, 0.54901963)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tel4y"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.95686275, 0.8627451, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="FontVariation" id="FontVariation_yc10j"]
+base_font = ExtResource("18_gqmmt")
+variation_opentype = {
+2003265652: 400.0
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkpxi"]
+bg_color = Color(1, 0.95686275, 0.8627451, 0.12156863)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9607843, 0.9098039, 0.78431374, 0.7019608)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5q0nq"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(1, 0.95686275, 0.8627451, 0.07058824)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9607843, 0.9098039, 0.78431374, 0.54901963)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgi5k"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(1, 0.95686275, 0.8627451, 0.14117648)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9607843, 0.9098039, 0.78431374, 0.54901963)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j8jky"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.95686275, 0.8627451, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="FontVariation" id="FontVariation_jscy8"]
+base_font = ExtResource("18_gqmmt")
+variation_opentype = {
+2003265652: 400.0
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmb1v"]
+bg_color = Color(1, 0.95686275, 0.8627451, 0.12156863)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9607843, 0.9098039, 0.78431374, 0.7019608)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fuf3a"]
+content_margin_left = 18.0
+content_margin_top = 17.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.16078432, 0.23529412, 0.2, 0.96862745)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.91764706, 0.8627451, 0.73333335, 0.32156864)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.09019608, 0.14901961, 0.12156863, 0.16078432)
+shadow_size = 14
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="FontVariation" id="FontVariation_pm3ni"]
+base_font = ExtResource("18_gqmmt")
+variation_opentype = {
+2003265652: 400.0
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pibwh"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(1, 0.95686275, 0.8627451, 0.07058824)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9607843, 0.9098039, 0.78431374, 0.54901963)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6pm6"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(1, 0.95686275, 0.8627451, 0.14117648)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9607843, 0.9098039, 0.78431374, 0.54901963)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5he1u"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.95686275, 0.8627451, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="FontVariation" id="FontVariation_y6deb"]
+base_font = ExtResource("18_gqmmt")
+variation_opentype = {
+2003265652: 400.0
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5poiv"]
+bg_color = Color(1, 0.95686275, 0.8627451, 0.12156863)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9607843, 0.9098039, 0.78431374, 0.7019608)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cjbq"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(1, 0.95686275, 0.8627451, 0.07058824)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9607843, 0.9098039, 0.78431374, 0.54901963)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chjal"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(1, 0.95686275, 0.8627451, 0.14117648)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9607843, 0.9098039, 0.78431374, 0.54901963)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjqg0"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.95686275, 0.8627451, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="FontVariation" id="FontVariation_og1vs"]
+base_font = ExtResource("18_gqmmt")
+variation_opentype = {
+2003265652: 400.0
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vchkt"]
+bg_color = Color(1, 0.95686275, 0.8627451, 0.12156863)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9607843, 0.9098039, 0.78431374, 0.7019608)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txyw0"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(1, 0.95686275, 0.8627451, 0.07058824)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9607843, 0.9098039, 0.78431374, 0.54901963)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vc5cj"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(1, 0.95686275, 0.8627451, 0.14117648)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9607843, 0.9098039, 0.78431374, 0.54901963)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nvyfr"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.95686275, 0.8627451, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="FontVariation" id="FontVariation_2wyq8"]
+base_font = ExtResource("18_gqmmt")
+variation_opentype = {
+2003265652: 400.0
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ty1g6"]
+bg_color = Color(1, 0.95686275, 0.8627451, 0.12156863)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9607843, 0.9098039, 0.78431374, 0.7019608)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2jfr"]
+content_margin_left = 18.0
+content_margin_top = 12.0
+content_margin_right = 18.0
+content_margin_bottom = 12.0
+bg_color = Color(1, 0.972549, 0.92941177, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9647059, 0.8392157, 0.8627451, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.14509805, 0.24313726, 0.1882353, 0.1254902)
+shadow_size = 14
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="SystemFont" id="SystemFont_yc10j"]
+font_names = PackedStringArray("Georgia", "Hiragino Mincho ProN")
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wxrqn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n756u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k33j2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2cjf7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dp3eg"]
+albedo_color = Color(0.92941177, 0.7764706, 0.5764706, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0ld40"]
+material = SubResource("StandardMaterial3D_dp3eg")
+radius = 0.047
+height = 0.094
+radial_segments = 4
+rings = 2
+
+[sub_resource type="MultiMesh" id="MultiMesh_gqmmt"]
+transform_format = 1
+instance_count = 96
+mesh = SubResource("SphereMesh_0ld40")
+buffer = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pm3ni"]
+emission_shape = 3
+emission_box_extents = Vector3(11, 5, 11)
+direction = Vector3(0.07, -1, 0.025)
+spread = 4.0
+initial_velocity_min = 9.0
+initial_velocity_max = 11.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6deb"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.68, 0.79, 0.88, 0.38)
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_og1vs"]
+material = SubResource("StandardMaterial3D_y6deb")
+size = Vector2(0.012, 0.32)
+
+[node name="Hearthwillow" type="Node3D" unique_id=725766756]
+
+[node name="WorldSurface" type="Node" parent="." unique_id=1624750312]
+script = ExtResource("3")
+
+[node name="ReleaseBenchmark" type="Node" parent="." unique_id=1847260477]
+script = ExtResource("15")
+
+[node name="Village" parent="." unique_id=316475413 instance=ExtResource("1")]
+
+[node name="Player" parent="." unique_id=890325256 instance=ExtResource("2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.03, 20)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1051999143]
+environment = SubResource("Environment")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=447143563]
+transform = Transform3D(-0.80803186, -0.25109735, 0.53294903, 0, 0.90462387, 0.42621085, -0.5891388, 0.34439194, -0.7309649, 0, 0, 0)
+light_color = Color(1, 0.898, 0.698, 1)
+light_energy = 1.15
+light_cull_mask = 1
+shadow_enabled = true
+shadow_bias = 0.03
+shadow_normal_bias = 0.4
+directional_shadow_mode = 1
+directional_shadow_max_distance = 55.0
+
+[node name="Bounce" type="DirectionalLight3D" parent="." unique_id=1325350961]
+transform = Transform3D(0.8577087, 0.19070357, -0.47745994, 0, 0.9286646, 0.37092048, 0.514136, -0.31814173, 0.79652375, 0, 0, 0)
+light_color = Color(0.7686, 0.851, 0.9373, 1)
+light_energy = 0.2
+light_cull_mask = 1
+
+[node name="CameraRig" type="Node3D" parent="." unique_id=1755614220]
+physics_interpolation_mode = 2
+script = ExtResource("4")
+collision_shape = SubResource("CameraShape")
+
+[node name="Pitch" type="Node3D" parent="CameraRig" unique_id=527132754]
+transform = Transform3D(1, 0, 0, 0, 0.9887711, 0.14943814, 0, -0.14943814, 0.9887711, 0, 0, 0)
+
+[node name="CameraBoom" type="Node3D" parent="CameraRig/Pitch" unique_id=85491165]
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig/Pitch/CameraBoom" unique_id=381895428]
+current = true
+fov = 55.0
+near = 0.12
+far = 1100.0
+
+[node name="VillageSound" type="Node" parent="." unique_id=1537163929]
+script = ExtResource("5")
+
+[node name="Music" type="AudioStreamPlayer" parent="VillageSound" unique_id=1315004081]
+stream = ExtResource("9")
+
+[node name="Wind" type="AudioStreamPlayer" parent="VillageSound" unique_id=2060049737]
+stream = ExtResource("10")
+pitch_scale = 0.73
+
+[node name="Rain" type="AudioStreamPlayer" parent="VillageSound" unique_id=2028363850]
+stream = ExtResource("14")
+
+[node name="Stream" type="AudioStreamPlayer3D" parent="VillageSound" unique_id=1738065821]
+stream = ExtResource("11")
+unit_size = 5.0
+max_distance = 42.0
+
+[node name="Fire" type="AudioStreamPlayer3D" parent="VillageSound" unique_id=399391409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, 0.5, -19)
+stream = ExtResource("12")
+unit_size = 3.0
+max_distance = 22.0
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="VillageSound" unique_id=191743530]
+stream = ExtResource("13")
+
+[node name="Birds" type="AudioStreamPlayer3D" parent="VillageSound" unique_id=110021798]
+unit_size = 4.0
+max_distance = 65.0
+
+[node name="Animals" type="AudioStreamPlayer3D" parent="VillageSound" unique_id=1996708663]
+attenuation_model = 1
+unit_size = 2.0
+max_distance = 16.0
+
+[node name="MusicNext" type="AudioStreamPlayer" parent="VillageSound" unique_id=1399124353]
+stream = ExtResource("9")
+
+[node name="Garden" type="AudioStreamPlayer3D" parent="VillageSound" unique_id=1068095859]
+unit_size = 3.0
+max_distance = 23.0
+max_polyphony = 6
+
+[node name="VillageLife" type="Node" parent="." unique_id=1186749198]
+script = ExtResource("16")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=902411621]
+
+[node name="VillageMap" type="Control" parent="HUD" unique_id=371570063]
+z_index = 20
+clip_contents = true
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -206.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 180.0
+grow_horizontal = 0
+mouse_filter = 2
+theme = SubResource("Theme")
+script = ExtResource("6")
+
+[node name="Paper" type="Panel" parent="HUD/VillageMap" unique_id=1899759262]
+show_behind_parent = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MapPaper")
+
+[node name="Terrain" type="Control" parent="HUD/VillageMap" unique_id=1225442340]
+show_behind_parent = true
+clip_contents = true
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="Landscape" type="TextureRect" parent="HUD/VillageMap/Terrain" unique_id=1306125111]
+show_behind_parent = true
+layout_mode = 0
+mouse_filter = 2
+texture = ExtResource("map_art")
+expand_mode = 1
+
+[node name="Visitor" type="Control" parent="HUD/VillageMap" unique_id=158943973]
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("map_visitor")
+
+[node name="Expanded" type="Control" parent="HUD/VillageMap" unique_id=1197162794]
+visible = false
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="HUD/VillageMap/Expanded" unique_id=700422938]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 24.0
+offset_right = 204.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0.19215687, 0.3372549, 0.27450982, 1)
+theme_override_fonts/font = ExtResource("map_serif")
+theme_override_font_sizes/font_size = 30
+text = "Hearthwillow"
+
+[node name="Close" type="Button" parent="HUD/VillageMap/Expanded" unique_id=1623192176]
+custom_minimum_size = Vector2(80, 44)
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -190.0
+offset_top = 18.0
+offset_right = -24.0
+offset_bottom = 62.0
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_2f3dj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bjg73")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bu4jf")
+text = "Esc   Back   ⌫   ×"
+
+[node name="Markers" type="Control" parent="HUD/VillageMap/Expanded" unique_id=1329906370]
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="Marker0" type="Button" parent="HUD/VillageMap/Expanded/Markers" unique_id=1007845570]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+theme_override_colors/icon_normal_color = Color(0.19215687, 0.3372549, 0.27450982, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_constants/icon_max_width = 22
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("MapMarker")
+theme_override_styles/pressed = SubResource("MapSelected")
+theme_override_styles/hover = SubResource("MapSelected")
+theme_override_styles/focus = SubResource("MapFocus")
+toggle_mode = true
+action_mode = 0
+icon = ExtResource("map_Timer")
+icon_alignment = 1
+
+[node name="Label0" type="PanelContainer" parent="HUD/VillageMap/Expanded/Markers" unique_id=1405633991]
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dnhof")
+
+[node name="Text" type="Label" parent="HUD/VillageMap/Expanded/Markers/Label0" unique_id=1449832762]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14117648, 0.29803923, 0.22352941, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+text = "Focus cottage"
+
+[node name="Marker1" type="Button" parent="HUD/VillageMap/Expanded/Markers" unique_id=1637007957]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+theme_override_colors/icon_normal_color = Color(0.19215687, 0.3372549, 0.27450982, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_constants/icon_max_width = 22
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("MapMarker")
+theme_override_styles/pressed = SubResource("MapSelected")
+theme_override_styles/hover = SubResource("MapSelected")
+theme_override_styles/focus = SubResource("MapFocus")
+toggle_mode = true
+action_mode = 0
+icon = ExtResource("map_Fire")
+icon_alignment = 1
+
+[node name="Label1" type="PanelContainer" parent="HUD/VillageMap/Expanded/Markers" unique_id=1304594547]
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kf5aa")
+
+[node name="Text" type="Label" parent="HUD/VillageMap/Expanded/Markers/Label1" unique_id=1054688334]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14117648, 0.29803923, 0.22352941, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+text = "Village hearth"
+
+[node name="Marker2" type="Button" parent="HUD/VillageMap/Expanded/Markers" unique_id=524678432]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+theme_override_colors/icon_normal_color = Color(0.19215687, 0.3372549, 0.27450982, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_constants/icon_max_width = 22
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("MapMarker")
+theme_override_styles/pressed = SubResource("MapSelected")
+theme_override_styles/hover = SubResource("MapSelected")
+theme_override_styles/focus = SubResource("MapFocus")
+toggle_mode = true
+action_mode = 0
+icon = ExtResource("map_Drop")
+icon_alignment = 1
+
+[node name="Label2" type="PanelContainer" parent="HUD/VillageMap/Expanded/Markers" unique_id=803759014]
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_od4ux")
+
+[node name="Text" type="Label" parent="HUD/VillageMap/Expanded/Markers/Label2" unique_id=2141886807]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14117648, 0.29803923, 0.22352941, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+text = "Willow pond"
+
+[node name="Marker3" type="Button" parent="HUD/VillageMap/Expanded/Markers" unique_id=201079684]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+theme_override_colors/icon_normal_color = Color(0.19215687, 0.3372549, 0.27450982, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_constants/icon_max_width = 22
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("MapMarker")
+theme_override_styles/pressed = SubResource("MapSelected")
+theme_override_styles/hover = SubResource("MapSelected")
+theme_override_styles/focus = SubResource("MapFocus")
+toggle_mode = true
+action_mode = 0
+icon = ExtResource("map_BookOpen")
+icon_alignment = 1
+
+[node name="Label3" type="PanelContainer" parent="HUD/VillageMap/Expanded/Markers" unique_id=1530107907]
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r4e17")
+
+[node name="Text" type="Label" parent="HUD/VillageMap/Expanded/Markers/Label3" unique_id=1379616670]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14117648, 0.29803923, 0.22352941, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+text = "Writing nook"
+
+[node name="Marker4" type="Button" parent="HUD/VillageMap/Expanded/Markers" unique_id=1866513607]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+theme_override_colors/icon_normal_color = Color(0.19215687, 0.3372549, 0.27450982, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_constants/icon_max_width = 22
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("MapMarker")
+theme_override_styles/pressed = SubResource("MapSelected")
+theme_override_styles/hover = SubResource("MapSelected")
+theme_override_styles/focus = SubResource("MapFocus")
+toggle_mode = true
+action_mode = 0
+icon = ExtResource("map_EnvelopeSimple")
+icon_alignment = 1
+
+[node name="Label4" type="PanelContainer" parent="HUD/VillageMap/Expanded/Markers" unique_id=50415600]
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gdvew")
+
+[node name="Text" type="Label" parent="HUD/VillageMap/Expanded/Markers/Label4" unique_id=192308234]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14117648, 0.29803923, 0.22352941, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+text = "Little postbox"
+
+[node name="Marker5" type="Button" parent="HUD/VillageMap/Expanded/Markers" unique_id=1688189473]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+theme_override_colors/icon_normal_color = Color(0.19215687, 0.3372549, 0.27450982, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_constants/icon_max_width = 22
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("MapMarker")
+theme_override_styles/pressed = SubResource("MapSelected")
+theme_override_styles/hover = SubResource("MapSelected")
+theme_override_styles/focus = SubResource("MapFocus")
+toggle_mode = true
+action_mode = 0
+icon = ExtResource("map_Leaf")
+icon_alignment = 1
+
+[node name="Label5" type="PanelContainer" parent="HUD/VillageMap/Expanded/Markers" unique_id=669198854]
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j4bwh")
+
+[node name="Text" type="Label" parent="HUD/VillageMap/Expanded/Markers/Label5" unique_id=1118633005]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14117648, 0.29803923, 0.22352941, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+text = "Kitchen garden"
+
+[node name="Marker6" type="Button" parent="HUD/VillageMap/Expanded/Markers" unique_id=359085934]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+theme_override_colors/icon_normal_color = Color(0.19215687, 0.3372549, 0.27450982, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_constants/icon_max_width = 22
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("MapMarker")
+theme_override_styles/pressed = SubResource("MapSelected")
+theme_override_styles/hover = SubResource("MapSelected")
+theme_override_styles/focus = SubResource("MapFocus")
+toggle_mode = true
+action_mode = 0
+icon = ExtResource("map_Bird")
+icon_alignment = 1
+
+[node name="Label6" type="PanelContainer" parent="HUD/VillageMap/Expanded/Markers" unique_id=354656041]
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xaipn")
+
+[node name="Text" type="Label" parent="HUD/VillageMap/Expanded/Markers/Label6" unique_id=1256618441]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14117648, 0.29803923, 0.22352941, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+text = "Bird clearing"
+
+[node name="Marker7" type="Button" parent="HUD/VillageMap/Expanded/Markers" unique_id=1956797224]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+theme_override_colors/icon_normal_color = Color(0.19215687, 0.3372549, 0.27450982, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_constants/icon_max_width = 22
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("MapMarker")
+theme_override_styles/pressed = SubResource("MapSelected")
+theme_override_styles/hover = SubResource("MapSelected")
+theme_override_styles/focus = SubResource("MapFocus")
+toggle_mode = true
+action_mode = 0
+icon = ExtResource("map_Swings")
+icon_alignment = 1
+
+[node name="Label7" type="PanelContainer" parent="HUD/VillageMap/Expanded/Markers" unique_id=212858545]
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b6ruc")
+
+[node name="Text" type="Label" parent="HUD/VillageMap/Expanded/Markers/Label7" unique_id=1632844488]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14117648, 0.29803923, 0.22352941, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+text = "Meadow Swings"
+
+[node name="Marker8" type="Button" parent="HUD/VillageMap/Expanded/Markers" unique_id=2029250696]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+theme_override_colors/icon_normal_color = Color(0.19215687, 0.3372549, 0.27450982, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_constants/icon_max_width = 22
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("MapMarker")
+theme_override_styles/pressed = SubResource("MapSelected")
+theme_override_styles/hover = SubResource("MapSelected")
+theme_override_styles/focus = SubResource("MapFocus")
+toggle_mode = true
+action_mode = 0
+icon = ExtResource("map_CastleTurret")
+icon_alignment = 1
+
+[node name="Label8" type="PanelContainer" parent="HUD/VillageMap/Expanded/Markers" unique_id=1445772094]
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fjhjs")
+
+[node name="Text" type="Label" parent="HUD/VillageMap/Expanded/Markers/Label8" unique_id=1934708999]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14117648, 0.29803923, 0.22352941, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+text = "Watch tower"
+
+[node name="Marker9" type="Button" parent="HUD/VillageMap/Expanded/Markers" unique_id=939690820]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+theme_override_colors/icon_normal_color = Color(0.19215687, 0.3372549, 0.27450982, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_constants/icon_max_width = 22
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("MapMarker")
+theme_override_styles/pressed = SubResource("MapSelected")
+theme_override_styles/hover = SubResource("MapSelected")
+theme_override_styles/focus = SubResource("MapFocus")
+toggle_mode = true
+action_mode = 0
+icon = ExtResource("map_Timer")
+icon_alignment = 1
+
+[node name="Label9" type="PanelContainer" parent="HUD/VillageMap/Expanded/Markers" unique_id=141418457]
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sgvw8")
+
+[node name="Text" type="Label" parent="HUD/VillageMap/Expanded/Markers/Label9" unique_id=609215121]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14117648, 0.29803923, 0.22352941, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+text = "Willow circuit"
+
+[node name="Marker10" type="Button" parent="HUD/VillageMap/Expanded/Markers" unique_id=104151462]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+theme_override_colors/icon_normal_color = Color(0.19215687, 0.3372549, 0.27450982, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_constants/icon_max_width = 22
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("MapMarker")
+theme_override_styles/pressed = SubResource("MapSelected")
+theme_override_styles/hover = SubResource("MapSelected")
+theme_override_styles/focus = SubResource("MapFocus")
+toggle_mode = true
+action_mode = 0
+icon = ExtResource("map_Bird")
+icon_alignment = 1
+
+[node name="Label10" type="PanelContainer" parent="HUD/VillageMap/Expanded/Markers" unique_id=1031535667]
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gr8w0")
+
+[node name="Text" type="Label" parent="HUD/VillageMap/Expanded/Markers/Label10" unique_id=887467392]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14117648, 0.29803923, 0.22352941, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+text = "Owl grove"
+
+[node name="Marker11" type="Button" parent="HUD/VillageMap/Expanded/Markers" unique_id=674888793]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+theme_override_colors/icon_normal_color = Color(0.19215687, 0.3372549, 0.27450982, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_constants/icon_max_width = 22
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("MapMarker")
+theme_override_styles/pressed = SubResource("MapSelected")
+theme_override_styles/hover = SubResource("MapSelected")
+theme_override_styles/focus = SubResource("MapFocus")
+toggle_mode = true
+action_mode = 0
+icon = ExtResource("map_Kitchen")
+icon_alignment = 1
+
+[node name="Label11" type="PanelContainer" parent="HUD/VillageMap/Expanded/Markers" unique_id=1449527356]
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1uevf")
+
+[node name="Text" type="Label" parent="HUD/VillageMap/Expanded/Markers/Label11" unique_id=919148129]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14117648, 0.29803923, 0.22352941, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+text = "Garden kitchen"
+
+[node name="Marker12" type="Button" parent="HUD/VillageMap/Expanded/Markers" unique_id=676871841]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+theme_override_colors/icon_normal_color = Color(0.19215687, 0.3372549, 0.27450982, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_constants/icon_max_width = 22
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("MapMarker")
+theme_override_styles/pressed = SubResource("MapSelected")
+theme_override_styles/hover = SubResource("MapSelected")
+theme_override_styles/focus = SubResource("MapFocus")
+toggle_mode = true
+action_mode = 0
+icon = ExtResource("map_Picnic")
+icon_alignment = 1
+
+[node name="Label12" type="PanelContainer" parent="HUD/VillageMap/Expanded/Markers" unique_id=1481361231]
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mgpkq")
+
+[node name="Text" type="Label" parent="HUD/VillageMap/Expanded/Markers/Label12" unique_id=1733897959]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14117648, 0.29803923, 0.22352941, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+text = "Picnic hill"
+
+[node name="Marker13" type="Button" parent="HUD/VillageMap/Expanded/Markers" unique_id=1633811569]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+theme_override_colors/icon_normal_color = Color(0.19215687, 0.3372549, 0.27450982, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_constants/icon_max_width = 22
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("MapMarker")
+theme_override_styles/pressed = SubResource("MapSelected")
+theme_override_styles/hover = SubResource("MapSelected")
+theme_override_styles/focus = SubResource("MapFocus")
+toggle_mode = true
+action_mode = 0
+icon = ExtResource("map_Farm")
+icon_alignment = 1
+
+[node name="Label13" type="PanelContainer" parent="HUD/VillageMap/Expanded/Markers" unique_id=5213639]
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_raiwf")
+
+[node name="Text" type="Label" parent="HUD/VillageMap/Expanded/Markers/Label13" unique_id=1216537352]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14117648, 0.29803923, 0.22352941, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+text = "Carrot farm"
+
+[node name="Marker14" type="Button" parent="HUD/VillageMap/Expanded/Markers" unique_id=1503550392]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+theme_override_colors/icon_normal_color = Color(0.19215687, 0.3372549, 0.27450982, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_constants/icon_max_width = 22
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("MapMarker")
+theme_override_styles/pressed = SubResource("MapSelected")
+theme_override_styles/hover = SubResource("MapSelected")
+theme_override_styles/focus = SubResource("MapFocus")
+toggle_mode = true
+action_mode = 0
+icon = ExtResource("map_Farm")
+icon_alignment = 1
+
+[node name="Label14" type="PanelContainer" parent="HUD/VillageMap/Expanded/Markers" unique_id=1352345789]
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_37xlc")
+
+[node name="Text" type="Label" parent="HUD/VillageMap/Expanded/Markers/Label14" unique_id=1080718004]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14117648, 0.29803923, 0.22352941, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+text = "Radish farm"
+
+[node name="Marker15" type="Button" parent="HUD/VillageMap/Expanded/Markers" unique_id=1751428005]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+theme_override_colors/icon_normal_color = Color(0.19215687, 0.3372549, 0.27450982, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_constants/icon_max_width = 22
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("MapMarker")
+theme_override_styles/pressed = SubResource("MapSelected")
+theme_override_styles/hover = SubResource("MapSelected")
+theme_override_styles/focus = SubResource("MapFocus")
+toggle_mode = true
+action_mode = 0
+icon = ExtResource("map_Leaf")
+icon_alignment = 1
+
+[node name="Label15" type="PanelContainer" parent="HUD/VillageMap/Expanded/Markers" unique_id=966651140]
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ga3rw")
+
+[node name="Text" type="Label" parent="HUD/VillageMap/Expanded/Markers/Label15" unique_id=268081072]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14117648, 0.29803923, 0.22352941, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+text = "Mint farm"
+
+[node name="Marker16" type="Button" parent="HUD/VillageMap/Expanded/Markers" unique_id=1023444313]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+theme_override_colors/icon_normal_color = Color(0.19215687, 0.3372549, 0.27450982, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.976, 0.914, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.976, 0.914, 1)
+theme_override_constants/icon_max_width = 22
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("MapMarker")
+theme_override_styles/pressed = SubResource("MapSelected")
+theme_override_styles/hover = SubResource("MapSelected")
+theme_override_styles/focus = SubResource("MapFocus")
+toggle_mode = true
+action_mode = 0
+icon = ExtResource("map_Leaf")
+icon_alignment = 1
+
+[node name="Label16" type="PanelContainer" parent="HUD/VillageMap/Expanded/Markers" unique_id=1390490191]
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yton5")
+
+[node name="Text" type="Label" parent="HUD/VillageMap/Expanded/Markers/Label16" unique_id=1381924194]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14117648, 0.29803923, 0.22352941, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+text = "Grazing field"
+
+[node name="Footer" type="PanelContainer" parent="HUD/VillageMap/Expanded" unique_id=1350555292]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = -94.0
+offset_right = 364.0
+offset_bottom = -24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ahvx")
+
+[node name="Row" type="HBoxContainer" parent="HUD/VillageMap/Expanded/Footer" unique_id=1473050058]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Selected" type="Label" parent="HUD/VillageMap/Expanded/Footer/Row" unique_id=1651410965]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8980392, 0.8117647, 1)
+theme_override_fonts/font = ExtResource("map_serif")
+theme_override_font_sizes/font_size = 23
+text = "Focus cottage"
+
+[node name="Go" type="Button" parent="HUD/VillageMap/Expanded/Footer/Row" unique_id=65310032]
+custom_minimum_size = Vector2(80, 44)
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_2cr71")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1hbcg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_m4o51")
+text = "↵   Go here   ↗"
+
+[node name="Help" type="PanelContainer" parent="HUD/VillageMap/Expanded" unique_id=176728218]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -416.0
+offset_top = -70.0
+offset_right = -28.0
+offset_bottom = -24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jp61a")
+
+[node name="Text" type="Label" parent="HUD/VillageMap/Expanded/Help" unique_id=165211209]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8980392, 0.8117647, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 14
+text = "◆ You   ·   Drag to pan   ·   Scroll to zoom"
+
+[node name="Navigation" type="Label" parent="HUD/VillageMap/Expanded" unique_id=1844907689]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 68.0
+offset_right = 620.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0.192, 0.337, 0.275, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 15
+text = "W / A / S / D   Choose a place"
+
+[node name="Zoom" type="HBoxContainer" parent="HUD/VillageMap/Expanded" unique_id=1728982611]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -440.0
+offset_top = 18.0
+offset_right = -206.0
+offset_bottom = 62.0
+theme_override_constants/separation = 6
+
+[node name="Out" type="Button" parent="HUD/VillageMap/Expanded/Zoom" unique_id=1162565808]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+tooltip_text = "Zoom out"
+text = "−"
+
+[node name="In" type="Button" parent="HUD/VillageMap/Expanded/Zoom" unique_id=1890625587]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+tooltip_text = "Zoom in"
+text = "+"
+
+[node name="Reset" type="Button" parent="HUD/VillageMap/Expanded/Zoom" unique_id=1130379574]
+custom_minimum_size = Vector2(130, 44)
+layout_mode = 2
+text = "Fit village"
+
+[node name="Hints" type="PanelContainer" parent="HUD" unique_id=1966475024]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = -56.0
+offset_right = 816.0
+offset_bottom = -30.0
+grow_vertical = 0
+mouse_filter = 2
+theme = ExtResource("8")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_esrwe")
+
+[node name="Row" type="HBoxContainer" parent="HUD/Hints" unique_id=930322103]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Move" type="HBoxContainer" parent="HUD/Hints/Row" unique_id=1934002338]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="move_forward" type="PanelContainer" parent="HUD/Hints/Row/Move" unique_id=1831588662]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4b36k")
+
+[node name="Text" type="Label" parent="HUD/Hints/Row/Move/move_forward" unique_id=2074661011]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8980392, 0.8117647, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 12
+text = "W"
+horizontal_alignment = 1
+
+[node name="move_left" type="PanelContainer" parent="HUD/Hints/Row/Move" unique_id=291421254]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1v8b0")
+
+[node name="Text" type="Label" parent="HUD/Hints/Row/Move/move_left" unique_id=633173666]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8980392, 0.8117647, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 12
+text = "A"
+horizontal_alignment = 1
+
+[node name="move_back" type="PanelContainer" parent="HUD/Hints/Row/Move" unique_id=780994936]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_683hg")
+
+[node name="Text" type="Label" parent="HUD/Hints/Row/Move/move_back" unique_id=846745125]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8980392, 0.8117647, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 12
+text = "S"
+horizontal_alignment = 1
+
+[node name="move_right" type="PanelContainer" parent="HUD/Hints/Row/Move" unique_id=1368113245]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ow8of")
+
+[node name="Text" type="Label" parent="HUD/Hints/Row/Move/move_right" unique_id=100621190]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8980392, 0.8117647, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 12
+text = "D"
+horizontal_alignment = 1
+
+[node name="Caption" type="Label" parent="HUD/Hints/Row/Move" unique_id=900210415]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8980392, 0.8117647, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 12
+text = "Move"
+
+[node name="Run" type="HBoxContainer" parent="HUD/Hints/Row" unique_id=1200622837]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="dash" type="PanelContainer" parent="HUD/Hints/Row/Run" unique_id=542315317]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hj4tt")
+
+[node name="Text" type="Label" parent="HUD/Hints/Row/Run/dash" unique_id=1295377655]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8980392, 0.8117647, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 12
+text = "Shift"
+horizontal_alignment = 1
+
+[node name="Caption" type="Label" parent="HUD/Hints/Row/Run" unique_id=1849806958]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8980392, 0.8117647, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 12
+text = "Hold to run"
+
+[node name="Interact" type="HBoxContainer" parent="HUD/Hints/Row" unique_id=2004823588]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="interact" type="PanelContainer" parent="HUD/Hints/Row/Interact" unique_id=568395487]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kqx4a")
+
+[node name="Text" type="Label" parent="HUD/Hints/Row/Interact/interact" unique_id=1591221059]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8980392, 0.8117647, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 12
+text = "E"
+horizontal_alignment = 1
+
+[node name="Caption" type="Label" parent="HUD/Hints/Row/Interact" unique_id=1224133998]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8980392, 0.8117647, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 12
+text = "Interact"
+
+[node name="Recover" type="HBoxContainer" parent="HUD/Hints/Row" unique_id=1902362084]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="unstuck" type="PanelContainer" parent="HUD/Hints/Row/Recover" unique_id=846146726]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pfcs8")
+
+[node name="Text" type="Label" parent="HUD/Hints/Row/Recover/unstuck" unique_id=1447378476]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8980392, 0.8117647, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 12
+text = "R"
+horizontal_alignment = 1
+
+[node name="Caption" type="Label" parent="HUD/Hints/Row/Recover" unique_id=2005267872]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8980392, 0.8117647, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 12
+text = "Recover"
+
+[node name="Focus" type="HBoxContainer" parent="HUD/Hints/Row" unique_id=1757429048]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="focus" type="PanelContainer" parent="HUD/Hints/Row/Focus" unique_id=1267719179]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_50d7c")
+
+[node name="Text" type="Label" parent="HUD/Hints/Row/Focus/focus" unique_id=1297246126]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8980392, 0.8117647, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 12
+text = "Tab"
+horizontal_alignment = 1
+
+[node name="Caption" type="Label" parent="HUD/Hints/Row/Focus" unique_id=520688130]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8980392, 0.8117647, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 12
+text = "Focus next button"
+
+[node name="Look" type="Label" parent="HUD/Hints/Row" unique_id=348826199]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8980392, 0.8117647, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 12
+text = "Mouse to look · Esc to release"
+
+[node name="Actions" type="Control" parent="HUD" unique_id=198548359]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -204.0
+offset_top = 28.0
+offset_right = -36.0
+offset_bottom = 72.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme = ExtResource("8")
+
+[node name="Buttons" type="HBoxContainer" parent="HUD/Actions" unique_id=312924622]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Sound" type="Button" parent="HUD/Actions/Buttons" unique_id=1892996122]
+visible = false
+custom_minimum_size = Vector2(145, 44)
+layout_mode = 2
+tooltip_text = "Open sound settings"
+text = "Sound: off · O"
+
+[node name="Map" type="Button" parent="HUD/Actions/Buttons" unique_id=776717683]
+visible = false
+custom_minimum_size = Vector2(145, 44)
+layout_mode = 2
+text = "Map · M"
+
+[node name="Inventory" type="Button" parent="HUD/Actions/Buttons" unique_id=776780455]
+custom_minimum_size = Vector2(80, 44)
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_ruytr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_la3dr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hcsi8")
+
+[node name="Content" type="HBoxContainer" parent="HUD/Actions/Buttons/Inventory" unique_id=442329545]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 68.0
+offset_bottom = 36.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Key" type="PanelContainer" parent="HUD/Actions/Buttons/Inventory/Content" unique_id=1808190333]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wi1le")
+
+[node name="Text" type="Label" parent="HUD/Actions/Buttons/Inventory/Content/Key" unique_id=265648964]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8980392, 0.8117647, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 12
+text = "I"
+horizontal_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="HUD/Actions/Buttons/Inventory/Content" unique_id=1423414914]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("26_c6pm6")
+expand_mode = 1
+
+[node name="Settings" type="Button" parent="HUD/Actions/Buttons" unique_id=1473944172]
+custom_minimum_size = Vector2(80, 44)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_o7pr5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hyj2l")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vuqay")
+
+[node name="Content" type="HBoxContainer" parent="HUD/Actions/Buttons/Settings" unique_id=1420518223]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 68.0
+offset_bottom = 36.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Key" type="PanelContainer" parent="HUD/Actions/Buttons/Settings/Content" unique_id=1143220621]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wfmv0")
+
+[node name="Text" type="Label" parent="HUD/Actions/Buttons/Settings/Content/Key" unique_id=451765744]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8980392, 0.8117647, 1)
+theme_override_fonts/font = SubResource("FontVariation_vxglm")
+theme_override_font_sizes/font_size = 12
+text = ","
+horizontal_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="HUD/Actions/Buttons/Settings/Content" unique_id=339265893]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("27_5he1u")
+expand_mode = 1
+
+[node name="Interaction" type="PanelContainer" parent="HUD" unique_id=1146677365]
+visible = false
+material = SubResource("ShaderMaterial_c6pm6")
+custom_minimum_size = Vector2(320, 0)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -340.0
+offset_top = -172.0
+offset_right = -20.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_5q0nq")
+
+[node name="Text" type="Label" parent="HUD/Interaction" unique_id=1114336534]
+custom_minimum_size = Vector2(292, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+autowrap_mode = 3
+
+[node name="Dog" type="VBoxContainer" parent="HUD/Interaction" unique_id=726794882]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Heading" type="HBoxContainer" parent="HUD/Interaction/Dog" unique_id=2100962227]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Icon" type="TextureRect" parent="HUD/Interaction/Dog/Heading" unique_id=138802379]
+modulate = Color(0.9019608, 0.84313726, 0.6784314, 1)
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("28_qkpxi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Info" type="VBoxContainer" parent="HUD/Interaction/Dog/Heading" unique_id=1376169802]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="Name" type="Label" parent="HUD/Interaction/Dog/Heading/Info" unique_id=790429524]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = SubResource("FontVariation_fuf3a")
+theme_override_font_sizes/font_size = 16
+
+[node name="Status" type="Label" parent="HUD/Interaction/Dog/Heading/Info" unique_id=1446439262]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9019608, 0.8666667, 0.78431374, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="Close" type="Button" parent="HUD/Interaction/Dog/Heading" unique_id=1407961818]
+visible = false
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Close dog tricks · Esc"
+theme_override_constants/icon_max_width = 18
+icon = ExtResource("29_fuf3a")
+
+[node name="Main" type="HBoxContainer" parent="HUD/Interaction/Dog" unique_id=2046447567]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Pet" type="Button" parent="HUD/Interaction/Dog/Main" unique_id=1587738989]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("30_pibwh")
+action = "interact"
+metadata/action = "interact"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Dog/Main/Pet" unique_id=1170958953]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Dog/Main/Pet/Row" unique_id=626496357]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Main/Pet/Row/Key" unique_id=570537490]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Main/Pet/Row" unique_id=1688042669]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Pet"
+vertical_alignment = 1
+
+[node name="Walk" type="Button" parent="HUD/Interaction/Dog/Main" unique_id=1240516294]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("30_pibwh")
+action = "puppy_follow"
+metadata/action = "puppy_follow"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Dog/Main/Walk" unique_id=457197410]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Dog/Main/Walk/Row" unique_id=121227784]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Main/Walk/Row/Key" unique_id=1301245487]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Main/Walk/Row" unique_id=1315796559]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Walk"
+vertical_alignment = 1
+
+[node name="Toggle" type="Button" parent="HUD/Interaction/Dog/Main" unique_id=1913443935]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.2
+script = ExtResource("30_pibwh")
+action = "puppy_tricks"
+metadata/action = "puppy_tricks"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Dog/Main/Toggle" unique_id=669021434]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Dog/Main/Toggle/Row" unique_id=2072415509]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Main/Toggle/Row/Key" unique_id=398056231]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Main/Toggle/Row" unique_id=1990968680]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Tricks"
+vertical_alignment = 1
+
+[node name="Caret" type="TextureRect" parent="HUD/Interaction/Dog/Main/Toggle/Row" unique_id=467737466]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("33_5poiv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Divider" type="HSeparator" parent="HUD/Interaction/Dog" unique_id=163396255]
+visible = false
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_fuf3a")
+
+[node name="Tricks" type="GridContainer" parent="HUD/Interaction/Dog" unique_id=1813678325]
+visible = false
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="Sit" type="Button" parent="HUD/Interaction/Dog/Tricks" unique_id=1212577592]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("30_pibwh")
+action = "puppy_sit"
+metadata/action = "puppy_sit"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Dog/Tricks/Sit" unique_id=605823208]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Dog/Tricks/Sit/Row" unique_id=230600704]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Tricks/Sit/Row/Key" unique_id=1195931625]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Tricks/Sit/Row" unique_id=1729621727]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Sit"
+vertical_alignment = 1
+
+[node name="Dance" type="Button" parent="HUD/Interaction/Dog/Tricks" unique_id=1414913577]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("30_pibwh")
+action = "puppy_dance"
+metadata/action = "puppy_dance"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Dog/Tricks/Dance" unique_id=1974063797]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Dog/Tricks/Dance/Row" unique_id=601612635]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Tricks/Dance/Row/Key" unique_id=424444776]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Tricks/Dance/Row" unique_id=495462387]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Dance"
+vertical_alignment = 1
+
+[node name="Spin" type="Button" parent="HUD/Interaction/Dog/Tricks" unique_id=715959070]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("30_pibwh")
+action = "puppy_spin"
+metadata/action = "puppy_spin"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Dog/Tricks/Spin" unique_id=865488383]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Dog/Tricks/Spin/Row" unique_id=802493891]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Tricks/Spin/Row/Key" unique_id=336662931]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Tricks/Spin/Row" unique_id=929236965]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Spin"
+vertical_alignment = 1
+
+[node name="Bow" type="Button" parent="HUD/Interaction/Dog/Tricks" unique_id=1988997877]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("30_pibwh")
+action = "puppy_bow"
+metadata/action = "puppy_bow"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Dog/Tricks/Bow" unique_id=538415012]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Dog/Tricks/Bow/Row" unique_id=253797270]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Tricks/Bow/Row/Key" unique_id=1170318334]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Tricks/Bow/Row" unique_id=32669678]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Bow"
+vertical_alignment = 1
+
+[node name="Wave" type="Button" parent="HUD/Interaction/Dog/Tricks" unique_id=943200523]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("30_pibwh")
+action = "puppy_wave"
+metadata/action = "puppy_wave"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Dog/Tricks/Wave" unique_id=1958134327]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Dog/Tricks/Wave/Row" unique_id=243646382]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Tricks/Wave/Row/Key" unique_id=714083693]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Tricks/Wave/Row" unique_id=1863318177]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Wave"
+vertical_alignment = 1
+
+[node name="Roll" type="Button" parent="HUD/Interaction/Dog/Tricks" unique_id=1238023944]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("30_pibwh")
+action = "puppy_roll"
+metadata/action = "puppy_roll"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Dog/Tricks/Roll" unique_id=1042846957]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Dog/Tricks/Roll/Row" unique_id=1518359519]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Tricks/Roll/Row/Key" unique_id=1465920204]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Tricks/Roll/Row" unique_id=1650662355]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Roll over"
+vertical_alignment = 1
+
+[node name="Home" type="Button" parent="HUD/Interaction/Dog" unique_id=1852471470]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("30_pibwh")
+action = "puppy_home"
+metadata/action = "puppy_home"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Dog/Home" unique_id=34635012]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Dog/Home/Row" unique_id=1124058860]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Home/Row/Key" unique_id=1365424761]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Dog/Home/Row" unique_id=2141272806]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Send dogs home"
+vertical_alignment = 1
+
+[node name="Generic" type="VBoxContainer" parent="HUD/Interaction" unique_id=257240290]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Title" type="Label" parent="HUD/Interaction/Generic" unique_id=533504510]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_2cjbq")
+theme_override_font_sizes/font_size = 16
+
+[node name="Directions" type="GridContainer" parent="HUD/Interaction/Generic" unique_id=845922443]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+columns = 4
+
+[node name="Forward" type="Button" parent="HUD/Interaction/Generic/Directions" unique_id=701350145]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Hold to move forward"
+script = ExtResource("30_pibwh")
+action = "move_forward"
+hold_action = true
+metadata/action = "interact"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Generic/Directions/Forward" unique_id=1656357080]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Generic/Directions/Forward/Row" unique_id=1898066699]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Directions/Forward/Row/Key" unique_id=841107458]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "W"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Directions/Forward/Row" unique_id=2090307852]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Pet"
+vertical_alignment = 1
+
+[node name="Left" type="Button" parent="HUD/Interaction/Generic/Directions" unique_id=538710613]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Hold to steer left"
+script = ExtResource("30_pibwh")
+action = "move_left"
+hold_action = true
+metadata/action = "interact"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Generic/Directions/Left" unique_id=887488431]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Generic/Directions/Left/Row" unique_id=1620094501]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Directions/Left/Row/Key" unique_id=1268883590]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Directions/Left/Row" unique_id=1453061560]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Pet"
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="HUD/Interaction/Generic/Directions" unique_id=69998828]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Hold to move backward"
+script = ExtResource("30_pibwh")
+action = "move_back"
+hold_action = true
+metadata/action = "interact"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Generic/Directions/Back" unique_id=2008523682]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Generic/Directions/Back/Row" unique_id=1108173548]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Directions/Back/Row/Key" unique_id=1601950019]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Directions/Back/Row" unique_id=922974847]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Pet"
+vertical_alignment = 1
+
+[node name="Right" type="Button" parent="HUD/Interaction/Generic/Directions" unique_id=1125928991]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Hold to steer right"
+script = ExtResource("30_pibwh")
+action = "move_right"
+hold_action = true
+metadata/action = "interact"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Generic/Directions/Right" unique_id=1437769867]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Generic/Directions/Right/Row" unique_id=1614050295]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Directions/Right/Row/Key" unique_id=1753769973]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Directions/Right/Row" unique_id=167165812]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Pet"
+vertical_alignment = 1
+
+[node name="Actions" type="VBoxContainer" parent="HUD/Interaction/Generic" unique_id=266568585]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Action0" type="Button" parent="HUD/Interaction/Generic/Actions" unique_id=1604731253]
+visible = false
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("30_pibwh")
+action = "interact"
+metadata/action = "interact"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Generic/Actions/Action0" unique_id=1356370201]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Generic/Actions/Action0/Row" unique_id=462269432]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Actions/Action0/Row/Key" unique_id=102351777]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Actions/Action0/Row" unique_id=1140464917]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Pet"
+vertical_alignment = 1
+
+[node name="Action1" type="Button" parent="HUD/Interaction/Generic/Actions" unique_id=1281824451]
+visible = false
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("30_pibwh")
+action = "interact"
+metadata/action = "interact"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Generic/Actions/Action1" unique_id=969271118]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Generic/Actions/Action1/Row" unique_id=1668191961]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Actions/Action1/Row/Key" unique_id=1035684052]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Actions/Action1/Row" unique_id=1098567174]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Pet"
+vertical_alignment = 1
+
+[node name="Action2" type="Button" parent="HUD/Interaction/Generic/Actions" unique_id=1014463255]
+visible = false
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("30_pibwh")
+action = "interact"
+metadata/action = "interact"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Generic/Actions/Action2" unique_id=334570658]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Generic/Actions/Action2/Row" unique_id=1312812304]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Actions/Action2/Row/Key" unique_id=933425851]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Actions/Action2/Row" unique_id=1360355473]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Pet"
+vertical_alignment = 1
+
+[node name="Action3" type="Button" parent="HUD/Interaction/Generic/Actions" unique_id=335095479]
+visible = false
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("30_pibwh")
+action = "interact"
+metadata/action = "interact"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Generic/Actions/Action3" unique_id=564782985]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Generic/Actions/Action3/Row" unique_id=981283336]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Actions/Action3/Row/Key" unique_id=1523869915]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Actions/Action3/Row" unique_id=1638703085]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Pet"
+vertical_alignment = 1
+
+[node name="Action4" type="Button" parent="HUD/Interaction/Generic/Actions" unique_id=407740207]
+visible = false
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("30_pibwh")
+action = "interact"
+metadata/action = "interact"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Generic/Actions/Action4" unique_id=1155030161]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Generic/Actions/Action4/Row" unique_id=60757120]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Actions/Action4/Row/Key" unique_id=1555397118]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Actions/Action4/Row" unique_id=27197108]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Pet"
+vertical_alignment = 1
+
+[node name="Action5" type="Button" parent="HUD/Interaction/Generic/Actions" unique_id=1887085439]
+visible = false
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("30_pibwh")
+action = "interact"
+metadata/action = "interact"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Generic/Actions/Action5" unique_id=756484456]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Generic/Actions/Action5/Row" unique_id=548961468]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Actions/Action5/Row/Key" unique_id=1106156239]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Actions/Action5/Row" unique_id=1086391568]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Pet"
+vertical_alignment = 1
+
+[node name="Action6" type="Button" parent="HUD/Interaction/Generic/Actions" unique_id=419562641]
+visible = false
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("30_pibwh")
+action = "interact"
+metadata/action = "interact"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Generic/Actions/Action6" unique_id=241419330]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Generic/Actions/Action6/Row" unique_id=1866383194]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Actions/Action6/Row/Key" unique_id=285104887]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Actions/Action6/Row" unique_id=1502775622]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Pet"
+vertical_alignment = 1
+
+[node name="Action7" type="Button" parent="HUD/Interaction/Generic/Actions" unique_id=15875254]
+visible = false
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("30_pibwh")
+action = "interact"
+metadata/action = "interact"
+
+[node name="Row" type="HBoxContainer" parent="HUD/Interaction/Generic/Actions/Action7" unique_id=1058771476]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -6.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Key" type="PanelContainer" parent="HUD/Interaction/Generic/Actions/Action7/Row" unique_id=510241740]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("31_c6pm6")
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Actions/Action7/Row/Key" unique_id=215777914]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("32_5he1u")
+theme_override_font_sizes/font_size = 12
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="HUD/Interaction/Generic/Actions/Action7/Row" unique_id=375253591]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Pet"
+vertical_alignment = 1
+
+[node name="Speech" type="Control" parent="HUD" unique_id=700164642]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("17_0ld40")
+
+[node name="Resident0" type="PanelContainer" parent="HUD/Speech" unique_id=871636039]
+visible = false
+custom_minimum_size = Vector2(290, 0)
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yc10j")
+
+[node name="Content" type="VBoxContainer" parent="HUD/Speech/Resident0" unique_id=2095102431]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Line" type="Label" parent="HUD/Speech/Resident0/Content" unique_id=95119446]
+custom_minimum_size = Vector2(254, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95686275, 0.8627451, 1)
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = SubResource("SystemFont_jscy8")
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+
+[node name="Footer" type="HBoxContainer" parent="HUD/Speech/Resident0/Content" unique_id=1342109219]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="Name" type="Label" parent="HUD/Speech/Resident0/Content/Footer" unique_id=1780596642]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = SubResource("FontVariation_0ld40")
+theme_override_font_sizes/font_size = 14
+
+[node name="Talk" type="Button" parent="HUD/Speech/Resident0/Content/Footer" unique_id=189877877]
+custom_minimum_size = Vector2(86, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_y6deb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_og1vs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_og1vs")
+theme_override_styles/focus = SubResource("StyleBoxFlat_2wyq8")
+
+[node name="Row" type="HBoxContainer" parent="HUD/Speech/Resident0/Content/Footer/Talk" unique_id=1981709156]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = -10.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="HUD/Speech/Resident0/Content/Footer/Talk/Row" unique_id=414400838]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95686275, 0.8627451, 1)
+theme_override_fonts/font = SubResource("FontVariation_gqmmt")
+theme_override_font_sizes/font_size = 13
+text = "Chat"
+horizontal_alignment = 1
+
+[node name="Key" type="PanelContainer" parent="HUD/Speech/Resident0/Content/Footer/Talk/Row" unique_id=1859812261]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_vxglm")
+
+[node name="Text" type="Label" parent="HUD/Speech/Resident0/Content/Footer/Talk/Row/Key" unique_id=670627404]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95686275, 0.8627451, 1)
+theme_override_fonts/font = SubResource("SystemFont_2f3dj")
+theme_override_font_sizes/font_size = 12
+text = "F"
+horizontal_alignment = 1
+
+[node name="Actions" type="VBoxContainer" parent="HUD/Speech/Resident0/Content" unique_id=2093662540]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Companion" type="Button" parent="HUD/Speech/Resident0/Content/Actions" unique_id=1284459285]
+custom_minimum_size = Vector2(86, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_yq6so")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fv21b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fv21b")
+theme_override_styles/focus = SubResource("StyleBoxFlat_tel4y")
+
+[node name="Row" type="HBoxContainer" parent="HUD/Speech/Resident0/Content/Actions/Companion" unique_id=1079252464]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = -10.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="HUD/Speech/Resident0/Content/Actions/Companion/Row" unique_id=143256192]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95686275, 0.8627451, 1)
+theme_override_fonts/font = SubResource("FontVariation_yc10j")
+theme_override_font_sizes/font_size = 13
+text = "Walk with me"
+horizontal_alignment = 1
+
+[node name="Key" type="PanelContainer" parent="HUD/Speech/Resident0/Content/Actions/Companion/Row" unique_id=1267556771]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_qkpxi")
+
+[node name="Text" type="Label" parent="HUD/Speech/Resident0/Content/Actions/Companion/Row/Key" unique_id=1615092546]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95686275, 0.8627451, 1)
+theme_override_fonts/font = SubResource("SystemFont_2f3dj")
+theme_override_font_sizes/font_size = 12
+text = "C"
+horizontal_alignment = 1
+
+[node name="Bread" type="Button" parent="HUD/Speech/Resident0/Content/Actions" unique_id=752529685]
+custom_minimum_size = Vector2(86, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_5q0nq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dgi5k")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dgi5k")
+theme_override_styles/focus = SubResource("StyleBoxFlat_j8jky")
+
+[node name="Row" type="HBoxContainer" parent="HUD/Speech/Resident0/Content/Actions/Bread" unique_id=1296003046]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = -10.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="HUD/Speech/Resident0/Content/Actions/Bread/Row" unique_id=314656867]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95686275, 0.8627451, 1)
+theme_override_fonts/font = SubResource("FontVariation_jscy8")
+theme_override_font_sizes/font_size = 13
+text = "Ask for bread crumbs"
+horizontal_alignment = 1
+
+[node name="Key" type="PanelContainer" parent="HUD/Speech/Resident0/Content/Actions/Bread/Row" unique_id=1240877878]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_kmb1v")
+
+[node name="Text" type="Label" parent="HUD/Speech/Resident0/Content/Actions/Bread/Row/Key" unique_id=1303641817]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95686275, 0.8627451, 1)
+theme_override_fonts/font = SubResource("SystemFont_2f3dj")
+theme_override_font_sizes/font_size = 12
+text = "B"
+horizontal_alignment = 1
+
+[node name="Tail" type="Polygon2D" parent="HUD/Speech/Resident0" unique_id=983808094]
+color = Color(0.16078432, 0.23529412, 0.2, 1)
+polygon = PackedVector2Array(-5, 0, 0, 5, 5, 0)
+
+[node name="Resident1" type="PanelContainer" parent="HUD/Speech" unique_id=1034727726]
+visible = false
+custom_minimum_size = Vector2(290, 0)
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fuf3a")
+
+[node name="Content" type="VBoxContainer" parent="HUD/Speech/Resident1" unique_id=1432709905]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Line" type="Label" parent="HUD/Speech/Resident1/Content" unique_id=1247421692]
+custom_minimum_size = Vector2(254, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95686275, 0.8627451, 1)
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = SubResource("SystemFont_jscy8")
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+
+[node name="Footer" type="HBoxContainer" parent="HUD/Speech/Resident1/Content" unique_id=1769329285]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="Name" type="Label" parent="HUD/Speech/Resident1/Content/Footer" unique_id=674020239]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = SubResource("FontVariation_pm3ni")
+theme_override_font_sizes/font_size = 14
+
+[node name="Talk" type="Button" parent="HUD/Speech/Resident1/Content/Footer" unique_id=331935581]
+custom_minimum_size = Vector2(86, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_pibwh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c6pm6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_c6pm6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_5he1u")
+
+[node name="Row" type="HBoxContainer" parent="HUD/Speech/Resident1/Content/Footer/Talk" unique_id=1371807944]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = -10.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="HUD/Speech/Resident1/Content/Footer/Talk/Row" unique_id=1757919428]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95686275, 0.8627451, 1)
+theme_override_fonts/font = SubResource("FontVariation_y6deb")
+theme_override_font_sizes/font_size = 13
+text = "Chat"
+horizontal_alignment = 1
+
+[node name="Key" type="PanelContainer" parent="HUD/Speech/Resident1/Content/Footer/Talk/Row" unique_id=1298938003]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_5poiv")
+
+[node name="Text" type="Label" parent="HUD/Speech/Resident1/Content/Footer/Talk/Row/Key" unique_id=1204743436]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95686275, 0.8627451, 1)
+theme_override_fonts/font = SubResource("SystemFont_2f3dj")
+theme_override_font_sizes/font_size = 12
+text = "F"
+horizontal_alignment = 1
+
+[node name="Actions" type="VBoxContainer" parent="HUD/Speech/Resident1/Content" unique_id=1096837895]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Companion" type="Button" parent="HUD/Speech/Resident1/Content/Actions" unique_id=2006500602]
+custom_minimum_size = Vector2(86, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_2cjbq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_chjal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_chjal")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cjqg0")
+
+[node name="Row" type="HBoxContainer" parent="HUD/Speech/Resident1/Content/Actions/Companion" unique_id=1182768378]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = -10.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="HUD/Speech/Resident1/Content/Actions/Companion/Row" unique_id=753199322]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95686275, 0.8627451, 1)
+theme_override_fonts/font = SubResource("FontVariation_og1vs")
+theme_override_font_sizes/font_size = 13
+text = "Walk with me"
+horizontal_alignment = 1
+
+[node name="Key" type="PanelContainer" parent="HUD/Speech/Resident1/Content/Actions/Companion/Row" unique_id=1674007947]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_vchkt")
+
+[node name="Text" type="Label" parent="HUD/Speech/Resident1/Content/Actions/Companion/Row/Key" unique_id=2044233318]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95686275, 0.8627451, 1)
+theme_override_fonts/font = SubResource("SystemFont_2f3dj")
+theme_override_font_sizes/font_size = 12
+text = "C"
+horizontal_alignment = 1
+
+[node name="Bread" type="Button" parent="HUD/Speech/Resident1/Content/Actions" unique_id=11243300]
+custom_minimum_size = Vector2(86, 44)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_txyw0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vc5cj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vc5cj")
+theme_override_styles/focus = SubResource("StyleBoxFlat_nvyfr")
+
+[node name="Row" type="HBoxContainer" parent="HUD/Speech/Resident1/Content/Actions/Bread" unique_id=464644899]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = -10.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="HUD/Speech/Resident1/Content/Actions/Bread/Row" unique_id=946530463]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.95686275, 0.8627451, 1)
+theme_override_fonts/font = SubResource("FontVariation_2wyq8")
+theme_override_font_sizes/font_size = 13
+text = "Ask for bread crumbs"
+horizontal_alignment = 1
+
+[node name="Key" type="PanelContainer" parent="HUD/Speech/Resident1/Content/Actions/Bread/Row" unique_id=1545276213]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_ty1g6")
+
+[node name="Text" type="Label" parent="HUD/Speech/Resident1/Content/Actions/Bread/Row/Key" unique_id=1641583160]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95686275, 0.8627451, 1)
+theme_override_fonts/font = SubResource("SystemFont_2f3dj")
+theme_override_font_sizes/font_size = 12
+text = "B"
+horizontal_alignment = 1
+
+[node name="Tail" type="Polygon2D" parent="HUD/Speech/Resident1" unique_id=616143419]
+color = Color(0.16078432, 0.23529412, 0.2, 1)
+polygon = PackedVector2Array(-5, 0, 0, 5, 5, 0)
+
+[node name="Animal" type="PanelContainer" parent="HUD/Speech" unique_id=1736296879]
+visible = false
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j2jfr")
+
+[node name="Content" type="VBoxContainer" parent="HUD/Speech/Animal" unique_id=1297816065]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Line" type="Label" parent="HUD/Speech/Animal/Content" unique_id=919972262]
+custom_minimum_size = Vector2(234, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.3137255, 0.34509805, 1)
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = SubResource("SystemFont_jscy8")
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Menus" parent="HUD" unique_id=111423007 instance=ExtResource("19_yc10j")]
+z_index = 30
+theme = SubResource("Theme")
+
+[node name="Wordmark" type="Button" parent="HUD" unique_id=1498053506]
+custom_minimum_size = Vector2(80, 44)
+offset_left = 36.0
+offset_top = 28.0
+offset_right = 116.0
+offset_bottom = 72.0
+theme_override_fonts/font = SubResource("SystemFont_yc10j")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wxrqn")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_n756u")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k33j2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2cjf7")
+text = "Hearthwillow"
+
+[node name="VillageFlock" type="Node" parent="." unique_id=1670113646]
+script = ExtResource("17_muem4")
+
+[node name="Crumbs" type="MultiMeshInstance3D" parent="VillageFlock" unique_id=813769328]
+physics_interpolation_mode = 2
+visible = false
+cast_shadow = 0
+multimesh = SubResource("MultiMesh_gqmmt")
+
+[node name="WeatherRain" type="GPUParticles3D" parent="." unique_id=141573754]
+cast_shadow = 0
+emitting = false
+amount = 700
+lifetime = 1.8
+visibility_aabb = AABB(-12, -14, -12, 24, 28, 24)
+process_material = SubResource("ParticleProcessMaterial_pm3ni")
+draw_pass_1 = SubResource("QuadMesh_og1vs")
+
+[node name="VillageActivities" parent="." unique_id=1083604094 instance=ExtResource("32_qkpxi")]
+
+[node name="VillageSeating" parent="." unique_id=539555549 instance=ExtResource("39_cjqg0")]
+
+[node name="VillageRace" parent="." unique_id=762433942 instance=ExtResource("41_vchkt")]
+
+[node name="FocusCottage" parent="." unique_id=1207254732 instance=ExtResource("43_txyw0")]
+
+[node name="PondLife" parent="." unique_id=1684818793 instance=ExtResource("pond_life")]
+
+[node name="QuietPlaces" parent="." unique_id=795609557 instance=ExtResource("quiet_places")]
+
+[node name="VillageLighting" parent="." unique_id=1763039632 instance=ExtResource("NightLighting")]
+
+[connection signal="jumped" from="Player" to="VillageSound" method="on_jump"]
+[connection signal="landed" from="Player" to="VillageSound" method="on_land"]
+[connection signal="step_taken" from="Player" to="VillageSound" method="on_step"]
+[connection signal="resized" from="HUD/VillageMap" to="HUD/VillageMap" method="request_layout"]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Close" to="HUD/VillageMap" method="toggle_map"]
+[connection signal="focus_entered" from="HUD/VillageMap/Expanded/Markers/Marker0" to="HUD/VillageMap" method="select_destination" binds= [0]]
+[connection signal="mouse_entered" from="HUD/VillageMap/Expanded/Markers/Marker0" to="HUD/VillageMap" method="select_destination" binds= [0]]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Markers/Marker0" to="HUD/VillageMap" method="travel" binds= [0]]
+[connection signal="focus_entered" from="HUD/VillageMap/Expanded/Markers/Marker1" to="HUD/VillageMap" method="select_destination" binds= [1]]
+[connection signal="mouse_entered" from="HUD/VillageMap/Expanded/Markers/Marker1" to="HUD/VillageMap" method="select_destination" binds= [1]]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Markers/Marker1" to="HUD/VillageMap" method="travel" binds= [1]]
+[connection signal="focus_entered" from="HUD/VillageMap/Expanded/Markers/Marker2" to="HUD/VillageMap" method="select_destination" binds= [2]]
+[connection signal="mouse_entered" from="HUD/VillageMap/Expanded/Markers/Marker2" to="HUD/VillageMap" method="select_destination" binds= [2]]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Markers/Marker2" to="HUD/VillageMap" method="travel" binds= [2]]
+[connection signal="focus_entered" from="HUD/VillageMap/Expanded/Markers/Marker3" to="HUD/VillageMap" method="select_destination" binds= [3]]
+[connection signal="mouse_entered" from="HUD/VillageMap/Expanded/Markers/Marker3" to="HUD/VillageMap" method="select_destination" binds= [3]]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Markers/Marker3" to="HUD/VillageMap" method="travel" binds= [3]]
+[connection signal="focus_entered" from="HUD/VillageMap/Expanded/Markers/Marker4" to="HUD/VillageMap" method="select_destination" binds= [4]]
+[connection signal="mouse_entered" from="HUD/VillageMap/Expanded/Markers/Marker4" to="HUD/VillageMap" method="select_destination" binds= [4]]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Markers/Marker4" to="HUD/VillageMap" method="travel" binds= [4]]
+[connection signal="focus_entered" from="HUD/VillageMap/Expanded/Markers/Marker5" to="HUD/VillageMap" method="select_destination" binds= [5]]
+[connection signal="mouse_entered" from="HUD/VillageMap/Expanded/Markers/Marker5" to="HUD/VillageMap" method="select_destination" binds= [5]]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Markers/Marker5" to="HUD/VillageMap" method="travel" binds= [5]]
+[connection signal="focus_entered" from="HUD/VillageMap/Expanded/Markers/Marker6" to="HUD/VillageMap" method="select_destination" binds= [6]]
+[connection signal="mouse_entered" from="HUD/VillageMap/Expanded/Markers/Marker6" to="HUD/VillageMap" method="select_destination" binds= [6]]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Markers/Marker6" to="HUD/VillageMap" method="travel" binds= [6]]
+[connection signal="focus_entered" from="HUD/VillageMap/Expanded/Markers/Marker7" to="HUD/VillageMap" method="select_destination" binds= [7]]
+[connection signal="mouse_entered" from="HUD/VillageMap/Expanded/Markers/Marker7" to="HUD/VillageMap" method="select_destination" binds= [7]]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Markers/Marker7" to="HUD/VillageMap" method="travel" binds= [7]]
+[connection signal="focus_entered" from="HUD/VillageMap/Expanded/Markers/Marker8" to="HUD/VillageMap" method="select_destination" binds= [8]]
+[connection signal="mouse_entered" from="HUD/VillageMap/Expanded/Markers/Marker8" to="HUD/VillageMap" method="select_destination" binds= [8]]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Markers/Marker8" to="HUD/VillageMap" method="travel" binds= [8]]
+[connection signal="focus_entered" from="HUD/VillageMap/Expanded/Markers/Marker9" to="HUD/VillageMap" method="select_destination" binds= [9]]
+[connection signal="mouse_entered" from="HUD/VillageMap/Expanded/Markers/Marker9" to="HUD/VillageMap" method="select_destination" binds= [9]]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Markers/Marker9" to="HUD/VillageMap" method="travel" binds= [9]]
+[connection signal="focus_entered" from="HUD/VillageMap/Expanded/Markers/Marker10" to="HUD/VillageMap" method="select_destination" binds= [10]]
+[connection signal="mouse_entered" from="HUD/VillageMap/Expanded/Markers/Marker10" to="HUD/VillageMap" method="select_destination" binds= [10]]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Markers/Marker10" to="HUD/VillageMap" method="travel" binds= [10]]
+[connection signal="focus_entered" from="HUD/VillageMap/Expanded/Markers/Marker11" to="HUD/VillageMap" method="select_destination" binds= [11]]
+[connection signal="mouse_entered" from="HUD/VillageMap/Expanded/Markers/Marker11" to="HUD/VillageMap" method="select_destination" binds= [11]]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Markers/Marker11" to="HUD/VillageMap" method="travel" binds= [11]]
+[connection signal="focus_entered" from="HUD/VillageMap/Expanded/Markers/Marker12" to="HUD/VillageMap" method="select_destination" binds= [12]]
+[connection signal="mouse_entered" from="HUD/VillageMap/Expanded/Markers/Marker12" to="HUD/VillageMap" method="select_destination" binds= [12]]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Markers/Marker12" to="HUD/VillageMap" method="travel" binds= [12]]
+[connection signal="focus_entered" from="HUD/VillageMap/Expanded/Markers/Marker13" to="HUD/VillageMap" method="select_destination" binds= [13]]
+[connection signal="mouse_entered" from="HUD/VillageMap/Expanded/Markers/Marker13" to="HUD/VillageMap" method="select_destination" binds= [13]]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Markers/Marker13" to="HUD/VillageMap" method="travel" binds= [13]]
+[connection signal="focus_entered" from="HUD/VillageMap/Expanded/Markers/Marker14" to="HUD/VillageMap" method="select_destination" binds= [14]]
+[connection signal="mouse_entered" from="HUD/VillageMap/Expanded/Markers/Marker14" to="HUD/VillageMap" method="select_destination" binds= [14]]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Markers/Marker14" to="HUD/VillageMap" method="travel" binds= [14]]
+[connection signal="focus_entered" from="HUD/VillageMap/Expanded/Markers/Marker15" to="HUD/VillageMap" method="select_destination" binds= [15]]
+[connection signal="mouse_entered" from="HUD/VillageMap/Expanded/Markers/Marker15" to="HUD/VillageMap" method="select_destination" binds= [15]]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Markers/Marker15" to="HUD/VillageMap" method="travel" binds= [15]]
+[connection signal="focus_entered" from="HUD/VillageMap/Expanded/Markers/Marker16" to="HUD/VillageMap" method="select_destination" binds= [16]]
+[connection signal="mouse_entered" from="HUD/VillageMap/Expanded/Markers/Marker16" to="HUD/VillageMap" method="select_destination" binds= [16]]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Markers/Marker16" to="HUD/VillageMap" method="travel" binds= [16]]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Footer/Row/Go" to="HUD/VillageMap" method="travel_selected"]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Zoom/Out" to="HUD/VillageMap" method="zoom_out"]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Zoom/In" to="HUD/VillageMap" method="zoom_in"]
+[connection signal="pressed" from="HUD/VillageMap/Expanded/Zoom/Reset" to="HUD/VillageMap" method="reset_view"]
+[connection signal="pressed" from="HUD/Actions/Buttons/Sound" to="HUD/Menus" method="open_sound"]
+[connection signal="pressed" from="HUD/Actions/Buttons/Map" to="HUD/VillageMap" method="toggle_map"]
+[connection signal="pressed" from="HUD/Actions/Buttons/Inventory" to="HUD/Menus" method="open_inventory"]
+[connection signal="pressed" from="HUD/Actions/Buttons/Settings" to="HUD/Menus" method="open_settings"]
+[connection signal="pressed" from="HUD/Interaction/Dog/Heading/Close" to="VillageLife" method="activate_animal_control" binds= ["puppy_tricks"]]
+[connection signal="pressed" from="HUD/Interaction/Dog/Main/Pet" to="VillageLife" method="activate_animal_control" binds= ["interact"]]
+[connection signal="pressed" from="HUD/Interaction/Dog/Main/Walk" to="VillageLife" method="activate_animal_control" binds= ["puppy_follow"]]
+[connection signal="pressed" from="HUD/Interaction/Dog/Main/Toggle" to="VillageLife" method="activate_animal_control" binds= ["puppy_tricks"]]
+[connection signal="pressed" from="HUD/Interaction/Dog/Tricks/Sit" to="VillageLife" method="activate_animal_control" binds= ["puppy_sit"]]
+[connection signal="pressed" from="HUD/Interaction/Dog/Tricks/Dance" to="VillageLife" method="activate_animal_control" binds= ["puppy_dance"]]
+[connection signal="pressed" from="HUD/Interaction/Dog/Tricks/Spin" to="VillageLife" method="activate_animal_control" binds= ["puppy_spin"]]
+[connection signal="pressed" from="HUD/Interaction/Dog/Tricks/Bow" to="VillageLife" method="activate_animal_control" binds= ["puppy_bow"]]
+[connection signal="pressed" from="HUD/Interaction/Dog/Tricks/Wave" to="VillageLife" method="activate_animal_control" binds= ["puppy_wave"]]
+[connection signal="pressed" from="HUD/Interaction/Dog/Tricks/Roll" to="VillageLife" method="activate_animal_control" binds= ["puppy_roll"]]
+[connection signal="pressed" from="HUD/Interaction/Dog/Home" to="VillageLife" method="activate_animal_control" binds= ["puppy_home"]]
+[connection signal="pressed" from="HUD/Interaction/Generic/Actions/Action0" to="VillageLife" method="activate_context_control" binds= [0]]
+[connection signal="pressed" from="HUD/Interaction/Generic/Actions/Action1" to="VillageLife" method="activate_context_control" binds= [1]]
+[connection signal="pressed" from="HUD/Interaction/Generic/Actions/Action2" to="VillageLife" method="activate_context_control" binds= [2]]
+[connection signal="pressed" from="HUD/Interaction/Generic/Actions/Action3" to="VillageLife" method="activate_context_control" binds= [3]]
+[connection signal="pressed" from="HUD/Interaction/Generic/Actions/Action4" to="VillageLife" method="activate_context_control" binds= [4]]
+[connection signal="pressed" from="HUD/Interaction/Generic/Actions/Action5" to="VillageLife" method="activate_context_control" binds= [5]]
+[connection signal="pressed" from="HUD/Interaction/Generic/Actions/Action6" to="VillageLife" method="activate_context_control" binds= [6]]
+[connection signal="pressed" from="HUD/Interaction/Generic/Actions/Action7" to="VillageLife" method="activate_context_control" binds= [7]]
+[connection signal="pressed" from="HUD/Speech/Resident0/Content/Footer/Talk" to="HUD/Speech" method="activate" binds= [0, "Talk"]]
+[connection signal="pressed" from="HUD/Speech/Resident0/Content/Actions/Companion" to="HUD/Speech" method="activate" binds= [0, "Companion"]]
+[connection signal="pressed" from="HUD/Speech/Resident0/Content/Actions/Bread" to="HUD/Speech" method="activate" binds= [0, "Bread"]]
+[connection signal="pressed" from="HUD/Speech/Resident1/Content/Footer/Talk" to="HUD/Speech" method="activate" binds= [1, "Talk"]]
+[connection signal="pressed" from="HUD/Speech/Resident1/Content/Actions/Companion" to="HUD/Speech" method="activate" binds= [1, "Companion"]]
+[connection signal="pressed" from="HUD/Speech/Resident1/Content/Actions/Bread" to="HUD/Speech" method="activate" binds= [1, "Bread"]]
+[connection signal="pressed" from="HUD/Wordmark" to="HUD/Menus" method="close_menu"]
+[connection signal="activity_sound" from="VillageActivities" to="VillageSound" method="garden_effect"]

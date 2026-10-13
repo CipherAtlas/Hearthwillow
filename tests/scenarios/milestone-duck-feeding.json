@@ -1,0 +1,306 @@
+{
+  "name": "Duck feeding from dock: real Maple pouch acquisition, native F and pointer, complete timed meal, Japanese and activity coexistence",
+  "scene": "res://scenes/main.tscn",
+  "keep_running": true,
+  "steps": [
+    {
+      "wait": 0.3
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "enter_game",
+        "args": [
+          false
+        ]
+      }
+    },
+    {
+      "eval": "set_meta('original_language',get_node('HUD/Menus').language)"
+    },
+    {
+      "set": {
+        "path": "HUD/Menus",
+        "props": {
+          "language": 0
+        }
+      }
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-22.15,-6.6))"
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('QuietPlaces').active.is_empty() and get_node('PondLife/UI/Feeding').visible",
+      "message": ""
+    },
+    {
+      "assert": "get_node('PondLife/UI/Feeding/Content/Feed').disabled and get_node('PondLife/UI/Feeding/Content/Status').text.contains('Maple')",
+      "message": "No-pouch guidance is visible rather than hiding the mechanic"
+    },
+    {
+      "assert": "get_node('PondLife/UI/Feeding').size.x>=372 and get_node('PondLife/UI/Feeding').size.y<150",
+      "message": "Dock panel is compact and readable"
+    },
+    {
+      "eval": "get_viewport().get_texture().get_image().save_png('res://evidence/duck-feeding-no-crumbs-1080p.png')"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(get_node('Village/Actors/maple').position.x,get_node('Village/Actors/maple').position.z)+Vector2(0,1.5))"
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('VillageLife').nearest==get_node('Village/Actors/maple')",
+      "message": "Approaching Maple exposes normal resident controls"
+    },
+    {
+      "input": [
+        {
+          "action": "bread",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('VillageLife').crumbs>0",
+      "message": "Native crumb shortcut receives the reusable pouch"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-22.15,-6.6))"
+    },
+    {
+      "wait": 0.3
+    },
+    {
+      "assert": "get_node('PondLife/UI/Feeding').visible and not get_node('PondLife/UI/Feeding/Content/Feed').disabled",
+      "message": ""
+    },
+    {
+      "eval": "set_meta('crumb_count',get_node('VillageLife').crumbs)"
+    },
+    {
+      "input": [
+        {
+          "action": "talk",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "get_node('PondLife').elapsed-get_node('PondLife').feed_at<1 and get_node('PondLife/Crumbs').visible",
+      "message": "F at the dock starts feeding without entering an activity"
+    },
+    {
+      "assert": "get_node('VillageLife').crumbs==get_meta('crumb_count')",
+      "message": "Reusable pouch is retained"
+    },
+    {
+      "assert": "get_node('PondLife/UI/Feeding/Content/Feed').disabled and get_node('PondLife/UI/Feeding/Content/Status').text.contains('eating')",
+      "message": "Active meal has visible cooldown"
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"captured\",Input.mouse_mode==Input.MOUSE_MODE_CAPTURED)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta('captured')",
+      "message": "Feeding preserves gameplay mouse capture"
+    },
+    {
+      "input": [
+        {
+          "action": "talk",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('PondLife').reply.contains('Give them a moment')",
+      "message": "Repeated F does not restart the meal"
+    },
+    {
+      "wait": 4.1
+    },
+    {
+      "assert": "get_node('PondLife/Birds/3').position.distance_to(get_node('PondLife').meal(3))<.5",
+      "message": "Ducks swim to the scattered crumbs on their actual timeline"
+    },
+    {
+      "wait": 3.3
+    },
+    {
+      "assert": "get_node('PondLife/Hearts/3').visible and get_node('PondLife/Replies/3').visible",
+      "message": "Meal produces hearts and thanks without clock fixtures"
+    },
+    {
+      "assert": "get_node('HUD/Speech/Animal').visible and get_node('HUD/Speech/Animal/Content/Line').text.contains('Quack')",
+      "message": "Nearby duck thanks use the visible speech panel"
+    },
+    {
+      "eval": "get_viewport().get_texture().get_image().save_png('res://evidence/duck-feeding-happy-1080p.png')"
+    },
+    {
+      "wait": 4
+    },
+    {
+      "assert": "not get_node('PondLife/UI/Feeding/Content/Feed').disabled",
+      "message": "Feed becomes available after the actual cooldown"
+    },
+    {
+      "wait": 6
+    },
+    {
+      "assert": "not get_node('PondLife/Hearts/3').visible and not get_node('PondLife/Crumbs').visible",
+      "message": "Ducks finish and leave after the actual meal"
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "eval": "get_tree().root.grab_focus()"
+    },
+    {
+      "eval": "get_node('PondLife/UI/Feeding/Content/Feed').warp_mouse(get_node('PondLife/UI/Feeding/Content/Feed').size/2)"
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "input": [
+        {
+          "click_node": "PondLife/UI/Feeding/Content/Feed"
+        }
+      ]
+    },
+    {
+      "assert": "get_node('PondLife').elapsed-get_node('PondLife').feed_at<1",
+      "message": "Native pointer feed uses the same action"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_map",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "not get_node('PondLife/UI/Feeding').visible"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_map",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "open_settings",
+        "args": []
+      }
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "not get_node('PondLife/UI/Feeding').visible",
+      "message": ""
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "close_menu",
+        "args": []
+      }
+    },
+    {
+      "call": {
+        "path": "HUD/VillageMap",
+        "method": "travel",
+        "args": [
+          2
+        ]
+      }
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('QuietPlaces').active=='breathe' and not get_node('PondLife/UI/Feeding').visible and get_node('QuietPlaces/UI/Breathe/Content/Feed').visible",
+      "message": "Seated breathing retains feeding without duplicate dock controls"
+    },
+    {
+      "set": {
+        "path": "HUD/Menus",
+        "props": {
+          "language": 1
+        }
+      }
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('QuietPlaces/UI/Breathe/Content/Feed/Row/Text').text.contains('アヒル')",
+      "message": ""
+    },
+    {
+      "call": {
+        "path": "QuietPlaces",
+        "method": "leave",
+        "args": []
+      }
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('PondLife/UI/Feeding/Content/Feed/Row/Text').text.contains('アヒル')",
+      "message": ""
+    },
+    {
+      "eval": "get_viewport().get_texture().get_image().save_png('res://evidence/duck-feeding-japanese-1080p.png')"
+    },
+    {
+      "eval": "get_node('HUD/Menus').set('language',get_meta('original_language'))"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(.3,20))"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "not get_node('PondLife/UI/Feeding').visible",
+      "message": "Dock controls leave when walking away"
+    },
+    {
+      "assert_no_errors": true
+    }
+  ]
+}

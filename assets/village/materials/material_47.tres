@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/foliage.gdshader" id="1_blasv"]
+
+[resource]
+resource_name = "Village material 47"
+render_priority = 0
+shader = ExtResource("1_blasv")
+shader_parameter/tint = Color(0.654902, 0.78039217, 0.41960785, 1)
+shader_parameter/has_texture = false
+shader_parameter/vertex_colors = false
+shader_parameter/sway = 0.48
+shader_parameter/tree = true

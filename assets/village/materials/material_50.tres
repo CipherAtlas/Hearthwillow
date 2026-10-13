@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/foliage.gdshader" id="1_ew617"]
+
+[resource]
+resource_name = "Village material 50"
+render_priority = 0
+shader = ExtResource("1_ew617")
+shader_parameter/tint = Color(1, 1, 1, 1)
+shader_parameter/has_texture = false
+shader_parameter/vertex_colors = true
+shader_parameter/sway = 0.42
+shader_parameter/tree = false

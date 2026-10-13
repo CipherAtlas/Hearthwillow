@@ -1,0 +1,576 @@
+{
+  "name": "Gameplay captures at spawn; Escape releases; map/settings/basket restore capture",
+  "scene": "res://scenes/main.tscn",
+  "keep_running": true,
+  "steps": [
+    {
+      "wait": 0.3
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 0",
+      "message": "Starter has a usable pointer"
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "enter_game",
+        "args": [
+          false
+        ]
+      }
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 2",
+      "message": "Gameplay spawn captures without clicking"
+    },
+    {
+      "eval": "set_meta('yaw_before',get_node('CameraRig').desired_yaw)"
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "var event = InputEventMouseMotion.new()\nevent.relative=Vector2(30,0)\nevent.screen_relative=Vector2(30,0)\nInput.parse_input_event(event)"
+          }
+        ]
+      }
+    },
+    {
+      "wait": 0.1
+    },
+    {
+      "assert": "abs(get_node('CameraRig').desired_yaw-get_meta('yaw_before'))>.01",
+      "message": "Captured mouse motion immediately turns the camera"
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 0"
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "sync_blocking"
+      }
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 0",
+      "message": "HUD synchronization preserves an explicit Escape release"
+    },
+    {
+      "eval": "get_tree().root.grab_focus()"
+    },
+    {
+      "eval": "get_viewport().warp_mouse(Vector2(700,350))"
+    },
+    {
+      "input": [
+        {
+          "click": [
+            700,
+            350
+          ]
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 2",
+      "message": "Clicking back into world restores capture"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_map",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 0",
+      "message": "toggle_map releases pointer for UI"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_map",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 2",
+      "message": "toggle_map recaptures when closed"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_map",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 2",
+      "message": "Escape closing toggle_map returns to captured gameplay"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_settings",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 0",
+      "message": "toggle_settings releases pointer for UI"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_settings",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 2",
+      "message": "toggle_settings recaptures when closed"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_settings",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 2",
+      "message": "Escape closing toggle_settings returns to captured gameplay"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_sound",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 0",
+      "message": "toggle_sound releases pointer for UI"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_sound",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 2",
+      "message": "toggle_sound recaptures when closed"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_sound",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 2",
+      "message": "Escape closing toggle_sound returns to captured gameplay"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_inventory",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 0",
+      "message": "toggle_inventory releases pointer for UI"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_inventory",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 2",
+      "message": "toggle_inventory recaptures when closed"
+    },
+    {
+      "input": [
+        {
+          "action": "toggle_inventory",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 2",
+      "message": "Escape closing toggle_inventory returns to captured gameplay"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(-40.5,47.8))"
+    },
+    {
+      "assert": "get_node('VillageSeating').sit('pasture-oak-bench',0)",
+      "message": "Seat accepts and enters gameplay context"
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 2",
+      "message": "Seating does not release capture"
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.03
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 0",
+      "message": "Escape remains an explicit release when leaving an activity"
+    },
+    {
+      "eval": "get_viewport().warp_mouse(Vector2(700,350))"
+    },
+    {
+      "input": [
+        {
+          "click": [
+            700,
+            350
+          ]
+        }
+      ]
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\") == 2"
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(get_node('Village/Actors/rowan').position.x,get_node('Village/Actors/rowan').position.z)+Vector2(0,2))"
+    },
+    {
+      "input": [
+        {
+          "action": "talk",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('VillageRace').can_invite()"
+    },
+    {
+      "input": [
+        {
+          "action": "companion",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "assert": "get_node('VillageRace').phase=='countdown'"
+    },
+    {
+      "call": {
+        "path": "/root/ForgeRuntime",
+        "method": "c_exec",
+        "args": [
+          {
+            "code": "scene.set_meta(\"mouse_mode\",Input.mouse_mode)"
+          }
+        ]
+      }
+    },
+    {
+      "assert": "get_meta(\"mouse_mode\")==2",
+      "message": "Starting a mounted race keeps gameplay capture"
+    },
+    {
+      "call": {
+        "path": "VillageRace",
+        "method": "cancel"
+      }
+    },
+    {
+      "eval": "get_node('HUD/VillageMap').travel_point(Vector2(.3,20))"
+    },
+    {
+      "assert_no_errors": true
+    }
+  ]
+}

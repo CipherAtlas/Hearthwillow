@@ -1,0 +1,164 @@
+{
+  "date": "2026-10-13",
+  "passed_scenarios": 8,
+  "scenario_steps": 1370,
+  "lint": {
+    "scripts": 32,
+    "scenes": 12,
+    "errors": 0,
+    "warnings": 0
+  },
+  "reports": [
+    {
+      "file": "quiet-notes-final.json",
+      "name": "Writing nook, journal and kind notes at 1080p",
+      "passed": true,
+      "steps": 142,
+      "runtime_errors": []
+    },
+    {
+      "file": "pond-final.json",
+      "name": "Pond life, feeding and breathing at 1080p",
+      "passed": true,
+      "steps": 99,
+      "runtime_errors": []
+    },
+    {
+      "file": "seat-facing-final.json",
+      "name": "Both directions on all swings and picnic cushions at 1080p",
+      "passed": true,
+      "steps": 385,
+      "runtime_errors": []
+    },
+    {
+      "file": "quiet-menus-final.json",
+      "name": "Starter, live-site HUD, menus, sound and map travel",
+      "passed": true,
+      "steps": 92,
+      "runtime_errors": []
+    },
+    {
+      "file": "quiet-focus-final.json",
+      "name": "Private focus cottage, session controls, persistence, cat and map return at 1080p",
+      "passed": true,
+      "steps": 86,
+      "runtime_errors": []
+    },
+    {
+      "file": "quiet-milestone-seating-final.json",
+      "name": "Seven benches, five cushions, four swings and stationary ride camera at 1080p",
+      "passed": true,
+      "steps": 201,
+      "runtime_errors": []
+    },
+    {
+      "file": "quiet-milestone-garden-kitchen-final.json",
+      "name": "All crops, farm rules, four recipes, picnic portions and local save",
+      "passed": true,
+      "steps": 274,
+      "runtime_errors": []
+    },
+    {
+      "file": "quiet-npcs-final.json",
+      "name": "Local residents, dogs, owls and dove feeding",
+      "passed": true,
+      "steps": 91,
+      "runtime_errors": []
+    }
+  ],
+  "captures": [
+    {
+      "file": "journal-writing-1080p.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "57fa8709ec46b524c9b09508ff3ad6d76921174ed9148845a7119bacf4bd78f5"
+    },
+    {
+      "file": "journal-read-1080p.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "46f049424de4e342feb12244c0d116f5d0471c344cd6153c0764fadc28b96070"
+    },
+    {
+      "file": "journal-list-1080p.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "b5ba4c18962be9543411614ffa277b292f1c08b5f1fbd3d1fd0c336ae72be4d7"
+    },
+    {
+      "file": "journal-japanese-1080p.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "e170407da41499f55a0fb0eabb7c029657f4430e2fcbcab596209588a5d57d44"
+    },
+    {
+      "file": "kind-note-1080p.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "9706eb4d0540aa843601783f4c5d6a58ec9a1e0dacdf5e90f1d44898d8b86347"
+    },
+    {
+      "file": "kind-note-japanese-1080p.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "f2aa779ef2e6e84c5e5b8af41bd72a3549a012ac45af046b1cf005b567202f88"
+    },
+    {
+      "file": "pond-breathing-1080p.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "38aab5befb9a99f46ff5180e6d0acc748c4da7ce0414998ea441a027effbf9a5"
+    },
+    {
+      "file": "pond-feeding-1080p.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "5d6a52854e62490954a8255a803366376d33615b02509baf4abc5091cc2d4e40"
+    },
+    {
+      "file": "swing-forward-1080p.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "a233e54f7f01d4412456524f3acde8083d72665e1b298cd196064722f16b9e1d"
+    },
+    {
+      "file": "swing-reverse-1080p.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "cbf191c8d07f28e19f4e3798ddfd06c063e64ea47ad50a858434489ff33b8450"
+    },
+    {
+      "file": "picnic-forward-1080p.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "47e0e6fb6454b715188e4c8b3aba7016c6dd5575676482c3d9b0dee8d9938a54"
+    },
+    {
+      "file": "picnic-reverse-1080p.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "ebbf93ed9cf369d85a39db55db138205dfa77b2767269fc7112c1a220767320f"
+    }
+  ],
+  "benchmark": "Deferred; not run",
+  "boundaries": [
+    "Native editor playtests, not final live-site pixel equivalence or physical listening acceptance",
+    "Notes, language and feed-clock captures use temporary fixtures; personal saves are preserved",
+    "No Git writes or deployment"
+  ],
+  "mac_export": {
+    "exit_code": 0,
+    "startup_frames": 180,
+    "startup_exit_code": 0,
+    "render_exit_code": 0,
+    "runtime_errors": 0,
+    "render": "Metal 4.0 Mobile on Apple M4",
+    "starter_capture": {
+      "file": "quiet-release-starter-1080p.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "6133c5b245751db119eb4f018a1c0cf8d1831ddabc587699cf1059efd1d535f5"
+    },
+    "boundary": "Movie-mode fixed timestep for visual capture; not an FPS benchmark. Full standalone activity playthrough remains open."
+  }
+}

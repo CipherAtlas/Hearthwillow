@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-13",
+  "godot": "4.7.2.stable.official.ed1daf0bf",
+  "release": "v0.1.0-preview.1",
+  "status": "prepared for draft GitHub release",
+  "repository": "https://github.com/CipherAtlas/Hearthwillow",
+  "source": "frozen from Git index to avoid concurrent gameplay edits",
+  "mac": {
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "signature": "ad-hoc; verified after ZIP extraction",
+    "notarized": false,
+    "startup_exit": 0,
+    "renderer": "Metal 4.0 / Forward Mobile / Apple M4",
+    "capture": "1920x1080 starter from movie writer; not a performance measurement",
+    "another_mac_download_test": false
+  },
+  "windows": {
+    "architecture": "PE32+ x86-64",
+    "signed": false,
+    "pack_audit_on_mac": true,
+    "windows_runtime_tested": false
+  },
+  "pack_audit": {
+    "runtime_data_files": 11,
+    "scripts_matched_to_frozen_source": 25,
+    "scene_dependencies_loaded": true,
+    "docs_excluded": true
+  },
+  "archives": [
+    {
+      "filename": "Hearthwillow-macOS-universal.zip",
+      "bytes": 151211225,
+      "sha256": "6b49858aa06d87498773964e4621e0ca229ca078ce12797536b8f0a67ecaef82"
+    },
+    {
+      "filename": "Hearthwillow-Windows-x64.zip",
+      "bytes": 128600634,
+      "sha256": "ec3eafb6db34079c9cb40aed0a6417e9e775039894a8806536c376901445c020"
+    }
+  ],
+  "remaining": [
+    "Windows hardware gameplay/audio/input/saves test",
+    "Mac browser-download Gatekeeper check on another Mac",
+    "Full standalone playthrough; sustained FPS benchmark remains deferred"
+  ],
+  "exporter_shutdown": "Export exits 0. Known retained ObjectDB/resources at exporter shutdown; no runtime errors in final startup/render."
+}

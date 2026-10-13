@@ -1,0 +1,656 @@
+{
+  "name": "Private focus cottage, session controls, persistence, cat and map return at 1080p",
+  "passed": true,
+  "duration_s": 20.854,
+  "steps": [
+    {
+      "index": 0,
+      "step": "wait 0.3",
+      "ok": true
+    },
+    {
+      "index": 1,
+      "step": "assert get_viewport().get_texture().get_size()==Vector2(1920,1080)",
+      "ok": true,
+      "detail": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
+    },
+    {
+      "index": 2,
+      "step": "eval get_node('HUD/Menus').enter_game(false)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 3,
+      "step": "eval get_node('FocusCottage').set_meta('fixture',{'minutes':get_node('FocusCottage').minutes,'break_minutes':get_node('F",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 4,
+      "step": "eval set_meta('return_view',Vector3(get_node('CameraRig').desired_yaw,get_node('CameraRig').desired_pitch,get_node('Came",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 5,
+      "step": "eval get_node('VillageSound').set('soundtrack',0)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 6,
+      "step": "eval get_node('VillageSound').toggle_sound()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 7,
+      "step": "eval get_node('HUD/VillageMap').travel(0)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 8,
+      "step": "wait 0.4",
+      "ok": true
+    },
+    {
+      "index": 9,
+      "step": "assert get_node('FocusCottage').inside and get_node('Player').activity_locked and get_node('FocusCottage').camera.curren",
+      "ok": true,
+      "detail": "get_node('FocusCottage').inside and get_node('Player').activity_locked and get_node('FocusCottage').camera.current and not get_node('CameraRig').is_processing()"
+    },
+    {
+      "index": 10,
+      "step": "assert get_node('FocusCottage').steam.size()==3 and get_node('FocusCottage').get_node('Window').size==Vector2i(400,345) ",
+      "ok": true,
+      "detail": "get_node('FocusCottage').steam.size()==3 and get_node('FocusCottage').get_node('Window').size==Vector2i(400,345) and get_node('FocusCottage').get_node('Camera').cull_mask==4 and get_node('HUD/VillageMap').visible"
+    },
+    {
+      "index": 11,
+      "step": "assert not get_node('Village/Actors/rowan').visible and not get_node('HUD/Hints').visible",
+      "ok": true,
+      "detail": "not get_node('Village/Actors/rowan').visible and not get_node('HUD/Hints').visible"
+    },
+    {
+      "index": 12,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped activity_2 for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 13,
+      "step": "assert get_node('FocusCottage').minutes==50 and get_node('FocusCottage').break_minutes==10 and get_node('FocusCottage').",
+      "ok": true,
+      "detail": "get_node('FocusCottage').minutes==50 and get_node('FocusCottage').break_minutes==10 and get_node('FocusCottage').remaining==3000"
+    },
+    {
+      "index": 14,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped activity_3 for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 15,
+      "step": "assert get_node('FocusCottage').minutes==10 and get_node('FocusCottage').break_minutes==2 and get_node('FocusCottage').r",
+      "ok": true,
+      "detail": "get_node('FocusCottage').minutes==10 and get_node('FocusCottage').break_minutes==2 and get_node('FocusCottage').remaining==600"
+    },
+    {
+      "index": 16,
+      "step": "eval get_tree().root.grab_focus()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 17,
+      "step": "eval get_node('FocusCottage').get_node('UI/Session/Content/Actions/Begin').warp_mouse(get_node('FocusCottage').get_node(",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 18,
+      "step": "wait 0.15",
+      "ok": true
+    },
+    {
+      "index": 19,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "clicked at Vector2(1668, 910)"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 20,
+      "step": "assert get_node('FocusCottage').running and get_node('FocusCottage').deadline>get_node('FocusCottage').now() and not get",
+      "ok": true,
+      "detail": "get_node('FocusCottage').running and get_node('FocusCottage').deadline>get_node('FocusCottage').now() and not get_node('FocusCottage').get_node('UI/Session/Content/Presets').visible"
+    },
+    {
+      "index": 21,
+      "step": "wait 1",
+      "ok": true
+    },
+    {
+      "index": 22,
+      "step": "assert get_node('VillageSound').current_track==3 and get_node('VillageSound/Wind').volume_db < -58 and not get_node('Vil",
+      "ok": true,
+      "detail": "Focus uses Quiet Village 3, source shelter gain and no outdoor bird calls."
+    },
+    {
+      "index": 23,
+      "step": "wait 1.2",
+      "ok": true
+    },
+    {
+      "index": 24,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped jump for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 25,
+      "step": "assert not get_node('FocusCottage').running and get_node('FocusCottage').remaining<600 and get_node('FocusCottage').rema",
+      "ok": true,
+      "detail": "not get_node('FocusCottage').running and get_node('FocusCottage').remaining<600 and get_node('FocusCottage').remaining>595"
+    },
+    {
+      "index": 26,
+      "step": "eval get_node('FocusCottage').save_session()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 27,
+      "step": "eval get_node('FocusCottage').set('remaining',123)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 28,
+      "step": "eval get_node('FocusCottage').load_session()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 29,
+      "step": "assert get_node('FocusCottage').remaining>595 and not get_node('FocusCottage').running",
+      "ok": true,
+      "detail": "get_node('FocusCottage').remaining>595 and not get_node('FocusCottage').running"
+    },
+    {
+      "index": 30,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_activity for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 31,
+      "step": "assert not get_node('FocusCottage').controls.visible and get_node('FocusCottage').get_node('UI/Hide').visible",
+      "ok": true,
+      "detail": "not get_node('FocusCottage').controls.visible and get_node('FocusCottage').get_node('UI/Hide').visible"
+    },
+    {
+      "index": 32,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_activity for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 33,
+      "step": "assert get_node('FocusCottage').controls.visible",
+      "ok": true,
+      "detail": "get_node('FocusCottage').controls.visible"
+    },
+    {
+      "index": 34,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped jump for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 35,
+      "step": "eval get_node('FocusCottage').set('deadline',get_node('FocusCottage').now()+1)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 36,
+      "step": "wait 1.4",
+      "ok": true
+    },
+    {
+      "index": 37,
+      "step": "assert get_node('FocusCottage').done and not get_node('FocusCottage').running and get_node('FocusCottage').remaining==0 ",
+      "ok": true,
+      "detail": "get_node('FocusCottage').done and not get_node('FocusCottage').running and get_node('FocusCottage').remaining==0 and get_node('FocusCottage').get_node('UI/Session/Content/Break').visible"
+    },
+    {
+      "index": 38,
+      "step": "assert get_node('FocusCottage/Chime').playing and get_node('FocusCottage/Chime').stream.resource_path=='res://assets/aud",
+      "ok": true,
+      "detail": "get_node('FocusCottage/Chime').playing and get_node('FocusCottage/Chime').stream.resource_path=='res://assets/audio/focus-chime.wav'"
+    },
+    {
+      "index": 39,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped bread for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 40,
+      "step": "assert get_node('FocusCottage').mode=='break' and get_node('FocusCottage').remaining==120 and not get_node('FocusCottage",
+      "ok": true,
+      "detail": "get_node('FocusCottage').mode=='break' and get_node('FocusCottage').remaining==120 and not get_node('FocusCottage').done"
+    },
+    {
+      "index": 41,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped unstuck for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 42,
+      "step": "eval get_node('FocusCottage').toggle_options()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 43,
+      "step": "assert get_node('FocusCottage').get_node('UI/Session/Content/Fields').visible",
+      "ok": true,
+      "detail": "get_node('FocusCottage').get_node('UI/Session/Content/Fields').visible"
+    },
+    {
+      "index": 44,
+      "step": "eval get_node('FocusCottage').get_node('UI/Session/Content/Fields/Intention').grab_focus()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 45,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "typed 15 chars"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 46,
+      "step": "assert get_node('FocusCottage').intention=='A quiet session' and not get_node('FocusCottage').running",
+      "ok": true,
+      "detail": "get_node('FocusCottage').intention=='A quiet session' and not get_node('FocusCottage').running"
+    },
+    {
+      "index": 47,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "key Space"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 48,
+      "step": "assert not get_node('FocusCottage').running",
+      "ok": true,
+      "detail": "Typing spaces in intention does not start a session."
+    },
+    {
+      "index": 49,
+      "step": "eval get_node('FocusCottage').get_node('UI/Session/Content/Actions/Begin').grab_focus()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 50,
+      "step": "eval get_node('FocusCottage').toggle_options()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 51,
+      "step": "eval get_node('FocusCottage/Cat').set('position',Vector3(-.48,1.08,-1.69))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 52,
+      "step": "call",
+      "ok": true,
+      "detail": {
+        "result": null
+      }
+    },
+    {
+      "index": 53,
+      "step": "wait 0.2",
+      "ok": true
+    },
+    {
+      "index": 54,
+      "step": "assert get_node('FocusCottage').get_node('UI/Pet').visible and get_node('FocusCottage').get_node('UI/AnimalBubble').visi",
+      "ok": true,
+      "detail": "get_node('FocusCottage').get_node('UI/Pet').visible and get_node('FocusCottage').get_node('UI/AnimalBubble').visible"
+    },
+    {
+      "index": 55,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped interact for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 56,
+      "step": "assert get_node('FocusCottage/Cat').state=='pet'",
+      "ok": true,
+      "detail": "get_node('FocusCottage/Cat').state=='pet'"
+    },
+    {
+      "index": 57,
+      "step": "assert get_node('VillageSound/Animals').stream.resource_path=='res://assets/audio/purr.mp3' and get_node('VillageSound/A",
+      "ok": true,
+      "detail": "get_node('VillageSound/Animals').stream.resource_path=='res://assets/audio/purr.mp3' and get_node('VillageSound/Animals').playing"
+    },
+    {
+      "index": 58,
+      "step": "eval get_node('FocusCottage').set('orbit',Vector2(.3,.2))",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 59,
+      "step": "wait 0.5",
+      "ok": true
+    },
+    {
+      "index": 60,
+      "step": "assert get_node('FocusCottage').camera.position.x>=-3.5 and get_node('FocusCottage').camera.position.x<=3.5 and get_node",
+      "ok": true,
+      "detail": "get_node('FocusCottage').camera.position.x>=-3.5 and get_node('FocusCottage').camera.position.x<=3.5 and get_node('FocusCottage').camera.position.y<=3.9 and get_node('FocusCottage').camera.position.z<=3.5"
+    },
+    {
+      "index": 61,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped toggle_map for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 62,
+      "step": "assert get_node('HUD/VillageMap').expanded and get_node('HUD/VillageMap').visible and not get_node('FocusCottage').contr",
+      "ok": true,
+      "detail": "get_node('HUD/VillageMap').expanded and get_node('HUD/VillageMap').visible and not get_node('FocusCottage').controls.visible"
+    },
+    {
+      "index": 63,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped release_mouse for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 64,
+      "step": "assert not get_node('HUD/VillageMap').expanded and get_node('FocusCottage').inside",
+      "ok": true,
+      "detail": "not get_node('HUD/VillageMap').expanded and get_node('FocusCottage').inside"
+    },
+    {
+      "index": 65,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped release_mouse for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 66,
+      "step": "wait 0.2",
+      "ok": true
+    },
+    {
+      "index": 67,
+      "step": "assert not get_node('FocusCottage').inside and not get_node('Player').activity_locked and get_node('CameraRig').camera.c",
+      "ok": true,
+      "detail": "not get_node('FocusCottage').inside and not get_node('Player').activity_locked and get_node('CameraRig').camera.current and get_node('CameraRig').is_processing() and get_node('Village/Actors/rowan').visible"
+    },
+    {
+      "index": 68,
+      "step": "assert get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))",
+      "ok": true,
+      "detail": "get_node('WorldSurface').can_enter(Vector2(get_node('Player').position.x,get_node('Player').position.z))"
+    },
+    {
+      "index": 69,
+      "step": "eval get_node('FocusCottage').enter()",
+      "ok": true,
+      "detail": {
+        "value": true
+      }
+    },
+    {
+      "index": 70,
+      "step": "input",
+      "ok": true,
+      "detail": {
+        "results": [
+          "tapped jump for 0.05s"
+        ],
+        "steps": 1
+      }
+    },
+    {
+      "index": 71,
+      "step": "assert get_node('FocusCottage').running",
+      "ok": true,
+      "detail": "get_node('FocusCottage').running"
+    },
+    {
+      "index": 72,
+      "step": "eval get_node('FocusCottage').leave()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 73,
+      "step": "eval get_node('FocusCottage').set('deadline',get_node('FocusCottage').now()+1)",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 74,
+      "step": "wait 1.4",
+      "ok": true
+    },
+    {
+      "index": 75,
+      "step": "assert get_node('FocusCottage').done and not get_node('FocusCottage').inside",
+      "ok": true,
+      "detail": "Absolute timer completes after leaving the cottage."
+    },
+    {
+      "index": 76,
+      "step": "eval get_node('FocusCottage').set('minutes',get_node('FocusCottage').get_meta('fixture')['minutes'])",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 77,
+      "step": "eval get_node('FocusCottage').set('break_minutes',get_node('FocusCottage').get_meta('fixture')['break_minutes'])",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 78,
+      "step": "eval get_node('FocusCottage').set('intention',get_node('FocusCottage').get_meta('fixture')['intention'])",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 79,
+      "step": "eval get_node('FocusCottage').set('remaining',get_node('FocusCottage').get_meta('fixture')['remaining'])",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 80,
+      "step": "eval get_node('FocusCottage').set('running',get_node('FocusCottage').get_meta('fixture')['running'])",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 81,
+      "step": "eval get_node('FocusCottage').set('done',get_node('FocusCottage').get_meta('fixture')['done'])",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 82,
+      "step": "eval get_node('FocusCottage').set('mode',get_node('FocusCottage').get_meta('fixture')['mode'])",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 83,
+      "step": "eval get_node('FocusCottage').set('deadline',get_node('FocusCottage').get_meta('fixture')['deadline'])",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 84,
+      "step": "eval get_node('FocusCottage').save_session()",
+      "ok": true,
+      "detail": {
+        "value": null
+      }
+    },
+    {
+      "index": 85,
+      "step": "assert_no_errors",
+      "ok": true
+    }
+  ],
+  "runtime_errors": [],
+  "screenshots": []
+}

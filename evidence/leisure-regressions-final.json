@@ -1,0 +1,79 @@
+{
+  "viewport": [
+    1920,
+    1080
+  ],
+  "benchmarks_deferred": true,
+  "scenarios": [
+    {
+      "name": "milestone-animal-controls",
+      "passed": true,
+      "steps": 44,
+      "failures": [],
+      "runtime_errors": []
+    },
+    {
+      "name": "milestone-farm-horses",
+      "passed": true,
+      "steps": 125,
+      "failures": [],
+      "runtime_errors": []
+    },
+    {
+      "name": "milestone-garden-kitchen",
+      "passed": true,
+      "steps": 274,
+      "failures": [],
+      "runtime_errors": []
+    },
+    {
+      "name": "milestone-gifts",
+      "passed": true,
+      "steps": 46,
+      "failures": [],
+      "runtime_errors": []
+    },
+    {
+      "name": "milestone-growth-clocks",
+      "passed": true,
+      "steps": 66,
+      "failures": [],
+      "runtime_errors": []
+    },
+    {
+      "name": "milestone-menus",
+      "passed": true,
+      "steps": 92,
+      "failures": [],
+      "runtime_errors": []
+    },
+    {
+      "name": "milestone-npcs",
+      "passed": true,
+      "steps": 91,
+      "failures": [],
+      "runtime_errors": []
+    },
+    {
+      "name": "milestone-collisions-camera",
+      "passed": true,
+      "steps": 38,
+      "failures": [],
+      "runtime_errors": []
+    },
+    {
+      "name": "milestone-bridges",
+      "passed": true,
+      "steps": 36,
+      "failures": [],
+      "runtime_errors": []
+    },
+    {
+      "name": "milestone-exploration",
+      "passed": true,
+      "steps": 24,
+      "failures": [],
+      "runtime_errors": []
+    }
+  ]
+}

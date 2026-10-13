@@ -1,0 +1,5 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "Village material 39"
+albedo_color = Color(0.42745098, 0.59999996, 0.34901962, 1)

@@ -1,0 +1,1104 @@
+{
+  "name": "All crops, farm rules, four recipes, picnic portions and local save",
+  "scene": "res://scenes/main.tscn",
+  "keep_running": true,
+  "stop_on_failure": false,
+  "steps": [
+    {
+      "assert": "get_tree().root.size.x>=1918 and get_tree().root.size.y>=1079",
+      "message": "1080p display window; allow the macOS one-pixel window frame, never a 720p override."
+    },
+    {
+      "call": {
+        "path": "HUD/Menus",
+        "method": "enter_game",
+        "args": [
+          false
+        ]
+      }
+    },
+    {
+      "eval": "get_node('VillageActivities').set_meta('fixture',{'beds':get_node('VillageActivities').beds.duplicate(true),'inventory':get_node('VillageActivities').inventory.duplicate(true),'apples':get_node('VillageLife').apples,'cooking':get_node('VillageActivities').cooking.duplicate(true),'dishes':get_node('VillageActivities').dishes.duplicate(true),'forage':get_node('VillageActivities').forage_ready.duplicate(true)})"
+    },
+    {
+      "assert": "get_viewport().get_texture().get_size()==Vector2(1920,1080)"
+    },
+    {
+      "assert": "get_node('VillageActivities').beds.size()==22"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds.set('garden-0',{'crop':'carrot','stage':'grown','watered':0.0})"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('carrots',0)"
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(20,-10)))"
+    },
+    {
+      "eval": "get_node('Player').set('velocity',Vector3(0,0,0))"
+    },
+    {
+      "wait": 0.25
+    },
+    {
+      "assert": "get_node('VillageActivities').nearby.id=='garden-0'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('carrots')==1 and get_node('VillageActivities').beds['garden-0'].stage=='empty'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['garden-0'].stage=='sprout'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['garden-0'].stage=='growing'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('carrots')==1"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds['garden-0'].set('watered',get_node('VillageActivities').now()-get_node('VillageActivities').growth_duration('garden-0','carrot')-1)"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['garden-0'].stage=='grown'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('carrots')==2"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds.set('garden-1',{'crop':'radish','stage':'grown','watered':0.0})"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('radishes',0)"
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(24.9,-10)))"
+    },
+    {
+      "eval": "get_node('Player').set('velocity',Vector3(0,0,0))"
+    },
+    {
+      "wait": 0.25
+    },
+    {
+      "assert": "get_node('VillageActivities').nearby.id=='garden-1'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('radishes')==1 and get_node('VillageActivities').beds['garden-1'].stage=='empty'"
+    },
+    {
+      "input": [
+        {
+          "action": "activity_2",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['garden-1'].stage=='sprout'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['garden-1'].stage=='growing'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('radishes')==1"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds['garden-1'].set('watered',get_node('VillageActivities').now()-get_node('VillageActivities').growth_duration('garden-1','radish')-1)"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['garden-1'].stage=='grown'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('radishes')==2"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds.set('garden-4',{'crop':'mint','stage':'grown','watered':0.0})"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('mint',0)"
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(20,-1)))"
+    },
+    {
+      "eval": "get_node('Player').set('velocity',Vector3(0,0,0))"
+    },
+    {
+      "wait": 0.25
+    },
+    {
+      "assert": "get_node('VillageActivities').nearby.id=='garden-4'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('mint')==1 and get_node('VillageActivities').beds['garden-4'].stage=='empty'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['garden-4'].stage=='sprout'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['garden-4'].stage=='growing'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('mint')==1"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds['garden-4'].set('watered',get_node('VillageActivities').now()-get_node('VillageActivities').growth_duration('garden-4','mint')-1)"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['garden-4'].stage=='grown'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('mint')==2"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds.set('garden-5',{'crop':'daisy','stage':'grown','watered':0.0})"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('daisies',0)"
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(24.9,-1)))"
+    },
+    {
+      "eval": "get_node('Player').set('velocity',Vector3(0,0,0))"
+    },
+    {
+      "wait": 0.25
+    },
+    {
+      "assert": "get_node('VillageActivities').nearby.id=='garden-5'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('daisies')==1 and get_node('VillageActivities').beds['garden-5'].stage=='empty'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['garden-5'].stage=='sprout'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['garden-5'].stage=='growing'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('daisies')==1"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds['garden-5'].set('watered',get_node('VillageActivities').now()-get_node('VillageActivities').growth_duration('garden-5','daisy')-1)"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['garden-5'].stage=='grown'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('daisies')==2"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds.set('garden-6',{'crop':'sunflower','stage':'grown','watered':0.0})"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('sunflowers',0)"
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(24.7,-11.6)))"
+    },
+    {
+      "eval": "get_node('Player').set('velocity',Vector3(0,0,0))"
+    },
+    {
+      "wait": 0.25
+    },
+    {
+      "assert": "get_node('VillageActivities').nearby.id=='garden-6'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('sunflowers')==1 and get_node('VillageActivities').beds['garden-6'].stage=='empty'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['garden-6'].stage=='sprout'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['garden-6'].stage=='growing'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('sunflowers')==1"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds['garden-6'].set('watered',get_node('VillageActivities').now()-get_node('VillageActivities').growth_duration('garden-6','sunflower')-1)"
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['garden-6'].stage=='grown'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('sunflowers')==2"
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(30,-70.2)))"
+    },
+    {
+      "eval": "get_node('Player').set('velocity',Vector3(0,0,0))"
+    },
+    {
+      "wait": 0.25
+    },
+    {
+      "assert": "get_node('VillageActivities').nearby.id=='farm-1-row-5'"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds.set('farm-1-row-5',{'crop':'carrot','stage':'empty','watered':0.0})"
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['farm-1-row-5'].crop=='carrot' and get_node('VillageActivities').beds['farm-1-row-5'].stage=='sprout'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').growth_duration('farm-1-row-5','carrot')==180"
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(73,-58.2)))"
+    },
+    {
+      "eval": "get_node('Player').set('velocity',Vector3(0,0,0))"
+    },
+    {
+      "wait": 0.25
+    },
+    {
+      "assert": "get_node('VillageActivities').nearby.id=='farm-2-row-5'"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds.set('farm-2-row-5',{'crop':'radish','stage':'empty','watered':0.0})"
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['farm-2-row-5'].crop=='radish' and get_node('VillageActivities').beds['farm-2-row-5'].stage=='sprout'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').growth_duration('farm-2-row-5','radish')==180"
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(98,-44.2)))"
+    },
+    {
+      "eval": "get_node('Player').set('velocity',Vector3(0,0,0))"
+    },
+    {
+      "wait": 0.25
+    },
+    {
+      "assert": "get_node('VillageActivities').nearby.id=='farm-3-row-5'"
+    },
+    {
+      "eval": "get_node('VillageActivities').beds.set('farm-3-row-5',{'crop':'mint','stage':'empty','watered':0.0})"
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').beds['farm-3-row-5'].crop=='mint' and get_node('VillageActivities').beds['farm-3-row-5'].stage=='sprout'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').growth_duration('farm-3-row-5','mint')==180"
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(31.5,4.8)))"
+    },
+    {
+      "eval": "get_node('Player').set('velocity',Vector3(0,0,0))"
+    },
+    {
+      "wait": 0.25
+    },
+    {
+      "assert": "get_node('VillageActivities').nearby.kind=='mushroom'"
+    },
+    {
+      "eval": "get_node('VillageActivities').forage_ready.clear()"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('mushrooms',0)"
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('mushrooms')==1"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').count_item('mushrooms')==1"
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(113,-75.9)))"
+    },
+    {
+      "eval": "get_node('Player').set('velocity',Vector3(0,0,0))"
+    },
+    {
+      "wait": 0.25
+    },
+    {
+      "assert": "get_node('VillageActivities').nearby.kind=='kitchen'"
+    },
+    {
+      "eval": "get_node('VillageActivities').set('cooking',{})"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('gardenSoup',0)"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('crispSalad',0)"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('bakedApples',0)"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('roastRoots',0)"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('carrots',2)"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('radishes',2)"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('mint',2)"
+    },
+    {
+      "eval": "get_node('VillageActivities').inventory.set('mushrooms',2)"
+    },
+    {
+      "eval": "get_node('VillageLife').set('apples',1)"
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "input": [
+        {
+          "action": "activity_1",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').cooking.recipe=='gardenSoup'"
+    },
+    {
+      "assert": "not get_node('VillageActivities').activate(4)"
+    },
+    {
+      "wait": 4.7
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').cooking.is_empty() and get_node('VillageActivities').count_item('gardenSoup')==1"
+    },
+    {
+      "input": [
+        {
+          "action": "activity_2",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').cooking.recipe=='crispSalad'"
+    },
+    {
+      "assert": "not get_node('VillageActivities').activate(4)"
+    },
+    {
+      "wait": 4.7
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').cooking.is_empty() and get_node('VillageActivities').count_item('crispSalad')==1"
+    },
+    {
+      "input": [
+        {
+          "action": "activity_3",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').cooking.recipe=='bakedApples'"
+    },
+    {
+      "assert": "not get_node('VillageActivities').activate(4)"
+    },
+    {
+      "wait": 4.7
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').cooking.is_empty() and get_node('VillageActivities').count_item('bakedApples')==1"
+    },
+    {
+      "input": [
+        {
+          "action": "activity_4",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').cooking.recipe=='roastRoots'"
+    },
+    {
+      "assert": "not get_node('VillageActivities').activate(4)"
+    },
+    {
+      "wait": 4.7
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').cooking.is_empty() and get_node('VillageActivities').count_item('roastRoots')==1"
+    },
+    {
+      "eval": "get_node('Player').set('position',get_node('WorldSurface').recovery_spot(Vector2(-96,-20)))"
+    },
+    {
+      "eval": "get_node('Player').set('velocity',Vector3(0,0,0))"
+    },
+    {
+      "wait": 0.25
+    },
+    {
+      "assert": "get_node('VillageActivities').nearby.kind=='picnic'"
+    },
+    {
+      "input": [
+        {
+          "action": "talk",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageSeating').picnic_basket_open and get_node('VillageActivities').panel.visible"
+    },
+    {
+      "eval": "get_node('VillageActivities').dishes.clear()"
+    },
+    {
+      "input": [
+        {
+          "action": "activity_1",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').dishes.size()==1"
+    },
+    {
+      "input": [
+        {
+          "action": "activity_2",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').dishes.size()==2"
+    },
+    {
+      "input": [
+        {
+          "action": "activity_3",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').dishes.size()==3"
+    },
+    {
+      "input": [
+        {
+          "action": "activity_4",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').dishes.size()==4"
+    },
+    {
+      "assert": "get_node('VillageActivities').dishes[0].portions==3 and get_node('VillageActivities').dishes[1].portions==3 and get_node('VillageActivities').dishes[2].portions==3 and get_node('VillageActivities').dishes[3].portions==3"
+    },
+    {
+      "assert": "not get_node('VillageActivities').activate(0)"
+    },
+    {
+      "input": [
+        {
+          "action": "release_mouse",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.2
+    },
+    {
+      "assert": "get_node('VillageSeating').seated.get('id','')=='picnic-hill-mat'"
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').dishes[0].portions==2"
+    },
+    {
+      "assert": "not get_node('VillageActivities').activate(4)"
+    },
+    {
+      "wait": 3.1
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').dishes[0].portions==1"
+    },
+    {
+      "wait": 3.1
+    },
+    {
+      "input": [
+        {
+          "action": "interact",
+          "hold": 0.05
+        }
+      ]
+    },
+    {
+      "wait": 0.15
+    },
+    {
+      "assert": "get_node('VillageActivities').dishes.size()==3"
+    },
+    {
+      "call": {
+        "path": "VillageActivities",
+        "method": "save_state",
+        "args": []
+      }
+    },
+    {
+      "assert": "not get_node('VillageActivities').save_error"
+    },
+    {
+      "eval": "get_node('VillageActivities').set_meta('roundtrip',{'beds':get_node('VillageActivities').beds.duplicate(true),'inventory':get_node('VillageActivities').inventory.duplicate(true)})"
+    },
+    {
+      "eval": "[get_node('VillageActivities').inventory.set('mint',999),get_node('VillageActivities').load_state()]"
+    },
+    {
+      "assert": "get_node('VillageActivities').inventory==get_node('VillageActivities').get_meta('roundtrip').inventory"
+    },
+    {
+      "eval": "get_node('VillageActivities').set('beds',get_node('VillageActivities').get_meta('fixture').beds)"
+    },
+    {
+      "eval": "get_node('VillageActivities').set('inventory',get_node('VillageActivities').get_meta('fixture').inventory)"
+    },
+    {
+      "eval": "get_node('VillageActivities').set('cooking',get_node('VillageActivities').get_meta('fixture').cooking)"
+    },
+    {
+      "eval": "get_node('VillageActivities').set('dishes',get_node('VillageActivities').get_meta('fixture').dishes)"
+    },
+    {
+      "eval": "get_node('VillageActivities').set('forage_ready',get_node('VillageActivities').get_meta('fixture').forage)"
+    },
+    {
+      "eval": "get_node('VillageLife').set('apples',get_node('VillageActivities').get_meta('fixture').apples)"
+    },
+    {
+      "call": {
+        "path": "VillageActivities",
+        "method": "save_state",
+        "args": []
+      }
+    },
+    {
+      "call": {
+        "path": "VillageActivities",
+        "method": "update_visuals",
+        "args": []
+      }
+    },
+    {
+      "eval": "get_node('VillageSeating').leave()"
+    },
+    {
+      "assert_no_errors": true
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-12",
+  "fresh_restart_before_each": true,
+  "results": [
+    {
+      "name": "milestone-exploration",
+      "passed": true,
+      "steps": 19,
+      "duration_s": 11.981,
+      "failures": [],
+      "runtime_errors": []
+    },
+    {
+      "name": "milestone-bridges",
+      "passed": true,
+      "steps": 33,
+      "duration_s": 16.922,
+      "failures": [],
+      "runtime_errors": []
+    },
+    {
+      "name": "milestone-collisions-camera",
+      "passed": true,
+      "steps": 32,
+      "duration_s": 8.783,
+      "failures": [],
+      "runtime_errors": []
+    },
+    {
+      "name": "milestone-npcs",
+      "passed": false,
+      "steps": 12,
+      "duration_s": 3.537,
+      "failures": [
+        {
+          "index": 11,
+          "step": "assert get_node('HUD/Speech/Resident0').size.x == 290",
+          "ok": false,
+          "error": "Assertion failed: Published desktop width retained"
+        }
+      ],
+      "runtime_errors": []
+    }
+  ]
+}
