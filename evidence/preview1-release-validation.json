@@ -31,7 +31,8 @@
     "pack_resources_loaded_per_platform": 7,
     "mac_headless_startup": true,
     "mac_native_starter": "1920x1080; Metal 4.0 Forward Mobile Apple M4; 120 movie frames; not an FPS benchmark",
-    "existing_non_log_cache_user_files_unchanged": true
+    "existing_non_log_cache_user_files_unchanged": true,
+    "outdoor_audio_bus_settings": "Both packs: Master/Outdoor, 0 dB to Master, enabled 6500 Hz low-pass; mute/solo/bypass off"
   },
   "reused_evidence": {
     "regressions": "parity-regressions.json",
@@ -44,5 +45,11 @@
     "Browser-download Gatekeeper acceptance on another Mac untested",
     "Final package not benchmarked; earlier 120 FPS target not met in all scenarios",
     "Exporter exit reports known retained ObjectDB/resources; packaged runtime logs are clean"
-  ]
+  ],
+  "source_audit": {
+    "source_files_compared": 3316,
+    "byte_identical_files": 3315,
+    "normalized_by_exporter": "default_bus_layout.tres: Godot resource UID/format normalization and explicit default flags; equivalent packed audio settings verified",
+    "unexpected_differences": []
+  }
 }

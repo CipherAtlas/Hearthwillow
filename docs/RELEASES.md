@@ -79,7 +79,10 @@ The rebuilt archives pass integrity checks. The extracted universal Mac app has
 a valid ad-hoc signature, starts cleanly, and renders its starter at 1920×1080
 with Metal on Apple M4. Both packs match 52 source/data hashes and load seven
 required resources, including the tea cup, companion stages, lookout and audio
-bus layout. All 101 scene/shader/settings hashes match the staged source.
+bus layout. All 101 scene/shader/settings hashes match the staged source. The full runtime
+source audit compares 3,316 files: 3,315 match byte-for-byte; Godot normalizes the
+audio bus resource while exporting, and both packed bus/filter settings match
+the authored values.
 
 The four saved gameplay suites pass 450 steps; those results are reused here.
 Windows gameplay and another-Mac download acceptance remain untested. The movie
